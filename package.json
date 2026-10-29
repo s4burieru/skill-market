@@ -1,0 +1,10 @@
+{
+  "name": "skill-market",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fiverr-style marketplace landing page built with plain HTML, CSS and JavaScript.",
+  "scripts": {
+    "build:data": "node tools/build-data.js",
+    "start": "npx serve ."
+  }
+}

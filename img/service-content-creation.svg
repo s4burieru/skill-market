@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Professional Photography">
+  <defs>
+    <linearGradient id="bgPhoto" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="1" stop-color="#fdba74"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgPhoto)"/>
+  <circle cx="660" cy="80" r="150" fill="#fb923c" opacity="0.35"/>
+  <circle cx="120" cy="440" r="160" fill="#fdba74" opacity="0.55"/>
+
+  <!-- backdrop frame -->
+  <rect x="150" y="70" width="500" height="360" rx="24" fill="#ffffff" opacity="0.55"/>
+
+  <!-- camera body -->
+  <g>
+    <path d="M262 176h44l24-34h112l24 34h44a26 26 0 0 1 26 26v138a26 26 0 0 1-26 26H262a26 26 0 0 1-26-26V202a26 26 0 0 1 26-26z"
+          fill="#1f2937"/>
+    <rect x="262" y="150" width="96" height="30" rx="10" fill="#374151"/>
+    <circle cx="400" cy="272" r="82" fill="#4b5563"/>
+    <circle cx="400" cy="272" r="64" fill="#111827"/>
+    <circle cx="400" cy="272" r="46" fill="#0ea5e9" opacity="0.85"/>
+    <circle cx="400" cy="272" r="24" fill="#e0f2fe" opacity="0.9"/>
+    <circle cx="378" cy="250" r="10" fill="#ffffff" opacity="0.85"/>
+    <circle cx="536" cy="214" r="10" fill="#1dbf73"/>
+  </g>
+
+  <!-- sparkles -->
+  <g fill="#f97316">
+    <path d="M180 130l8 22 22 8-22 8-8 22-8-22-22-8 22-8z"/>
+    <path d="M640 340l7 18 18 7-18 7-7 18-7-18-18-7 18-7z"/>
+  </g>
+</svg>

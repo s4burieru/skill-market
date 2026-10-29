@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Brand Identity Design">
+  <defs>
+    <linearGradient id="bgDesign" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/>
+      <stop offset="1" stop-color="#e9d5ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgDesign)"/>
+
+  <!-- colour swatches -->
+  <g opacity="0.95">
+    <rect x="70" y="70" width="150" height="46" rx="23" fill="#1dbf73"/>
+    <rect x="70" y="130" width="150" height="46" rx="23" fill="#0f172a"/>
+    <rect x="70" y="190" width="150" height="46" rx="23" fill="#f59e0b"/>
+  </g>
+
+  <!-- abstract mark -->
+  <circle cx="420" cy="250" r="128" fill="#f43f5e"/>
+  <path d="M420 122a128 128 0 0 1 0 256z" fill="#f97316"/>
+  <rect x="352" y="182" width="136" height="136" rx="34" fill="#1d4ed8" opacity="0.9"/>
+  <path d="M470 120l112 194H358z" fill="#facc15"/>
+
+  <!-- pen nib -->
+  <g transform="rotate(-24 640 350)">
+    <rect x="600" y="250" width="46" height="150" rx="12" fill="#0f172a"/>
+    <path d="M600 400h46l-23 54z" fill="#334155"/>
+    <rect x="600" y="284" width="46" height="18" fill="#1dbf73"/>
+  </g>
+
+  <g fill="#1d4ed8" opacity="0.5">
+    <circle cx="712" cy="96" r="16"/>
+    <circle cx="160" cy="410" r="22"/>
+    <circle cx="668" cy="446" r="12"/>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "id": "flw-001",
+      "name": "Sarah Jenkins",
+      "role": "Full-stack developer",
+      "category": "Software Developer",
+      "rating": 5.0,
+      "rate": "$75",
+      "image": "img/avatar-sarah.svg"
+    },
+    {
+      "id": "flw-002",
+      "name": "Michael Chen",
+      "role": "Brand strategy & design",
+      "category": "Creative Director",
+      "rating": 4.9,
+      "rate": "$120",
+      "image": "img/avatar-michael.svg"
+    },
+    {
+      "id": "flw-003",
+      "name": "Elena Rodriguez",
+      "role": "SEO content & copywriting",
+      "category": "Content Writer",
+      "rating": 4.8,
+      "rate": "$45",
+      "image": "img/avatar-elena.svg"
+    },
+    {
+      "id": "flw-004",
+      "name": "David Kim",
+      "role": "Analytics & insights",
+      "category": "Data Consultant",
+      "rating": 5.0,
+      "rate": "$100",
+      "image": "img/avatar-david.svg"
+    }
+  ]
+}

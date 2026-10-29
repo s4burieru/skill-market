@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Michael Chen">
+  <defs>
+    <linearGradient id="bgMichael" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#3730a3"/>
+    </linearGradient>
+    <radialGradient id="hlMichael" cx="0.5" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="600" height="600" fill="url(#bgMichael)"/>
+  <rect width="600" height="600" fill="url(#hlMichael)"/>
+  <circle cx="300" cy="300" r="242" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="2"/>
+  <circle cx="86" cy="96" r="72" fill="#ffffff" opacity="0.10"/>
+  <circle cx="516" cy="512" r="88" fill="#ffffff" opacity="0.08"/>
+
+  <g fill="#ffffff" opacity="0.94">
+    <path d="M262 286h76v150h-76z"/>
+    <path d="M104 600c0-106 86-176 196-176s196 70 196 176z"/>
+    <circle cx="300" cy="232" r="98"/>
+  </g>
+</svg>
