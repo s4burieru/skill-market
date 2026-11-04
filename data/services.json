@@ -1,0 +1,106 @@
+{
+  "categories": [
+    { "id": "all", "label": "All Categories" },
+    { "id": "web-development", "label": "Web Development" },
+    { "id": "digital-marketing", "label": "Digital Marketing" },
+    { "id": "content-creation", "label": "Content Creation" },
+    { "id": "graphic-design", "label": "Graphic Design" },
+    { "id": "video-production", "label": "Video Production" },
+    { "id": "data-science", "label": "Data Science" },
+    { "id": "writing-translation", "label": "Writing & Translation" },
+    { "id": "customer-service", "label": "Customer Service" },
+    { "id": "accounting", "label": "Accounting" }
+  ],
+  "items": [
+    {
+      "id": "svc-001",
+      "title": "Custom Web Development",
+      "category": "Web Development",
+      "description": "Full-stack solutions for web and mobile applications.",
+      "rating": 4.9,
+      "price": { "min": "$500", "max": "$2,000" },
+      "image": "img/service-web-development.svg",
+      "popular": true
+    },
+    {
+      "id": "svc-002",
+      "title": "SEO & Social Media",
+      "category": "Digital Marketing",
+      "description": "Data-driven marketing strategies that convert.",
+      "rating": 4.8,
+      "price": { "min": "$300", "max": "$1,500" },
+      "image": "img/service-digital-marketing.svg",
+      "popular": true
+    },
+    {
+      "id": "svc-003",
+      "title": "Professional Photography",
+      "category": "Content Creation",
+      "description": "High-quality photo content for your brand.",
+      "rating": 4.9,
+      "price": { "min": "$200", "max": "$800" },
+      "image": "img/service-content-creation.svg",
+      "popular": true
+    },
+    {
+      "id": "svc-004",
+      "title": "Brand Identity Design",
+      "category": "Graphic Design",
+      "description": "Complete visual identity packages for startups.",
+      "rating": 4.7,
+      "price": { "min": "$150", "max": "$600" },
+      "image": "img/service-graphic-design.svg",
+      "popular": true
+    },
+    {
+      "id": "svc-005",
+      "title": "Video Editing & Motion Design",
+      "category": "Video Production",
+      "description": "Engaging edits, reels and animated explainers.",
+      "rating": 4.8,
+      "price": { "min": "$400", "max": "$1,600" },
+      "image": "img/service-video-production.svg",
+      "popular": false
+    },
+    {
+      "id": "svc-006",
+      "title": "Data Analysis & Dashboards",
+      "category": "Data Science",
+      "description": "Turn raw data into clear, actionable insight.",
+      "rating": 5.0,
+      "price": { "min": "$600", "max": "$3,000" },
+      "image": "img/service-data-science.svg",
+      "popular": false
+    },
+    {
+      "id": "svc-007",
+      "title": "Blog Writing & Copywriting",
+      "category": "Writing & Translation",
+      "description": "SEO-friendly articles and website copy that reads well.",
+      "rating": 4.9,
+      "price": { "min": "$100", "max": "$500" },
+      "image": "img/service-content-creation.svg",
+      "popular": false
+    },
+    {
+      "id": "svc-008",
+      "title": "Customer Support Specialists",
+      "category": "Customer Service",
+      "description": "Friendly live-chat and email support, on your schedule.",
+      "rating": 4.8,
+      "price": { "min": "$150", "max": "$700" },
+      "image": "img/service-digital-marketing.svg",
+      "popular": false
+    },
+    {
+      "id": "svc-009",
+      "title": "Bookkeeping & Payroll",
+      "category": "Accounting",
+      "description": "Accurate books, invoicing and monthly reporting.",
+      "rating": 4.9,
+      "price": { "min": "$250", "max": "$900" },
+      "image": "img/service-data-science.svg",
+      "popular": false
+    }
+  ]
+}

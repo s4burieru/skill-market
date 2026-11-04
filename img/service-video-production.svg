@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Video Editing and Motion Design">
+  <defs>
+    <linearGradient id="bgVideo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2e1065"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgVideo)"/>
+  <circle cx="690" cy="70" r="150" fill="#a78bfa" opacity="0.28"/>
+  <circle cx="90" cy="440" r="160" fill="#ec4899" opacity="0.18"/>
+
+  <!-- film strip -->
+  <g fill="#ffffff" opacity="0.16">
+    <rect x="60" y="60" width="680" height="60" rx="14"/>
+    <rect x="60" y="380" width="680" height="60" rx="14"/>
+  </g>
+  <g fill="#2e1065" opacity="0.75">
+    <rect x="88" y="78" width="34" height="24" rx="6"/>
+    <rect x="164" y="78" width="34" height="24" rx="6"/>
+    <rect x="240" y="78" width="34" height="24" rx="6"/>
+    <rect x="316" y="78" width="34" height="24" rx="6"/>
+    <rect x="392" y="78" width="34" height="24" rx="6"/>
+    <rect x="468" y="78" width="34" height="24" rx="6"/>
+    <rect x="544" y="78" width="34" height="24" rx="6"/>
+    <rect x="620" y="78" width="34" height="24" rx="6"/>
+    <rect x="88" y="398" width="34" height="24" rx="6"/>
+    <rect x="164" y="398" width="34" height="24" rx="6"/>
+    <rect x="240" y="398" width="34" height="24" rx="6"/>
+    <rect x="316" y="398" width="34" height="24" rx="6"/>
+    <rect x="392" y="398" width="34" height="24" rx="6"/>
+    <rect x="468" y="398" width="34" height="24" rx="6"/>
+    <rect x="544" y="398" width="34" height="24" rx="6"/>
+    <rect x="620" y="398" width="34" height="24" rx="6"/>
+  </g>
+
+  <!-- play button -->
+  <circle cx="400" cy="250" r="96" fill="#ffffff" opacity="0.95"/>
+  <path d="M374 206l76 44-76 44z" fill="#7c3aed"/>
+
+  <!-- waveform -->
+  <g stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.55">
+    <path d="M150 250v-26M182 250v-46M214 250v-18M586 250v-30M618 250v-50M650 250v-20"/>
+  </g>
+</svg>

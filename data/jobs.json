@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "id": "job-001",
+      "title": "Senior React Developer",
+      "company": "TechFlow Inc.",
+      "logo": { "initials": "TF", "color": "#111827" },
+      "badge": "Remote",
+      "salary": "$80 - $120/hr",
+      "location": "Remote",
+      "schedule": "Full-time",
+      "level": "Senior",
+      "posted": "2d ago",
+      "tags": ["React", "Node.js"]
+    },
+    {
+      "id": "job-002",
+      "title": "UI/UX Designer",
+      "company": "Design Studio",
+      "logo": { "initials": "DS", "color": "#f97316" },
+      "badge": "Full-time",
+      "salary": "$60 - $90/hr",
+      "location": "On-site",
+      "schedule": "Full-time",
+      "level": "Mid-level",
+      "posted": "5h ago",
+      "tags": ["Figma", "Design Systems"]
+    },
+    {
+      "id": "job-003",
+      "title": "SEO Specialist",
+      "company": "Growth Hub",
+      "logo": { "initials": "GH", "color": "#2563eb" },
+      "badge": "Part-time",
+      "salary": "$40 - $70/hr",
+      "location": "Remote",
+      "schedule": "Part-time",
+      "level": "Entry-level",
+      "posted": "1d ago",
+      "tags": ["Google Analytics", "Content Strategy"]
+    }
+  ]
+}

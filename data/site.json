@@ -1,0 +1,61 @@
+{
+  "brand": {
+    "name": "SkillMarket",
+    "mark": "S",
+    "footerMark": "SM",
+    "tagline": "The world's marketplace. Here to help you find the right talent or your next big opportunity."
+  },
+  "navbar": {
+    "links": [
+      { "label": "Explore", "href": "#services" },
+      { "label": "Find Freelancers", "href": "#freelancers" },
+      { "label": "Find Jobs", "href": "#jobs" },
+      { "label": "Become a Freelancer", "href": "#get-started" }
+    ],
+    "login": { "label": "Login", "href": "#" },
+    "join": { "label": "Join", "href": "#" }
+  },
+  "cta": {
+    "title": "Ready to grow your business?",
+    "text": "Join thousands of entrepreneurs and freelancers using SkillMarket to find and offer high-quality services.",
+    "button": { "label": "Get Started", "href": "#" }
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "Platform",
+        "links": [
+          { "label": "Explore", "href": "#services" },
+          { "label": "Find Freelancers", "href": "#freelancers" },
+          { "label": "Find Jobs", "href": "#jobs" },
+          { "label": "Become a Freelancer", "href": "#get-started" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About Us", "href": "#" },
+          { "label": "Careers", "href": "#" },
+          { "label": "Press", "href": "#" },
+          { "label": "Contact", "href": "#" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          { "label": "Help & Support", "href": "#" },
+          { "label": "Community", "href": "#" },
+          { "label": "Trust & Safety", "href": "#" },
+          { "label": "Privacy", "href": "#" }
+        ]
+      }
+    ],
+    "legal": {
+      "copyright": "© 2026 SkillMarket Inc. All rights reserved.",
+      "links": [
+        { "label": "Terms of Service", "href": "#" },
+        { "label": "Privacy Policy", "href": "#" }
+      ]
+    }
+  }
+}
