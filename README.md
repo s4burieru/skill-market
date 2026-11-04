@@ -1,12 +1,12 @@
 # SkillMarket
 
-A Fiverr-style marketplace landing page built with **plain HTML, CSS and JavaScript** — no frameworks. All listing content is loaded from JSON files.
+A Fiverr-style marketplace landing page built with **plain HTML, CSS and JavaScript**, no frameworks. All listing content is loaded from JSON files.
 
 ---
 
 ## Running it
 
-Either open `index.html` directly (double-click it — no server needed), or serve the folder over HTTP:
+Either open `index.html` directly (double-click it, no server needed), or serve the folder over HTTP:
 
 ```bash
 npx serve .        # or: npm start
@@ -17,7 +17,7 @@ npx http-server .
 
 Then open the address it prints (e.g. `http://localhost:3000`).
 
-> Served over HTTP, the page fetches the live `data/*.json` files, so JSON edits show up on reload. Opened from disk (`file://`) browsers block `fetch()` of local files, so the page reads the snapshot baked into `js/data-bundle.js` — regenerate it with `npm run build:data` after editing anything in `data/`.
+> Served over HTTP, the page fetches the live `data/*.json` files, so JSON edits show up on reload. Opened from disk (`file://`) browsers block `fetch()` of local files, so the page reads the snapshot baked into `js/data-bundle.js`; regenerate it with `npm run build:data` after editing anything in `data/`.
 
 ---
 
@@ -40,7 +40,7 @@ skill-market/
 │   ├── footer.js           # <site-footer> custom element
 │   ├── main.js             # Renders listings into the page, wires interactions
 │   └── pages/              # Page-specific scripts (one file per page, e.g. about.js)
-├── data/                   # JSON — see the rule below
+├── data/                   # JSON: see the rule below
 │   ├── site.json
 │   ├── services.json
 │   ├── freelancers.json
@@ -54,12 +54,12 @@ skill-market/
 └── img/                    # SVG artwork (swap for real photos any time)
 ```
 
-Empty folders contain a `.gitkeep` file so git tracks them — delete it once the folder has real files.
+Empty folders contain a `.gitkeep` file so git tracks them; delete it once the folder has real files.
 
 ### Adding a new page
 
 1. Create the page at the root, e.g. `about.html` (paths like `css/…`, `js/…`, `img/…` work as-is).
-2. Add page-only styles in `css/pages/about.css` and page-only scripts in `js/pages/about.js` — link them after the shared files:
+2. Add page-only styles in `css/pages/about.css` and page-only scripts in `js/pages/about.js`; link them after the shared files:
    ```html
    <link rel="stylesheet" href="css/variables.css" />
    <link rel="stylesheet" href="css/components.css" />
@@ -70,12 +70,12 @@ Empty folders contain a `.gitkeep` file so git tracks them — delete it once th
    <script src="js/components.js" defer></script>
    <script src="js/pages/about.js" defer></script>
    ```
-3. Drop `<site-navbar></site-navbar>` and `<site-footer></site-footer>` in the markup — they fill themselves from `data/site.json`.
+3. Drop `<site-navbar></site-navbar>` and `<site-footer></site-footer>` in the markup; they fill themselves from `data/site.json`.
 4. Load only the JSON the page needs: `Data.getAll(["site", "services"])`.
 
 ## What goes in JSON (and what doesn't)
 
-JSON is only for **important, repetitive data — especially anything reused on other pages**:
+JSON is only for **important, repetitive data, especially anything reused on other pages**:
 
 | File | Contents | Why JSON |
 | --- | --- | --- |
@@ -84,7 +84,7 @@ JSON is only for **important, repetitive data — especially anything reused on 
 | `data/freelancers.json` | Freelancer profiles | Listing data, reused on a freelancers page |
 | `data/jobs.json` | Job listings | Listing data, reused on a jobs page |
 
-Everything else is **page-specific copy and stays in `index.html`** — the hero headline, section headings, the "How it works" steps, search placeholder and suggestion chips. Edit those straight in the HTML.
+Everything else is **page-specific copy and stays in `index.html`**: the hero headline, section headings, the "How it works" steps, search placeholder and suggestion chips. Edit those straight in the HTML.
 
 > If you add a page, load only the JSON it actually needs:
 > `Data.getAll(["site", "services"])`.
@@ -94,7 +94,7 @@ Everything else is **page-specific copy and stays in `index.html`** — the hero
 
 ## Reusable components
 
-Navbar and footer are self-rendering custom elements — drop them into any page and they fill themselves from `data/site.json`:
+Navbar and footer are self-rendering custom elements; drop them into any page and they fill themselves from `data/site.json`:
 
 ```html
 <site-navbar></site-navbar>
@@ -121,12 +121,12 @@ Components.Pill(item, active)      // category chip
 
 ## Interactions
 
-- **Search box** — filters the services grid live; submitting scrolls to the results.
-- **Suggestion chips** — fill the search box and run the search.
-- **Category pills** — filter by category; "All Categories" restores the popular list.
-- **Mobile nav** — hamburger toggle with `aria-expanded`, closes on resize/link click.
-- **Empty state** — shown when nothing matches the search.
-- **Load failure** — if neither `data/*.json` nor the `js/data-bundle.js` snapshot can be read, a notice explains how to regenerate it.
+- **Search box**: filters the services grid live; submitting scrolls to the results.
+- **Suggestion chips**: fill the search box and run the search.
+- **Category pills**: filter by category; "All Categories" restores the popular list.
+- **Mobile nav**: hamburger toggle with `aria-expanded`, closes on resize/link click.
+- **Empty state**: shown when nothing matches the search.
+- **Load failure**: if neither `data/*.json` nor the `js/data-bundle.js` snapshot can be read, a notice explains how to regenerate it.
 
 ## Editing the design
 

@@ -9,6 +9,7 @@
   --ink-2: #1f2937;
   --muted: #6b7280;
   --muted-2: #9ca3af;
+  --danger: #dc2626;
   --line: #e8eaee;
   --line-strong: #d8dce2;
   --bg: #ffffff;
@@ -29,7 +30,7 @@
   --gutter: 32px;
   --navbar-h: 66px;
 
-  /* Type scale — the only font sizes used on the page */
+  /* Type scale: the only font sizes used on the page */
   --fs-2xs: 11px; /* uppercase micro labels, badges */
   --fs-xs: 12px; /* metadata, footer copy, small chips */
   --fs-sm: 13px; /* secondary text: links, subtitles, nav */

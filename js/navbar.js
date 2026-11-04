@@ -4,7 +4,7 @@ const Navbar = (site) => {
 
   return `
     <div class="navbar__inner container">
-      <a class="brand" href="#top">
+      <a class="brand" href="index.html">
         <img class="brand__logo" src="img/logo-1.png" alt="${esc(brand.name)}">
       </a>
 
@@ -33,7 +33,7 @@ class SiteNavbar extends HTMLElement {
       })
       .catch(() => {
         this.innerHTML = `<header class="navbar"><div class="navbar__inner container">
-          <a class="brand" href="#top"><img class="brand__logo" src="img/logo-1.png" alt="SkillMarket"></a>
+          <a class="brand" href="index.html"><img class="brand__logo" src="img/logo-1.png" alt="SkillMarket"></a>
         </div></header>`;
       });
   }

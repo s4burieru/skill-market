@@ -12,13 +12,13 @@
       { "label": "Find Jobs", "href": "#jobs" },
       { "label": "Become a Freelancer", "href": "#get-started" }
     ],
-    "login": { "label": "Login", "href": "#" },
-    "join": { "label": "Join", "href": "#" }
+    "login": { "label": "Login", "href": "login.html" },
+    "join": { "label": "Join", "href": "join.html" }
   },
   "cta": {
     "title": "Ready to grow your business?",
     "text": "Join thousands of entrepreneurs and freelancers using SkillMarket to find and offer high-quality services.",
-    "button": { "label": "Get Started", "href": "#" }
+    "button": { "label": "Get Started", "href": "join.html" }
   },
   "footer": {
     "columns": [

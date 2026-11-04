@@ -20,7 +20,9 @@ const Footer = (site) => {
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <img class="footer__brand-logo" src="img/logo-2.png" alt="${esc(brand.name)}">
+          <a href="index.html" aria-label="${esc(brand.name)} home">
+            <img class="footer__brand-logo" src="img/logo-2.png" alt="${esc(brand.name)}">
+          </a>
           <p class="footer__tagline">${esc(brand.tagline)}</p>
         </div>
         ${columns}

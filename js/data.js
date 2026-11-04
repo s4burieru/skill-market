@@ -8,7 +8,7 @@ const Data = (() => {
       const bundled = snapshot();
       if (bundled && name in bundled) return bundled[name];
       throw new Error(
-        `data/${name}.json is not in js/data-bundle.js — run "npm run build:data" and reload.`
+        `data/${name}.json is not in js/data-bundle.js; run "npm run build:data" and reload.`
       );
     }
 
@@ -19,7 +19,7 @@ const Data = (() => {
     } catch (error) {
       const bundled = snapshot();
       if (bundled && name in bundled) {
-        console.warn(`Could not fetch data/${name}.json — using js/data-bundle.js snapshot.`, error);
+        console.warn(`Could not fetch data/${name}.json, using js/data-bundle.js snapshot.`, error);
         return bundled[name];
       }
       throw error;

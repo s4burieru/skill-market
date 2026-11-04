@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join · SkillMarket</title>
+  <meta
+    name="description"
+    content="Create a SkillMarket account. Join as a freelancer to offer your skills or hire talent for your next project."
+  />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/auth.css" />
+</head>
+
+<body id="top">
+
+  <site-navbar></site-navbar>
+
+  <main class="auth">
+    <div class="container auth__inner">
+      <section class="auth__card">
+        <header class="auth__head">
+          <h1 class="auth__title">Create your account</h1>
+          <p class="auth__subtitle">
+            Tell us how you plan to use SkillMarket. You can switch account types later.
+          </p>
+        </header>
+
+        <form class="form" data-form="join" novalidate>
+          <div class="field" role="radiogroup" aria-labelledby="account-type-label">
+            <span class="field__label" id="account-type-label">Choose account type</span>
+            <div class="account-types">
+              <label class="account-type">
+                <input class="account-type__input" type="radio" name="accountType" value="freelancer" />
+                <span class="account-type__body">
+                  <span class="account-type__head">
+                    <span class="account-type__icon" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"></path>
+                      </svg>
+                    </span>
+                    <span class="account-type__check" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 12.5 9.5 18 20 6.5"></path>
+                      </svg>
+                    </span>
+                  </span>
+                  <span class="account-type__text">
+                    <span class="account-type__title">Freelancer</span>
+                    <span class="account-type__desc">Offer your skills, build your profile and get hired.</span>
+                  </span>
+                </span>
+              </label>
+
+              <label class="account-type">
+                <input class="account-type__input" type="radio" name="accountType" value="hire-talent" />
+                <span class="account-type__body">
+                  <span class="account-type__head">
+                    <span class="account-type__icon" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="8" r="3.5"></circle>
+                        <path d="M2.5 20v-.8A5.2 5.2 0 0 1 7.7 14h2.6a5.2 5.2 0 0 1 5.2 5.2V20"></path>
+                        <path d="M16.5 5.4a3.5 3.5 0 0 1 0 6.4"></path>
+                        <path d="M18 14.2a5.2 5.2 0 0 1 3.5 4.9V20"></path>
+                      </svg>
+                    </span>
+                    <span class="account-type__check" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 12.5 9.5 18 20 6.5"></path>
+                      </svg>
+                    </span>
+                  </span>
+                  <span class="account-type__text">
+                    <span class="account-type__title">Hire talent</span>
+                    <span class="account-type__desc">Post jobs and hire skilled professionals for your projects.</span>
+                  </span>
+                </span>
+              </label>
+            </div>
+            <p class="field__error" data-error-for="accountType" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="join-name">Full name</label>
+            <input
+              class="field__input"
+              id="join-name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              placeholder="e.g. Sarah Jenkins"
+            />
+            <p class="field__error" data-error-for="name" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="join-email">Email address</label>
+            <input
+              class="field__input"
+              id="join-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+            <p class="field__error" data-error-for="email" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="join-password">Password</label>
+            <div class="field__control">
+              <input
+                class="field__input"
+                id="join-password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                placeholder="At least 8 characters"
+              />
+              <button class="field__toggle" type="button" data-toggle-password aria-label="Show password">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <div class="strength" data-strength hidden>
+              <div class="strength__track">
+                <div class="strength__fill" data-strength-fill></div>
+              </div>
+              <span class="strength__label" data-strength-label></span>
+            </div>
+            <p class="field__error" data-error-for="password" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="check" data-terms>
+              <input type="checkbox" name="terms" />
+              <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+            </label>
+            <p class="field__error" data-error-for="terms" hidden></p>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit">Create account</button>
+        </form>
+
+        <p class="auth__alt">
+          Already have an account?
+          <a class="text-link" href="login.html">Log in</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <site-footer></site-footer>
+
+  <div class="notice" id="notice" hidden role="alert"></div>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/pages/auth.js" defer></script>
+</body>
+</html>

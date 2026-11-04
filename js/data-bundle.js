@@ -291,11 +291,11 @@ window.__SKILL_MARKET_DATA__ = {
       ],
       "login": {
         "label": "Login",
-        "href": "#"
+        "href": "login.html"
       },
       "join": {
         "label": "Join",
-        "href": "#"
+        "href": "join.html"
       }
     },
     "cta": {
@@ -303,7 +303,7 @@ window.__SKILL_MARKET_DATA__ = {
       "text": "Join thousands of entrepreneurs and freelancers using SkillMarket to find and offer high-quality services.",
       "button": {
         "label": "Get Started",
-        "href": "#"
+        "href": "join.html"
       }
     },
     "footer": {
