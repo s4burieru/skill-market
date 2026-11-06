@@ -237,6 +237,19 @@
     display: none;
   }
 
+  .navbar__user .navbar__who {
+    display: none;
+  }
+
+  .navbar__logout span {
+    display: none;
+  }
+
+  .navbar__logout {
+    padding: 8px;
+    border-radius: 50%;
+  }
+
   .grid--cards,
   .grid--jobs,
   .grid--steps {

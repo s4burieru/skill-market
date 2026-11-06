@@ -36,6 +36,19 @@
   transform: translateY(-1px);
 }
 
+.btn--secondary {
+  background: #fff;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.btn--secondary:hover {
+  border-color: var(--green-500);
+  color: var(--green-700);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
 .btn--sm {
   padding: 9px 18px;
   font-size: var(--fs-sm);
@@ -310,6 +323,81 @@
 
 .navbar__login:hover {
   color: var(--green-600);
+}
+
+/* Signed-in navbar: identity + logout ------------------------------------- */
+
+.navbar__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.navbar__avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--green-600);
+  color: #fff;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.navbar__who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.navbar__name {
+  max-width: 150px;
+  overflow: hidden;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar__role {
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.navbar__logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--pill);
+  background: #fff;
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+  transition: color var(--ease), border-color var(--ease), background var(--ease);
+}
+
+.navbar__logout:hover {
+  border-color: var(--danger);
+  background: #fef2f2;
+  color: var(--danger);
+}
+
+.navbar__logout .icon {
+  width: 15px;
+  height: 15px;
 }
 
 .nav-toggle {

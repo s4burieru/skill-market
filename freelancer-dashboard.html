@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Freelancer Dashboard · SkillMarket</title>
+  <meta
+    name="description"
+    content="Your SkillMarket freelancer dashboard: active contracts, proposals, messages, earnings and profile strength in one place."
+  />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+
+<body id="top" class="page-dash">
+
+  <dashboard-sidebar></dashboard-sidebar>
+
+  <div class="dash">
+
+    <header class="dash__top">
+      <button
+        class="nav-toggle"
+        type="button"
+        data-nav-toggle
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="dashboard-nav"
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+
+      <form class="search dash__search" role="search" data-dash-search>
+        <span class="search__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.6-3.6"></path>
+          </svg>
+        </span>
+        <label class="sr-only" for="dash-search">Search your dashboard</label>
+        <input
+          class="search__input"
+          id="dash-search"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="Search projects, proposals, messages…"
+        />
+      </form>
+
+      <div class="dash__top-actions">
+        <button
+          class="icon-btn"
+          type="button"
+          aria-label="Notifications"
+          data-notice="&lt;strong&gt;2 unread messages&lt;/strong&gt;&lt;br&gt;Michael Chen and Marcus Webb replied to you, and one milestone is waiting for your approval."
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.7 21a2 2 0 0 1-3.4 0"></path>
+          </svg>
+          <span class="icon-btn__dot" aria-hidden="true"></span>
+        </button>
+
+        <div class="user-chip">
+          <span class="user-chip__avatar">
+            <img src="img/avatar-sarah.svg" alt="" width="32" height="32" />
+          </span>
+          <span class="user-chip__text">
+            <span class="user-chip__name">Sarah Jenkins</span>
+            <span class="user-chip__role">Freelancer</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container dash__body">
+
+      <!-- Overview -->
+      <header class="dash__head" id="overview">
+        <div class="dash__head-text">
+          <span class="badge badge--soft">Freelancer account</span>
+          <h1 class="dash__title">Welcome back, Sarah</h1>
+          <p class="dash__subtitle">
+            Two clients replied to your proposals this morning and two milestones are due this week.
+            Here is where your work stands today.
+          </p>
+        </div>
+        <div class="dash__head-actions">
+          <a class="btn btn--secondary" href="#profile">Edit profile</a>
+          <a class="btn btn--primary" href="index.html#jobs">Find work</a>
+        </div>
+      </header>
+
+      <!-- Stats -->
+      <section class="stats" aria-label="Freelancer summary">
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8a2 2 0 0 1 2-2h3.6l2 2.5H19a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              </svg>
+            </span>
+            <span class="stat__trend stat__trend--up">+2 this month</span>
+          </div>
+          <p class="stat__value">6</p>
+          <p class="stat__label">Active contracts</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 7H5a2 2 0 0 1 0-4h13v4"></path>
+                <path d="M3 5v14a2 2 0 0 0 2 2h15V7H5"></path>
+                <path d="M16 13h2"></path>
+              </svg>
+            </span>
+            <span class="stat__trend stat__trend--up">+12% vs October</span>
+          </div>
+          <p class="stat__value">$4,820</p>
+          <p class="stat__label">Earnings this month</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 2 11 13"></path>
+                <path d="M22 2l-7 20-4-9-9-4z"></path>
+              </svg>
+            </span>
+            <span class="stat__trend stat__trend--up">+5 this week</span>
+          </div>
+          <p class="stat__value">12</p>
+          <p class="stat__label">Proposals sent</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M12 3.6l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"></path>
+              </svg>
+            </span>
+            <span class="stat__trend">From 38 reviews</span>
+          </div>
+          <p class="stat__value">4.9</p>
+          <p class="stat__label">Average client rating</p>
+        </article>
+      </section>
+
+      <!-- Panels -->
+      <div class="dash__grid">
+
+        <section class="panel" id="projects" aria-labelledby="projects-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="projects-title">Active projects</h2>
+              <p class="panel__subtitle">4 engagements currently in progress</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;All projects&lt;/strong&gt;&lt;br&gt;The full contract list is not part of this demo yet.">View all</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">E-commerce checkout rebuild</p>
+                <p class="list__meta"><span>TechFlow Inc.</span><span aria-hidden="true">·</span><span>Due Dec 12</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 72%"></span></span>
+                  <span class="list__percent">72%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">On track</span>
+              </div>
+            </li>
+
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">Analytics dashboard MVP</p>
+                <p class="list__meta"><span>Design Studio</span><span aria-hidden="true">·</span><span>Due Nov 18</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 88%"></span></span>
+                  <span class="list__percent">88%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Due soon</span>
+              </div>
+            </li>
+
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">Marketing site migration</p>
+                <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>Due Nov 24</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 45%"></span></span>
+                  <span class="list__percent">45%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">On track</span>
+              </div>
+            </li>
+
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">API integration · Phase 2</p>
+                <p class="list__meta"><span>Northwind Labs</span><span aria-hidden="true">·</span><span>Due Jan 9</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 20%"></span></span>
+                  <span class="list__percent">20%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">In review</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="applications" aria-labelledby="applications-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="applications-title">Recent proposals</h2>
+              <p class="panel__subtitle">12 sent this month · 4 awaiting reply</p>
+            </div>
+            <a class="text-link" href="index.html#jobs">Browse jobs</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <span class="avatar" style="background:#111827;color:#fff">TF</span>
+              <div class="list__main">
+                <p class="list__title">Senior React Developer</p>
+                <p class="list__meta"><span>TechFlow Inc.</span><span aria-hidden="true">·</span><span>$85/hr</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">Interview</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#eff6ff;color:#1d4ed8">GH</span>
+              <div class="list__main">
+                <p class="list__title">Node.js API Engineer</p>
+                <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>$70/hr</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Accepted</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fff7ed;color:#b45309">DS</span>
+              <div class="list__main">
+                <p class="list__title">Frontend Consultant</p>
+                <p class="list__meta"><span>Design Studio</span><span aria-hidden="true">·</span><span>$60/hr</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Viewed</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#eff6ff;color:#1d4ed8">GH</span>
+              <div class="list__main">
+                <p class="list__title">WordPress Developer</p>
+                <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>$50/hr</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--danger">Declined</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="messages" aria-labelledby="messages-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="messages-title">Messages</h2>
+              <p class="panel__subtitle">3 recent conversations</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;Inbox&lt;/strong&gt;&lt;br&gt;The full inbox is not part of this demo yet.">Open inbox</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <span class="avatar"><img src="img/avatar-michael.svg" alt="" width="38" height="38" /></span>
+              <div class="list__main">
+                <p class="list__title">Michael Chen</p>
+                <p class="list__sub">Can you share the updated checkout screens?</p>
+              </div>
+              <div class="list__aside">
+                <span class="list__time">12m</span>
+                <span class="list__unread" aria-label="Unread"></span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar"><img src="img/avatar-marcus.svg" alt="" width="38" height="38" /></span>
+              <div class="list__main">
+                <p class="list__title">Marcus Webb</p>
+                <p class="list__sub">Sounds good — let's keep the call at 3pm.</p>
+              </div>
+              <div class="list__aside">
+                <span class="list__time">1h</span>
+                <span class="list__unread" aria-label="Unread"></span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar"><img src="img/avatar-elena.svg" alt="" width="38" height="38" /></span>
+              <div class="list__main">
+                <p class="list__title">Elena Rodriguez</p>
+                <p class="list__sub">Thanks for the review notes, super helpful.</p>
+              </div>
+              <div class="list__aside">
+                <span class="list__time">Yesterday</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="profile" aria-labelledby="profile-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="profile-title">Profile strength</h2>
+              <p class="panel__subtitle">85% complete · verified freelancer</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;Public profile&lt;/strong&gt;&lt;br&gt;Profile editing is not part of this demo yet.">Preview</a>
+          </header>
+
+          <div class="panel__body">
+            <div class="meter">
+              <div class="meter__row">
+                <span class="meter__label">Profile strength</span>
+                <span class="meter__value">85%</span>
+              </div>
+              <div class="progress progress--lg"><span class="progress__bar" style="width: 85%"></span></div>
+            </div>
+
+            <ul class="checklist">
+              <li class="checklist__item">
+                <span class="checklist__mark" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+                </span>
+                Identity verified
+              </li>
+              <li class="checklist__item">
+                <span class="checklist__mark" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+                </span>
+                6 portfolio pieces added
+              </li>
+              <li class="checklist__item">
+                <span class="checklist__mark" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+                </span>
+                Payout method connected
+              </li>
+              <li class="checklist__item checklist__item--todo">
+                <span class="checklist__mark" aria-hidden="true"></span>
+                Add 2 more skills to improve matching
+              </li>
+              <li class="checklist__item checklist__item--todo">
+                <span class="checklist__mark" aria-hidden="true"></span>
+                Collect 3 more client reviews
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel__foot">
+            <p class="panel__foot-note">Freelancers with a video intro get 2× more messages.</p>
+            <button class="btn btn--primary btn--sm" type="button"
+              data-notice="&lt;strong&gt;Add skills&lt;/strong&gt;&lt;br&gt;Skill editing is not part of this demo yet.">Add skills</button>
+          </div>
+        </section>
+
+        <section class="panel" id="payments" aria-labelledby="payments-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="payments-title">Earnings</h2>
+              <p class="panel__subtitle">$4,820 in November · +12% vs October</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;Transaction history&lt;/strong&gt;&lt;br&gt;Full history is not part of this demo yet.">History</a>
+          </header>
+
+          <div class="panel__body">
+            <div class="chart" role="img" aria-label="Monthly earnings from June to November, rising to $4,820 in November">
+              <div class="chart__bars">
+                <div class="chart__col"><span class="chart__bar" style="height: 55%" title="$2,600"></span><span class="chart__label">Jun</span></div>
+                <div class="chart__col"><span class="chart__bar" style="height: 64%" title="$3,100"></span><span class="chart__label">Jul</span></div>
+                <div class="chart__col"><span class="chart__bar" style="height: 59%" title="$2,850"></span><span class="chart__label">Aug</span></div>
+                <div class="chart__col"><span class="chart__bar" style="height: 76%" title="$3,640"></span><span class="chart__label">Sep</span></div>
+                <div class="chart__col"><span class="chart__bar" style="height: 89%" title="$4,300"></span><span class="chart__label">Oct</span></div>
+                <div class="chart__col"><span class="chart__bar is-active" style="height: 100%" title="$4,820"></span><span class="chart__label">Nov</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel__foot">
+            <div>
+              <p class="panel__foot-label">Pending payout</p>
+              <p class="panel__foot-value">$1,200</p>
+            </div>
+            <button class="btn btn--primary btn--sm" type="button"
+              data-notice="&lt;strong&gt;Withdrawal requested&lt;/strong&gt;&lt;br&gt;Payouts are reviewed within 1–2 business days.">Withdraw</button>
+          </div>
+        </section>
+
+        <section class="panel" id="activity" aria-labelledby="activity-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="activity-title">Recent activity</h2>
+              <p class="panel__subtitle">Everything that happened this week</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;Activity&lt;/strong&gt;&lt;br&gt;Older activity is not part of this demo yet.">View all</a>
+          </header>
+
+          <div class="panel__body">
+            <ul class="timeline">
+              <li class="timeline__item">
+                <span class="timeline__icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 2 11 13"></path>
+                    <path d="M22 2l-7 20-4-9-9-4z"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="timeline__title">Proposal sent · Senior React Developer</p>
+                  <p class="timeline__time">2 hours ago</p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <span class="timeline__icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 1 1-4.7-7.9"></path>
+                    <path d="m8.6 12.2 2.4 2.4 4.6-4.9"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="timeline__title">Milestone approved · Analytics dashboard MVP</p>
+                  <p class="timeline__time">Yesterday</p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <span class="timeline__icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 7H5a2 2 0 0 1 0-4h13v4"></path>
+                    <path d="M3 5v14a2 2 0 0 0 2 2h15V7H5"></path>
+                    <path d="M16 13h2"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="timeline__title">Payment received · $1,450 from Growth Hub</p>
+                  <p class="timeline__time">Nov 2</p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <span class="timeline__icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.7 8.7 0 0 1-3.8-.9L3 21l1.9-5.6A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="timeline__title">New message from Michael Chen</p>
+                  <p class="timeline__time">Nov 1</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+
+      <p class="empty-state" data-empty="dash" hidden>
+        No projects, messages or proposals match your search. Try a different keyword.
+      </p>
+
+    </main>
+  </div>
+
+  <div class="notice" id="notice" hidden role="alert"></div>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>

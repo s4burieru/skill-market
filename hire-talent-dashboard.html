@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hire Talent Dashboard · SkillMarket</title>
+  <meta
+    name="description"
+    content="Your SkillMarket hire-talent dashboard: active projects, new applications, messages, spending and hiring activity in one place."
+  />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+
+<body id="top" class="page-dash">
+
+  <dashboard-sidebar></dashboard-sidebar>
+
+  <div class="dash">
+
+    <header class="dash__top">
+      <button
+        class="nav-toggle"
+        type="button"
+        data-nav-toggle
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="dashboard-nav"
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+
+      <form class="search dash__search" role="search" data-dash-search>
+        <span class="search__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.6-3.6"></path>
+          </svg>
+        </span>
+        <label class="sr-only" for="dash-search">Search your dashboard</label>
+        <input
+          class="search__input"
+          id="dash-search"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="Search projects, candidates, messages…"
+        />
+      </form>
+
+      <div class="dash__top-actions">
+        <button
+          class="icon-btn"
+          type="button"
+          aria-label="Notifications"
+          data-notice="&lt;strong&gt;2 unread messages&lt;/strong&gt;&lt;br&gt;Sarah Jenkins and David Kim replied to you, and 12 new applications arrived this week."
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.7 21a2 2 0 0 1-3.4 0"></path>
+          </svg>
+          <span class="icon-btn__dot" aria-hidden="true"></span>
+        </button>
+
+        <div class="user-chip">
+          <span class="user-chip__avatar">
+            <img src="img/avatar-james.svg" alt="" width="32" height="32" />
+          </span>
+          <span class="user-chip__text">
+            <span class="user-chip__name">James Porter</span>
+            <span class="user-chip__role">Hire talent</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container dash__body">
+
+      <!-- Overview -->
+      <header class="dash__head" id="overview">
+        <div class="dash__head-text">
+          <span class="badge badge--soft">Hire talent account</span>
+          <h1 class="dash__title">Welcome back, James</h1>
+          <p class="dash__subtitle">
+            Your React role picked up 12 new applications this week and one milestone is waiting for
+            your approval. Here is your hiring snapshot.
+          </p>
+        </div>
+        <div class="dash__head-actions">
+          <a class="btn btn--secondary" href="#applications">Review applications</a>
+          <a class="btn btn--primary" href="#" data-notice="&lt;strong&gt;Post a job&lt;/strong&gt;&lt;br&gt;The job posting flow is not part of this demo yet.">Post a job</a>
+        </div>
+      </header>
+
+      <!-- Stats -->
+      <section class="stats" aria-label="Hiring summary">
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M3 12h18"></path>
+              </svg>
+            </span>
+            <span class="stat__trend stat__trend--up">+1 this week</span>
+          </div>
+          <p class="stat__value">4</p>
+          <p class="stat__label">Open jobs</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.9"></path>
+                <path d="M16 3.1a4 4 0 0 1 0 7.8"></path>
+              </svg>
+            </span>
+            <span class="stat__trend stat__trend--up">+2 this month</span>
+          </div>
+          <p class="stat__value">8</p>
+          <p class="stat__label">Active contractors</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 3v5h5"></path>
+                <path d="M9 13h6"></path>
+                <path d="M9 17h4"></path>
+              </svg>
+            </span>
+            <span class="stat__trend stat__trend--up">+12 this week</span>
+          </div>
+          <p class="stat__value">37</p>
+          <p class="stat__label">New applications</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 7H5a2 2 0 0 1 0-4h13v4"></path>
+                <path d="M3 5v14a2 2 0 0 0 2 2h15V7H5"></path>
+                <path d="M16 13h2"></path>
+              </svg>
+            </span>
+            <span class="stat__trend">68% of budget</span>
+          </div>
+          <p class="stat__value">$12,400</p>
+          <p class="stat__label">Spend this month</p>
+        </article>
+      </section>
+
+      <!-- Panels -->
+      <div class="dash__grid">
+
+        <section class="panel" id="projects" aria-labelledby="projects-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="projects-title">Active projects</h2>
+              <p class="panel__subtitle">4 engagements currently in progress</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;All projects&lt;/strong&gt;&lt;br&gt;The full contract list is not part of this demo yet.">View all</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">Website redesign</p>
+                <p class="list__meta"><span>Sarah Jenkins</span><span aria-hidden="true">·</span><span>Due Dec 4</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 65%"></span></span>
+                  <span class="list__percent">65%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">On track</span>
+              </div>
+            </li>
+
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">Data pipeline setup</p>
+                <p class="list__meta"><span>David Kim</span><span aria-hidden="true">·</span><span>Due Nov 20</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 90%"></span></span>
+                  <span class="list__percent">90%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Due soon</span>
+              </div>
+            </li>
+
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">SEO content program</p>
+                <p class="list__meta"><span>Elena Rodriguez</span><span aria-hidden="true">·</span><span>Ongoing</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 40%"></span></span>
+                  <span class="list__percent">40%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">On track</span>
+              </div>
+            </li>
+
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">Brand identity refresh</p>
+                <p class="list__meta"><span>Michael Chen</span><span aria-hidden="true">·</span><span>Due Dec 18</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 25%"></span></span>
+                  <span class="list__percent">25%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">In review</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="applications" aria-labelledby="applications-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="applications-title">New applications</h2>
+              <p class="panel__subtitle">37 received this month · 12 this week</p>
+            </div>
+            <a class="text-link" href="index.html#freelancers">Browse talent</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <span class="avatar" style="background:#eff6ff;color:#1d4ed8">MC</span>
+              <div class="list__main">
+                <p class="list__title">Michael Chen</p>
+                <p class="list__meta"><span>Senior React Developer</span><span aria-hidden="true">·</span><span>$120/hr</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">New</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar">DK</span>
+              <div class="list__main">
+                <p class="list__title">David Kim</p>
+                <p class="list__meta"><span>Data pipeline consultant</span><span aria-hidden="true">·</span><span>$100/hr</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Shortlisted</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fff7ed;color:#b45309">ER</span>
+              <div class="list__main">
+                <p class="list__title">Elena Rodriguez</p>
+                <p class="list__meta"><span>SEO Specialist</span><span aria-hidden="true">·</span><span>$45/hr</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Interview</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#f5f3ff;color:#6d28d9">PR</span>
+              <div class="list__main">
+                <p class="list__title">Priya Raman</p>
+                <p class="list__meta"><span>UI/UX Designer</span><span aria-hidden="true">·</span><span>$80/hr</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--danger">Rejected</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="messages" aria-labelledby="messages-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="messages-title">Messages</h2>
+              <p class="panel__subtitle">3 recent conversations</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;Inbox&lt;/strong&gt;&lt;br&gt;The full inbox is not part of this demo yet.">Open inbox</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <span class="avatar"><img src="img/avatar-sarah.svg" alt="" width="38" height="38" /></span>
+              <div class="list__main">
+                <p class="list__title">Sarah Jenkins</p>
+                <p class="list__sub">Just pushed the checkout fixes to staging.</p>
+              </div>
+              <div class="list__aside">
+                <span class="list__time">8m</span>
+                <span class="list__unread" aria-label="Unread"></span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar"><img src="img/avatar-david.svg" alt="" width="38" height="38" /></span>
+              <div class="list__main">
+                <p class="list__title">David Kim</p>
+                <p class="list__sub">Pipeline KPIs confirmed — starting the build Monday.</p>
+              </div>
+              <div class="list__aside">
+                <span class="list__time">2h</span>
+                <span class="list__unread" aria-label="Unread"></span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar"><img src="img/avatar-elena.svg" alt="" width="38" height="38" /></span>
+              <div class="list__main">
+                <p class="list__title">Elena Rodriguez</p>
+                <p class="list__sub">November content calendar is ready to review.</p>
+              </div>
+              <div class="list__aside">
+                <span class="list__time">Yesterday</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="profile" aria-labelledby="profile-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="profile-title">Company profile</h2>
+              <p class="panel__subtitle">70% complete · verified business</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;Public profile&lt;/strong&gt;&lt;br&gt;Profile editing is not part of this demo yet.">Preview</a>
+          </header>
+
+          <div class="panel__body">
+            <div class="meter">
+              <div class="meter__row">
+                <span class="meter__label">Profile strength</span>
+                <span class="meter__value">70%</span>
+              </div>
+              <div class="progress progress--lg"><span class="progress__bar" style="width: 70%"></span></div>
+            </div>
+
+            <ul class="checklist">
+              <li class="checklist__item">
+                <span class="checklist__mark" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+                </span>
+                Company verified
+              </li>
+              <li class="checklist__item">
+                <span class="checklist__mark" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+                </span>
+                Payment method added
+              </li>
+              <li class="checklist__item">
+                <span class="checklist__mark" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+                </span>
+                3 job posts created
+              </li>
+              <li class="checklist__item checklist__item--todo">
+                <span class="checklist__mark" aria-hidden="true"></span>
+                Add 2 teammates to your hiring team
+              </li>
+              <li class="checklist__item checklist__item--todo">
+                <span class="checklist__mark" aria-hidden="true"></span>
+                Upload your company logo
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel__foot">
+            <p class="panel__foot-note">Complete company profiles get 3× more applications.</p>
+            <button class="btn btn--primary btn--sm" type="button"
+              data-notice="&lt;strong&gt;Finish setup&lt;/strong&gt;&lt;br&gt;Profile editing is not part of this demo yet.">Finish setup</button>
+          </div>
+        </section>
+
+        <section class="panel" id="payments" aria-labelledby="payments-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="payments-title">Spending</h2>
+              <p class="panel__subtitle">$12,400 in November · 68% of budget</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;Invoices&lt;/strong&gt;&lt;br&gt;Billing history is not part of this demo yet.">Invoices</a>
+          </header>
+
+          <div class="panel__body">
+            <div class="chart" role="img" aria-label="Monthly spending from June to November, $12,400 in November">
+              <div class="chart__bars">
+                <div class="chart__col"><span class="chart__bar" style="height: 69%" title="$8,900"></span><span class="chart__label">Jun</span></div>
+                <div class="chart__col"><span class="chart__bar" style="height: 81%" title="$10,400"></span><span class="chart__label">Jul</span></div>
+                <div class="chart__col"><span class="chart__bar" style="height: 74%" title="$9,600"></span><span class="chart__label">Aug</span></div>
+                <div class="chart__col"><span class="chart__bar" style="height: 87%" title="$11,200"></span><span class="chart__label">Sep</span></div>
+                <div class="chart__col"><span class="chart__bar" style="height: 100%" title="$12,900"></span><span class="chart__label">Oct</span></div>
+                <div class="chart__col"><span class="chart__bar is-active" style="height: 96%" title="$12,400"></span><span class="chart__label">Nov</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel__foot">
+            <div>
+              <p class="panel__foot-label">Held in escrow</p>
+              <p class="panel__foot-value">$6,500</p>
+            </div>
+            <button class="btn btn--primary btn--sm" type="button"
+              data-notice="&lt;strong&gt;Add funds&lt;/strong&gt;&lt;br&gt;The billing flow is not part of this demo yet.">Add funds</button>
+          </div>
+        </section>
+
+        <section class="panel" id="activity" aria-labelledby="activity-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="activity-title">Recent activity</h2>
+              <p class="panel__subtitle">Everything that happened this week</p>
+            </div>
+            <a class="text-link" href="#" data-notice="&lt;strong&gt;Activity&lt;/strong&gt;&lt;br&gt;Older activity is not part of this demo yet.">View all</a>
+          </header>
+
+          <div class="panel__body">
+            <ul class="timeline">
+              <li class="timeline__item">
+                <span class="timeline__icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path>
+                    <path d="M14 3v5h5"></path>
+                    <path d="M9 13h6"></path>
+                    <path d="M9 17h4"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="timeline__title">Job posted · Senior React Developer</p>
+                  <p class="timeline__time">3 hours ago</p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <span class="timeline__icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <p class="timeline__title">12 new applications received</p>
+                  <p class="timeline__time">Yesterday</p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <span class="timeline__icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 1 1-4.7-7.9"></path>
+                    <path d="m8.6 12.2 2.4 2.4 4.6-4.9"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="timeline__title">Milestone approved · Brand identity refresh</p>
+                  <p class="timeline__time">Nov 3</p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <span class="timeline__icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 7H5a2 2 0 0 1 0-4h13v4"></path>
+                    <path d="M3 5v14a2 2 0 0 0 2 2h15V7H5"></path>
+                    <path d="M16 13h2"></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="timeline__title">Payment released · $3,200 to David Kim</p>
+                  <p class="timeline__time">Nov 1</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+
+      <p class="empty-state" data-empty="dash" hidden>
+        No projects, messages or applications match your search. Try a different keyword.
+      </p>
+
+    </main>
+  </div>
+
+  <div class="notice" id="notice" hidden role="alert"></div>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>
