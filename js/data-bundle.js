@@ -298,6 +298,126 @@ window.__SKILL_MARKET_DATA__ = {
         "href": "join.html"
       }
     },
+    "dashboard": {
+      "nav": [
+        {
+          "label": "Menu",
+          "items": [
+            {
+              "label": "Overview",
+              "href": "#overview",
+              "icon": "grid"
+            },
+            {
+              "label": "Projects",
+              "href": "#projects",
+              "icon": "folder"
+            },
+            {
+              "label": "Applications",
+              "href": "#applications",
+              "icon": "file-text"
+            },
+            {
+              "label": "Messages",
+              "href": "#messages",
+              "icon": "message"
+            },
+            {
+              "label": "Payments",
+              "href": "#payments",
+              "icon": "wallet"
+            },
+            {
+              "label": "Activity",
+              "href": "#activity",
+              "icon": "bar-chart"
+            }
+          ]
+        },
+        {
+          "label": "Account",
+          "items": [
+            {
+              "label": "Profile",
+              "href": "#profile",
+              "icon": "user"
+            },
+            {
+              "label": "Settings",
+              "href": "#settings",
+              "icon": "settings"
+            }
+          ]
+        }
+      ],
+      "help": {
+        "label": "Help Center",
+        "href": "#help",
+        "icon": "help"
+      },
+      "logout": {
+        "label": "Log out",
+        "href": "index.html",
+        "icon": "log-out"
+      },
+      "variants": {
+        "super-admin": {
+          "nav": [
+            {
+              "label": "Platform",
+              "items": [
+                {
+                  "label": "Overview",
+                  "href": "#overview",
+                  "icon": "grid"
+                },
+                {
+                  "label": "Users",
+                  "href": "#users",
+                  "icon": "users"
+                },
+                {
+                  "label": "Moderation",
+                  "href": "#moderation",
+                  "icon": "shield"
+                },
+                {
+                  "label": "Reports",
+                  "href": "#reports",
+                  "icon": "flag"
+                },
+                {
+                  "label": "Revenue",
+                  "href": "#revenue",
+                  "icon": "wallet"
+                },
+                {
+                  "label": "Activity",
+                  "href": "#activity",
+                  "icon": "bar-chart"
+                }
+              ]
+            },
+            {
+              "label": "Account",
+              "items": [
+                {
+                  "label": "Profile",
+                  "href": "#profile",
+                  "icon": "user"
+                },
+                {
+                  "label": "Settings",
+                  "href": "#settings",
+                  "icon": "settings"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
     "cta": {
       "title": "Ready to grow your business?",
       "text": "Join thousands of entrepreneurs and freelancers using SkillMarket to find and offer high-quality services.",
@@ -386,5 +506,44 @@ window.__SKILL_MARKET_DATA__ = {
         ]
       }
     }
+  },
+  "users": {
+    "users": [
+      {
+        "id": "usr-001",
+        "name": "Sabriel Adriel San Agustin",
+        "email": "sabrieladriel@skillmarket.com",
+        "password": "sabriel123",
+        "role": "freelancer"
+      },
+      {
+        "id": "usr-002",
+        "name": "Chris Emerson Salvador",
+        "email": "chrisemerson@skillmarket.com",
+        "password": "chris123",
+        "role": "hire-talent"
+      },
+      {
+        "id": "usr-003",
+        "name": "Aeron Christoper Martinez",
+        "email": "aeronchristoper@skillmarket.com",
+        "password": "aeron123",
+        "role": "freelancer"
+      },
+      {
+        "id": "usr-004",
+        "name": "Khing Jr Ulpato",
+        "email": "khing@skillmarket.com",
+        "password": "khing123",
+        "role": "hire-talent"
+      },
+      {
+        "id": "usr-005",
+        "name": "Klein Wesley De Roxas",
+        "email": "kleinwesley@skillmarket.com",
+        "password": "klein123",
+        "role": "super-admin"
+      }
+    ]
   }
 };

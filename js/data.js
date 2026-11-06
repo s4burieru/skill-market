@@ -8,7 +8,7 @@ const Data = (() => {
       const bundled = snapshot();
       if (bundled && name in bundled) return bundled[name];
       throw new Error(
-        `data/${name}.json is not in js/data-bundle.js; run "npm run build:data" and reload.`
+        `data/${name}.json is not in js/data-bundle.js; run "node tools/build-data.js" and reload.`
       );
     }
 

@@ -140,7 +140,28 @@
     new MutationObserver(point).observe(document.body, { childList: true, subtree: true });
   }
 
-  function submitLogin(form) {
+  const REDIRECT_DELAY = 900;
+
+  async function loadUsers() {
+    try {
+      const data = await Data.get("users");
+      return data && Array.isArray(data.users) ? data.users : [];
+    } catch (error) {
+      console.error("Could not load data/users.json", error);
+      return null;
+    }
+  }
+
+  function redirectIfSignedIn() {
+    const user = Session.get();
+    if (!user) return false;
+    const target = Session.dashboardFor(user.role);
+    if (!target) return false;
+    window.location.replace(target);
+    return true;
+  }
+
+  async function submitLogin(form) {
     const values = valuesOf(form);
     const emailOk = validEmail(values.email);
     const passwordOk = String(values.password || "").length >= 6;
@@ -157,16 +178,55 @@
       return;
     }
 
-    const handle = String(values.email).split("@")[0];
-    const remember = form.querySelector('[name="remember"]').checked;
+    const submit = form.querySelector('[type="submit"]');
+    if (submit) submit.disabled = true;
+
+    const users = await loadUsers();
+
+    if (submit) submit.disabled = false;
+
+    if (users === null) {
+      showNotice(
+        "<strong>Couldn't read the account list.</strong><br>Reload the page, or serve the folder over HTTP so <code>data/users.json</code> can be fetched."
+      );
+      return;
+    }
+
+    const email = String(values.email).trim().toLowerCase();
+    const user = users.find(
+      (account) => String(account.email).trim().toLowerCase() === email
+    );
+
+    if (!user || String(user.password) !== String(values.password)) {
+      setError(form, "email", "Email or password is incorrect.");
+      setError(form, "password", "Email or password is incorrect.");
+      focusFirstInvalid(form);
+      return;
+    }
+
+    const remember = Boolean(form.querySelector('[name="remember"]').checked);
+    Session.set(user, remember);
+
+    const label = Session.roleLabel(user.role);
+    const target = Session.dashboardFor(user.role);
     showNotice(
-      `<strong>Welcome back, ${esc(handle)}!</strong><br>
-       ${remember ? "You will stay signed in on this device." : "Your session is active for this visit."}`
+      `<strong>Welcome back, ${esc(Session.firstName(user))}!</strong><br>
+       Signed in as ${esc(label)}. ${
+         target
+           ? "Taking you to your dashboard…"
+           : "No dashboard is set up for this role yet."
+       }`
     );
     form.reset();
+
+    if (target) {
+      window.setTimeout(() => {
+        window.location.href = target;
+      }, REDIRECT_DELAY);
+    }
   }
 
-  function submitJoin(form) {
+  async function submitJoin(form) {
     const values = valuesOf(form);
     const typeOk = Boolean(values.accountType);
     const nameOk = String(values.name || "").length >= 2;
@@ -175,17 +235,32 @@
     const passwordOk = raw.length >= 8 && /[a-z]/i.test(raw) && /\d/.test(raw);
     const termsOk = Boolean(values.terms);
 
+    const users = (await loadUsers()) || [];
+    const emailTaken = users.some(
+      (account) =>
+        String(account.email).trim().toLowerCase() ===
+        String(values.email || "").trim().toLowerCase()
+    );
+
     setError(form, "accountType", typeOk ? "" : "Choose an account type to continue.");
     setError(form, "name", nameOk ? "" : "Please enter your full name.");
-    setError(form, "email", emailOk ? "" : "Enter a valid email address.");
     setError(
       form,
       "password",
       passwordOk ? "" : "Use at least 8 characters with a letter and a number."
     );
+    setError(
+      form,
+      "email",
+      !emailOk
+        ? "Enter a valid email address."
+        : emailTaken
+          ? "An account with this email already exists."
+          : ""
+    );
     setError(form, "terms", termsOk ? "" : "Please accept the terms to continue.");
 
-    if (!typeOk || !nameOk || !emailOk || !passwordOk || !termsOk) {
+    if (!typeOk || !nameOk || !emailOk || emailTaken || !passwordOk || !termsOk) {
       focusFirstInvalid(form);
       return;
     }
@@ -210,8 +285,8 @@
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      if (type === "login") submitLogin(form);
-      else submitJoin(form);
+      const run = type === "login" ? submitLogin(form) : submitJoin(form);
+      if (run && typeof run.catch === "function") run.catch(console.error);
     });
 
     form.addEventListener("input", (event) => {
@@ -229,4 +304,7 @@
   wirePasswordToggles();
   wireStrength();
   wireForm();
+
+  const form = $("[data-form]");
+  if (form && form.dataset.form === "login") redirectIfSignedIn();
 })();
