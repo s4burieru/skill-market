@@ -17,7 +17,7 @@ npx http-server .
 
 Then open the address it prints (e.g. `http://localhost:3000`).
 
-> Served over HTTP, the page fetches the live `data/*.json` files, so JSON edits show up on reload. Opened from disk (`file://`) browsers block `fetch()` of local files, so the page reads the snapshot baked into `js/data-bundle.js`; regenerate it with `node tools/build-data.js` after editing anything in `data/`.
+> Served over HTTP, the page fetches the live `data/*.json` files, so JSON edits show up on reload. Opened from disk (`file://`) browsers block `fetch()` of local files, so the page reads the snapshot baked into `js/data-bundle.js`; regenerate it with `npm run build:data` after editing anything in `data/`.
 
 ---
 
@@ -59,6 +59,7 @@ skill-market/
 └── img/                    # SVG artwork (swap for real photos any time)
 ```
 
+Empty folders contain a `.gitkeep` file so git tracks them; delete it once the folder has real files.
 ### Adding a new page
 
 1. Create the page at the root, e.g. `about.html` (paths like `css/…`, `js/…`, `img/…` work as-is).
