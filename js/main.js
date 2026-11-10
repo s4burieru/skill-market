@@ -112,12 +112,6 @@
     });
   }
 
-  function showNotice(message) {
-    const notice = $("#notice");
-    notice.innerHTML = message;
-    show(notice);
-  }
-
   Data.getAll(["services", "freelancers", "jobs", "site"])
     .then(([svc, freelancers, jobs, site]) => {
       renderStaticSections({ services: svc, freelancers, jobs, site });
@@ -125,10 +119,5 @@
     })
     .catch((error) => {
       console.error(error);
-      showNotice(
-        `<strong>The page could not be rendered.</strong><br>
-         ${Components.esc(error.message || String(error))}<br>
-         See the browser console for the full error.`
-      );
     });
 })();

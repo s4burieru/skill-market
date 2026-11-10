@@ -26,20 +26,6 @@
     { label: "Strong password", width: "100%", color: "var(--green-600)" }
   ];
 
-  const esc = (value) =>
-    String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-
-  const showNotice = (message) => {
-    const notice = $("#notice");
-    if (!notice) return;
-    notice.innerHTML = message;
-    notice.removeAttribute("hidden");
-  };
-
   const setError = (form, name, message) => {
     $$(`[name="${name}"]`, form).forEach((control) => {
       if (message) control.setAttribute("aria-invalid", "true");
@@ -140,8 +126,6 @@
     new MutationObserver(point).observe(document.body, { childList: true, subtree: true });
   }
 
-  const REDIRECT_DELAY = 900;
-
   async function loadUsers() {
     try {
       const data = await Data.get("users");
@@ -186,8 +170,10 @@
     if (submit) submit.disabled = false;
 
     if (users === null) {
-      showNotice(
-        "<strong>Couldn't read the account list.</strong><br>Reload the page, or serve the folder over HTTP so <code>data/users.json</code> can be fetched."
+      setError(
+        form,
+        "email",
+        "Couldn't read the account list. Reload the page, or serve the folder over HTTP."
       );
       return;
     }
@@ -207,23 +193,10 @@
     const remember = Boolean(form.querySelector('[name="remember"]').checked);
     Session.set(user, remember);
 
-    const label = Session.roleLabel(user.role);
     const target = Session.dashboardFor(user.role);
-    showNotice(
-      `<strong>Welcome back, ${esc(Session.firstName(user))}!</strong><br>
-       Signed in as ${esc(label)}. ${
-         target
-           ? "Taking you to your dashboard…"
-           : "No dashboard is set up for this role yet."
-       }`
-    );
     form.reset();
 
-    if (target) {
-      window.setTimeout(() => {
-        window.location.href = target;
-      }, REDIRECT_DELAY);
-    }
+    if (target) window.location.href = target;
   }
 
   async function submitJoin(form) {
@@ -265,12 +238,6 @@
       return;
     }
 
-    const firstName = String(values.name).split(/\s+/)[0];
-    const label = values.accountType === "freelancer" ? "Freelancer" : "Hire talent";
-    showNotice(
-      `<strong>Account created!</strong><br>
-       Welcome to SkillMarket, ${esc(firstName)}. Your ${label.toLowerCase()} account is ready.`
-    );
     form.reset();
 
     const meter = $("[data-strength]");
