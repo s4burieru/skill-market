@@ -9,6 +9,9 @@
   align-items: flex-start;
   min-height: 100vh;
   background: var(--bg-alt);
+  /* Safety net: never allow a horizontal scrollbar on the dashboard.
+     `clip` (not `hidden`) so the sticky sidebar/topbar keep working. */
+  overflow-x: clip;
 }
 
 /* --- Sidebar ------------------------------------------------------------- */
@@ -275,8 +278,15 @@ dashboard-sidebar {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding-top: 30px;
-  padding-bottom: 60px;
+  /* Small even margin on all four sides. `width: auto` (instead of the
+     .container rule's `width: 100%`) keeps the box inside its parent so the
+     margins don't push it past the viewport and cause a horizontal scroll. */
+  max-width: none;
+  width: auto;
+  margin: 16px;
+  padding-inline: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .dash__head {
@@ -855,11 +865,6 @@ dashboard-sidebar {
 }
 
 @media (max-width: 760px) {
-  .dash__body {
-    padding-top: 24px;
-    padding-bottom: 48px;
-  }
-
   .dash__top {
     gap: 10px;
   }

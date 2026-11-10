@@ -140,7 +140,7 @@ content inside the panels differs.
   `.search` components.
 - **Interactions** — mobile drawer with `aria-expanded`, scroll-spy that highlights the
   active section, topbar search that filters list rows (with an empty state), and
-  `data-notice` buttons that surface the demo notice toast.
+  inert `data-notice` placeholder buttons that do nothing when clicked.
 
 ## Interactions
 
@@ -149,7 +149,7 @@ content inside the panels differs.
 - **Category pills**: filter by category; "All Categories" restores the popular list.
 - **Mobile nav**: hamburger toggle with `aria-expanded`, closes on resize/link click.
 - **Empty state**: shown when nothing matches the search.
-- **Load failure**: if neither `data/*.json` nor the `js/data-bundle.js` snapshot can be read, a notice explains how to regenerate it.
+- **Load failure**: if neither `data/*.json` nor the `js/data-bundle.js` snapshot can be read, the error is logged to the browser console.
 
 ## Editing the design
 

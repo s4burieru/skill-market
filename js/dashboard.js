@@ -8,7 +8,7 @@
  * pick a different nav for its role (e.g. the super admin's admin menu);
  * the variant falls back to the shared nav for anything it does not override.
  */
-const Dashboard = (() => {
+(() => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -18,19 +18,6 @@ const Dashboard = (() => {
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
-
-  let noticeTimer = 0;
-
-  function showNotice(message) {
-    const notice = $("#notice");
-    if (!notice) return;
-
-    notice.innerHTML = message;
-    notice.removeAttribute("hidden");
-
-    window.clearTimeout(noticeTimer);
-    noticeTimer = window.setTimeout(() => notice.setAttribute("hidden", ""), 5200);
-  }
 
   /* --- Sidebar ------------------------------------------------------------ */
 
@@ -172,10 +159,6 @@ const Dashboard = (() => {
 
         if (href.length > 1 && !target) {
           event.preventDefault();
-          showNotice(
-            `<strong>${esc(anchor.textContent.trim())}</strong><br>
-             This screen is not part of the demo yet — everything else on the dashboard is.`
-          );
         } else if (target) {
           setActiveLink(anchor);
         }
@@ -226,12 +209,12 @@ const Dashboard = (() => {
     update();
   }
 
+  // Placeholder actions stay inert: block the default jump instead of a popup.
   function wireActions() {
     document.addEventListener("click", (event) => {
       const trigger = event.target.closest("[data-notice]");
       if (!trigger) return;
       event.preventDefault();
-      showNotice(trigger.dataset.notice || "<strong>Coming soon</strong>");
     });
   }
 
@@ -366,6 +349,4 @@ const Dashboard = (() => {
 
   customElements.define("dashboard-sidebar", DashboardSidebar);
   init();
-
-  return { showNotice };
 })();
