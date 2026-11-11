@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find Freelancers · SkillMarket</title>
+  <meta
+    name="description"
+    content="Find freelancers on SkillMarket: developers, designers, writers and marketers with verified reviews, rates and availability."
+  />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/browse.css" />
+</head>
+
+<body id="top" data-browse="freelancers">
+
+  <site-navbar></site-navbar>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="badge badge--soft">500+ professionals</span>
+        <h1 class="page-hero__title">Find freelancers who deliver</h1>
+        <p class="page-hero__desc">
+          Search by skill, role or name. Every profile shows verified ratings, hourly rates
+          and reviews from clients who already worked with them.
+        </p>
+
+        <form class="search" data-browse-form role="search">
+          <span class="search__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.6-3.6"></path>
+            </svg>
+          </span>
+          <label class="sr-only" for="freelancer-search">Search freelancers</label>
+          <input
+            class="search__input"
+            id="freelancer-search"
+            name="q"
+            type="search"
+            data-browse-input
+            autocomplete="off"
+            placeholder="Search by name, role or skill…"
+          />
+          <button class="btn btn--primary search__btn" type="submit">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section browse" id="results">
+      <div class="container">
+        <div class="browse__bar">
+          <div class="pills" data-browse-pills></div>
+          <p class="browse__count" data-browse-count aria-live="polite"></p>
+        </div>
+
+        <div class="grid grid--cards" data-browse-grid></div>
+        <p class="empty-state" data-browse-empty hidden>
+          No freelancers match your search. Try another skill, role or name.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta" id="get-started">
+      <div class="container cta__inner" data-cta></div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/pages/browse.js" defer></script>
+</body>
+</html>

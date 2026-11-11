@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job details · SkillMarket</title>
+  <meta
+    name="description"
+    content="Job details on SkillMarket: responsibilities, requirements, benefits and everything you need before you apply."
+  />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/detail.css" />
+</head>
+
+<body id="top">
+
+  <site-navbar></site-navbar>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol>
+          <li><a href="jobs.html">Find Jobs</a></li>
+          <li><a href="jobs.html" data-crumb-parent>All jobs</a></li>
+          <li aria-current="page" data-crumb-current>Job</li>
+        </ol>
+      </div>
+    </nav>
+
+    <section class="detail">
+      <div class="container detail__grid" data-detail-root>
+        <p class="empty-state">Loading job…</p>
+      </div>
+    </section>
+
+    <section class="section section--alt related" data-related-section hidden>
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <h2 class="section__title">Similar jobs</h2>
+            <p class="section__subtitle">Other roles worth a look</p>
+          </div>
+          <a class="text-link" href="jobs.html">View all jobs</a>
+        </header>
+        <div class="grid grid--jobs" data-related></div>
+      </div>
+    </section>
+
+    <section class="cta" id="get-started">
+      <div class="container cta__inner" data-cta></div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/pages/job-details.js" defer></script>
+</body>
+</html>

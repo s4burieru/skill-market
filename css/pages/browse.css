@@ -1,0 +1,66 @@
+/* Shared layout for the listing pages: explore, freelancers, jobs ---------- */
+
+.page-hero {
+  padding: 54px 0 34px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero__title {
+  margin-top: 16px;
+  max-width: 780px;
+  font-size: var(--fs-display-sm);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.page-hero__desc {
+  margin-top: 12px;
+  max-width: 640px;
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.page-hero .search {
+  margin-top: 26px;
+}
+
+.browse {
+  padding-top: 34px;
+}
+
+.browse__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  margin-bottom: 24px;
+}
+
+.browse__bar .pills {
+  flex: 1;
+}
+
+.browse__count {
+  flex: none;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.browse .empty-state {
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  .page-hero {
+    padding: 40px 0 28px;
+  }
+
+  .browse {
+    padding-top: 26px;
+  }
+}
