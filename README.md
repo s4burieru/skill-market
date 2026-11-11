@@ -27,6 +27,16 @@ Then open the address it prints (e.g. `http://localhost:3000`).
 skill-market/
 ├── index.html              # Home page markup + page-specific copy
 │                           # (future pages sit at root too: about.html, services.html, …)
+├── explore.html            # Browse every service: search + category pills
+├── freelancers.html        # Find freelancers: search + role chips
+├── jobs.html               # Find jobs: search + job-type chips
+│                           # The three above share js/pages/browse.js + css/pages/browse.css,
+│                           # selected with <body data-browse="services|freelancers|jobs">
+├── become-freelancer.html  # "Become a freelancer" page (hero, steps, fees, FAQ)
+├── service-details.html    # Service detail + reviews, ?id=svc-001
+├── freelancer-details.html # Freelancer profile + reviews, ?id=flw-001
+├── job-details.html        # Job brief + apply panel, ?id=job-001
+│                           # The three detail pages share css/pages/detail.css
 ├── freelancer-dashboard.html   # Dashboard for freelancer accounts
 ├── hire-talent-dashboard.html  # Dashboard for hire-talent accounts
 │                           # Both share one shell (sidebar + topbar); only the
@@ -156,6 +166,12 @@ content inside the panels differs.
 - Colors, radii, shadows and layout width → `css/variables.css`
 - Button / card / navbar / footer styles → `css/components.css`
 - Section spacing, grids and breakpoints → `css/styles.css`
+
+**Design rule: no glass/frosted buttons.** Buttons (and other controls) always get
+solid, opaque `background` and `border` colours — never translucent fills such as
+`rgba(255, 255, 255, 0.x)` tints over a coloured/dark surface, and never
+`backdrop-filter: blur()` on a control. If a translucent tint looks right, flatten
+it to the equivalent opaque hex instead.
 
 ## Replacing the artwork
 

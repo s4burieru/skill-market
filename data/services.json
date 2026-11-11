@@ -18,9 +18,43 @@
       "category": "Web Development",
       "description": "Full-stack solutions for web and mobile applications.",
       "rating": 4.9,
-      "price": { "min": "$500", "max": "$2,000" },
+      "reviewsCount": 128,
+      "price": { "min": "₱28,500", "max": "₱114,000" },
       "image": "img/service-web-development.svg",
-      "popular": true
+      "popular": true,
+      "seller": "flw-001",
+      "delivery": "14 days",
+      "revisions": 3,
+      "about": "A complete, production-ready build for your product. I scope the project with you, ship in weekly milestones and hand over clean, documented code you can maintain without me.",
+      "features": [
+        "Responsive front-end built to your design or ours",
+        "REST/GraphQL API with database modelling",
+        "Auth, roles and an admin dashboard",
+        "Deployment plus 30 days of post-launch support"
+      ],
+      "reviews": [
+        {
+          "name": "Rachel Adams",
+          "role": "Founder, Loop Studio",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Shipped two weeks early and the code quality was better than our previous agency. Communication was clear at every milestone."
+        },
+        {
+          "name": "Tomás Herrera",
+          "role": "Product Lead",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Great at translating vague requirements into a solid architecture. The handover documentation alone was worth it."
+        },
+        {
+          "name": "Nadia Osei",
+          "role": "Marketing Manager",
+          "rating": 4,
+          "date": "August 2026",
+          "text": "Solid work and a smooth build. Revisions took a little longer than expected, but the final result performs beautifully."
+        }
+      ]
     },
     {
       "id": "svc-002",
@@ -28,9 +62,43 @@
       "category": "Digital Marketing",
       "description": "Data-driven marketing strategies that convert.",
       "rating": 4.8,
-      "price": { "min": "$300", "max": "$1,500" },
+      "reviewsCount": 96,
+      "price": { "min": "₱17,100", "max": "₱85,500" },
       "image": "img/service-digital-marketing.svg",
-      "popular": true
+      "popular": true,
+      "seller": "flw-006",
+      "delivery": "10 days",
+      "revisions": 2,
+      "about": "A full audit and a 90-day growth plan covering technical SEO, content and paid social, with weekly reporting so you always know what your budget bought.",
+      "features": [
+        "Technical SEO audit and quick-win fixes",
+        "Keyword and content roadmap for 90 days",
+        "Paid social setup, targeting and creative tests",
+        "Weekly analytics report with clear next steps"
+      ],
+      "reviews": [
+        {
+          "name": "Owen Fletcher",
+          "role": "E-commerce Owner",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Organic traffic is up 62% in three months. The monthly reports are the clearest we have ever received from an agency."
+        },
+        {
+          "name": "Priya Raman",
+          "role": "Head of Growth",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Rebuilt our campaigns from the ground up and cut our cost per lead in half within the first month."
+        },
+        {
+          "name": "Lucas Brandt",
+          "role": "Founder",
+          "rating": 4,
+          "date": "July 2026",
+          "text": "Strong strategy and honest advice. We would have liked faster turnaround on ad copy, but results speak for themselves."
+        }
+      ]
     },
     {
       "id": "svc-003",
@@ -38,9 +106,43 @@
       "category": "Content Creation",
       "description": "High-quality photo content for your brand.",
       "rating": 4.9,
-      "price": { "min": "$200", "max": "$800" },
+      "reviewsCount": 74,
+      "price": { "min": "₱11,400", "max": "₱45,600" },
       "image": "img/service-content-creation.svg",
-      "popular": true
+      "popular": true,
+      "seller": "flw-005",
+      "delivery": "7 days",
+      "revisions": 2,
+      "about": "Studio or on-location shoots for products, teams and campaigns, including art direction, retouching and web-ready exports in every ratio you need.",
+      "features": [
+        "Half-day or full-day shoot with direction",
+        "Colour-corrected, retouched high-resolution files",
+        "Web and social crops in every ratio",
+        "Full commercial usage rights"
+      ],
+      "reviews": [
+        {
+          "name": "Hannah Weiss",
+          "role": "Brand Manager",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "The images completely changed how our brand is perceived. Fast delivery and effortless to work with on set."
+        },
+        {
+          "name": "Derek Olsen",
+          "role": "Restaurant Owner",
+          "rating": 5,
+          "date": "August 2026",
+          "text": "Our menu photos booked out the first weekend after launch. Worth every cent."
+        },
+        {
+          "name": "Amara Diallo",
+          "role": "Content Lead",
+          "rating": 5,
+          "date": "June 2026",
+          "text": "Reliable, creative and genuinely invested in the brief. The third shoot we have booked and definitely not the last."
+        }
+      ]
     },
     {
       "id": "svc-004",
@@ -48,9 +150,43 @@
       "category": "Graphic Design",
       "description": "Complete visual identity packages for startups.",
       "rating": 4.7,
-      "price": { "min": "$150", "max": "$600" },
+      "reviewsCount": 61,
+      "price": { "min": "₱8,600", "max": "₱34,200" },
       "image": "img/service-graphic-design.svg",
-      "popular": true
+      "popular": true,
+      "seller": "flw-002",
+      "delivery": "12 days",
+      "revisions": 4,
+      "about": "A practical identity system rather than a single logo: type, colour, layout rules and the templates your team will actually use day to day.",
+      "features": [
+        "Logo suite with responsive and mono variants",
+        "Type scale, colour palette and grid system",
+        "Social, deck and document templates",
+        "Brand guidelines PDF plus source files"
+      ],
+      "reviews": [
+        {
+          "name": "Felix Grant",
+          "role": "Co-founder",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Took our messy mood board and turned it into a system the whole team can follow. The guidelines document is excellent."
+        },
+        {
+          "name": "Sofia Marino",
+          "role": "Creative Producer",
+          "rating": 4,
+          "date": "August 2026",
+          "text": "Beautiful work and patient with our feedback rounds. The first concepts missed slightly, but the final direction is spot on."
+        },
+        {
+          "name": "Ben Whitaker",
+          "role": "Startup Advisor",
+          "rating": 5,
+          "date": "May 2026",
+          "text": "Fast, organised and surprisingly affordable for the quality delivered. Our investors noticed the rebrand immediately."
+        }
+      ]
     },
     {
       "id": "svc-005",
@@ -58,9 +194,43 @@
       "category": "Video Production",
       "description": "Engaging edits, reels and animated explainers.",
       "rating": 4.8,
-      "price": { "min": "$400", "max": "$1,600" },
+      "reviewsCount": 83,
+      "price": { "min": "₱22,800", "max": "₱91,200" },
       "image": "img/service-video-production.svg",
-      "popular": false
+      "popular": false,
+      "seller": "flw-005",
+      "delivery": "9 days",
+      "revisions": 3,
+      "about": "From raw footage to a finished cut: pacing, sound, captions and motion graphics, plus vertical versions cut for every social platform.",
+      "features": [
+        "Full edit with colour grade and sound mix",
+        "Animated lower thirds, titles and logo stings",
+        "Burned-in captions and subtitle files",
+        "16:9, 9:16 and 1:1 exports ready to publish"
+      ],
+      "reviews": [
+        {
+          "name": "Mia Kowalski",
+          "role": "Social Media Manager",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Our reel hit 200k views the week it went live. The pacing and captions were exactly right."
+        },
+        {
+          "name": "Jordan Reyes",
+          "role": "Founder",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Turned 40 minutes of messy interview footage into a story that made sense. Genuinely impressive."
+        },
+        {
+          "name": "Clara Nunez",
+          "role": "Marketing Lead",
+          "rating": 4,
+          "date": "July 2026",
+          "text": "Great motion work and clean delivery. Needed a couple of extra rounds on the voiceover timing."
+        }
+      ]
     },
     {
       "id": "svc-006",
@@ -68,9 +238,43 @@
       "category": "Data Science",
       "description": "Turn raw data into clear, actionable insight.",
       "rating": 5.0,
-      "price": { "min": "$600", "max": "$3,000" },
+      "reviewsCount": 57,
+      "price": { "min": "₱34,200", "max": "₱171,000" },
       "image": "img/service-data-science.svg",
-      "popular": false
+      "popular": false,
+      "seller": "flw-004",
+      "delivery": "15 days",
+      "revisions": 2,
+      "about": "Clean pipelines, honest metrics and dashboards people actually open. I connect your sources, model the numbers and teach your team to read them.",
+      "features": [
+        "Data cleaning and a single source of truth",
+        "Interactive dashboard in Tableau or Power BI",
+        "KPI definitions agreed with your team",
+        "Recording walkthrough plus 14 days of support"
+      ],
+      "reviews": [
+        {
+          "name": "Victor Huang",
+          "role": "COO",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Finally one dashboard the whole leadership team trusts. Paid for itself in the first month of better decisions."
+        },
+        {
+          "name": "Elena Petrova",
+          "role": "Finance Director",
+          "rating": 5,
+          "date": "August 2026",
+          "text": "Found errors in our reporting we had carried for two years. Thorough, precise and easy to work with."
+        },
+        {
+          "name": "Samir Haddad",
+          "role": "Head of Product",
+          "rating": 5,
+          "date": "June 2026",
+          "text": "Explains complex analysis in plain language and never oversells. Our weekly review is half the length it used to be."
+        }
+      ]
     },
     {
       "id": "svc-007",
@@ -78,9 +282,43 @@
       "category": "Writing & Translation",
       "description": "SEO-friendly articles and website copy that reads well.",
       "rating": 4.9,
-      "price": { "min": "$100", "max": "$500" },
+      "reviewsCount": 112,
+      "price": { "min": "₱5,700", "max": "₱28,500" },
       "image": "img/service-content-creation.svg",
-      "popular": false
+      "popular": false,
+      "seller": "flw-003",
+      "delivery": "5 days",
+      "revisions": 2,
+      "about": "Research-led writing in your brand voice, structured for readers first and search engines second, with internal links and meta handled for you.",
+      "features": [
+        "Keyword research and content outline",
+        "1,000-2,000 words written in your voice",
+        "Meta title, description and internal links",
+        "One round of revisions plus a style sheet"
+      ],
+      "reviews": [
+        {
+          "name": "Georgia Mills",
+          "role": "Content Editor",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Writes better than our in-house team and needs almost no editing. Consistently on brief."
+        },
+        {
+          "name": "Andre Silva",
+          "role": "SEO Consultant",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Three of the articles already rank on page one. The keyword briefs alone are worth the fee."
+        },
+        {
+          "name": "Ruth Delgado",
+          "role": "Founder",
+          "rating": 4,
+          "date": "July 2026",
+          "text": "Lovely, clear writing. Occasionally needs a nudge on deadlines, but the quality is always there."
+        }
+      ]
     },
     {
       "id": "svc-008",
@@ -88,9 +326,43 @@
       "category": "Customer Service",
       "description": "Friendly live-chat and email support, on your schedule.",
       "rating": 4.8,
-      "price": { "min": "$150", "max": "$700" },
+      "reviewsCount": 45,
+      "price": { "min": "₱8,600", "max": "₱39,900" },
       "image": "img/service-digital-marketing.svg",
-      "popular": false
+      "popular": false,
+      "seller": "flw-007",
+      "delivery": "3 days",
+      "revisions": 1,
+      "about": "Trained agents covering chat, email and ticket triage in your tone of voice, with clear handover notes and a weekly performance summary.",
+      "features": [
+        "Coverage across your busiest hours",
+        "Macros, canned replies and a knowledge base",
+        "Ticket triage with priority rules you define",
+        "Weekly CSAT and volume report"
+      ],
+      "reviews": [
+        {
+          "name": "Peter Novak",
+          "role": "Operations Manager",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Response times dropped from hours to minutes and our CSAT went up two points in a month."
+        },
+        {
+          "name": "Isabel Cruz",
+          "role": "Head of CX",
+          "rating": 5,
+          "date": "August 2026",
+          "text": "Ramp-up was impressively fast. They learned our product better than our last two hires."
+        },
+        {
+          "name": "Martin Blake",
+          "role": "Founder",
+          "rating": 4,
+          "date": "June 2026",
+          "text": "Dependable day-to-day support. Would like more proactive suggestions for improving our help docs."
+        }
+      ]
     },
     {
       "id": "svc-009",
@@ -98,9 +370,43 @@
       "category": "Accounting",
       "description": "Accurate books, invoicing and monthly reporting.",
       "rating": 4.9,
-      "price": { "min": "$250", "max": "$900" },
+      "reviewsCount": 38,
+      "price": { "min": "₱14,300", "max": "₱51,300" },
       "image": "img/service-data-science.svg",
-      "popular": false
+      "popular": false,
+      "seller": "flw-004",
+      "delivery": "6 days",
+      "revisions": 1,
+      "about": "Monthly reconciliation, invoicing and payroll run by a qualified bookkeeper, so your accounts stay audit-ready and your team always gets paid on time.",
+      "features": [
+        "Bank and card reconciliation every month",
+        "Invoice issuing and accounts-payable tracking",
+        "Payroll run with payslips and filings",
+        "Monthly P&L and cash-flow summary"
+      ],
+      "reviews": [
+        {
+          "name": "Dana Whitfield",
+          "role": "Agency Owner",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Our books have never been this tidy. Year-end accounts took two days instead of two weeks."
+        },
+        {
+          "name": "Ibrahim Yusuf",
+          "role": "Director",
+          "rating": 5,
+          "date": "August 2026",
+          "text": "Payroll has never been late since the handover, and the monthly summary is genuinely useful."
+        },
+        {
+          "name": "Laura Bennett",
+          "role": "Small Business Owner",
+          "rating": 4,
+          "date": "May 2026",
+          "text": "Accurate and responsive. Onboarding took a little longer than promised but everything has been smooth since."
+        }
+      ]
     }
   ]
 }

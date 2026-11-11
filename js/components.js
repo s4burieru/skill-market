@@ -44,7 +44,7 @@ const Icons = (() => {
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
   }
 
-  return { svg };
+  return { svg, path: (name) => paths[name] || "" };
 })();
 
 const Components = (() => {
@@ -83,7 +83,9 @@ const Components = (() => {
               <span class="price__value">${esc(service.price.min)} - ${esc(service.price.max)}</span>
               <span class="price__label">Starting at</span>
             </span>
-            <a class="btn btn--primary btn--sm" href="#">View</a>
+            <a class="btn btn--primary btn--sm" href="service-details.html?id=${esc(
+              service.id
+            )}">View</a>
           </div>
         </div>
       </article>`;
@@ -104,7 +106,9 @@ const Components = (() => {
           <p class="freelancer__role">${esc(person.role)}</p>
           <div class="card__footer">
             <span class="rate">${esc(person.rate)} <span>/hr</span></span>
-            <a class="btn btn--primary btn--sm" href="#">View</a>
+            <a class="btn btn--primary btn--sm" href="freelancer-details.html?id=${esc(
+              person.id
+            )}">View</a>
           </div>
         </div>
       </article>`;
@@ -143,7 +147,7 @@ const Components = (() => {
 
         <div class="job-card__foot">
           <div class="job-card__tags">${tags}</div>
-          <a class="btn btn--primary btn--sm" href="#">Apply Now</a>
+          <a class="btn btn--primary btn--sm" href="job-details.html?id=${esc(job.id)}">Apply Now</a>
         </div>
       </article>`;
   }
@@ -164,6 +168,74 @@ const Components = (() => {
       <a class="btn btn--white" href="${esc(cta.button.href)}">${esc(cta.button.label)}</a>`;
   }
 
+  /* Reviews & ratings (service / freelancer detail pages) -------------------- */
+
+  function StarRow(rating) {
+    const value = Number(rating) || 0;
+    const stars = [1, 2, 3, 4, 5]
+      .map((i) => {
+        const on = value >= i - 0.25;
+        return `<svg class="star${on ? " star--on" : ""}" viewBox="0 0 24 24"
+          fill="${on ? "currentColor" : "none"}" stroke="${on ? "none" : "currentColor"}"
+          stroke-width="2" stroke-linejoin="round" aria-hidden="true">${Icons.path("star")}</svg>`;
+      })
+      .join("");
+
+    return `<span class="stars" role="img" aria-label="${esc(value)} out of 5 stars">${stars}</span>`;
+  }
+
+  function initials(name) {
+    return String(name || "")
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((part) => part.charAt(0).toUpperCase())
+      .join("");
+  }
+
+  function ReviewItem(review) {
+    const meta = [review.role, review.date].filter(Boolean).map(esc).join(" · ");
+
+    return `
+      <article class="review">
+        <div class="review__head">
+          <span class="review__avatar" aria-hidden="true">${esc(initials(review.name))}</span>
+          <div class="review__id">
+            <p class="review__name">${esc(review.name)}</p>
+            <p class="review__meta">${meta}</p>
+          </div>
+          <div class="review__rating">
+            ${StarRow(review.rating)}
+            <span class="review__score">${esc(review.rating)}</span>
+          </div>
+        </div>
+        <p class="review__text">${esc(review.text)}</p>
+      </article>`;
+  }
+
+  function ReviewList(reviews) {
+    if (!reviews || !reviews.length) {
+      return `<p class="empty-state">No reviews yet — be the first to leave one.</p>`;
+    }
+    return `<div class="review-list">${reviews.map(ReviewItem).join("")}</div>`;
+  }
+
+  function RatingSummary(rating, count, note) {
+    return `
+      <div class="rating-summary">
+        <div class="rating-summary__score">
+          <span class="rating-summary__value">${esc(rating)}</span>
+          <span class="rating-summary__stars">${StarRow(rating)}</span>
+          <span class="rating-summary__count">${esc(count)} review${
+      Number(count) === 1 ? "" : "s"
+    }</span>
+        </div>
+        <p class="rating-summary__note">${esc(
+          note || "Reviews come from clients who completed an order on SkillMarket."
+        )}</p>
+      </div>`;
+  }
+
   return {
     ServiceCard,
     FreelancerCard,
@@ -171,6 +243,10 @@ const Components = (() => {
     Pill,
     Cta,
     linkList,
-    esc
+    esc,
+    StarRow,
+    ReviewItem,
+    ReviewList,
+    RatingSummary
   };
 })();

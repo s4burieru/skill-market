@@ -6,8 +6,41 @@
       "role": "Full-stack developer",
       "category": "Software Developer",
       "rating": 5.0,
-      "rate": "$75",
-      "image": "img/avatar-sarah.svg"
+      "reviewsCount": 142,
+      "rate": "₱4,300",
+      "image": "img/avatar-sarah.svg",
+      "level": "Top Rated",
+      "location": "Lisbon, Portugal",
+      "availability": "Available now",
+      "joined": "March 2021",
+      "bio": "I build and ship web products end to end — front-end, APIs and the deployment pipeline. Ten years of experience across startups and agencies, and I like projects where I own the outcome rather than a ticket.",
+      "skills": ["React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "GraphQL"],
+      "languages": ["English (native)", "Portuguese (fluent)"],
+      "stats": { "completed": 187, "onTime": 98, "repeat": 84 },
+      "services": ["svc-001"],
+      "reviews": [
+        {
+          "name": "Rachel Adams",
+          "role": "Founder, Loop Studio",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "The most organised developer we have worked with. Daily updates, no surprises, and the launch was completely uneventful — in the best way."
+        },
+        {
+          "name": "Kevin Doyle",
+          "role": "CTO",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Architected a rewrite that cut our hosting bill by 40%. Reads code like a reviewer and writes it like an owner."
+        },
+        {
+          "name": "Marta Kowal",
+          "role": "Product Manager",
+          "rating": 5,
+          "date": "July 2026",
+          "text": "Estimates honestly, delivers on the estimate, and flags risks early. Exactly what you want in a senior contractor."
+        }
+      ]
     },
     {
       "id": "flw-002",
@@ -15,8 +48,41 @@
       "role": "Brand strategy & design",
       "category": "Creative Director",
       "rating": 4.9,
-      "rate": "$120",
-      "image": "img/avatar-michael.svg"
+      "reviewsCount": 98,
+      "rate": "₱6,800",
+      "image": "img/avatar-michael.svg",
+      "level": "Top Rated",
+      "location": "Toronto, Canada",
+      "availability": "Available in 2 weeks",
+      "joined": "January 2020",
+      "bio": "I help early-stage companies look like they have been around for years. Positioning, identity and the design system that keeps it consistent once the team starts growing.",
+      "skills": ["Brand Strategy", "Figma", "Art Direction", "Typography", "Design Systems"],
+      "languages": ["English (native)", "Mandarin (conversational)"],
+      "stats": { "completed": 121, "onTime": 96, "repeat": 77 },
+      "services": ["svc-004"],
+      "reviews": [
+        {
+          "name": "Felix Grant",
+          "role": "Co-founder",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Ask the hard positioning questions before opening Figma. That discipline is why our rebrand actually stuck."
+        },
+        {
+          "name": "Aisha Rahman",
+          "role": "Head of Marketing",
+          "rating": 5,
+          "date": "August 2026",
+          "text": "A rare mix of strategic thinking and craft. Our deck, site and packaging finally speak the same language."
+        },
+        {
+          "name": "Tom Fletcher",
+          "role": "Founder",
+          "rating": 4,
+          "date": "June 2026",
+          "text": "Superb work at a premium rate. Worth it for a funding round or a rebrand, less so for small one-off jobs."
+        }
+      ]
     },
     {
       "id": "flw-003",
@@ -24,8 +90,41 @@
       "role": "SEO content & copywriting",
       "category": "Content Writer",
       "rating": 4.8,
-      "rate": "$45",
-      "image": "img/avatar-elena.svg"
+      "reviewsCount": 167,
+      "rate": "₱2,600",
+      "image": "img/avatar-elena.svg",
+      "level": "Level 2 Seller",
+      "location": "Madrid, Spain",
+      "availability": "Available now",
+      "joined": "June 2019",
+      "bio": "I write content that ranks and reads like a human wrote it. Editorial background, agency speed, and a spreadsheet habit when it comes to keyword research.",
+      "skills": ["SEO Copywriting", "Content Strategy", "Editing", "Keyword Research", "Email Copy"],
+      "languages": ["Spanish (native)", "English (fluent)", "French (conversational)"],
+      "stats": { "completed": 412, "onTime": 99, "repeat": 71 },
+      "services": ["svc-007"],
+      "reviews": [
+        {
+          "name": "Georgia Mills",
+          "role": "Content Editor",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Briefs come back better than they went in. Fourteen months of articles and I have never had to rewrite one."
+        },
+        {
+          "name": "Daniel Okafor",
+          "role": "Growth Lead",
+          "rating": 5,
+          "date": "August 2026",
+          "text": "Organic sessions doubled in a quarter. She cares about the business, not just the word count."
+        },
+        {
+          "name": "Helen Zhao",
+          "role": "Marketing Manager",
+          "rating": 4,
+          "date": "June 2026",
+          "text": "Excellent long-form work. Occasionally slower to respond during her busy weeks, but always delivers."
+        }
+      ]
     },
     {
       "id": "flw-004",
@@ -33,8 +132,167 @@
       "role": "Analytics & insights",
       "category": "Data Consultant",
       "rating": 5.0,
-      "rate": "$100",
-      "image": "img/avatar-david.svg"
+      "reviewsCount": 76,
+      "rate": "₱5,700",
+      "image": "img/avatar-david.svg",
+      "level": "Top Rated",
+      "location": "Seoul, South Korea",
+      "availability": "Available in 1 week",
+      "joined": "November 2020",
+      "bio": "Former analytics lead at a marketplace, now helping teams stop arguing about numbers. Dashboards, forecasting and the unglamorous data cleanup that makes both possible.",
+      "skills": ["SQL", "dbt", "Tableau", "Python", "Forecasting", "Experiment Design"],
+      "languages": ["Korean (native)", "English (fluent)"],
+      "stats": { "completed": 94, "onTime": 100, "repeat": 88 },
+      "services": ["svc-006", "svc-009"],
+      "reviews": [
+        {
+          "name": "Victor Huang",
+          "role": "COO",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Turned three conflicting reports into one number everyone trusts. Calm, precise and fast."
+        },
+        {
+          "name": "Sara Lindqvist",
+          "role": "Head of Data",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Set up our dbt models and documented them properly for once. The handover was flawless."
+        },
+        {
+          "name": "Omar Farouk",
+          "role": "Founder",
+          "rating": 5,
+          "date": "July 2026",
+          "text": "Found the retention leak that had been hiding in our funnel for a year. Paid for the engagement many times over."
+        }
+      ]
+    },
+    {
+      "id": "flw-005",
+      "name": "James Carter",
+      "role": "Video editing & motion design",
+      "category": "Video Editor",
+      "rating": 4.9,
+      "reviewsCount": 89,
+      "rate": "₱3,400",
+      "image": "img/avatar-james.svg",
+      "level": "Level 2 Seller",
+      "location": "Austin, United States",
+      "availability": "Available now",
+      "joined": "February 2022",
+      "bio": "Editor and motion designer for brands that need content weekly. Documentary pacing for long-form, fast hooks for vertical, and a library of transitions that never gets gimmicky.",
+      "skills": ["Premiere Pro", "After Effects", "DaVinci Resolve", "Motion Graphics", "Sound Design"],
+      "languages": ["English (native)"],
+      "stats": { "completed": 231, "onTime": 97, "repeat": 74 },
+      "services": ["svc-003", "svc-005"],
+      "reviews": [
+        {
+          "name": "Mia Kowalski",
+          "role": "Social Media Manager",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Delivers a week of content from one shoot. Our posting schedule has never slipped since we started working together."
+        },
+        {
+          "name": "Chris Bannon",
+          "role": "Podcast Host",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Great instinct for what to cut. Forty-minute episodes now feel like twenty, without losing the good parts."
+        },
+        {
+          "name": "Nina Costa",
+          "role": "Producer",
+          "rating": 4,
+          "date": "July 2026",
+          "text": "Strong creative and clean files. Book him early — his calendar fills up fast."
+        }
+      ]
+    },
+    {
+      "id": "flw-006",
+      "name": "Anna Klein",
+      "role": "Paid acquisition & analytics",
+      "category": "Growth Marketer",
+      "rating": 4.7,
+      "reviewsCount": 64,
+      "rate": "₱4,800",
+      "image": "img/avatar-klein.svg",
+      "level": "Level 2 Seller",
+      "location": "Berlin, Germany",
+      "availability": "Available now",
+      "joined": "August 2021",
+      "bio": "Performance marketer who treats ad spend like it is coming out of my own pocket. Full-funnel paid social and search, with creative testing built into every account I run.",
+      "skills": ["Google Ads", "Meta Ads", "CRO", "GA4", "Marketing Analytics", "Landing Pages"],
+      "languages": ["German (native)", "English (fluent)"],
+      "stats": { "completed": 108, "onTime": 95, "repeat": 69 },
+      "services": ["svc-002"],
+      "reviews": [
+        {
+          "name": "Owen Fletcher",
+          "role": "E-commerce Owner",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Took over an account that was losing money and had it profitable in six weeks. Ruthless about killing bad campaigns."
+        },
+        {
+          "name": "Julia Rossi",
+          "role": "Head of E-commerce",
+          "rating": 4,
+          "date": "August 2026",
+          "text": "Strong results and clear reporting. Direct communication style is not for everyone, but it works."
+        },
+        {
+          "name": "Mark Sullivan",
+          "role": "Founder",
+          "rating": 5,
+          "date": "June 2026",
+          "text": "The first marketer who sent us a dashboard instead of a pitch deck. Renewed twice already."
+        }
+      ]
+    },
+    {
+      "id": "flw-007",
+      "name": "Marcus Lee",
+      "role": "Mobile app developer",
+      "category": "Mobile Developer",
+      "rating": 4.9,
+      "reviewsCount": 71,
+      "rate": "₱5,100",
+      "image": "img/avatar-marcus.svg",
+      "level": "Top Rated",
+      "location": "Singapore",
+      "availability": "Available in 3 days",
+      "joined": "May 2020",
+      "bio": "Cross-platform mobile developer shipping apps to the App Store and Play Store since 2016. Comfortable owning the whole release cycle, including the store submissions nobody enjoys.",
+      "skills": ["React Native", "Flutter", "Swift", "Kotlin", "Firebase", "CI/CD"],
+      "languages": ["English (native)", "Mandarin (fluent)"],
+      "stats": { "completed": 132, "onTime": 99, "repeat": 80 },
+      "services": [],
+      "reviews": [
+        {
+          "name": "Priyanka Nair",
+          "role": "Product Lead",
+          "rating": 5,
+          "date": "October 2026",
+          "text": "Guided our first store submission through review without a single rejection. Steady, experienced and easy to brief."
+        },
+        {
+          "name": "Eric Lund",
+          "role": "CTO",
+          "rating": 5,
+          "date": "September 2026",
+          "text": "Rewrote our flaky build pipeline and the crash rate dropped by 80%. Thorough documentation left behind."
+        },
+        {
+          "name": "Siti Rahman",
+          "role": "Founder",
+          "rating": 4,
+          "date": "July 2026",
+          "text": "Reliable and communicative. Slightly more expensive than alternatives, but the quality justifies it."
+        }
+      ]
     }
   ]
 }

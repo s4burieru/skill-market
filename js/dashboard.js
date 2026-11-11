@@ -21,13 +21,51 @@
 
   /* --- Sidebar ------------------------------------------------------------ */
 
-  const link = (item, extraClass = "", attrs = "") => `
-    <li>
+  // Just the clickable row; the caller decides which list element wraps it so
+  // that every row lives inside a <ul> (the stylesheet resets list markers
+  // there — a bare <li> outside a list keeps its bullet).
+  const row = (item, extraClass = "", attrs = "") => `
       <a class="sidebar__link${extraClass ? ` ${extraClass}` : ""}" href="${esc(item.href)}"${attrs}>
         ${Icons.svg(item.icon)}
         <span>${esc(item.label)}</span>
-      </a>
-    </li>`;
+      </a>`;
+
+  const link = (item, extraClass = "", attrs = "") => `<li>${row(item, extraClass, attrs)}</li>`;
+
+  /**
+   * Bottom of the sidebar. The log-out is a button, never a link, and it never
+   * acts on the first click: it swaps the list for a confirmation panel so a
+   * stray click cannot sign the user out.
+   */
+  function SidebarFoot(config, brand = "SkillMarket") {
+    const base = config || {};
+    const logout = base.logout || { label: "Log out", icon: "log-out" };
+    const confirmId = "sidebar-logout-confirm";
+
+    return `
+        <div class="sidebar__foot">
+          <ul class="sidebar__foot-list">
+            ${base.help ? `<li>${row(base.help)}</li>` : ""}
+            <li>
+              <button class="sidebar__link sidebar__link--danger" type="button" data-logout
+                      aria-expanded="false" aria-controls="${confirmId}">
+                ${Icons.svg(logout.icon || "log-out")}
+                <span>${esc(logout.label || "Log out")}</span>
+              </button>
+            </li>
+          </ul>
+
+          <div class="sidebar__confirm" id="${confirmId}" role="group"
+               aria-label="Confirm log out" hidden>
+            <p class="sidebar__confirm-title">Log out of ${esc(brand)}?</p>
+            <p class="sidebar__confirm-text">You'll need to sign in again to reach your dashboard.</p>
+            <div class="sidebar__confirm-actions">
+              <button class="btn btn--secondary btn--sm" type="button" data-logout-cancel>Cancel</button>
+              <button class="btn btn--danger btn--sm" type="button" data-logout-yes>Log out</button>
+            </div>
+          </div>
+        </div>`;
+  }
 
   function Sidebar(site, variant) {
     const { brand, dashboard } = site;
@@ -45,24 +83,13 @@
       )
       .join("");
 
-    const foot = [config.help, config.logout]
-      .filter(Boolean)
-      .map((item, index, list) =>
-        link(
-          item,
-          index === list.length - 1 ? "sidebar__link--danger" : "",
-          config.logout && item === config.logout ? " data-logout" : ""
-        )
-      )
-      .join("");
-
     return `
       <aside class="sidebar" id="dashboard-nav">
         <a class="sidebar__brand" href="index.html" aria-label="${esc(brand.name)} home">
           <img src="img/logo-1.png" alt="${esc(brand.name)}" />
         </a>
         <nav class="sidebar__nav" aria-label="Dashboard">${groups}</nav>
-        <div class="sidebar__foot">${foot}</div>
+        ${SidebarFoot(config, brand.name)}
       </aside>`;
   }
 
@@ -82,9 +109,7 @@
             </ul>
           </div>
         </nav>
-        <div class="sidebar__foot">
-          ${link({ label: "Log out", href: "index.html", icon: "log-out" }, "sidebar__link--danger", " data-logout")}
-        </div>
+        ${SidebarFoot(null, brand)}
       </aside>`;
   }
 
@@ -144,22 +169,17 @@
     });
   }
 
+  const sectionTarget = (href) => (href.length > 1 ? document.getElementById(href.slice(1)) : null);
+
   function wireNav() {
-    $$(".sidebar__link").forEach((anchor) => {
+    $$("a.sidebar__link").forEach((anchor) => {
       anchor.addEventListener("click", (event) => {
-        if (anchor.hasAttribute("data-logout")) {
-          event.preventDefault();
-          Session.clear();
-          window.location.href = "index.html";
-          return;
-        }
-
         const href = anchor.getAttribute("href") || "";
-        const target = href.length > 1 ? document.getElementById(href.slice(1)) : null;
+        const section = sectionTarget(href);
 
-        if (href.length > 1 && !target) {
+        if (href.length > 1 && !section) {
           event.preventDefault();
-        } else if (target) {
+        } else if (section) {
           setActiveLink(anchor);
         }
 
@@ -167,7 +187,49 @@
       });
     });
 
+    wireFoot();
     wireSpy();
+  }
+
+  /**
+   * The footer's log-out opens a confirmation panel instead of signing the
+   * user out immediately. Escape and Cancel both back out of it.
+   */
+  function wireFoot() {
+    const host = sidebarElement();
+    if (!host) return;
+
+    const foot = $(".sidebar__foot", host);
+    const trigger = $("[data-logout]", foot || host);
+    const panel = $(".sidebar__confirm", foot || host);
+    const cancel = panel && $("[data-logout-cancel]", panel);
+    const confirm = panel && $("[data-logout-yes]", panel);
+    if (!foot || !trigger || !panel || !cancel || !confirm) return;
+
+    const setOpen = (open) => {
+      panel.hidden = !open;
+      foot.classList.toggle("is-confirming", open);
+      trigger.setAttribute("aria-expanded", String(open));
+      (open ? cancel : trigger).focus();
+    };
+
+    // Bound to every log-out affordance in the sidebar, link or button: the
+    // default navigation is always intercepted so one click can never log out.
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (panel.hidden) setOpen(true);
+    });
+
+    cancel.addEventListener("click", () => setOpen(false));
+
+    confirm.addEventListener("click", () => {
+      Session.clear();
+      window.location.href = "index.html";
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.hidden) setOpen(false);
+    });
   }
 
   function wireSpy() {
@@ -317,7 +379,30 @@
     }
   }
 
+  /* Stamps the issue date on the overview ticket ("Tue 11 Nov 2026").
+     Assembled by hand rather than toLocaleDateString so every browser
+     prints the same ticket header. */
+  function paintIssueDate() {
+    const el = $(".dash__meta-date");
+    if (!el) return;
+
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const months = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    ];
+
+    const now = new Date();
+    const day = days[now.getDay()];
+    const date = String(now.getDate()).padStart(2, "0");
+    const month = months[now.getMonth()];
+
+    el.textContent = `${day} ${date} ${month} ${now.getFullYear()}`;
+  }
+
   function init() {
+    paintIssueDate();
+
     const user = guardSession();
     if (!user) return;
 

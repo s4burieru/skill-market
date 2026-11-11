@@ -6,12 +6,32 @@
       "company": "TechFlow Inc.",
       "logo": { "initials": "TF", "color": "#111827" },
       "badge": "Remote",
-      "salary": "$80 - $120/hr",
+      "salary": "₱4,600 - ₱6,800/hr",
       "location": "Remote",
       "schedule": "Full-time",
       "level": "Senior",
       "posted": "2d ago",
-      "tags": ["React", "Node.js"]
+      "tags": ["React", "Node.js"],
+      "companyAbout": "TechFlow builds workflow software for logistics teams in 40 countries. A profitable, remote-first company of 120 people with a product team of 24.",
+      "description": "We are looking for a senior React developer to own large features on our operations platform, from technical design through to release. You will work closely with two designers and a product manager in a team that ships every week.",
+      "responsibilities": [
+        "Own the design and delivery of major front-end features",
+        "Keep our component library and design system healthy",
+        "Review code and mentor mid-level engineers",
+        "Partner with the API team on contract decisions"
+      ],
+      "requirements": [
+        "5+ years building production applications with React",
+        "Strong TypeScript and testing habits",
+        "Experience with state management at scale",
+        "Clear written English for a fully remote team"
+      ],
+      "benefits": [
+        "₱4,600-₱6,800/hr depending on experience",
+        "Fully remote with a home-office budget",
+        "4 weeks paid leave plus public holidays",
+        "Annual learning budget of ₱114,000"
+      ]
     },
     {
       "id": "job-002",
@@ -19,12 +39,32 @@
       "company": "Design Studio",
       "logo": { "initials": "DS", "color": "#f97316" },
       "badge": "Full-time",
-      "salary": "$60 - $90/hr",
+      "salary": "₱3,400 - ₱5,100/hr",
       "location": "On-site",
       "schedule": "Full-time",
       "level": "Mid-level",
       "posted": "5h ago",
-      "tags": ["Figma", "Design Systems"]
+      "tags": ["Figma", "Design Systems"],
+      "companyAbout": "Design Studio is a 30-person product design agency working with fintech and health-tech clients across Europe, from our studio in Amsterdam.",
+      "description": "Join a small, senior design team delivering end-to-end product work for client engagements lasting three to nine months. Roughly half of your time is spent in discovery and prototyping, the other half in detailed UI.",
+      "responsibilities": [
+        "Run workshops and turn findings into flows and wireframes",
+        "Design polished UI in Figma with your design system",
+        "Prototype interactions and test with real users",
+        "Present work confidently to client stakeholders"
+      ],
+      "requirements": [
+        "3+ years of product design experience",
+        "A portfolio showing shipped, measurable work",
+        "Excellent Figma skills including components",
+        "Comfortable presenting in English"
+      ],
+      "benefits": [
+        "₱3,400-₱5,100/hr, permanent contract",
+        "Central Amsterdam studio, hybrid 3 days on-site",
+        "25 holiday days plus study budget",
+        "Pension and travel allowance"
+      ]
     },
     {
       "id": "job-003",
@@ -32,12 +72,131 @@
       "company": "Growth Hub",
       "logo": { "initials": "GH", "color": "#2563eb" },
       "badge": "Part-time",
-      "salary": "$40 - $70/hr",
+      "salary": "₱2,300 - ₱4,000/hr",
       "location": "Remote",
       "schedule": "Part-time",
       "level": "Entry-level",
       "posted": "1d ago",
-      "tags": ["Google Analytics", "Content Strategy"]
+      "tags": ["Google Analytics", "Content Strategy"],
+      "companyAbout": "Growth Hub is a performance marketing team of 18 people running organic and paid programmes for B2B SaaS clients.",
+      "description": "A part-time SEO role supporting two account managers. You will run audits, track rankings and help shape content briefs — a great first SEO job with real mentorship.",
+      "responsibilities": [
+        "Run technical audits and track fixes with developers",
+        "Build keyword maps and content briefs",
+        "Report on rankings and organic traffic monthly",
+        "Support link outreach and digital PR campaigns"
+      ],
+      "requirements": [
+        "Familiarity with GA4 and Search Console",
+        "Strong writing and spreadsheet skills",
+        "Curiosity about how search engines work",
+        "10-20 hours per week, flexible schedule"
+      ],
+      "benefits": [
+        "₱2,300-₱4,000/hr depending on experience",
+        "Fully remote, set your own hours",
+        "Mentorship from a senior SEO lead",
+        "Possible to grow into a full-time role"
+      ]
+    },
+    {
+      "id": "job-004",
+      "title": "Backend Engineer (Node.js)",
+      "company": "Nimbus Labs",
+      "logo": { "initials": "NL", "color": "#7c3aed" },
+      "badge": "Remote",
+      "salary": "₱4,000 - ₱6,300/hr",
+      "location": "Remote",
+      "schedule": "Full-time",
+      "level": "Senior",
+      "posted": "3d ago",
+      "tags": ["Node.js", "PostgreSQL"],
+      "companyAbout": "Nimbus Labs provides weather data APIs to agriculture and insurance customers, serving 4 billion requests a month.",
+      "description": "We need a backend engineer to keep a high-volume Node.js platform fast and boring in the best sense. You will own services end to end, including on-call for your own systems.",
+      "responsibilities": [
+        "Design and run Node.js services handling high traffic",
+        "Model and tune PostgreSQL schemas and queries",
+        "Improve observability, alerting and incident response",
+        "Collaborate with data science on ingestion pipelines"
+      ],
+      "requirements": [
+        "4+ years with Node.js in production",
+        "Solid SQL and query-performance knowledge",
+        "Experience with AWS or GCP",
+        "Comfortable with a light on-call rotation"
+      ],
+      "benefits": [
+        "₱4,000-₱6,300/hr, contract or permanent",
+        "Remote-first across European time zones",
+        "30 days paid leave",
+        "Hardware and conference budget"
+      ]
+    },
+    {
+      "id": "job-005",
+      "title": "Content Strategist",
+      "company": "Brightwave",
+      "logo": { "initials": "BW", "color": "#0891b2" },
+      "badge": "Contract",
+      "salary": "₱2,600 - ₱3,700/hr",
+      "location": "Remote",
+      "schedule": "Contract",
+      "level": "Mid-level",
+      "posted": "6h ago",
+      "tags": ["SEO", "Editorial"],
+      "companyAbout": "Brightwave is a B2B content agency producing research-led editorial for technology clients, with a team of 40 writers, editors and analysts.",
+      "description": "A six-month contract to own the editorial calendar for two flagship clients, balancing search demand, sales enablement and genuinely interesting research.",
+      "responsibilities": [
+        "Own quarterly editorial calendars for two clients",
+        "Brief writers with keyword and audience research",
+        "Edit long-form pieces before publication",
+        "Report on content performance with the analytics team"
+      ],
+      "requirements": [
+        "3+ years in editorial or content strategy",
+        "Track record of ranking, traffic-driving content",
+        "Confident editor with a consistent standard",
+        "Available for a 6-month contract, 25 hrs/week"
+      ],
+      "benefits": [
+        "₱2,600-₱3,700/hr, 6-month contract",
+        "Fully remote with quarterly team meet-ups",
+        "Flexible hours around your timezone",
+        "Possible extension or permanent offer"
+      ]
+    },
+    {
+      "id": "job-006",
+      "title": "Data Analyst",
+      "company": "Marketly",
+      "logo": { "initials": "MK", "color": "#db2777" },
+      "badge": "On-site",
+      "salary": "₱3,100 - ₱4,600/hr",
+      "location": "On-site",
+      "schedule": "Full-time",
+      "level": "Entry-level",
+      "posted": "1d ago",
+      "tags": ["SQL", "Tableau"],
+      "companyAbout": "Marketly runs retail media advertising for 300+ supermarket brands, headquartered in Chicago.",
+      "description": "An entry-level analyst role on our insights team. You will build the dashboards our account managers live in and answer the ad-hoc questions that shape client campaigns.",
+      "responsibilities": [
+        "Build and maintain dashboards in Tableau",
+        "Answer ad-hoc questions with SQL",
+        "Check data quality and flag anomalies",
+        "Present findings to non-technical audiences"
+      ],
+      "requirements": [
+        "Comfortable writing intermediate SQL",
+        "Any experience with a BI tool",
+        "Strong attention to detail",
+        "Based in Chicago or willing to relocate"
+      ],
+      "benefits": [
+        "₱3,100-₱4,600/hr, permanent contract",
+        "Downtown Chicago office, 3 days on-site",
+        "Health, dental and vision cover",
+        "401(k) with company match"
+      ]
     }
   ]
 }

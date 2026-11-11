@@ -49,6 +49,17 @@
   box-shadow: var(--shadow-sm);
 }
 
+.btn--danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn--danger:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
 .btn--sm {
   padding: 9px 18px;
   font-size: var(--fs-sm);
@@ -793,11 +804,6 @@
 .footer {
   position: relative;
   background: var(--footer-bg);
-  background-image: radial-gradient(
-    90% 140% at 8% -20%,
-    rgba(29, 191, 115, 0.12),
-    transparent 60%
-  );
   color: var(--footer-text);
   padding-top: 78px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
@@ -907,14 +913,18 @@
   margin-top: 28px;
 }
 
+/* Controls use opaque colours only — no glass/frosted buttons (translucent
+   fills or translucent borders). The hex values below are the flattened
+   equivalents of the old rgba(255, 255, 255, x) tints over --footer-bg
+   (#17181a), so the look stays the same without the see-through paint. */
 .footer__social {
   display: grid;
   place-items: center;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid #38383a;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
+  background: #202123;
   color: var(--footer-text);
   transition: color var(--ease), background var(--ease), border-color var(--ease),
     transform var(--ease);
@@ -927,7 +937,7 @@
 
 .footer__social:hover {
   color: #fff;
-  background: rgba(29, 191, 115, 0.16);
+  background: #183328;
   border-color: var(--green-500);
   transform: translateY(-2px);
 }
@@ -1000,8 +1010,8 @@
   font-size: var(--fs-xs);
   font-weight: 600;
   color: var(--footer-text);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #202123;
+  border: 1px solid #38383a;
   border-radius: var(--pill);
   cursor: pointer;
   transition: color var(--ease), background var(--ease), border-color var(--ease),
@@ -1015,7 +1025,7 @@
 
 .footer__top-btn:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.32);
+  background: #2e2f31;
+  border-color: #616263;
   transform: translateY(-2px);
 }

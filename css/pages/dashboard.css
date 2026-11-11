@@ -123,10 +123,85 @@ dashboard-sidebar {
 .sidebar__foot {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 8px;
   margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid var(--line);
+}
+
+.sidebar__foot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* The log-out is a <button>, so strip the control chrome and let it behave
+   exactly like the link rows above it. */
+.sidebar__foot button.sidebar__link {
+  width: 100%;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar__foot button.sidebar__link:focus-visible {
+  background: #fef2f2;
+  color: var(--danger);
+}
+
+.sidebar__foot button.sidebar__link:focus-visible .icon {
+  color: var(--danger);
+}
+
+/* Confirmation panel — the log-out row is replaced by this while it is open. */
+.sidebar__foot.is-confirming .sidebar__foot-list {
+  display: none;
+}
+
+.sidebar__confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  background: #fef2f2;
+  animation: sidebar-confirm-in var(--ease);
+}
+
+.sidebar__confirm[hidden] {
+  display: none;
+}
+
+.sidebar__confirm-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.sidebar__confirm-text {
+  font-size: var(--fs-2xs);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.sidebar__confirm-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.sidebar__confirm-actions .btn {
+  flex: 1;
+  padding-inline: 6px;
+}
+
+@keyframes sidebar-confirm-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }
 
 /* --- Topbar -------------------------------------------------------------- */
@@ -289,16 +364,80 @@ dashboard-sidebar {
   padding-bottom: 0;
 }
 
+/* --- Overview banner: printed ticket --------------------------------------
+   Paper stock, ink rule, a stamped account tab over the corner and a
+   perforation separating the copy from the stub that holds the actions. */
+
 .dash__head {
+  position: relative;
+  /* Bottom padding, shared with the stub so the dot field below reaches
+     the inner edge of the ticket. */
+  --stub-gutter: 34px;
+  --stub-depth: 30px;
   display: flex;
-  align-items: flex-end;
+  align-items: stretch;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 22px;
+  gap: 24px;
+  /* Clips the tab to the rounded corner; the offset shadow is drawn
+     outside the border box, so it is not affected. */
+  overflow: hidden;
+  padding: 0 var(--stub-gutter) var(--stub-depth);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: #fffdf7;
+  box-shadow: 4px 4px 0 var(--ink);
 }
 
+/* Stamped account tab, flush into the top-left corner. */
 .dash__head-text .badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 9px 18px;
+  border-radius: 0 0 var(--radius-sm) 0;
+  background: var(--ink);
+  color: #fff;
+}
+
+.dash__head-text {
+  min-width: 0;
+  padding-top: 54px; /* clears the tab */
+}
+
+/* Issue line: date stamp + what needs attention today. */
+.dash__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 14px;
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dash__meta-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+}
+
+.dash__meta-date::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--green-500);
+}
+
+.dash__meta-item::before {
+  content: "•";
+  margin-right: 7px;
+  color: var(--muted-2);
 }
 
 .dash__title {
@@ -307,18 +446,74 @@ dashboard-sidebar {
   letter-spacing: -0.02em;
 }
 
+.dash__title::after {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 3px;
+  margin-top: 12px;
+  background: var(--green-500);
+}
+
 .dash__subtitle {
-  margin-top: 8px;
+  margin-top: 12px;
   max-width: 640px;
   font-size: var(--fs-md);
   line-height: 1.65;
   color: var(--muted);
 }
 
+/* Stub: actions sit to the right of a full-height perforation, their
+   baseline squared off with the last line of copy. The negative bottom
+   margin lets the stub's dot field run down to the ticket's edge while
+   the buttons stay aligned with the copy. */
 .dash__head-actions {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
   gap: 12px;
+  margin-bottom: calc(-1 * var(--stub-depth));
+  margin-right: calc(-1 * var(--stub-gutter));
+  padding: 0 var(--stub-gutter) var(--stub-depth) var(--stub-gutter);
+  background-image: radial-gradient(rgba(15, 23, 42, 0.13) 1px, transparent 1.4px);
+  background-size: 14px 14px;
+  background-position: 7px 7px;
+}
+
+.dash__head-actions::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-left: 2px dotted rgba(15, 23, 42, 0.32);
+}
+
+/* Buttons get the same stamped-ink treatment as the ticket itself. */
+.dash__head .btn--primary {
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.dash__head .btn--primary:hover {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.dash__head .btn--primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.dash__head .btn--secondary {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.dash__head .btn--secondary:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
 }
 
 /* --- Stat cards ---------------------------------------------------------- */
@@ -834,6 +1029,35 @@ dashboard-sidebar {
   }
 }
 
+/* The ticket stops fitting copy and stub side by side: stack them and
+   turn the perforation so it runs horizontally above the actions. */
+@media (max-width: 1080px) {
+  .dash__head {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .dash__head-actions {
+    justify-content: flex-start;
+    margin-top: 22px;
+    margin-bottom: 0;
+    margin-right: 0;
+    padding-top: 24px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    background-image: none;
+  }
+
+  .dash__head-actions::before {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    border-left: 0;
+    border-top: 2px dotted rgba(15, 23, 42, 0.32);
+  }
+}
+
 @media (max-width: 900px) {
   dashboard-sidebar {
     position: fixed;
@@ -874,12 +1098,16 @@ dashboard-sidebar {
   }
 
   .dash__head {
-    align-items: flex-start;
-    gap: 18px;
+    padding: 0 20px 22px;
+  }
+
+  .dash__head-text {
+    padding-top: 50px;
   }
 
   .dash__head-actions {
-    width: 100%;
+    margin-top: 18px;
+    padding-top: 20px;
   }
 
   .dash__head-actions .btn {

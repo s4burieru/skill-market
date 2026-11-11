@@ -7,10 +7,10 @@
   },
   "navbar": {
     "links": [
-      { "label": "Explore", "href": "#services" },
-      { "label": "Find Freelancers", "href": "#freelancers" },
-      { "label": "Find Jobs", "href": "#jobs" },
-      { "label": "Become a Freelancer", "href": "#get-started" }
+      { "label": "Explore", "href": "explore.html" },
+      { "label": "Find Freelancers", "href": "freelancers.html" },
+      { "label": "Find Jobs", "href": "jobs.html" },
+      { "label": "Become a Freelancer", "href": "become-freelancer.html" }
     ],
     "login": { "label": "Login", "href": "login.html" },
     "join": { "label": "Join", "href": "join.html" }
@@ -73,10 +73,10 @@
       {
         "title": "Platform",
         "links": [
-          { "label": "Explore", "href": "#services" },
-          { "label": "Find Freelancers", "href": "#freelancers" },
-          { "label": "Find Jobs", "href": "#jobs" },
-          { "label": "Become a Freelancer", "href": "#get-started" }
+          { "label": "Explore", "href": "explore.html" },
+          { "label": "Find Freelancers", "href": "freelancers.html" },
+          { "label": "Find Jobs", "href": "jobs.html" },
+          { "label": "Become a Freelancer", "href": "become-freelancer.html" }
         ]
       },
       {
