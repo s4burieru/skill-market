@@ -1,0 +1,201 @@
+/* Hire a talent: hero, stats and page shell -------------------------------- *
+ * The step cards, benefits, fee cards, quotes and FAQ styles come from
+ * css/pages/become-freelancer.css, which this page also links to. */
+
+.ht-hero {
+  padding: 58px 0 56px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--line);
+}
+
+.ht-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.ht-hero__title {
+  margin-top: 16px;
+  max-width: 640px;
+  font-size: var(--fs-display);
+  font-weight: 800;
+  line-height: 1.13;
+  letter-spacing: -0.03em;
+}
+
+.ht-hero__desc {
+  margin-top: 16px;
+  max-width: 560px;
+  font-size: var(--fs-md);
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.ht-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.ht-hero__points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-top: 26px;
+}
+
+.ht-hero__points li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.ht-hero__points .icon {
+  width: 17px;
+  height: 17px;
+  color: var(--green-500);
+}
+
+/* Shortlist card ------------------------------------------------------------ */
+
+.ht-hero__card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 26px;
+}
+
+.ht-hero__card-label {
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.ht-hero__card-total {
+  margin-top: 8px;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.ht-hero__card-total span {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.ht-hero__card-list {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.ht-hero__card-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.ht-hero__card-list strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.ht-hero__card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.ht-hero__card-note {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--green-600);
+}
+
+/* Stats ---------------------------------------------------------------------- */
+
+.ht-stats {
+  padding: 44px 0;
+}
+
+.ht-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.ht-stat {
+  border-left: 3px solid var(--green-500);
+  padding-left: 18px;
+}
+
+.ht-stat__value {
+  display: block;
+  font-size: var(--fs-3xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.ht-stat__label {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+/* Steps ---------------------------------------------------------------------- */
+
+.ht-steps {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+/* Responsive ----------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .ht-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .ht-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .ht-hero {
+    padding: 40px 0 38px;
+  }
+
+  .ht-stats__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ht-hero__actions .btn {
+    width: 100%;
+  }
+}

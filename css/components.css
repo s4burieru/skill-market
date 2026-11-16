@@ -325,15 +325,28 @@
   margin-left: auto;
 }
 
+/* Outlined so it reads as a button next to the primary "Join" CTA. */
 .navbar__login {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: #fff;
   font-size: var(--fs-sm);
   font-weight: 600;
-  color: #4b5563;
-  transition: color var(--ease);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink);
+  transition: background var(--ease), color var(--ease), border-color var(--ease),
+    box-shadow var(--ease);
 }
 
 .navbar__login:hover {
-  color: var(--green-600);
+  border-color: var(--green-500);
+  background: var(--green-50);
+  color: var(--green-700);
 }
 
 /* Signed-in navbar: profile dropdown --------------------------------------- */
