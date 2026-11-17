@@ -39,7 +39,8 @@ skill-market/
 │                           # The three detail pages share css/pages/detail.css
 ├── freelancer-dashboard.html   # Dashboard for freelancer accounts
 ├── hire-talent-dashboard.html  # Dashboard for hire-talent accounts
-│                           # Both share one shell (sidebar + topbar); only the
+├── super-admin-dashboard.html  # Dashboard for super-admin accounts
+│                           # All three share one shell (sidebar + topbar); only the
 │                           # content inside the panels differs.
 ├── css/
 │   ├── variables.css       # Design tokens (colors, radii, shadows) + reset
@@ -55,6 +56,8 @@ skill-market/
 │   ├── dashboard.js        # <dashboard-sidebar> shell + dashboard interactions
 │   ├── main.js             # Renders listings into the page, wires interactions
 │   └── pages/              # Page-specific scripts (one file per page, e.g. about.js)
+│       └── dashboard-actions.js  # Dialogs, dropdowns and toasts shared by
+│                               # all three dashboards (data-act handlers)
 ├── data/                   # JSON: see the rule below
 │   ├── site.json
 │   ├── services.json
@@ -65,7 +68,8 @@ skill-market/
 ├── fonts/                  # Web fonts (woff2 files + any @font-face CSS)
 ├── docs/                   # Notes, specs, screenshots, write-ups
 ├── tools/
-│   └── build-data.js       # Inlines data/*.json into js/data-bundle.js
+│   ├── build-data.js       # Inlines data/*.json into js/data-bundle.js
+│   └── smoke-dashboards.js # Headless Chrome smoke test for the dashboards
 └── img/                    # SVG artwork (swap for real photos any time)
 ```
 
@@ -134,38 +138,80 @@ Components.Cta(site.cta)           // green call-to-action band
 Components.Pill(item, active)      // category chip
 ```
 
+The home page keeps the shared card components for other pages and renders its
+own listings from the pure functions in `js/main.js` (`ServiceCard`,
+`FreelancerCard`, `JobCard`), so it can restyle them without touching the
+reusable markup. Each section opens with a plain **section head**
+(`.section__eyebrow` label, `.section__title` over a short green rule,
+`.section__subtitle` and one action button) and the content sits in a
+three-up `.cards` grid. The cards borrow the dashboard header's material
+without repeating it as a banner: cream paper stock (`#fffdf7`), a 1.5px ink
+rule, a hard `4px 4px 0` offset shadow, and a `.card__stamp` ink tab clipped
+into the top-left corner (rating, job badge or step number), with a green
+level flag mirrored into the top-right of freelancer photos. Everything is
+styled by `css/pages/home.css`.
+
 ## Dashboards
 
-`freelancer-dashboard.html` (freelancer accounts) and `hire-talent-dashboard.html`
-(hire-talent accounts) are two sides of the **same dashboard shell**: sidebar, topbar,
-stat cards, panel grid and footer actions are byte-for-byte identical — only the
-content inside the panels differs.
+`freelancer-dashboard.html` (freelancer accounts), `hire-talent-dashboard.html`
+(hire-talent accounts) and `super-admin-dashboard.html` (platform admins) are three
+sides of the **same dashboard shell**: sidebar, topbar, stat cards, panel grid and
+footer actions are identical — only the content inside the panels differs.
 
 - **Shell** — `<dashboard-sidebar>` in `js/dashboard.js` renders the navigation from
-  `data/site.json` → `dashboard`, so both pages always share one sidebar. The topbar
+  `data/site.json` → `dashboard`, so all three pages always share one sidebar. The topbar
   (search, notifications, account chip) lives in each page's markup.
-- **Layout & widgets** — `css/pages/dashboard.css`: sidebar, topbar, `.stat` cards,
-  `.panel`, list rows, status chips, progress bars, checklist, bar chart and timeline.
-  Everything is built from the existing tokens and `.btn` / `.chip` / `.badge` /
-  `.search` components.
+- **Look** — `css/pages/dashboard.css` follows the hero banner's printed-ticket style:
+  paper `#fffdf7` surfaces, `1.5px` ink borders, hard `4px 4px 0` offset shadows,
+  dotted perforation lines under panel heads and a radial dot-field stub. Buttons
+  travel their stamp colour as `--btn-stamp` / `--btn-stamp-hover` /
+  `--btn-stamp-active` so `.btn--sm` can shrink the shadow without fighting colour
+  variants.
 - **Interactions** — mobile drawer with `aria-expanded`, scroll-spy that highlights the
-  active section, topbar search that filters list rows (with an empty state), and
-  inert `data-notice` placeholder buttons that do nothing when clicked.
+  active section, topbar search that filters list rows (with an empty state), and a
+  shared action layer in `js/pages/dashboard-actions.js` that makes **every** button do
+  something real: dialogs, dropdowns, toasts, form validation, queue moderation and
+  CSV export. Controls declare their behaviour with `data-act="…"` keys; sidebar links
+  with no section (`#settings`, `#help`) open dialogs instead of jumping.
+
+### Adding a dashboard action
+
+1. Add a `data-act="my-key"` attribute to the control in any dashboard HTML.
+2. Register `my-key` in the `ACTIONS` map in `js/pages/dashboard-actions.js` —
+   a function that opens a dialog (`openModal` / `formModal` / `queueModal`),
+   a dropdown (`openDrop`) or fires a `toast`.
+3. Reusable dialog builders: `openModal`, `formModal` (validated fields),
+   `queueModal` (approve/reject rows that update a stat + timeline),
+   `switchDialog` (persisted toggles), `openInbox` (thread + compose),
+   `listDialog` / `tableDialog` (full lists and history tables).
 
 ## Interactions
 
 - **Search box**: filters the services grid live; submitting scrolls to the results.
 - **Suggestion chips**: fill the search box and run the search.
-- **Category pills**: filter by category; "All Categories" restores the popular list.
+- **Category pills**: filter by category; "All Categories" restores the full list.
 - **Mobile nav**: hamburger toggle with `aria-expanded`, closes on resize/link click.
 - **Empty state**: shown when nothing matches the search.
 - **Load failure**: if neither `data/*.json` nor the `js/data-bundle.js` snapshot can be read, the error is logged to the browser console.
+- **Dashboard buttons**: every `data-act` control opens working content — settings and
+  security switches persist to `localStorage` (`skillmarket.settings.<role>`), the
+  inbox sends messages back into the panel preview, "Add skills" raises the profile
+  meter and ticks the checklist, moderation actions decrement their stat and prepend
+  to the activity timeline, and money forms validate before showing a success receipt.
+- **Dashboard smoke test**: `node tools/smoke-dashboards.js` boots headless Chrome
+  over CDP, seeds a session per role, clicks every `data-act` control, sidebar link
+  and row, and fails (exit 1) on any control with no effect, empty dialog or console
+  error. Screenshots land in `%TEMP%\sm-shots`.
 
 ## Editing the design
 
 - Colors, radii, shadows and layout width → `css/variables.css`
 - Button / card / navbar / footer styles → `css/components.css`
 - Section spacing, grids and breakpoints → `css/styles.css`
+- Home page only (split hero with a dot-grid texture and no glow, plain section
+  heads, three-up card grids for services / freelancers / jobs, stamped step
+  cards, green call-to-action card)
+  → `css/pages/home.css`, rendered by the card functions in `js/main.js`
 
 **Design rule: no glass/frosted buttons.** Buttons (and other controls) always get
 solid, opaque `background` and `border` colours — never translucent fills such as

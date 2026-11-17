@@ -178,7 +178,10 @@
         const section = sectionTarget(href);
 
         if (href.length > 1 && !section) {
+          // #settings / #help have no section: they open a dialog instead.
           event.preventDefault();
+          const actions = window.DashActions;
+          if (actions && typeof actions.openHref === "function") actions.openHref(href);
         } else if (section) {
           setActiveLink(anchor);
         }
@@ -271,12 +274,15 @@
     update();
   }
 
-  // Placeholder actions stay inert: block the default jump instead of a popup.
+  // Legacy [data-notice] controls fall back to a toast from the action layer
+  // (js/pages/dashboard-actions.js) instead of a dead click.
   function wireActions() {
     document.addEventListener("click", (event) => {
       const trigger = event.target.closest("[data-notice]");
       if (!trigger) return;
       event.preventDefault();
+      const actions = window.DashActions;
+      if (actions && typeof actions.notice === "function") actions.notice(trigger.dataset.notice);
     });
   }
 

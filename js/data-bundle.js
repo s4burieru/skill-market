@@ -1135,6 +1135,10 @@ window.__SKILL_MARKET_DATA__ = {
           "href": "jobs.html"
         },
         {
+          "label": "Hire Talent",
+          "href": "hire-talent.html"
+        },
+        {
           "label": "Become a Freelancer",
           "href": "become-freelancer.html"
         }
@@ -1292,6 +1296,10 @@ window.__SKILL_MARKET_DATA__ = {
             {
               "label": "Find Jobs",
               "href": "jobs.html"
+            },
+            {
+              "label": "Hire Talent",
+              "href": "hire-talent.html"
             },
             {
               "label": "Become a Freelancer",

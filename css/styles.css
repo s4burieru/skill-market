@@ -61,6 +61,20 @@
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
 }
 
+/* On wide screens the wider container would otherwise add a mostly empty
+   column. Keep the homepage rows full and let the cards grow instead. */
+@media (min-width: 1660px) {
+  .page-home [data-grid="services"],
+  .page-home [data-grid="freelancers"] {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .page-home [data-grid="jobs"],
+  .page-home .grid--steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .pills {
   display: flex;
   flex-wrap: wrap;
@@ -160,6 +174,10 @@
     display: none;
   }
 
+  .navbar__inner {
+    gap: 16px;
+  }
+
   .navbar__actions {
     gap: 12px;
   }
@@ -239,8 +257,19 @@
     --gutter: 18px;
   }
 
-  .navbar__login {
-    display: none;
+  /* Fit brand + Login + Join + hamburger on narrow phones. */
+  .navbar__inner {
+    gap: 12px;
+  }
+
+  .brand__logo {
+    height: 34px;
+  }
+
+  .navbar__login,
+  .navbar__actions .btn--sm {
+    padding: 10px 13px;
+    min-height: 40px;
   }
 
   .navbar__profile-btn {
