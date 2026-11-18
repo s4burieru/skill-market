@@ -42,8 +42,9 @@
       </section>`;
   }
 
-  function render(person, services) {
+  function render(person, rankedPerson, services) {
     const root = $("[data-detail-root]");
+    const tier = rankedPerson ? Components.rankTier(rankedPerson.rank) : null;
 
     const meta = [
       `<span class="rating">${icon("star")}${esc(person.rating)}</span>`,
@@ -55,6 +56,25 @@
 
     const skills = (person.skills || [])
       .map((skill) => `<span class="tag">${esc(skill)}</span>`)
+      .join("");
+
+    const badges = [
+      `<span class="badge badge--soft">${esc(person.level)}</span>`,
+      rankedPerson
+        ? `<span class="badge badge--rank" title="#${rankedPerson.rank} in ${esc(
+            person.category
+          )} · Marketplace score: ${esc(rankedPerson.score)} out of 100">${icon("crown")}${
+            tier ? esc(tier) : `Rank #${rankedPerson.rank}`
+          }</span>`
+        : "",
+      person.verified
+        ? `<span class="badge badge--verified">${icon("badge-check")}Verified</span>`
+        : `<span class="badge badge--muted">Unverified</span>`,
+      person.premium
+        ? `<span class="badge badge--premium">${icon("gem")}Premium</span>`
+        : ""
+    ]
+      .filter(Boolean)
       .join("");
 
     const languages = (person.languages || [])
@@ -69,7 +89,7 @@
       person.name
     )}" width="92" height="92" />
             <div class="profile-head__id">
-              <span class="badge badge--soft">${esc(person.level)}</span>
+              <div class="badge-row">${badges}</div>
               <h1 class="detail__title">${esc(person.name)}</h1>
               <div class="detail__meta">
                 <span>${esc(person.role)} · ${esc(person.category)}</span>
@@ -142,6 +162,10 @@
               <span class="price-card__row">${icon("shield")} Level</span>
               <strong>${esc(person.level)}</strong>
             </li>
+            <li>
+              <span class="price-card__row">${icon("crown")} Category rank</span>
+              <strong>${rankedPerson ? `#${esc(rankedPerson.rank)} · Score ${esc(rankedPerson.score)}` : "Unranked"}</strong>
+            </li>
           </ul>
 
           <a class="btn btn--primary" href="join.html">Hire ${esc(
@@ -149,6 +173,54 @@
           )}</a>
           <a class="btn btn--secondary" href="login.html">Send a message</a>
           <p class="price-card__note">Hiring through SkillMarket keeps every payment and message in one place.</p>
+        </div>
+
+        <div class="side-card side-card--trust">
+          <h3>Trust &amp; ranking</h3>
+          <ul class="trust-list">
+            <li class="trust-item${person.verified ? " is-ok" : " is-missing"}">
+              ${icon("shield-check")}
+              <span class="trust-item__text">
+                <strong>${person.verified ? "Identity verified" : "Not verified yet"}</strong>
+                <span>${
+                  person.verified
+                    ? "ID, portfolio and skills checked by SkillMarket"
+                    : "This freelancer has not completed verification"
+                }</span>
+              </span>
+            </li>
+            <li class="trust-item${person.premium ? " is-premium" : " is-missing"}">
+              ${icon("gem")}
+              <span class="trust-item__text">
+                <strong>${
+                  person.premium
+                    ? `Premium member${person.premiumSince ? ` since ${esc(person.premiumSince)}` : ""}`
+                    : "Free member"
+                }</strong>
+                <span>${
+                  person.premium
+                    ? "Gold badge and boosted placement in search"
+                    : "Not subscribed to SkillMarket Premium"
+                }</span>
+              </span>
+            </li>
+            <li class="trust-item is-rank">
+              ${icon("crown")}
+              <span class="trust-item__text">
+                <strong>${
+                  rankedPerson
+                    ? `Ranked #${esc(rankedPerson.rank)} in ${esc(person.category)}${tier ? `: ${esc(tier)}` : ""}`
+                    : "Unranked"
+                }</strong>
+                <span>${
+                  rankedPerson
+                    ? `Score ${esc(rankedPerson.score)} / 100 from rating, reviews and completed work`
+                    : "Score unavailable"
+                }</span>
+              </span>
+            </li>
+          </ul>
+          <a class="text-link" href="premium.html#ranking">How ranking works${icon("chevron-down")}</a>
         </div>
 
         <div class="side-card">
@@ -159,6 +231,8 @@
             <li><span>On time</span><strong>${esc(person.stats.onTime)}%</strong></li>
             <li><span>Repeat clients</span><strong>${esc(person.stats.repeat)}%</strong></li>
             <li><span>Rating</span><strong>${esc(person.rating)} / 5</strong></li>
+            <li><span>Category rank</span><strong>${rankedPerson ? `#${esc(rankedPerson.rank)} in ${esc(person.category)}` : "-"}</strong></li>
+            <li><span>Verified</span><strong>${person.verified ? "Yes" : "No"}</strong></li>
           </ul>
         </div>
       </aside>`;
@@ -169,7 +243,7 @@
     const grid = $("[data-related]");
     if (!section || !grid) return;
 
-    const related = freelancers.items
+    const related = Components.rankedList(freelancers.items)
       .filter((item) => item.id !== person.id)
       .sort(
         (a, b) =>
@@ -184,12 +258,12 @@
     section.removeAttribute("hidden");
   }
 
-  Data.getAll(["freelancers", "services", "site"])
-    .then(([freelancers, services, site]) => {
+  Data.getAll(["freelancers", "services"])
+    .then(([freelancers, services]) => {
       const person = freelancers.items.find((item) => item.id === id);
 
       if (!person) {
-        notFound("That profile does not exist — it may have been removed.");
+        notFound("That profile does not exist, it may have been removed.");
         return;
       }
 
@@ -203,11 +277,11 @@
       }
       if (current) current.textContent = person.name;
 
-      render(person, services);
-      renderRelated(person, freelancers);
+      const rankedList = Components.rankedList(freelancers.items);
+      const rankedPerson = rankedList.find((item) => item.id === person.id) || null;
 
-      const cta = $("[data-cta]");
-      if (cta && site && site.cta) cta.innerHTML = Components.Cta(site.cta);
+      render(person, rankedPerson, services);
+      renderRelated(person, freelancers);
     })
     .catch((error) => {
       console.error(error);

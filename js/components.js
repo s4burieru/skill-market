@@ -1,50 +1,136 @@
+/* SkillMarket icon set.
+   Hand-drawn, solid glyphs on a 24px grid. No stock line icons: every icon
+   is a filled silhouette (optionally with knocked-out or lighter detail in
+   the same ink), paired with chunky geometry that matches the wordmark.
+   Use Icons.svg(name) for inline use; Icons.path(name) returns the raw
+   inner markup when a one-off svg wrapper is needed. */
 const Icons = (() => {
   const paths = {
-    star: '<path d="M12 3.6l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"></path>',
-    menu: '<path d="M4 7h16M4 12h16M4 17h16"></path>',
-    close: '<path d="M6 6l12 12M18 6L6 18"></path>',
-    wallet: '<path d="M20 7H5a2 2 0 0 1 0-4h13v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h15V7H5"></path><path d="M16 13h2"></path>',
-    "map-pin": '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle>',
-    clock: '<circle cx="12" cy="12" r="9"></circle><path d="M12 7.5V12l3 1.8"></path>',
-    calendar: '<rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path>',
-    "trending-up": '<path d="M3 17l6-6 4 4 7-7"></path><path d="M14 8h6v6"></path>',
-    grid: '<rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect>',
-    "chevron-down": '<path d="M6 9l6 6 6-6"></path>',
-    bell: '<path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path>',
-    inbox:
-      '<path d="M22 12h-6l-2 3h-4l-2-3H2"></path><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>',
-    folder:
-      '<path d="M3 8a2 2 0 0 1 2-2h3.6l2 2.5H19a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>',
-    "file-text":
-      '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h4"></path>',
-    message:
-      '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.7 8.7 0 0 1-3.8-.9L3 21l1.9-5.6A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"></path>',
-    "bar-chart": '<path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path>',
-    user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>',
-    users:
-      '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.9"></path><path d="M16 3.1a4 4 0 0 1 0 7.8"></path>',
-    shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>',
-    flag:
-      '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><path d="M4 22v-7"></path>',
-    settings:
-      '<circle cx="12" cy="12" r="3"></circle><path d="M19.1 14.4a1.5 1.5 0 0 0 .3 1.7l.1.1a1.9 1.9 0 1 1-2.7 2.7l-.1-.1a1.5 1.5 0 0 0-1.7-.3 1.5 1.5 0 0 0-.9 1.4v.2a1.9 1.9 0 1 1-3.8 0v-.1a1.5 1.5 0 0 0-1-1.4 1.5 1.5 0 0 0-1.7.3l-.1.1a1.9 1.9 0 1 1-2.7-2.7l.1-.1a1.5 1.5 0 0 0 .3-1.7 1.5 1.5 0 0 0-1.4-.9h-.2a1.9 1.9 0 1 1 0-3.8h.1a1.5 1.5 0 0 0 1.4-1 1.5 1.5 0 0 0-.3-1.7l-.1-.1a1.9 1.9 0 1 1 2.7-2.7l.1.1a1.5 1.5 0 0 0 1.7.3h.1a1.5 1.5 0 0 0 .9-1.4v-.2a1.9 1.9 0 1 1 3.8 0v.1a1.5 1.5 0 0 0 .9 1.4 1.5 1.5 0 0 0 1.7-.3l.1-.1a1.9 1.9 0 1 1 2.7 2.7l-.1.1a1.5 1.5 0 0 0-.3 1.7v.1a1.5 1.5 0 0 0 1.4.9h.2a1.9 1.9 0 1 1 0 3.8h-.1a1.5 1.5 0 0 0-1.4.9z"></path>',
-    help: '<circle cx="12" cy="12" r="9"></circle><path d="M9.1 9.3a3 3 0 0 1 5.8 1c0 2-2.9 2.7-2.9 4"></path><path d="M12 17.3h.01"></path>',
-    "log-out":
-      '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><path d="M16 17l5-5-5-5"></path><path d="M21 12H9"></path>'
+    star: '<path d="M12 2.6 14.7 8.4l6.2.7-4.6 4.2 1.2 6.1L12 17l-5.5 3.4 1.2-6.1-4.6-4.2 6.2-.7L12 2.6Z"/>',
+    menu: '<rect x="4" y="6.2" width="16" height="2.5" rx="1.25"/><rect x="4" y="10.75" width="16" height="2.5" rx="1.25"/><rect x="4" y="15.3" width="16" height="2.5" rx="1.25"/>',
+    close: '<rect x="4" y="10.9" width="16" height="2.2" rx="1.1" transform="rotate(45 12 12)"/><rect x="4" y="10.9" width="16" height="2.2" rx="1.1" transform="rotate(-45 12 12)"/>',
+    wallet: '<path fill-rule="evenodd" d="M5 5.5h13A2.5 2.5 0 0 1 20.5 8v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 17V8A2.5 2.5 0 0 1 5 5.5ZM11.6 10.2h7.7a1.15 1.15 0 0 1 1.15 1.15v2.3a1.15 1.15 0 0 1-1.15 1.15h-7.7a1.3 1.3 0 0 1-1.3-1.3v-2a1.3 1.3 0 0 1 1.3-1.3Z"/><circle cx="15.4" cy="12.5" r="1.1"/>',
+    "map-pin": '<path fill-rule="evenodd" d="M12 2.5a7.2 7.2 0 0 1 7.2 7.2c0 4.6-4.4 9.6-6.3 11.2a1.35 1.35 0 0 1-1.8 0c-1.9-1.6-6.3-6.6-6.3-11.2A7.2 7.2 0 0 1 12 2.5Zm0 4.05a3.15 3.15 0 1 0 0 6.3 3.15 3.15 0 0 0 0-6.3Z"/>',
+    clock: '<path fill-rule="evenodd" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm.95 4.35a1.25 1.25 0 0 0-2.5 0v5.85a1.25 1.25 0 0 0 .63 1.09l3.6 2.1a1.25 1.25 0 0 0 1.25-2.17l-2.98-1.74V6.85Z"/>',
+    calendar: '<path fill-rule="evenodd" d="M5 4.5h14A2.5 2.5 0 0 1 21.5 7v12a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 19V7A2.5 2.5 0 0 1 5 4.5Zm-.9 5.3a1.15 1.15 0 0 0 0 2.3h15.8a1.15 1.15 0 0 0 0-2.3H4.1Zm1.5 5.4a1.15 1.15 0 0 0 0 2.3h6a1.15 1.15 0 0 0 0-2.3h-6Z"/><rect x="7.2" y="2" width="2.3" height="4.6" rx="1.15"/><rect x="14.5" y="2" width="2.3" height="4.6" rx="1.15"/>',
+    "trending-up": '<path d="M3.31 18.31 9.7 11.93l3.5 3.5L21.81 6.81 20.19 5.19 13.2 12.17 9.7 8.67 1.69 16.69Z"/><path d="M22.84 4.16 23.4 8.4 18.6 3.6Z"/>',
+    grid: '<rect x="3.5" y="3.5" width="7.4" height="7.4" rx="1.8"/><rect x="13.1" y="3.5" width="7.4" height="7.4" rx="1.8"/><rect x="13.1" y="13.1" width="7.4" height="7.4" rx="1.8"/><rect x="3.5" y="13.1" width="7.4" height="7.4" rx="1.8"/>',
+    "chevron-down": '<path d="M6.15 9.2a1.5 1.5 0 0 1 2.15 0L12 13l3.7-3.8a1.5 1.5 0 0 1 2.15 2.1l-4.75 4.9a1.5 1.5 0 0 1-2.2 0l-4.75-4.9a1.5 1.5 0 0 1 0-2.1Z"/>',
+    crown: '<path d="M3.6 8.3 8 11.7 12 5l4 6.7 4.4-3.4-1.4 8.6a1.6 1.6 0 0 1-1.57 1.4H6.57A1.6 1.6 0 0 1 5 16.9L3.6 8.3Z"/>',
+    gem: '<path d="M8.2 3h7.6l4.4 6.3L12 21.6 3.8 9.3 8.2 3Z"/><path fill-opacity=".35" d="M12 21.6 9.4 9.3h5.2L12 21.6Z"/>',
+    "badge-check": '<path fill-rule="evenodd" d="M8.2 2.8h7.6l4.4 4.4v7.6l-4.4 4.4H8.2l-4.4-4.4V7.2L8.2 2.8Zm2.15 11.9-2.45-2.5 1.55-1.55 1.05 1.05 4-4 1.55 1.55-5.7 5.45Z"/>',
+    "shield-check": '<path fill-rule="evenodd" d="M12 2.2 19 5.6a1.6 1.6 0 0 1 1 1.5v5.3c0 5.1-3.1 8.7-8 9.9-4.9-1.2-8-4.8-8-9.9V7.1a1.6 1.6 0 0 1 1-1.5L12 2.2Zm-1.15 12.75-2.9-2.9 1.7-1.7 1.2 1.2 4.05-4 1.7 1.7-5.75 5.7Z"/>',
+    bell: '<path d="M12 2.8a6.3 6.3 0 0 1 6.3 6.3v4.02l1.44 3.16a1.25 1.25 0 0 1-1.16 1.72H5.42a1.25 1.25 0 0 1-1.16-1.72L5.7 13.12v-4A6.3 6.3 0 0 1 12 2.8Z"/><path d="M9.55 19.6a2.55 2.55 0 0 0 4.9 0Z"/>',
+    inbox: '<path d="M4.5 4.3h15a1.4 1.4 0 0 1 0 2.8h-15a1.4 1.4 0 0 1 0-2.8Z"/><path d="M2.8 10a1.6 1.6 0 0 1 1.6-1.6h15.2a1.6 1.6 0 0 1 1.6 1.6v6.3a2.4 2.4 0 0 1-2.4 2.4H5.2a2.4 2.4 0 0 1-2.4-2.4V10Z"/>',
+    folder: '<path d="M3 7.2A2.7 2.7 0 0 1 5.7 4.5h4.1a2 2 0 0 1 1.6.8l1.5 2a2 2 0 0 0 1.6.8h4.8A2.7 2.7 0 0 1 22 10.8v6.5a2.7 2.7 0 0 1-2.7 2.7H5.7A2.7 2.7 0 0 1 3 17.3V7.2Z"/>',
+    "file-text": '<path fill-rule="evenodd" d="M7.3 2.5h5.1l6 6V22a2.1 2.1 0 0 1-2.1 2.1H7.3a2.1 2.1 0 0 1-2.1-2.1V4.6a2.1 2.1 0 0 1 2.1-2.1Zm2 10.5a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Zm0-3.7a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Z"/><path fill-opacity=".4" d="M12.4 2.5v5.1a.9.9 0 0 0 .9.9h5.1L12.4 2.5Z"/>',
+    message: '<path d="M12 3C6.9 3 3 6.6 3 12c0 2 .7 3.9 1.9 5.4.34.5.1 1.4-.7 2.4 2.6.2 4.6-.7 6-1.6.8.2 1.7.3 2.8.3 5.1 0 9-3.6 9-9S17.1 3 12 3Z"/>',
+    "bar-chart": '<rect x="4" y="12" width="4.1" height="7.5" rx="1.2"/><rect x="10.15" y="7.2" width="4.1" height="12.3" rx="1.2"/><rect x="16.3" y="3.5" width="4.1" height="16" rx="1.2"/>',
+    user: '<circle cx="12" cy="7.6" r="4.1"/><path d="M4.5 20.4a7.5 7.5 0 0 1 15 0 1.2 1.2 0 0 1-1.2 1.5H5.7a1.2 1.2 0 0 1-1.2-1.5Z"/>',
+    users: '<circle cx="9.3" cy="8.2" r="3.4"/><path d="M3.4 19.6a6 6 0 0 1 11.8 0 1.1 1.1 0 0 1-1.1 1.4H4.5a1.1 1.1 0 0 1-1.1-1.4Z"/><circle cx="16.7" cy="9" r="2.7" fill-opacity=".55"/><path fill-opacity=".55" d="M15.3 14.2a6 6 0 0 1 5 6.35 1.15 1.15 0 0 1-1.2 1.15h-2.5a7.4 7.4 0 0 0-1.3-7.5Z"/>',
+    shield: '<path d="M12 2.2 19 5.6a1.6 1.6 0 0 1 1 1.5v5.3c0 5.1-3.1 8.7-8 9.9-4.9-1.2-8-4.8-8-9.9V7.1a1.6 1.6 0 0 1 1-1.5L12 2.2Z"/>',
+    flag: '<path d="M4.5 3.5a1.5 1.5 0 0 1 3 0v1.1h9.6a1.3 1.3 0 0 1 1 2.2l-2.8 3.3 2.8 3.3a1.3 1.3 0 0 1-1 2.2H7.5v4.3a1.5 1.5 0 0 1-3 0V3.5Z"/>',
+    settings: '<path fill-rule="evenodd" d="M12 6.1a5.9 5.9 0 1 1 0 11.8 5.9 5.9 0 0 1 0-11.8Zm0 2.7a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z"/><rect x="10.6" y="1.7" width="2.8" height="4.4" rx="1.2"/><rect x="10.6" y="17.9" width="2.8" height="4.4" rx="1.2"/><rect x="1.7" y="10.6" width="4.4" height="2.8" rx="1.2"/><rect x="17.9" y="10.6" width="4.4" height="2.8" rx="1.2"/><rect x="10.6" y="1.7" width="2.8" height="4.4" rx="1.2" transform="rotate(45 12 12)"/><rect x="10.6" y="1.7" width="2.8" height="4.4" rx="1.2" transform="rotate(-45 12 12)"/><rect x="10.6" y="1.7" width="2.8" height="4.4" rx="1.2" transform="rotate(135 12 12)"/><rect x="10.6" y="1.7" width="2.8" height="4.4" rx="1.2" transform="rotate(225 12 12)"/>',
+    help: '<path d="M6.22 11.06A6.15 6.15 0 1 1 12.62 15.32A1.35 1.35 0 0 1 12.42 12.72A3.45 3.45 0 1 0 8.75 10.18A1.35 1.35 0 0 1 6.22 11.06Z"/><circle cx="12" cy="18.9" r="1.7"/>',
+    "log-out": '<path fill-rule="evenodd" d="M10.3 2.5h7.2A2.5 2.5 0 0 1 20 5v14a2.5 2.5 0 0 1-2.5 2.5h-7.2a1.4 1.4 0 1 1 0-2.8h6.4V5.3h-6.4a1.4 1.4 0 1 1 0-2.8Z"/><path d="M2.6 12a1.35 1.35 0 0 1 1.35-1.35h8l-1.9-1.95a1.35 1.35 0 0 1 1.9-1.9l4.9 4.9a1.35 1.35 0 0 1 0 1.9l-4.9 4.9a1.35 1.35 0 0 1-1.9-1.9l1.9-1.9h-8A1.35 1.35 0 0 1 2.6 12Z"/>',
+    check: '<path d="M20 6.3a1.5 1.5 0 0 1 .15 2.1l-9.2 10.6a1.5 1.5 0 0 1-2.25.08L3.6 12.9a1.5 1.5 0 0 1 2.2-2l4 4.3L17.8 6a1.5 1.5 0 0 1 2.2.3Z"/>',
+    "check-circle": '<path fill-rule="evenodd" d="M12 2.3a9.7 9.7 0 1 0 0 19.4 9.7 9.7 0 0 0 0-19.4ZM9.2 11.9l1.9 1.9 4.6-5 1.7 1.6-6.3 6.8-3.6-3.6 1.7-1.7Z"/>',
+    search: '<path fill-rule="evenodd" d="M10.4 3.2a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm0 2.5a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/><rect x="13.85" y="16.3" width="7.5" height="2.6" rx="1.3" transform="rotate(45 17.6 17.6)"/>',
+    send: '<path d="M21.5 2.5 3.1 10.9a1.4 1.4 0 0 0 .15 2.62l6.7 2.4 2.5 6.8a1.4 1.4 0 0 0 2.6.3l6.6-17.5a1.4 1.4 0 0 0-.2-2.9Z"/>',
+    eye: '<path fill-rule="evenodd" d="M12 5.5c5.5 0 8.9 4.7 9.8 6.5-.9 1.8-4.3 6.5-9.8 6.5S3.1 13.8 2.2 12c.9-1.8 4.3-6.5 9.8-6.5Zm0 2.6a3.9 3.9 0 1 0 0 7.8 3.9 3.9 0 0 0 0-7.8Z"/>',
+    "eye-off": '<path fill-rule="evenodd" d="M12 5.5c5.5 0 8.9 4.7 9.8 6.5-.9 1.8-4.3 6.5-9.8 6.5S3.1 13.8 2.2 12c.9-1.8 4.3-6.5 9.8-6.5Zm0 2.6a3.9 3.9 0 1 0 0 7.8 3.9 3.9 0 0 0 0-7.8Z"/><rect x="2.6" y="11" width="18.8" height="2.1" rx="1.05" transform="rotate(-45 12 12)"/>',
+    "file-plus": '<path d="M7.3 2.5h5.1l6 6V22a2.1 2.1 0 0 1-2.1 2.1H7.3a2.1 2.1 0 0 1-2.1-2.1V4.6a2.1 2.1 0 0 1 2.1-2.1Z"/><path fill-opacity=".55" d="M13.3 10.6h1.6a.8.8 0 0 1 .8.8v2.4h2.4a.8.8 0 0 1 .8.8v1.6a.8.8 0 0 1-.8.8h-2.4v2.4a.8.8 0 0 1-.8.8h-1.6a.8.8 0 0 1-.8-.8v-2.4H9.8a.8.8 0 0 1-.8-.8v-1.6a.8.8 0 0 1 .8-.8h2.7v-2.4a.8.8 0 0 1 .8-.8Z"/>',
+    briefcase: '<path d="M5.2 8h13.6A2.2 2.2 0 0 1 21 10.2v8.6a2.7 2.7 0 0 1-2.7 2.7H5.7A2.7 2.7 0 0 1 3 18.8v-8.6A2.2 2.2 0 0 1 5.2 8Z"/><rect x="8" y="3" width="8" height="3.2" rx="1.6"/><path fill-opacity=".38" d="M3 12.2h6.3a.9.9 0 0 1 .8.55 2.9 2.9 0 0 0 4.6 0 .9.9 0 0 1 .8-.55H21v1.65h-5a4.4 4.4 0 0 1-4.4 3.2 4.4 4.4 0 0 1-4.4-3.2H3v-1.65Z"/>',
+    "arrow-up": '<path d="M12 3.2 20.4 12.2h-4.2V20a1.6 1.6 0 0 1-1.6 1.6H9.4A1.6 1.6 0 0 1 7.8 20v-7.8H3.6L12 3.2Z"/>',
+    "arrow-right": '<rect x="2.6" y="10.7" width="12.4" height="2.6" rx="1.3"/><path d="M12.2 4.6 21.8 12l-9.6 7.4Z"/>'
   };
 
-  const filled = new Set(["star"]);
-
   function svg(name, className = "") {
-    const d = paths[name];
-    if (!d) return "";
-    const fill = filled.has(name) ? "currentColor" : "none";
-    const stroke = filled.has(name) ? "none" : "currentColor";
-    return `<svg class="icon ${className}" viewBox="0 0 24 24" fill="${fill}" stroke="${stroke}"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+    const markup = paths[name];
+    if (!markup) return "";
+    return `<svg class="icon${className ? ` ${className}` : ""}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${markup}</svg>`;
   }
 
   return { svg, path: (name) => paths[name] || "" };
+})();
+
+/**
+ * Marketplace ranking, recomputed from the data on every render.
+ * Scores are computed the same way, but freelancers are ranked within
+ * their own category: every category crowns its own gold, silver and
+ * bronze, so there is always a #1 per category.
+ * Score (max 100) leans on quality, with volume as proof:
+ *   rating * 14              (up to 70)
+ * + reviews  (cap 150) * .12 (up to 18)
+ * + completed (cap 150) * .08 (up to 12)
+ * Each category group is sorted by score (rating, then review count break
+ * ties) and every entry gets a 1-based `rank` within its category.
+ * Ranks 1-3 win the gold/silver/bronze crown; Premium adds a badge and
+ * boosted placement but never overrides the score, so rankings stay
+ * honest. The returned list is ordered leaders-first (all category #1s,
+ * then #2s, and so on, best score first).
+ */
+const Ranking = (() => {
+  function score(person) {
+    const rating = Number(person.rating) || 0;
+    const reviews = Math.min(Number(person.reviewsCount) || 0, 150);
+    const completed =
+      Math.min(Number(person.stats && person.stats.completed) || 0, 150);
+    return Math.round(rating * 14 + reviews * 0.12 + completed * 0.08);
+  }
+
+  function compare(a, b) {
+    return (
+      b.score - a.score ||
+      (Number(b.rating) || 0) - (Number(a.rating) || 0) ||
+      (Number(b.reviewsCount) || 0) - (Number(a.reviewsCount) || 0) ||
+      String(a.name).localeCompare(String(b.name))
+    );
+  }
+
+  const categoryKey = (person) =>
+    String((person && person.category) || "").trim().toLowerCase() || "uncategorized";
+
+  function ranked(list) {
+    const scored = [...(list || [])].map((person) => ({
+      ...person,
+      score: score(person)
+    }));
+
+    const groups = new Map();
+    for (const person of scored) {
+      const key = categoryKey(person);
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(person);
+    }
+
+    for (const group of groups.values()) {
+      group
+        .sort(compare)
+        .forEach((person, index) => {
+          person.rank = index + 1;
+        });
+    }
+
+    // Leaders board: every category #1 first, then #2s, then #3s, best score first.
+    return scored.sort((a, b) => a.rank - b.rank || compare(a, b));
+  }
+
+  function medal(rank) {
+    if (rank === 1) return "gold";
+    if (rank === 2) return "silver";
+    if (rank === 3) return "bronze";
+    return null;
+  }
+
+  function tier(rank) {
+    if (rank === 1) return "Top Freelancer";
+    if (rank === 2) return "Silver Crown";
+    if (rank === 3) return "Bronze Crown";
+    return null;
+  }
+
+  return { score, ranked, medal, tier };
 })();
 
 const Components = (() => {
@@ -91,25 +177,98 @@ const Components = (() => {
       </article>`;
   }
 
+  /* Two-tone verified seal (solid octagon, knocked-out check) -------------- */
+
+  function VerifiedSeal(className = "") {
+    return `<svg class="verified-seal${className ? ` ${className}` : ""}" viewBox="0 0 24 24" role="img" aria-label="Identity verified by SkillMarket">
+      <path fill="currentColor" fill-rule="evenodd" d="M7.9 2.6h8.2l5.3 5.3v8.2l-5.3 5.3H7.9l-5.3-5.3V7.9l5.3-5.3Zm3.05 12.5 6.1-6.25-1.75-1.75-4.35 4.5-1.85-1.85-1.75 1.75 3.6 3.6Z"/>
+    </svg>`;
+  }
+
   function FreelancerCard(person) {
+    const rank = person.rank || null;
+    const medal = rank ? Ranking.medal(rank) : null;
+    const score = person.score;
+    const reviews = Number(person.reviewsCount) || 0;
+    const completed = Number(person.stats && person.stats.completed) || 0;
+    const skills = Array.isArray(person.skills) ? person.skills : [];
+    const shownSkills = skills.slice(0, 2);
+    const extraSkills = skills.length - shownSkills.length;
+    const availableNow = String(person.availability || "")
+      .trim()
+      .toLowerCase()
+      .startsWith("available now");
+
+    const crown = medal
+      ? `<span class="fl__crown fl__crown--${medal}" title="#${rank} in ${esc(
+          person.category
+        )} · Marketplace score: ${esc(score)} of 100">${Icons.svg(
+          "crown"
+        )}<span class="fl__crown-num">#${rank}</span></span>`
+      : "";
+
+    const premium = person.premium
+      ? `<span class="fl__premium" title="Premium member, boosted placement in search">${Icons.svg(
+          "gem"
+        )}Premium</span>`
+      : "";
+
+    const rankChip =
+      rank && !medal
+        ? `<span class="fl__rank" title="#${rank} in ${esc(
+            person.category
+          )} · Marketplace score: ${esc(score)} of 100">#${rank}</span>`
+        : "";
+
+    const skillChips = shownSkills
+      .map((skill) => `<li class="fl__skill">${esc(skill)}</li>`)
+      .join("");
+    const extraChip =
+      extraSkills > 0
+        ? `<li class="fl__skill fl__skill--more" title="${esc(skills.slice(2).join(", "))}">+${extraSkills}</li>`
+        : "";
+
     return `
-      <article class="card">
-        <div class="card__media">
-          <img src="${esc(person.image)}" alt="${esc(person.name)}" loading="lazy" width="600" height="600" />
+      <article class="card card--freelancer${person.premium ? " card--premium" : ""}">
+        <div class="fl__topline">
+          <span class="fl__category">${esc(person.category)}</span>
+          <span class="fl__flags">${rankChip}${premium}</span>
         </div>
-        <div class="card__body">
-          <span class="card__category">${esc(person.category)}</span>
-          <div class="freelancer__name-row">
-            <h3 class="freelancer__name">${esc(person.name)}</h3>
-            <span class="rating">${Icons.svg("star")}${esc(person.rating)}</span>
+        <div class="fl__main">
+          <div class="fl__avatar">
+            <img src="${esc(person.image)}" alt="${esc(person.name)}" loading="lazy" width="600" height="600" />
+            ${crown}
           </div>
-          <p class="freelancer__role">${esc(person.role)}</p>
-          <div class="card__footer">
-            <span class="rate">${esc(person.rate)} <span>/hr</span></span>
-            <a class="btn btn--primary btn--sm" href="freelancer-details.html?id=${esc(
-              person.id
-            )}">View</a>
+          <div class="fl__id">
+            <h3 class="fl__name" title="${esc(person.name)}"><span class="fl__name-text">${esc(
+              person.name
+            )}${person.verified ? VerifiedSeal() : ""}</span></h3>
+            <p class="fl__role" title="${esc(person.role)}">${esc(person.role)}</p>
+            <p class="fl__meta">${Icons.svg("star", "fl__star")}<strong>${esc(
+              person.rating
+            )}</strong><span class="fl__reviews">(${esc(reviews)})</span><span class="fl__sep" aria-hidden="true"></span><span>${esc(
+              completed
+            )} jobs</span></p>
+            <p class="fl__avail${availableNow ? " fl__avail--now" : ""}"><span class="fl__avail-dot" aria-hidden="true"></span>${esc(
+              person.availability || "Availability on request"
+            )}</p>
           </div>
+        </div>
+        ${
+          skillChips
+            ? `<ul class="fl__skills" aria-label="Top skills">${skillChips}${extraChip}</ul>`
+            : ""
+        }
+        <div class="fl__footer">
+          <span class="fl__rate"><span class="fl__rate-value">${esc(
+            person.rate
+          )}<span class="fl__rate-unit">/hr</span></span><span class="fl__rate-label">Hourly rate</span></span>
+          <a class="btn btn--primary btn--sm fl__cta" href="freelancer-details.html?id=${esc(
+            person.id
+          )}" aria-label="View ${esc(person.name)}&rsquo;s profile">View${Icons.svg(
+            "arrow-right",
+            "fl__cta-icon"
+          )}</a>
         </div>
       </article>`;
   }
@@ -159,15 +318,6 @@ const Components = (() => {
     )}</button>`;
   }
 
-  function Cta(cta) {
-    return `
-      <div>
-        <h2 class="cta__title">${esc(cta.title)}</h2>
-        <p class="cta__text">${esc(cta.text)}</p>
-      </div>
-      <a class="btn btn--white" href="${esc(cta.button.href)}">${esc(cta.button.label)}</a>`;
-  }
-
   /* Reviews & ratings (service / freelancer detail pages) -------------------- */
 
   function StarRow(rating) {
@@ -176,8 +326,7 @@ const Components = (() => {
       .map((i) => {
         const on = value >= i - 0.25;
         return `<svg class="star${on ? " star--on" : ""}" viewBox="0 0 24 24"
-          fill="${on ? "currentColor" : "none"}" stroke="${on ? "none" : "currentColor"}"
-          stroke-width="2" stroke-linejoin="round" aria-hidden="true">${Icons.path("star")}</svg>`;
+          fill="currentColor" aria-hidden="true">${Icons.path("star")}</svg>`;
       })
       .join("");
 
@@ -215,7 +364,7 @@ const Components = (() => {
 
   function ReviewList(reviews) {
     if (!reviews || !reviews.length) {
-      return `<p class="empty-state">No reviews yet — be the first to leave one.</p>`;
+      return `<p class="empty-state">No reviews yet. Be the first to leave one.</p>`;
     }
     return `<div class="review-list">${reviews.map(ReviewItem).join("")}</div>`;
   }
@@ -241,12 +390,14 @@ const Components = (() => {
     FreelancerCard,
     JobCard,
     Pill,
-    Cta,
     linkList,
     esc,
     StarRow,
     ReviewItem,
     ReviewList,
-    RatingSummary
+    RatingSummary,
+    VerifiedSeal,
+    rankedList: Ranking.ranked,
+    rankTier: Ranking.tier
   };
 })();

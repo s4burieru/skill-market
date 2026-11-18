@@ -20,33 +20,34 @@ const Footer = (site) => {
     {
       label: "X",
       href: "#",
-      svg: '<path d="M4 4l7.6 9.7L4.4 20h2.3l5.9-6.9L17.8 20H20l-7.9-10L19.4 4h-2.3l-5.4 6.3L7.2 4z" fill="currentColor" stroke="none"></path>'
+      svg: '<path d="M4.2 4h3.15l5.1 6.5L18 4h2.4l-6.35 8.15L19.2 20h-3.15l-5.35-6.8L5.6 20H3.2l6.15-8.15L4.2 4Z" fill-rule="evenodd"></path>'
     },
     {
       label: "LinkedIn",
       href: "#",
-      svg: '<rect x="3" y="3" width="18" height="18" rx="3.5"></rect><path d="M7.6 10.6V17"></path><circle cx="7.6" cy="7.6" r="1.1" fill="currentColor" stroke="none"></circle><path d="M11.6 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"></path>'
+      svg: '<path fill-rule="evenodd" d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5v-13Zm3.7 4.9a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5ZM6.7 11h2v7h-2v-7Zm3.3 0h1.9v1h.15c.3-.55 1.05-1.3 2.15-1.3 2.3 0 2.75 1.5 2.75 3.5V18h-2v-3.2c0-.8-.05-1.8-1.2-1.8-1.25 0-1.75 1-1.75 1.8V18h-2v-7Z"></path>'
     },
     {
       label: "Instagram",
       href: "#",
-      svg: '<rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle>'
+      svg: '<path fill-rule="evenodd" d="M9 3.5h6A5.5 5.5 0 0 1 20.5 9v6a5.5 5.5 0 0 1-5.5 5.5H9A5.5 5.5 0 0 1 3.5 15V9A5.5 5.5 0 0 1 9 3.5Zm3 4.75a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5Zm6.4-.95a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"></path>'
     },
     {
       label: "YouTube",
       href: "#",
-      svg: '<rect x="2.5" y="6" width="19" height="12" rx="4"></rect><path d="M10.2 9.4l5 2.6-5 2.6z" fill="currentColor" stroke="none"></path>'
+      svg: '<path fill-rule="evenodd" d="M9.3 4.5h5.4a5 5 0 0 1 5 5v5a5 5 0 0 1-5 5H9.3a5 5 0 0 1-5-5v-5a5 5 0 0 1 5-5Zm.9 4.9v5.2l4.4-2.6-4.4-2.6Z"></path>'
     }
   ]
     .map(
       (s) =>
         `<li><a class="footer__social" href="${esc(s.href)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(
           s.label
-        )}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${s.svg}</svg></a></li>`
+        )}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${s.svg}</svg></a></li>`
     )
     .join("");
 
   return `
+    <img class="footer__watermark" src="img/logo-1.png" alt="" aria-hidden="true" loading="lazy">
     <div class="container">
       <div class="footer__top">
         <div class="footer__intro">
@@ -76,10 +77,7 @@ const Footer = (site) => {
         <span class="footer__copy">${esc(footer.legal.copyright)}</span>
         <div class="footer__right">
           <div class="footer__legal">${legal}</div>
-          <button class="footer__top-btn" type="button" data-back-to-top>
-            Back to top
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg>
-          </button>
+
         </div>
       </div>
     </div>`;
@@ -90,16 +88,49 @@ class SiteFooter extends HTMLElement {
     if (this.dataset.rendered) return;
     this.dataset.rendered = "true";
 
+    this.renderBackToTop();
+
     Data.get("site")
       .then((site) => {
         this.innerHTML = `<footer class="footer">${Footer(site)}</footer>`;
         this.wire();
+        this.driftWatermark();
       })
       .catch(() => {
         this.innerHTML = `<footer class="footer"><div class="container">
           <div class="footer__bottom"><span>SkillMarket</span></div>
         </div></footer>`;
       });
+  }
+
+  /* Subtle scroll drift for the decorative watermark: it slides a little
+     diagonally as the footer passes through the viewport. Skipped when
+     the user prefers reduced motion. */
+  driftWatermark() {
+    const watermark = this.querySelector(".footer__watermark");
+    const footer = this.querySelector(".footer");
+    if (!watermark || !footer) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const rect = footer.getBoundingClientRect();
+      const span = window.innerHeight + rect.height;
+      const progress = Math.min(Math.max((window.innerHeight - rect.top) / span, 0), 1);
+      const shift = (progress - 0.5) * 80;
+      watermark.style.transform = `translate3d(${(shift * 0.55).toFixed(1)}px, ${shift.toFixed(1)}px, 0)`;
+    };
+    const requestUpdate = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    update();
   }
 
   wire() {
@@ -124,13 +155,40 @@ class SiteFooter extends HTMLElement {
         form.reset();
       });
     }
+  }
 
-    const backToTop = this.querySelector("[data-back-to-top]");
-    if (backToTop) {
-      backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    }
+  /* Floating circular back-to-top button, appended to the body so it
+     lives independently of the footer. Appears once the page is scrolled,
+     hidden at the top. */
+  renderBackToTop() {
+    if (document.querySelector(".back-to-top")) return;
+
+    const button = document.createElement("button");
+    button.className = "back-to-top";
+    button.type = "button";
+    button.setAttribute("aria-label", "Back to top");
+    button.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.2 20.4 12.2h-4.2V20a1.6 1.6 0 0 1-1.6 1.6H9.4A1.6 1.6 0 0 1 7.8 20v-7.8H3.6L12 3.2Z"/></svg>';
+
+    const toggle = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      // Hide near the bottom of the page: there the fixed footer is
+      // fully revealed and the button would sit on top of its legal links.
+      const show = window.scrollY > 320 && window.scrollY < max - 60;
+      button.classList.toggle("is-visible", show);
+      button.tabIndex = show ? 0 : -1;
+      button.setAttribute("aria-hidden", String(!show));
+    };
+
+    button.addEventListener("click", () => {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    });
+
+    window.addEventListener("scroll", toggle, { passive: true });
+    window.addEventListener("resize", toggle);
+    document.body.appendChild(button);
+    toggle();
   }
 }
 

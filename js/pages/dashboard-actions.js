@@ -1,5 +1,5 @@
 /**
- * Dashboard action layer — shared by freelancer-dashboard.html,
+ * Dashboard action layer, shared by freelancer-dashboard.html,
  * hire-talent-dashboard.html and super-admin-dashboard.html.
  *
  * Everything clickable that is not a plain section link lives here:
@@ -23,9 +23,8 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
 
-  const CHECK = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M4 12.5 9.5 18 20 6.5"></path></svg>`;
+  const CHECK = `<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M20 6.3a1.5 1.5 0 0 1 .15 2.1l-9.2 10.6a1.5 1.5 0 0 1-2.25.08L3.6 12.9a1.5 1.5 0 0 1 2.2-2l4 4.3L17.8 6a1.5 1.5 0 0 1 2.2.3Z"/></svg>`;
 
   const account = () => Session.get() || { name: "", email: "", role: "freelancer" };
   const role = () => account().role || "freelancer";
@@ -318,37 +317,37 @@
 
   const HELP = {
     freelancer: [
-      ["How do I get paid?", "Milestones drop into your SkillMarket balance as soon as a client approves them. Withdraw to GCash, bank or PayPal — most transfers clear in 1–2 business days."],
+      ["How do I get paid?", "Milestones drop into your SkillMarket balance as soon as a client approves them. Withdraw to GCash, bank or PayPal. Most transfers clear in 1–2 business days."],
       ["Why was my proposal declined?", "Declined proposals still count toward your stats. Open the proposal from Recent proposals to read the short reason the client left."],
       ["How does ranking work?", "Rating, response time and completed contracts decide where you appear in search. A 100% profile gets the biggest lift of all."]
     ],
     "hire-talent": [
       ["How does escrow work?", "Funds you add sit in escrow and are only released when you approve a milestone. Unallocated escrow can be reclaimed at any time."],
-      ["Can I reject a delivery?", "Yes — open the project, review the delivery, then request changes or reject it. Payment stays in escrow until the issue is settled."],
+      ["Can I reject a delivery?", "Yes. Open the project, review the delivery, then request changes or reject it. Payment stays in escrow until the issue is settled."],
       ["How do I post a better job?", "Briefs with a clear scope, a real budget and 3–5 skills get roughly twice as many applications."]
     ],
     "super-admin": [
       ["What happens when I approve an item?", "It leaves the queue, returns to search and is written to the audit trail with your name and timestamp for 90 days."],
       ["How are reports prioritised?", "Urgent reports (payment disputes, harassment) jump to the top and are emailed to every online admin."],
-      ["Can I undo a suspension?", "Yes — Users, suspended accounts, Reinstate. The original moderator is notified automatically."]
+      ["Can I undo a suspension?", "Yes. Go to Users → suspended accounts → Reinstate. The original moderator is notified automatically."]
     ]
   };
 
   const NOTICES = {
     freelancer: [
-      { icon: "message", title: "Michael Chen replied", text: "“Can you share the updated checkout screens?”", time: "12m", href: "#messages" },
-      { icon: "folder", title: "Milestone due in 2 days", text: "Analytics dashboard MVP is sitting at 88%.", time: "1h", href: "#projects" },
-      { icon: "wallet", title: "Payment received", text: "₱82,700 from Growth Hub cleared into your balance.", time: "Nov 2", href: "#payments" }
+      { icon: "message", title: "Michael Chen replied", text: "“Can you share the updated checkout screens?”", time: "12m", href: "messages.html#messages" },
+      { icon: "folder", title: "Milestone due in 2 days", text: "Analytics dashboard MVP is sitting at 88%.", time: "1h", href: "projects.html#projects" },
+      { icon: "wallet", title: "Payment received", text: "₱82,700 from Growth Hub cleared into your balance.", time: "Nov 2", href: "payments.html#payments" }
     ],
     "hire-talent": [
-      { icon: "file-text", title: "12 new applications", text: "Senior React Developer picked up a dozen candidates overnight.", time: "3h", href: "#applications" },
-      { icon: "message", title: "David Kim confirmed", text: "“Pipeline KPIs confirmed, starting the build Monday.”", time: "2h", href: "#messages" },
-      { icon: "folder", title: "Milestone to approve", text: "Brand identity refresh is ready for your review.", time: "Nov 3", href: "#projects" }
+      { icon: "file-text", title: "12 new applications", text: "Senior React Developer picked up a dozen candidates overnight.", time: "3h", href: "applications.html#applications" },
+      { icon: "message", title: "David Kim confirmed", text: "“Pipeline KPIs confirmed, starting the build Monday.”", time: "2h", href: "messages.html#messages" },
+      { icon: "folder", title: "Milestone to approve", text: "Brand identity refresh is ready for your review.", time: "Nov 3", href: "projects.html#projects" }
     ],
     "super-admin": [
-      { icon: "shield", title: "6 items need review", text: "The moderation queue has six items waiting.", time: "2h", href: "#moderation" },
-      { icon: "flag", title: "2 urgent reports unassigned", text: "Order #4821 and one harassment report.", time: "1h", href: "#reports" },
-      { icon: "users", title: "312 new users this week", text: "48 of them are still awaiting verification.", time: "1d", href: "#users" }
+      { icon: "shield", title: "6 items need review", text: "The moderation queue has six items waiting.", time: "2h", href: "moderation.html#moderation" },
+      { icon: "flag", title: "2 urgent reports unassigned", text: "Order #4821 and one harassment report.", time: "1h", href: "reports.html#reports" },
+      { icon: "users", title: "312 new users this week", text: "48 of them are still awaiting verification.", time: "1d", href: "users.html#users" }
     ]
   };
 
@@ -356,7 +355,7 @@
     freelancer: {
       eyebrow: "Public profile",
       roleLine: "Top-rated freelancer · Identity verified",
-      bio: "I build fast, accessible storefronts and dashboards for growing teams. Eight years shipping React and Node, six years doing it on SkillMarket — most clients come back for a second project.",
+      bio: "I build fast, accessible storefronts and dashboards for growing teams. Eight years shipping React and Node, six years doing it on SkillMarket. Most clients come back for a second project.",
       tags: ["React", "Node.js", "TypeScript", "UI design", "API integration", "Performance"],
       stats: [["Rating", "4.9 / 5"], ["Completed", "42 contracts"], ["Response", "~1 hour"], ["Repeat clients", "68%"]],
       link: "freelancer-details.html?id=flw-001"
@@ -490,7 +489,7 @@
     try {
       window.localStorage.setItem(storageKey(name), JSON.stringify(data));
     } catch (error) {
-      /* storage unavailable — the switches still work for this visit */
+      /* storage unavailable, the switches still work for this visit */
     }
   }
 
@@ -558,6 +557,39 @@
     });
   }
 
+  /**
+   * The dedicated settings.html page renders the same per-role switch
+   * list as the settings dialog, inline and persisted to the same storage
+   * key (`skillmarket.settings.<role>`), so preferences stay in sync no
+   * matter which entry point toggles them.
+   */
+  function hydrateSettingsSwitches() {
+    const block = $(`[data-setting-block="${role()}"]`);
+    if (!block) return;
+
+    const defaults = SETTINGS[role()] || SETTINGS.freelancer;
+
+    readFlags("settings", defaults).forEach((flag) => {
+      const btn = block.querySelector(`[data-setting-key="${flag.key}"]`);
+      if (btn) btn.setAttribute("aria-checked", String(flag.on));
+    });
+
+    block.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-setting-key]");
+      if (!btn || !block.contains(btn)) return;
+
+      const key = btn.dataset.settingKey;
+      const on = btn.getAttribute("aria-checked") !== "true";
+      btn.setAttribute("aria-checked", String(on));
+
+      const next = readFlags("settings", defaults).map((flag) =>
+        flag.key === key ? { ...flag, on } : flag
+      );
+      writeFlags("settings", next);
+      toast("Your notification preferences were saved.", "Settings");
+    });
+  }
+
   function openHelp() {
     const items = HELP[role()] || HELP.freelancer;
 
@@ -582,7 +614,7 @@
         "help-contact": () => {
           closeModal();
           toast(
-            `Ticket #${ref()} was opened — we'll reply to ${account().email || "your inbox"}.`,
+            `Ticket #${ref()} was opened. We'll reply to ${account().email || "your inbox"}.`,
             "We're on it"
           );
         }
@@ -681,7 +713,15 @@
           const notices = NOTICES[role()] || NOTICES.freelancer;
           const notice = notices[Number(item.dataset.noticeIndex)];
           closeDrop();
-          if (notice) scrollToSection(notice.href.slice(1));
+          if (notice) {
+            // Notice targets live on the shared menu page; scroll when we
+            // are already there, otherwise navigate to the section.
+            // Notice targets are the dedicated pages (optionally with a
+            // same-page hash); scroll when the section is here, else navigate.
+            const hash = notice.href.indexOf("#");
+            const id = hash === -1 ? null : notice.href.slice(hash + 1);
+            if (!id || !scrollToSection(id)) window.location.href = notice.href;
+          }
           return;
         }
 
@@ -705,8 +745,13 @@
         const key = item.dataset.account;
         closeDrop();
 
-        if (key === "profile") scrollToSection("profile");
-        if (key === "settings") openSettings();
+        if (key === "profile") {
+          // Profile lives on the dedicated profile.html page now.
+          if (!scrollToSection("profile")) window.location.href = "profile.html";
+        }
+        if (key === "settings") {
+          if (!scrollToSection("settings")) window.location.href = "settings.html";
+        }
         if (key === "help") openHelp();
         if (key === "logout") confirmLogout();
       });
@@ -758,7 +803,7 @@
       eyebrow: "Contracts",
       title: "All projects",
       html: `<ul class="panel__body panel__body--flush modal-list">${rows}</ul>
-             <p class="modal__note">Every engagement on this account — running, paused and finished.</p>`,
+             <p class="modal__note">Every engagement on this account: running, paused and finished.</p>`,
       foot:
         role() === "hire-talent"
           ? closeFoot(
@@ -880,7 +925,7 @@
                         aria-label="Remove ${esc(skill)}">${Icons.svg("close")}</button></li>`
             )
             .join("")}</ul>`
-        : `<p class="modal__note">No skills added yet — type one above and press Add.</p>`;
+        : `<p class="modal__note">No skills added yet. Type one above and press Add.</p>`;
 
     const rebuild = (root) => {
       const list = $("[data-skill-list]", root);
@@ -952,7 +997,7 @@
 
           closeModal();
           addActivity(`Profile updated · ${added.length} skill${added.length > 1 ? "s" : ""} added`, "user");
-          toast(`${added.join(", ")} now appear on your profile — strength is ${next}%.`, "Skills added");
+          toast(`${added.join(", ")} now appear on your profile. Strength is ${next}%.`, "Skills added");
         }
       },
       onOpen: (root) => {
@@ -1113,7 +1158,7 @@
   function showThread(item, list) {
     const history = [
       { who: "them", text: item.preview, time: item.time || "Earlier" },
-      { who: "me", text: "Thanks — I've seen it and will get back to you today.", time: "Earlier" }
+      { who: "me", text: "Thanks. I've seen it and will get back to you today.", time: "Earlier" }
     ];
 
     openModal({
@@ -1202,7 +1247,7 @@
                <p class="field">
                  <label class="field__label" for="compose-text">Message</label>
                  <textarea class="field__input" id="compose-text" name="text" rows="4"
-                           placeholder="Hi — quick update from SkillMarket…"></textarea>
+                           placeholder="Hi, quick update from SkillMarket…"></textarea>
                </p>
                <p class="field__error" data-field-error hidden></p>
              </form>`,
@@ -1354,7 +1399,7 @@
           name: "method",
           label: "Send to",
           type: "select",
-          options: ["GCash ·•••• 4821", "Bank transfer ·•••• 9017", "PayPal · sarah@wallet.com"]
+          options: ["GCash ·•••• 4821", "Bank transfer ·•••• 9017", "PayPal · sabriel@wallet.com"]
         }
       ],
       submitLabel: "Withdraw",
@@ -1430,7 +1475,7 @@
     formModal({
       eyebrow: "Hiring",
       title: "Post a job",
-      lead: "Clear scope, real budget and 3–5 skills — that brief gets about twice the applications.",
+      lead: "Clear scope, real budget and 3–5 skills. That brief gets about twice the applications.",
       fields: [
         { name: "title", label: "Job title", type: "text", placeholder: "Senior React Developer", required: true },
         { name: "budget", label: "Budget (₱)", type: "text", placeholder: "120000", required: true, hint: "Total for the milestone" },
@@ -1516,7 +1561,7 @@
       window.setTimeout(() => URL.revokeObjectURL(url), 1000);
       toast("Six months of revenue and every headline metric were saved as CSV.", "Report exported");
     } catch (error) {
-      toast("The browser blocked the download — try serving the folder over HTTP.", "Export failed");
+      toast("The browser blocked the download. Try serving the folder over HTTP.", "Export failed");
     }
   }
 
@@ -1761,7 +1806,7 @@
       html: `<p class="modal__lead">${esc(info.meta)}</p>
              ${detailGrid([
                ["Status", info.status || "On track"],
-               ["Progress", info.percent || "—"],
+               ["Progress", info.percent || "Not set"],
                ["Next milestone", "Client review"],
                ["Invoices", "Up to date"]
              ])}
@@ -1787,7 +1832,7 @@
                      ["Client viewed", "Yesterday"],
                      ["Your rate", String(info.meta).split("·").pop().trim()]
                    ])}
-                   <p class="modal__note">Withdrawing closes the proposal — you can always send it again while the job is open.</p>`,
+                   <p class="modal__note">Withdrawing closes the proposal. You can always send it again while the job is open.</p>`,
             action: {
               key: "row-withdraw",
               label: "Withdraw proposal",
@@ -1890,6 +1935,96 @@
     })
   };
 
+  /* --- Dedicated page actions ------------------------------------------- */
+
+  // Quick replies on the messages page: copies the canned text (best
+  // effort) and confirms, so the button is never a dead click.
+  function quickReply(trigger) {
+    const text = trigger.dataset.text || "Got it, thanks!";
+    try {
+      if (window.navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(() => {});
+      }
+    } catch (error) {
+      /* clipboard unavailable (file:// or permissions), the toast still confirms */
+    }
+    toast(`“${text}”, paste it in the composer and adjust the details.`, "Quick reply");
+  }
+
+  function addPayoutMethod() {
+    formModal({
+      eyebrow: "Payments",
+      title: "Add payout method",
+      lead: "New methods are verified once, then payouts clear to them automatically.",
+      fields: [
+        { name: "method", label: "Method", type: "select", options: ["GCash", "BPI", "Metrobank", "PayPal"], value: "GCash", required: true },
+        { name: "account", label: "Account number or handle", type: "text", placeholder: "09XX XXX XXXX", required: true, hint: "Double-check this, payouts to a wrong account cannot be reversed" },
+        { name: "name", label: "Account name", type: "text", placeholder: "Name on the account", required: true }
+      ],
+      submitLabel: "Add method",
+      onSubmit: () => {
+        successModal({
+          eyebrow: "Payments",
+          title: "Method added",
+          heading: "Payout method added",
+          text: "We'll send a ₱1 test transfer to verify the account, then it shows up in Settings."
+        });
+        toast("Your payout method was added and is awaiting verification.", "Payout method added");
+      }
+    });
+  }
+
+  function videoIntro() {
+    toast("Record or upload a 60-second intro, profiles with video get 2× more messages.", "Add a video intro");
+  }
+
+  function rotateApiKey() {
+    toast("A new key was generated and emailed to you. The old key works for 24 more hours.", "API key rotated");
+  }
+
+  function preferences() {
+    formModal({
+      eyebrow: "Account",
+      title: "Account preferences",
+      lead: "How SkillMarket displays dates, numbers and money for you.",
+      fields: [
+        { name: "language", label: "Language", type: "select", options: ["English (Philippines)", "English (US)", "Filipino"], value: "English (Philippines)" },
+        { name: "timezone", label: "Time zone", type: "select", options: ["(GMT+8) Manila", "(GMT+9) Tokyo", "(GMT+7) Jakarta"], value: "(GMT+8) Manila" },
+        { name: "currency", label: "Currency", type: "select", options: ["₱ Philippine peso", "$ US dollar", "€ Euro"], value: "₱ Philippine peso" }
+      ],
+      submitLabel: "Save preferences",
+      onSubmit: () => {
+        successModal({
+          eyebrow: "Account",
+          title: "Preferences",
+          heading: "Preferences saved",
+          text: "Dates, numbers and money now display the way you chose. Other sessions catch up on next sign-in."
+        });
+        toast("Your preferences were saved.", "Preferences");
+      }
+    });
+  }
+
+  function signoutOthers() {
+    toast("All other sessions were signed out. This device stays signed in.", "Sessions");
+  }
+
+  function deactivate() {
+    openModal({
+      eyebrow: "Account",
+      title: "Deactivate your account?",
+      html: `<p class="modal__lead">Your profile disappears from search right away. You have 30 days to change your mind, after that your data is permanently removed.</p>`,
+      foot: `<button class="btn btn--secondary" type="button" data-modal-close>Keep my account</button>
+             <button class="btn btn--danger" type="button" data-mact="deactivate-yes">Deactivate</button>`,
+      handlers: {
+        "deactivate-yes": () => {
+          closeModal();
+          toast("We emailed you a confirmation link, your account deactivates only when you click it.", "Check your inbox");
+        }
+      }
+    });
+  }
+
   /* --- Action registry -------------------------------------------------- */
 
   const ACTIONS = {
@@ -1912,7 +2047,7 @@
         "Earnings",
         "Transaction history",
         table,
-        "November totals ₱275,000 — matching the figure on your Earnings card."
+        "November totals ₱275,000, matching the figure on your Earnings card."
       );
     },
     invoices: () => {
@@ -1942,7 +2077,15 @@
 
     "users-all": () => openUsers(),
     "moderation-queue": () => openModerationQueue(),
-    "reports-all": () => openReports()
+    "reports-all": () => openReports(),
+
+    "quick-reply": (trigger) => quickReply(trigger),
+    "add-payout-method": () => addPayoutMethod(),
+    "video-intro": () => videoIntro(),
+    "rotate-api-key": () => rotateApiKey(),
+    "preferences": () => preferences(),
+    "signout-others": () => signoutOthers(),
+    "deactivate": () => deactivate()
   };
 
   const run = (key, trigger) => {
@@ -2056,6 +2199,7 @@
     wireRows();
     wireDropDismiss();
     wireModalEscape();
+    hydrateSettingsSwitches();
   }
 
   init();

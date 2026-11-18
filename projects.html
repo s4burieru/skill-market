@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects · SkillMarket</title>
+  <meta name="description" content="Your SkillMarket projects: active work, milestones, progress and recently completed engagements in one place." />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+
+<body id="top" class="page-dash" data-roles="freelancer hire-talent">
+
+  <dashboard-sidebar></dashboard-sidebar>
+
+  <div class="dash">
+
+    <header class="dash__top">
+      <button
+        class="nav-toggle"
+        type="button"
+        data-nav-toggle
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="dashboard-nav"
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="4" y="6.2" width="16" height="2.5" rx="1.25"/><rect x="4" y="10.75" width="16" height="2.5" rx="1.25"/><rect x="4" y="15.3" width="16" height="2.5" rx="1.25"/></svg>
+      </button>
+
+      <form class="search dash__search" role="search" data-dash-search>
+        <span class="search__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.4 3.2a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm0 2.5a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/><rect x="13.85" y="16.3" width="7.5" height="2.6" rx="1.3" transform="rotate(45 17.6 17.6)"/></svg>
+        </span>
+        <label class="sr-only" for="dash-search">Search projects</label>
+        <input
+          class="search__input"
+          id="dash-search"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="Search projects, milestones, clients…"
+        />
+      </form>
+
+      <div class="dash__top-actions">
+        <span class="dash__date">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14v10ZM5 8V6h14v2H5Z"/></svg>
+          <span data-dash-date></span>
+        </span>
+        <button
+          class="icon-btn"
+          type="button"
+          aria-label="Notifications"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          data-act="notifications"
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8a6.3 6.3 0 0 1 6.3 6.3v4.02l1.44 3.16a1.25 1.25 0 0 1-1.16 1.72H5.42a1.25 1.25 0 0 1-1.16-1.72L5.7 13.12v-4A6.3 6.3 0 0 1 12 2.8Z"/><path d="M9.55 19.6a2.55 2.55 0 0 0 4.9 0Z"/></svg>
+          <span class="icon-btn__dot" aria-hidden="true"></span>
+        </button>
+
+        <div class="user-chip">
+          <span class="user-chip__avatar">
+            <img src="img/avatar-sabriel.svg" alt="" width="32" height="32" />
+          </span>
+          <span class="user-chip__text">
+            <span class="user-chip__name">Sabriel Adriel San Agustin</span>
+            <span class="user-chip__role">Freelancer</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container dash__body">
+
+      <!-- Page head: plain heading row; the branded banner is overview-only -->
+      <div class="page__head">
+        <div class="page__head-text">
+          <h1 class="page__title">Projects</h1>
+          <p class="page__subtitle">Every engagement in flight, what is due, what is done, and what pays out next.</p>
+        </div>
+        <div class="page__head-actions">
+          <button class="btn btn--secondary" type="button" data-act="help">Help center</button>
+          <a class="btn btn--primary" href="freelancer-dashboard.html" data-dash-home>Back to overview</a>
+        </div>
+      </div>
+
+      <!-- Freelancer -->
+      <div class="role-block" data-role-block="freelancer" hidden>
+
+        <section class="stats" aria-label="Freelancer projects summary">
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7.2A2.7 2.7 0 0 1 5.7 4.5h4.1a2 2 0 0 1 1.6.8l1.5 2a2 2 0 0 0 1.6.8h4.8A2.7 2.7 0 0 1 22 10.8v6.5a2.7 2.7 0 0 1-2.7 2.7H5.7A2.7 2.7 0 0 1 3 17.3V7.2Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">+2 this month</span>
+            </div>
+            <p class="stat__value">6</p>
+            <p class="stat__label">Active contracts</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.3a9.7 9.7 0 1 0 0 19.4 9.7 9.7 0 0 0 0-19.4ZM9.2 11.9l1.9 1.9 4.6-5 1.7 1.6-6.3 6.8-3.6-3.6 1.7-1.7Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">4 of 6 healthy</span>
+            </div>
+            <p class="stat__value">4</p>
+            <p class="stat__label">On track</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm.95 4.35a1.25 1.25 0 0 0-2.5 0v5.85a1.25 1.25 0 0 0 .63 1.09l3.6 2.1a1.25 1.25 0 0 0 1.25-2.17l-2.98-1.74V6.85Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--warn">2 need attention</span>
+            </div>
+            <p class="stat__value">2</p>
+            <p class="stat__label">Due this week</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.31 18.31 9.7 11.93l3.5 3.5L21.81 6.81 20.19 5.19 13.2 12.17 9.7 8.67 1.69 16.69Z"/><path d="M22.84 4.16 23.4 8.4 18.6 3.6Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">Across 4 engagements</span>
+            </div>
+            <p class="stat__value">56%</p>
+            <p class="stat__label">Average progress</p>
+          </article>
+        </section>
+
+        <div class="dash__grid">
+
+          <section class="panel" id="projects" aria-labelledby="projects-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="projects-title">Active projects</h2>
+                <p class="panel__subtitle">4 engagements currently in progress</p>
+              </div>
+              <a class="text-link" href="#" data-act="projects-all">View all</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item list__item--top">
+                <div class="list__main">
+                  <p class="list__title">E-commerce checkout rebuild</p>
+                  <p class="list__meta"><span>TechFlow Inc.</span><span aria-hidden="true">·</span><span>Due Dec 12</span></p>
+                  <div class="list__progress">
+                    <span class="progress"><span class="progress__bar" style="width: 72%"></span></span>
+                    <span class="list__percent">72%</span>
+                  </div>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">On track</span>
+                </div>
+              </li>
+
+              <li class="list__item list__item--top">
+                <div class="list__main">
+                  <p class="list__title">Analytics dashboard MVP</p>
+                  <p class="list__meta"><span>Design Studio</span><span aria-hidden="true">·</span><span>Due Nov 18</span></p>
+                  <div class="list__progress">
+                    <span class="progress"><span class="progress__bar" style="width: 88%"></span></span>
+                    <span class="list__percent">88%</span>
+                  </div>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">Due soon</span>
+                </div>
+              </li>
+
+              <li class="list__item list__item--top">
+                <div class="list__main">
+                  <p class="list__title">Marketing site migration</p>
+                  <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>Due Nov 24</span></p>
+                  <div class="list__progress">
+                    <span class="progress"><span class="progress__bar" style="width: 45%"></span></span>
+                    <span class="list__percent">45%</span>
+                  </div>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">On track</span>
+                </div>
+              </li>
+
+              <li class="list__item list__item--top">
+                <div class="list__main">
+                  <p class="list__title">API integration · Phase 2</p>
+                  <p class="list__meta"><span>Northwind Labs</span><span aria-hidden="true">·</span><span>Due Jan 9</span></p>
+                  <div class="list__progress">
+                    <span class="progress"><span class="progress__bar" style="width: 20%"></span></span>
+                    <span class="list__percent">20%</span>
+                  </div>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--info">In review</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel" id="milestones" aria-labelledby="milestones-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="milestones-title">Upcoming milestones</h2>
+                <p class="panel__subtitle">What pays out, and when</p>
+              </div>
+              <a class="text-link" href="payments.html">Earnings</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Analytics dashboard MVP · Milestone 3, final QA</p>
+                  <p class="list__meta"><span>Design Studio</span><span aria-hidden="true">·</span><span>Due Nov 18</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">₱82,700</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Marketing site migration · Milestone 2, CMS cutover</p>
+                  <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>Due Nov 24</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">₱64,500</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Checkout rebuild · Milestone 4, performance pass</p>
+                  <p class="list__meta"><span>TechFlow Inc.</span><span aria-hidden="true">·</span><span>Due Dec 12</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--info">₱110,000</span>
+                </div>
+              </li>
+            </ul>
+
+            <div class="panel__foot">
+              <p class="panel__foot-note">Clients review milestones within 3 business days, payment lands per your milestone terms.</p>
+            </div>
+          </section>
+
+          <section class="panel" id="completed" aria-labelledby="completed-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="completed-title">Recently completed</h2>
+                <p class="panel__subtitle">Delivered, approved and paid</p>
+              </div>
+              <a class="text-link" href="activity.html">Activity</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Content hub · Phase 1</p>
+                  <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>Paid Nov 9</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">₱95,000</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">WooCommerce speed audit</p>
+                  <p class="list__meta"><span>TechFlow Inc.</span><span aria-hidden="true">·</span><span>Paid Nov 2</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">₱38,000</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Design system tokens</p>
+                  <p class="list__meta"><span>Design Studio</span><span aria-hidden="true">·</span><span>Paid Oct 27</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">₱150,000</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- Hire talent -->
+      <div class="role-block" data-role-block="hire-talent" hidden>
+
+        <section class="stats" aria-label="Hiring projects summary">
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 8h13.6A2.2 2.2 0 0 1 21 10.2v8.6a2.7 2.7 0 0 1-2.7 2.7H5.7A2.7 2.7 0 0 1 3 18.8v-8.6A2.2 2.2 0 0 1 5.2 8Z"/><rect x="8" y="3" width="8" height="3.2" rx="1.6"/><path fill-opacity=".38" d="M3 12.2h6.3a.9.9 0 0 1 .8.55 2.9 2.9 0 0 0 4.6 0 .9.9 0 0 1 .8-.55H21v1.65h-5a4.4 4.4 0 0 1-4.4 3.2 4.4 4.4 0 0 1-4.4-3.2H3v-1.65Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">+1 this week</span>
+            </div>
+            <p class="stat__value">4</p>
+            <p class="stat__label">Open jobs</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="7.6" r="4.1"/><path d="M4.5 20.4a7.5 7.5 0 0 1 15 0 1.2 1.2 0 0 1-1.2 1.5H5.7a1.2 1.2 0 0 1-1.2-1.5Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">+2 this month</span>
+            </div>
+            <p class="stat__value">8</p>
+            <p class="stat__label">Active contractors</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.3 2.5h5.1l6 6V22a2.1 2.1 0 0 1-2.1 2.1H7.3a2.1 2.1 0 0 1-2.1-2.1V4.6a2.1 2.1 0 0 1 2.1-2.1Zm2 10.5a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Zm0-3.7a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Z"/><path fill-opacity=".4" d="M12.4 2.5v5.1a.9.9 0 0 0 .9.9h5.1L12.4 2.5Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--warn">Brand identity refresh</span>
+            </div>
+            <p class="stat__value">1</p>
+            <p class="stat__label">Milestone to approve</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 5.5h13A2.5 2.5 0 0 1 20.5 8v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 17V8A2.5 2.5 0 0 1 5 5.5ZM11.6 10.2h7.7a1.15 1.15 0 0 1 1.15 1.15v2.3a1.15 1.15 0 0 1-1.15 1.15h-7.7a1.3 1.3 0 0 1-1.3-1.3v-2a1.3 1.3 0 0 1 1.3-1.3Z"/><circle cx="15.4" cy="12.5" r="1.1"/></svg>
+              </span>
+              <span class="stat__trend">Of ₱1,040,000 budget</span>
+            </div>
+            <p class="stat__value">68%</p>
+            <p class="stat__label">Budget used</p>
+          </article>
+        </section>
+
+        <div class="dash__grid">
+
+          <section class="panel" id="projects" aria-labelledby="projects-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="projects-title">Active projects</h2>
+                <p class="panel__subtitle">4 engagements currently in progress</p>
+              </div>
+              <a class="text-link" href="#" data-act="projects-all">View all</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item list__item--top">
+                <div class="list__main">
+                  <p class="list__title">Website redesign</p>
+                  <p class="list__meta"><span>Sarah Jenkins</span><span aria-hidden="true">·</span><span>Due Dec 4</span></p>
+                  <div class="list__progress">
+                    <span class="progress"><span class="progress__bar" style="width: 65%"></span></span>
+                    <span class="list__percent">65%</span>
+                  </div>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">On track</span>
+                </div>
+              </li>
+
+              <li class="list__item list__item--top">
+                <div class="list__main">
+                  <p class="list__title">Data pipeline setup</p>
+                  <p class="list__meta"><span>David Kim</span><span aria-hidden="true">·</span><span>Due Nov 20</span></p>
+                  <div class="list__progress">
+                    <span class="progress"><span class="progress__bar" style="width: 90%"></span></span>
+                    <span class="list__percent">90%</span>
+                  </div>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">Due soon</span>
+                </div>
+              </li>
+
+              <li class="list__item list__item--top">
+                <div class="list__main">
+                  <p class="list__title">SEO content program</p>
+                  <p class="list__meta"><span>Elena Rodriguez</span><span aria-hidden="true">·</span><span>Ongoing</span></p>
+                  <div class="list__progress">
+                    <span class="progress"><span class="progress__bar" style="width: 40%"></span></span>
+                    <span class="list__percent">40%</span>
+                  </div>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">On track</span>
+                </div>
+              </li>
+
+              <li class="list__item list__item--top">
+                <div class="list__main">
+                  <p class="list__title">Brand identity refresh</p>
+                  <p class="list__meta"><span>Michael Chen</span><span aria-hidden="true">·</span><span>Due Dec 18</span></p>
+                  <div class="list__progress">
+                    <span class="progress"><span class="progress__bar" style="width: 25%"></span></span>
+                    <span class="list__percent">25%</span>
+                  </div>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--info">In review</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel" id="milestones" aria-labelledby="milestones-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="milestones-title">Milestones to approve</h2>
+                <p class="panel__subtitle">Approving releases payment from escrow</p>
+              </div>
+              <a class="text-link" href="payments.html">Payments</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Brand identity refresh · Final delivery review</p>
+                  <p class="list__meta"><span>Michael Chen</span><span aria-hidden="true">·</span><span>Delivered Nov 15</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">₱95,000</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Data pipeline setup · KPI report sign-off</p>
+                  <p class="list__meta"><span>David Kim</span><span aria-hidden="true">·</span><span>Delivered Nov 16</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">₱120,000</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">SEO content program · Batch 2 publish</p>
+                  <p class="list__meta"><span>Elena Rodriguez</span><span aria-hidden="true">·</span><span>Expected Dec 1</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--info">₱60,000</span>
+                </div>
+              </li>
+            </ul>
+
+            <div class="panel__foot">
+              <p class="panel__foot-note">Deliveries sit in escrow until you approve or request changes, usually within 3 business days.</p>
+            </div>
+          </section>
+
+          <section class="panel" id="completed" aria-labelledby="completed-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="completed-title">Recently completed</h2>
+                <p class="panel__subtitle">Approved and paid out</p>
+              </div>
+              <a class="text-link" href="activity.html">Activity</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Site relaunch · Homepage + blog</p>
+                  <p class="list__meta"><span>Sarah Jenkins</span><span aria-hidden="true">·</span><span>Paid Nov 6</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">₱210,000</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Email automation · 4 flows</p>
+                  <p class="list__meta"><span>Elena Rodriguez</span><span aria-hidden="true">·</span><span>Paid Oct 30</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">₱85,000</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Landing page A/B test · Hero copy</p>
+                  <p class="list__meta"><span>Northwind Labs</span><span aria-hidden="true">·</span><span>Paid Oct 21</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">₱46,000</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+        </div>
+      </div>
+
+      <p class="empty-state" data-empty="dash" hidden>No projects match your search. Try a different keyword.</p>
+
+    </main>
+  </div>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/pages/dashboard-actions.js" defer></script>
+</body>
+</html>

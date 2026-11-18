@@ -1,5 +1,5 @@
-﻿/* ==========================================================================
-   Dashboard — shared shell used by freelancer-dashboard.html and
+/* ==========================================================================
+   Dashboard, shared shell used by freelancer-dashboard.html and
    hire-talent-dashboard.html. Both pages are structurally identical;
    only the content inside the panels changes.
    ========================================================================== */
@@ -154,7 +154,7 @@ dashboard-sidebar {
   color: var(--danger);
 }
 
-/* Confirmation panel — the log-out row is replaced by this while it is open. */
+/* Confirmation panel, the log-out row is replaced by this while it is open. */
 .sidebar__foot.is-confirming .sidebar__foot-list {
   display: none;
 }
@@ -224,8 +224,7 @@ dashboard-sidebar {
   gap: 16px;
   height: var(--navbar-h);
   padding-inline: var(--gutter);
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: saturate(160%) blur(8px);
+  background: #fff;
   border-bottom: 1px solid var(--line);
 }
 
@@ -280,6 +279,28 @@ dashboard-sidebar {
   border-radius: 50%;
   background: var(--green-500);
   box-shadow: 0 0 0 2px #fff;
+}
+
+/* Date stamp on the right-hand side of the topbar, ahead of the
+   notification button. */
+.dash__date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 12px;
+  border-right: 1px solid var(--line);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.dash__date .icon {
+  width: 15px;
+  height: 15px;
+  color: var(--green-600);
 }
 
 .user-chip {
@@ -364,156 +385,97 @@ dashboard-sidebar {
   padding-bottom: 0;
 }
 
-/* --- Overview banner: printed ticket --------------------------------------
-   Paper stock, ink rule, a stamped account tab over the corner and a
-   perforation separating the copy from the stub that holds the actions. */
+/* --- Overview header: green brand card ------------------------------------
+   The heading sits on a solid green card with the SM mark (white, no
+   background) anchoring the right-hand side. Only the three overview pages carry
+   it; the dedicated pages get a plain, unboxed .page__head instead. */
 
 .dash__head {
-  position: relative;
-  /* Bottom padding, shared with the stub so the dot field below reaches
-     the inner edge of the ticket. */
-  --stub-gutter: 34px;
-  --stub-depth: 30px;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 24px;
-  /* Clips the tab to the rounded corner; the offset shadow is drawn
-     outside the border box, so it is not affected. */
-  overflow: hidden;
-  padding: 0 var(--stub-gutter) var(--stub-depth);
-  border: 1.5px solid var(--ink);
-  border-radius: var(--radius);
-  background: #fffdf7;
-  box-shadow: 4px 4px 0 var(--ink);
-}
-
-/* Stamped account tab, flush into the top-left corner. */
-.dash__head-text .badge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 9px 18px;
-  border-radius: 0 0 var(--radius-sm) 0;
-  background: var(--ink);
-  color: #fff;
+  gap: 28px;
+  padding: 26px 30px;
+  border-radius: var(--radius-lg);
+  background: var(--green-700);
+  box-shadow: var(--shadow-sm);
 }
 
 .dash__head-text {
   min-width: 0;
-  padding-top: 54px; /* clears the tab */
 }
 
-/* Issue line: date stamp + what needs attention today. */
-.dash__meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 14px;
-  font-size: var(--fs-2xs);
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  line-height: 1.5;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.dash__meta-date {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink);
-}
-
-.dash__meta-date::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  background: var(--green-500);
-}
-
-.dash__meta-item::before {
-  content: "\2022";
-  margin-right: 7px;
-  color: var(--muted-2);
+/* SM mark knocked out to white so it stays legible on the green card,
+   with no tile or background behind it. */
+.dash__head-logo {
+  display: block;
+  flex: none;
+  height: 88px;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .dash__title {
   font-size: var(--fs-3xl);
   font-weight: 800;
   letter-spacing: -0.02em;
-}
-
-.dash__title::after {
-  content: "";
-  display: block;
-  width: 54px;
-  height: 3px;
-  margin-top: 12px;
-  background: var(--green-500);
+  color: #fff;
 }
 
 .dash__subtitle {
-  margin-top: 12px;
-  max-width: 640px;
+  margin-top: 6px;
+  max-width: 620px;
   font-size: var(--fs-md);
   line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* --- Dedicated page head ---------------------------------------------------
+   Plain, unboxed heading row for the dedicated sidebar pages, deliberately
+   not a banner; the green card lives on the overview only. */
+
+.page__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  padding: 2px 4px 0;
+}
+
+.page__title {
+  font-size: var(--fs-3xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.page__subtitle {
+  margin-top: 4px;
+  max-width: 560px;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
   color: var(--muted);
 }
 
-/* Stub: actions sit to the right of a full-height perforation, their
-   baseline squared off with the last line of copy. The negative bottom
-   margin lets the stub's dot field run down to the ticket's edge while
-   the buttons stay aligned with the copy. */
-.dash__head-actions {
-  position: relative;
+.page__head-actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-bottom: calc(-1 * var(--stub-depth));
-  margin-right: calc(-1 * var(--stub-gutter));
-  padding: 0 var(--stub-gutter) var(--stub-depth) var(--stub-gutter);
-  background-image: radial-gradient(rgba(15, 23, 42, 0.13) 1px, transparent 1.4px);
-  background-size: 14px 14px;
-  background-position: 7px 7px;
+  gap: 10px;
 }
 
-.dash__head-actions::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  border-left: 2px dotted rgba(15, 23, 42, 0.32);
+/* --- Role blocks (multi-role dedicated pages) ------------------------------
+   The [data-role-block] wrappers are plain block divs. Lay the stats and
+   the content below them out as a flex column so they keep the same 24px
+   rhythm as the rest of the page instead of touching. */
+
+.role-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-/* Buttons get the same stamped-ink treatment as the ticket itself. */
-.dash__head .btn--primary {
-  box-shadow: 3px 3px 0 var(--ink);
-}
-
-.dash__head .btn--primary:hover {
-  box-shadow: 4px 4px 0 var(--ink);
-}
-
-.dash__head .btn--primary:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--ink);
-}
-
-.dash__head .btn--secondary {
-  border-color: var(--ink);
-  color: var(--ink);
-}
-
-.dash__head .btn--secondary:hover {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
+.role-block[hidden] {
+  display: none;
 }
 
 /* --- Stat cards ---------------------------------------------------------- */
@@ -533,11 +495,10 @@ dashboard-sidebar {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   padding: 17px 18px 16px;
-  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+  transition: box-shadow var(--ease), border-color var(--ease);
 }
 
 .stat:hover {
-  transform: translateY(-3px);
   box-shadow: var(--shadow);
   border-color: var(--line-strong);
 }
@@ -577,10 +538,12 @@ dashboard-sidebar {
 }
 
 .stat__value {
+  font-family: var(--font-display);
   font-size: var(--fs-3xl);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  font-variant-numeric: tabular-nums;
   color: var(--ink);
 }
 
@@ -596,6 +559,11 @@ dashboard-sidebar {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   align-items: stretch;
+}
+
+/* Dedicated pages hosting a single panel (projects, messages, …) */
+.dash__grid--single {
+  grid-template-columns: minmax(0, 900px);
 }
 
 .panel {
@@ -1029,32 +997,12 @@ dashboard-sidebar {
   }
 }
 
-/* The ticket stops fitting copy and stub side by side: stack them and
-   turn the perforation so it runs horizontally above the actions. */
+/* The heading no longer fits copy and the SM mark side by side: stack them. */
 @media (max-width: 1080px) {
   .dash__head {
     flex-direction: column;
-    gap: 0;
-  }
-
-  .dash__head-actions {
-    justify-content: flex-start;
-    margin-top: 22px;
-    margin-bottom: 0;
-    margin-right: 0;
-    padding-top: 24px;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    background-image: none;
-  }
-
-  .dash__head-actions::before {
-    top: 0;
-    right: 0;
-    bottom: auto;
-    border-left: 0;
-    border-top: 2px dotted rgba(15, 23, 42, 0.32);
+    align-items: flex-start;
+    gap: 18px;
   }
 }
 
@@ -1097,21 +1045,17 @@ dashboard-sidebar {
     display: none;
   }
 
+  .dash__date {
+    display: none;
+  }
+
   .dash__head {
-    padding: 0 20px 22px;
+    gap: 16px;
+    padding: 20px;
   }
 
-  .dash__head-text {
-    padding-top: 50px;
-  }
-
-  .dash__head-actions {
-    margin-top: 18px;
-    padding-top: 20px;
-  }
-
-  .dash__head-actions .btn {
-    flex: 1;
+  .dash__head-logo {
+    height: 72px;
   }
 
   .list__item {
@@ -1159,12 +1103,8 @@ dashboard-sidebar {
 /* --- Interactive refinements kept for the action layer -------------------- */
 
 .dash__search:focus-within {
-  border-color: var(--green-500);
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
-}
-
-.icon-btn:active {
-  transform: translateY(0);
+  border-color: var(--green-600);
+  box-shadow: 0 0 0 3px var(--green-200);
 }
 
 .user-chip[aria-expanded="true"] {
@@ -1196,19 +1136,13 @@ dashboard-sidebar {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-family: var(--font-sans);
-  font-weight: 600;
   line-height: 1;
   cursor: pointer;
 }
 
 .page-dash .btn--primary:hover {
   background: var(--green-700);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
 }
-
-.page-dash .btn--primary:active { transform: translateY(0); }
 
 .page-dash .btn--secondary {
   background: #fff;
@@ -1221,8 +1155,6 @@ dashboard-sidebar {
   border-color: var(--line-strong);
 }
 
-.page-dash .btn--secondary:active { transform: translateY(0); }
-
 .page-dash .btn--danger {
   background: #fff;
   border: 1px solid #fecaca;
@@ -1233,8 +1165,6 @@ dashboard-sidebar {
   background: #fef2f2;
   border-color: #fca5a5;
 }
-
-.page-dash .btn--danger:active { transform: translateY(0); }
 
 .page-dash .btn--sm {
   padding: 8px 12px;
@@ -1286,7 +1216,11 @@ dashboard-sidebar {
 .drop {
   position: absolute;
   top: calc(100% + 8px);
-  right: 0;
+  /* No positioned ancestor between .drop and .dash__top (the actions row
+     is static), so `right` measures from the topbar's full width: keep
+     it at the page gutter so the menu opens with breathing room on the
+     right instead of flush against the viewport edge. */
+  right: var(--gutter);
   z-index: 90;
   width: min(340px, calc(100vw - 32px));
   border: 1px solid var(--line);
@@ -1298,7 +1232,7 @@ dashboard-sidebar {
 
 body > .drop {
   position: fixed;
-  right: 24px;
+  right: var(--gutter);
   top: calc(var(--navbar-h) + 8px);
 }
 
@@ -1618,12 +1552,12 @@ body.is-modal-open { overflow: hidden; }
   color: var(--ink);
 }
 
-.field__input::placeholder { color: var(--ink-3); }
+.field__input::placeholder { color: var(--muted-2); }
 
 .field__input:focus {
   outline: none;
-  border-color: var(--green-500);
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+  border-color: var(--green-600);
+  box-shadow: 0 0 0 3px var(--green-200);
 }
 
 textarea.field__input { resize: vertical; min-height: 96px; }
@@ -1632,7 +1566,7 @@ select.field__input { cursor: pointer; }
 .field__hint {
   margin: 0;
   font-size: var(--fs-xs);
-  color: var(--ink-3);
+  color: var(--muted);
 }
 
 .field__error {
@@ -1973,4 +1907,31 @@ select.field__input { cursor: pointer; }
 
 .preview__stats dt { font-size: var(--fs-xs); color: var(--ink-3); }
 .preview__stats dd { margin: 2px 0 0; font-weight: 700; color: var(--ink); }
+
+/* --- Edit profile form (panel on the profile page) ------------------------ */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+}
+
+.form-grid .field--wide { grid-column: 1 / -1; }
+
+.profile-edit { display: grid; gap: 18px; }
+
+/* The <form> wraps the panel body and foot, so it stretches to fill the
+   panel's flex column. */
+.profile-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.profile-form .panel__body { flex: 1; }
+
+@media (max-width: 760px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
 

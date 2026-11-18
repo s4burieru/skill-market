@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Applications · SkillMarket</title>
+  <meta name="description" content="Your SkillMarket applications and proposals: pipeline, expiring briefs, checklists and your shortlist, all in one place." />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+
+<body id="top" class="page-dash" data-roles="freelancer hire-talent">
+
+  <dashboard-sidebar></dashboard-sidebar>
+
+  <div class="dash">
+
+    <header class="dash__top">
+      <button
+        class="nav-toggle"
+        type="button"
+        data-nav-toggle
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="dashboard-nav"
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="4" y="6.2" width="16" height="2.5" rx="1.25"/><rect x="4" y="10.75" width="16" height="2.5" rx="1.25"/><rect x="4" y="15.3" width="16" height="2.5" rx="1.25"/></svg>
+      </button>
+
+      <form class="search dash__search" role="search" data-dash-search>
+        <span class="search__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.4 3.2a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm0 2.5a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/><rect x="13.85" y="16.3" width="7.5" height="2.6" rx="1.3" transform="rotate(45 17.6 17.6)"/></svg>
+        </span>
+        <label class="sr-only" for="dash-search">Search applications</label>
+        <input
+          class="search__input"
+          id="dash-search"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="Search proposals, candidates, briefs…"
+        />
+      </form>
+
+      <div class="dash__top-actions">
+        <span class="dash__date">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14v10ZM5 8V6h14v2H5Z"/></svg>
+          <span data-dash-date></span>
+        </span>
+        <button
+          class="icon-btn"
+          type="button"
+          aria-label="Notifications"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          data-act="notifications"
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8a6.3 6.3 0 0 1 6.3 6.3v4.02l1.44 3.16a1.25 1.25 0 0 1-1.16 1.72H5.42a1.25 1.25 0 0 1-1.16-1.72L5.7 13.12v-4A6.3 6.3 0 0 1 12 2.8Z"/><path d="M9.55 19.6a2.55 2.55 0 0 0 4.9 0Z"/></svg>
+          <span class="icon-btn__dot" aria-hidden="true"></span>
+        </button>
+
+        <div class="user-chip">
+          <span class="user-chip__avatar">
+            <img src="img/avatar-sabriel.svg" alt="" width="32" height="32" />
+          </span>
+          <span class="user-chip__text">
+            <span class="user-chip__name">Sabriel Adriel San Agustin</span>
+            <span class="user-chip__role">Freelancer</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container dash__body">
+
+      <!-- Page head: plain heading row; the branded banner is overview-only -->
+      <div class="page__head">
+        <div class="page__head-text">
+          <h1 class="page__title">Applications</h1>
+          <p class="page__subtitle">Your pipeline, who is waiting, who is talking to you, and which briefs close soon.</p>
+        </div>
+        <div class="page__head-actions">
+          <button class="btn btn--secondary" type="button" data-act="help">Help center</button>
+          <a class="btn btn--primary" href="freelancer-dashboard.html" data-dash-home>Back to overview</a>
+        </div>
+      </div>
+
+      <!-- Freelancer -->
+      <div class="role-block" data-role-block="freelancer" hidden>
+
+        <section class="stats" aria-label="Freelancer applications summary">
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 2.5 3.1 10.9a1.4 1.4 0 0 0 .15 2.62l6.7 2.4 2.5 6.8a1.4 1.4 0 0 0 2.6.3l6.6-17.5a1.4 1.4 0 0 0-.2-2.9Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">+5 this week</span>
+            </div>
+            <p class="stat__value">12</p>
+            <p class="stat__label">Sent in November</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm.95 4.35a1.25 1.25 0 0 0-2.5 0v5.85a1.25 1.25 0 0 0 .63 1.09l3.6 2.1a1.25 1.25 0 0 0 1.25-2.17l-2.98-1.74V6.85Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--warn">Follow up by Friday</span>
+            </div>
+            <p class="stat__value">4</p>
+            <p class="stat__label">Awaiting reply</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="7.6" r="4.1"/><path d="M4.5 20.4a7.5 7.5 0 0 1 15 0 1.2 1.2 0 0 1-1.2 1.5H5.7a1.2 1.2 0 0 1-1.2-1.5Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">2 this month</span>
+            </div>
+            <p class="stat__value">2</p>
+            <p class="stat__label">Interviews booked</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6 14.7 8.4l6.2.7-4.6 4.2 1.2 6.1L12 17l-5.5 3.4 1.2-6.1-4.6-4.2 6.2-.7L12 2.6Z"/></svg>
+              </span>
+              <span class="stat__trend">Above 60th percentile</span>
+            </div>
+            <p class="stat__value">33%</p>
+            <p class="stat__label">Win rate</p>
+          </article>
+        </section>
+
+        <div class="dash__grid">
+
+          <section class="panel" id="applications" aria-labelledby="applications-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="applications-title">Recent proposals</h2>
+                <p class="panel__subtitle">12 sent this month · 4 awaiting reply</p>
+              </div>
+              <a class="text-link" href="index.html#jobs">Browse jobs</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item">
+                <span class="avatar" style="background:#111827;color:#fff">TF</span>
+                <div class="list__main">
+                  <p class="list__title">Senior React Developer</p>
+                  <p class="list__meta"><span>TechFlow Inc.</span><span aria-hidden="true">·</span><span>₱4,800/hr</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--info">Interview</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <span class="avatar" style="background:#eff6ff;color:#1d4ed8">GH</span>
+                <div class="list__main">
+                  <p class="list__title">Node.js API Engineer</p>
+                  <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>₱4,000/hr</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">Accepted</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <span class="avatar" style="background:#fff7ed;color:#b45309">DS</span>
+                <div class="list__main">
+                  <p class="list__title">Frontend Consultant</p>
+                  <p class="list__meta"><span>Design Studio</span><span aria-hidden="true">·</span><span>₱3,400/hr</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">Viewed</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <span class="avatar" style="background:#eff6ff;color:#1d4ed8">GH</span>
+                <div class="list__main">
+                  <p class="list__title">WordPress Developer</p>
+                  <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>₱2,900/hr</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--danger">Declined</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel" id="expiring" aria-labelledby="expiring-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="expiring-title">Briefs closing soon</h2>
+                <p class="panel__subtitle">Submit before the client decides</p>
+              </div>
+              <a class="text-link" href="index.html#jobs">Browse jobs</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Senior React Developer · Checkout squad</p>
+                  <p class="list__meta"><span>TechFlow Inc.</span><span aria-hidden="true">·</span><span>₱4,800/hr</span><span aria-hidden="true">·</span><span>Closes Nov 19</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">2 days</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">WooCommerce speed tune</p>
+                  <p class="list__meta"><span>Growth Hub</span><span aria-hidden="true">·</span><span>₱3,200/hr</span><span aria-hidden="true">·</span><span>Closes Nov 21</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--info">4 days</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Marketing site QA sweep</p>
+                  <p class="list__meta"><span>Northwind Labs</span><span aria-hidden="true">·</span><span>₱2,600/hr</span><span aria-hidden="true">·</span><span>Closes Nov 28</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">11 days</span>
+                </div>
+              </li>
+            </ul>
+
+            <div class="panel__foot">
+              <p class="panel__foot-note">18 of 80 Connects used this month · resets Dec 1.</p>
+            </div>
+          </section>
+
+          <section class="panel" id="proposal-checklist" aria-labelledby="proposal-checklist-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="proposal-checklist-title">Why clients say yes</h2>
+                <p class="panel__subtitle">What your last win had in common</p>
+              </div>
+            </header>
+
+            <div class="panel__body">
+              <ul class="checklist">
+                <li class="checklist__item">
+                  <span class="checklist__mark" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6.3a1.5 1.5 0 0 1 .15 2.1l-9.2 10.6a1.5 1.5 0 0 1-2.25.08L3.6 12.9a1.5 1.5 0 0 1 2.2-2l4 4.3L17.8 6a1.5 1.5 0 0 1 2.2.3Z"/></svg>
+                  </span>
+                  Identity verified, clients filter unverified profiles out
+                </li>
+                <li class="checklist__item">
+                  <span class="checklist__mark" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6.3a1.5 1.5 0 0 1 .15 2.1l-9.2 10.6a1.5 1.5 0 0 1-2.25.08L3.6 12.9a1.5 1.5 0 0 1 2.2-2l4 4.3L17.8 6a1.5 1.5 0 0 1 2.2.3Z"/></svg>
+                  </span>
+                  Rate inside the client&rsquo;s stated budget
+                </li>
+                <li class="checklist__item">
+                  <span class="checklist__mark" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 6.3a1.5 1.5 0 0 1 .15 2.1l-9.2 10.6a1.5 1.5 0 0 1-2.25.08L3.6 12.9a1.5 1.5 0 0 1 2.2-2l4 4.3L17.8 6a1.5 1.5 0 0 1 2.2.3Z"/></svg>
+                  </span>
+                  Portfolio attached, matching work shown, not just claimed
+                </li>
+                <li class="checklist__item checklist__item--todo">
+                  <span class="checklist__mark" aria-hidden="true"></span>
+                  Personalize the opening line, templates double your reply rate when edited
+                </li>
+              </ul>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- Hire talent -->
+      <div class="role-block" data-role-block="hire-talent" hidden>
+
+        <section class="stats" aria-label="Hiring applications summary">
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.3 2.5h5.1l6 6V22a2.1 2.1 0 0 1-2.1 2.1H7.3a2.1 2.1 0 0 1-2.1-2.1V4.6a2.1 2.1 0 0 1 2.1-2.1Zm2 10.5a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Zm0-3.7a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Z"/><path fill-opacity=".4" d="M12.4 2.5v5.1a.9.9 0 0 0 .9.9h5.1L12.4 2.5Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">+12 this week</span>
+            </div>
+            <p class="stat__value">37</p>
+            <p class="stat__label">New applications</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.3a9.7 9.7 0 1 0 0 19.4 9.7 9.7 0 0 0 0-19.4ZM9.2 11.9l1.9 1.9 4.6-5 1.7 1.6-6.3 6.8-3.6-3.6 1.7-1.7Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">3 roles open</span>
+            </div>
+            <p class="stat__value">8</p>
+            <p class="stat__label">Shortlisted</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 4.5h14A2.5 2.5 0 0 1 21.5 7v12a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 19V7A2.5 2.5 0 0 1 5 4.5Zm-.9 5.3a1.15 1.15 0 0 0 0 2.3h15.8a1.15 1.15 0 0 0 0-2.3H4.1Zm1.5 5.4a1.15 1.15 0 0 0 0 2.3h6a1.15 1.15 0 0 0 0-2.3h-6Z"/><rect x="7.2" y="2" width="2.3" height="4.6" rx="1.15"/><rect x="14.5" y="2" width="2.3" height="4.6" rx="1.15"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">This week</span>
+            </div>
+            <p class="stat__value">5</p>
+            <p class="stat__label">Interviews scheduled</p>
+          </article>
+
+          <article class="stat">
+            <div class="stat__top">
+              <span class="stat__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.31 18.31 9.7 11.93l3.5 3.5L21.81 6.81 20.19 5.19 13.2 12.17 9.7 8.67 1.69 16.69Z"/><path d="M22.84 4.16 23.4 8.4 18.6 3.6Z"/></svg>
+              </span>
+              <span class="stat__trend stat__trend--up">Above market average</span>
+            </div>
+            <p class="stat__value">22%</p>
+            <p class="stat__label">Offer rate</p>
+          </article>
+        </section>
+
+        <div class="dash__grid">
+
+          <section class="panel" id="applications" aria-labelledby="applications-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="applications-title">New applications</h2>
+                <p class="panel__subtitle">37 received this month · 12 this week</p>
+              </div>
+              <a class="text-link" href="index.html#freelancers">Browse talent</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item">
+                <span class="avatar" style="background:#eff6ff;color:#1d4ed8">MC</span>
+                <div class="list__main">
+                  <p class="list__title">Michael Chen</p>
+                  <p class="list__meta"><span>Senior React Developer</span><span aria-hidden="true">·</span><span>₱6,800/hr</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--info">New</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <span class="avatar">DK</span>
+                <div class="list__main">
+                  <p class="list__title">David Kim</p>
+                  <p class="list__meta"><span>Data pipeline consultant</span><span aria-hidden="true">·</span><span>₱5,700/hr</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">Shortlisted</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <span class="avatar" style="background:#fff7ed;color:#b45309">ER</span>
+                <div class="list__main">
+                  <p class="list__title">Elena Rodriguez</p>
+                  <p class="list__meta"><span>SEO Specialist</span><span aria-hidden="true">·</span><span>₱2,600/hr</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">Interview</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <span class="avatar" style="background:#f5f3ff;color:#6d28d9">PR</span>
+                <div class="list__main">
+                  <p class="list__title">Priya Raman</p>
+                  <p class="list__meta"><span>UI/UX Designer</span><span aria-hidden="true">·</span><span>₱4,600/hr</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--danger">Rejected</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel" id="pipeline" aria-labelledby="pipeline-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="pipeline-title">Hiring pipeline</h2>
+                <p class="panel__subtitle">React Developer · who is where</p>
+              </div>
+              <a class="text-link" href="activity.html">Activity</a>
+            </header>
+
+            <ul class="panel__body panel__body--flush">
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">New</p>
+                  <p class="list__meta"><span>12 this week</span><span aria-hidden="true">·</span><span>Screen by Dec 1</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--info">12</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Screening</p>
+                  <p class="list__meta"><span>Resumes under review</span><span aria-hidden="true">·</span><span>4 awaiting you</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">8</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Interviews</p>
+                  <p class="list__meta"><span>Chen Thursday</span><span aria-hidden="true">·</span><span>Rodriguez Friday</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--warn">5</span>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="list__main">
+                  <p class="list__title">Offers</p>
+                  <p class="list__meta"><span>3 sent</span><span aria-hidden="true">·</span><span>1 accepted: Rodriguez</span></p>
+                </div>
+                <div class="list__aside">
+                  <span class="status status--ok">3</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel" id="write-brief" aria-labelledby="write-brief-title">
+            <header class="panel__head">
+              <div>
+                <h2 class="panel__title" id="write-brief-title">Writing a better brief</h2>
+                <p class="panel__subtitle">Briefs that pull 2× the applicants</p>
+              </div>
+            </header>
+
+            <div class="panel__body">
+              <div class="faq">
+                <details class="faq__item">
+                  <summary>What should the first paragraph say?</summary>
+                  <p>What you are building, why now, and what "done" looks like. Candidates skip briefs that lead with company history instead of the problem.</p>
+                </details>
+                <details class="faq__item">
+                  <summary>How much budget should I put?</summary>
+                  <p>Always a real range, even a rough one. "Confidential" budgets get roughly half the applications of transparent ones.</p>
+                </details>
+                <details class="faq__item">
+                  <summary>How many skills should I tag?</summary>
+                  <p>Three to five. More than that and matching dilutes; fewer and good candidates filter you out entirely.</p>
+                </details>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <p class="empty-state" data-empty="dash" hidden>No applications match your search. Try a different keyword.</p>
+
+    </main>
+  </div>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/pages/dashboard-actions.js" defer></script>
+</body>
+</html>

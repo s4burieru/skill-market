@@ -11,7 +11,8 @@
       { "label": "Find Freelancers", "href": "freelancers.html" },
       { "label": "Find Jobs", "href": "jobs.html" },
       { "label": "Hire Talent", "href": "hire-talent.html" },
-      { "label": "Become a Freelancer", "href": "become-freelancer.html" }
+      { "label": "Become a Freelancer", "href": "become-freelancer.html" },
+      { "label": "Premium", "href": "premium.html" }
     ],
     "login": { "label": "Login", "href": "login.html" },
     "join": { "label": "Join", "href": "join.html" }
@@ -21,19 +22,19 @@
       {
         "label": "Menu",
         "items": [
-          { "label": "Overview", "href": "#overview", "icon": "grid" },
-          { "label": "Projects", "href": "#projects", "icon": "folder" },
-          { "label": "Applications", "href": "#applications", "icon": "file-text" },
-          { "label": "Messages", "href": "#messages", "icon": "message" },
-          { "label": "Payments", "href": "#payments", "icon": "wallet" },
-          { "label": "Activity", "href": "#activity", "icon": "bar-chart" }
+          { "label": "Overview", "href": "{dash}#overview", "icon": "grid" },
+          { "label": "Projects", "href": "projects.html", "icon": "folder" },
+          { "label": "Applications", "href": "applications.html", "icon": "file-text" },
+          { "label": "Messages", "href": "messages.html", "icon": "message" },
+          { "label": "Payments", "href": "payments.html", "icon": "wallet" },
+          { "label": "Activity", "href": "activity.html", "icon": "bar-chart" }
         ]
       },
       {
         "label": "Account",
         "items": [
-          { "label": "Profile", "href": "#profile", "icon": "user" },
-          { "label": "Settings", "href": "#settings", "icon": "settings" }
+          { "label": "Profile", "href": "profile.html", "icon": "user" },
+          { "label": "Settings", "href": "settings.html", "icon": "settings" }
         ]
       }
     ],
@@ -45,29 +46,24 @@
           {
             "label": "Platform",
             "items": [
-              { "label": "Overview", "href": "#overview", "icon": "grid" },
-              { "label": "Users", "href": "#users", "icon": "users" },
-              { "label": "Moderation", "href": "#moderation", "icon": "shield" },
-              { "label": "Reports", "href": "#reports", "icon": "flag" },
-              { "label": "Revenue", "href": "#revenue", "icon": "wallet" },
-              { "label": "Activity", "href": "#activity", "icon": "bar-chart" }
+              { "label": "Overview", "href": "{dash}#overview", "icon": "grid" },
+              { "label": "Users", "href": "users.html", "icon": "users" },
+              { "label": "Moderation", "href": "moderation.html", "icon": "shield" },
+              { "label": "Reports", "href": "reports.html", "icon": "flag" },
+              { "label": "Revenue", "href": "revenue.html", "icon": "wallet" },
+              { "label": "Activity", "href": "activity.html", "icon": "bar-chart" }
             ]
           },
           {
             "label": "Account",
             "items": [
-              { "label": "Profile", "href": "#profile", "icon": "user" },
-              { "label": "Settings", "href": "#settings", "icon": "settings" }
+              { "label": "Profile", "href": "profile.html", "icon": "user" },
+              { "label": "Settings", "href": "settings.html", "icon": "settings" }
             ]
           }
         ]
       }
     }
-  },
-  "cta": {
-    "title": "Ready to grow your business?",
-    "text": "Join thousands of entrepreneurs and freelancers using SkillMarket to find and offer high-quality services.",
-    "button": { "label": "Get Started", "href": "join.html" }
   },
   "footer": {
     "columns": [
@@ -78,7 +74,8 @@
           { "label": "Find Freelancers", "href": "freelancers.html" },
           { "label": "Find Jobs", "href": "jobs.html" },
           { "label": "Hire Talent", "href": "hire-talent.html" },
-          { "label": "Become a Freelancer", "href": "become-freelancer.html" }
+          { "label": "Become a Freelancer", "href": "become-freelancer.html" },
+          { "label": "Premium & Verification", "href": "premium.html" }
         ]
       },
       {

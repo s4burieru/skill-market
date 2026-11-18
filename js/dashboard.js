@@ -1,16 +1,59 @@
 /**
- * Shared dashboard shell for freelancer-dashboard.html,
- * hire-talent-dashboard.html and super-admin-dashboard.html.
+ * Shared dashboard shell for the role dashboards and every dedicated
+ * sidebar page (projects.html, applications.html, messages.html,
+ * payments.html, revenue.html, users.html, moderation.html, reports.html,
+ * activity.html, profile.html, settings.html).
  *
  * The <dashboard-sidebar> element renders the navigation from
  * data/site.json → dashboard on every page, so the chrome stays identical
  * and only the page content differs. A page can pass data-variant="…" to
  * pick a different nav for its role (e.g. the super admin's admin menu);
- * the variant falls back to the shared nav for anything it does not override.
+ * when no variant is declared the role of the signed-in user picks one
+ * automatically (used by the shared pages). The variant falls back to the
+ * shared nav for anything it does not override.
+ *
+ * Sidebar hrefs in site.json may contain the token "{dash}", which is
+ * swapped for the signed-in role's dashboard file at render time (on the
+ * dashboard itself it collapses to a same-page "#anchor").
+ *
+ * Pages that only serve some roles declare them on <body data-roles="…">;
+ * the session guard bounces everyone else to their own dashboard.
  */
 (() => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+  const currentPageName = () =>
+    (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+
+  // Splits "page.html#id" / "#id" / "page.html" into its parts.
+  const parseHref = (href) => {
+    const hash = String(href || "").indexOf("#");
+    if (hash === -1) return { page: String(href || ""), id: null };
+    return { page: String(href).slice(0, hash), id: String(href).slice(hash + 1) || null };
+  };
+
+  const samePageHref = (href) => {
+    const { page, id } = parseHref(href);
+    const pageName = page.toLowerCase();
+    return (!pageName || pageName === currentPageName()) && !!id;
+  };
+
+  const roleDashboard = () => {
+    const user = typeof Session !== "undefined" && Session.get();
+    return (user && Session.dashboardFor(user.role)) || "freelancer-dashboard.html";
+  };
+
+  const resolveHref = (href) => {
+    if (String(href || "").indexOf("{dash}") === -1) return href;
+    const dash = roleDashboard();
+    const resolved = String(href).split("{dash}").join(dash);
+    if (dash.toLowerCase() === currentPageName()) {
+      const { id } = parseHref(resolved);
+      return id ? `#${id}` : dash;
+    }
+    return resolved;
+  };
 
   const esc = (value) =>
     String(value ?? "")
@@ -23,9 +66,9 @@
 
   // Just the clickable row; the caller decides which list element wraps it so
   // that every row lives inside a <ul> (the stylesheet resets list markers
-  // there — a bare <li> outside a list keeps its bullet).
+  // there, a bare <li> outside a list keeps its bullet).
   const row = (item, extraClass = "", attrs = "") => `
-      <a class="sidebar__link${extraClass ? ` ${extraClass}` : ""}" href="${esc(item.href)}"${attrs}>
+      <a class="sidebar__link${extraClass ? ` ${extraClass}` : ""}" href="${esc(resolveHref(item.href))}"${attrs}>
         ${Icons.svg(item.icon)}
         <span>${esc(item.label)}</span>
       </a>`;
@@ -103,9 +146,9 @@
           <div class="sidebar__group">
             <p class="sidebar__label">Menu</p>
             <ul class="sidebar__list">
-              ${link({ label: "Overview", href: "#overview", icon: "grid" })}
-              ${link({ label: "Projects", href: "#projects", icon: "folder" })}
-              ${link({ label: "Messages", href: "#messages", icon: "message" })}
+              ${link({ label: "Overview", href: "{dash}#overview", icon: "grid" })}
+              ${link({ label: "Projects", href: "projects.html", icon: "folder" })}
+              ${link({ label: "Messages", href: "messages.html", icon: "message" })}
             </ul>
           </div>
         </nav>
@@ -169,27 +212,41 @@
     });
   }
 
-  const sectionTarget = (href) => (href.length > 1 ? document.getElementById(href.slice(1)) : null);
+  // On a dedicated page the sidebar links to other pages, so scroll-spy
+  // has nothing to watch. Mark the link that points at this page instead.
+  function markCurrentPageLink() {
+    const page = currentPageName();
+    const current = $$("a.sidebar__link").find((anchor) => {
+      const { page: p, id } = parseHref(anchor.getAttribute("href") || "");
+      return !id && p.toLowerCase() === page;
+    });
+    if (current) setActiveLink(current);
+  }
 
   function wireNav() {
     $$("a.sidebar__link").forEach((anchor) => {
       anchor.addEventListener("click", (event) => {
         const href = anchor.getAttribute("href") || "";
-        const section = sectionTarget(href);
+        const { page, id } = parseHref(href);
+        const samePage = !page || page.toLowerCase() === currentPageName();
+        const section = id ? document.getElementById(id) : null;
 
-        if (href.length > 1 && !section) {
-          // #settings / #help have no section: they open a dialog instead.
+        if (samePage && id && !section) {
+          // #settings / #help style links with no section on this page:
+          // they open a dialog instead.
           event.preventDefault();
           const actions = window.DashActions;
-          if (actions && typeof actions.openHref === "function") actions.openHref(href);
-        } else if (section) {
+          if (actions && typeof actions.openHref === "function") actions.openHref(`#${id}`);
+        } else if (samePage && section) {
           setActiveLink(anchor);
         }
+        // Links to another page (projects.html / …) navigate normally.
 
         if (sidebarElement().classList.contains("is-open")) setDrawer(false);
       });
     });
 
+    markCurrentPageLink();
     wireFoot();
     wireSpy();
   }
@@ -236,8 +293,12 @@
   }
 
   function wireSpy() {
-    const targets = $$('.sidebar__link[href^="#"]')
-      .map((anchor) => ({ anchor, el: document.getElementById(anchor.getAttribute("href").slice(1)) }))
+    const targets = $$(".sidebar__link")
+      .filter((anchor) => samePageHref(anchor.getAttribute("href") || ""))
+      .map((anchor) => ({
+        anchor,
+        el: document.getElementById(parseHref(anchor.getAttribute("href")).id),
+      }))
       .filter((entry) => entry.el);
 
     if (!targets.length) return;
@@ -338,8 +399,12 @@
   }
 
   /**
-   * The dashboards are only reachable with a session. Returns the signed-in
-   * user, or null when we are about to navigate away.
+   * The dashboard pages are only reachable with a session. Returns the
+   * signed-in user, or null when we are about to navigate away.
+   *
+   * Pages shared by several roles declare them on <body data-roles="…">;
+   * anyone else is bounced to their own dashboard. Pages with no
+   * data-roles (the role dashboards) keep the strict per-role routing.
    */
   function guardSession() {
     const user = Session.get();
@@ -351,6 +416,14 @@
 
     const page = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
     const home = Session.dashboardFor(user.role);
+
+    const shared = document.body && document.body.dataset.roles;
+    if (shared) {
+      const allowed = shared.split(/[\s,]+/).filter(Boolean);
+      if (allowed.indexOf(String(user.role)) !== -1) return user;
+      window.location.replace(home || "index.html");
+      return null;
+    }
 
     // Each role gets sent to its own dashboard (see Session.DASHBOARDS).
     if (home && home.toLowerCase() !== page) {
@@ -367,10 +440,10 @@
     const full = user.name;
 
     const title = $(".dash__title");
-    if (title) title.textContent = `Welcome back, ${first}`;
+    if (title && !title.hasAttribute("data-static")) title.textContent = `Welcome back, ${first}`;
 
     const badge = $(".badge--soft");
-    if (badge) badge.textContent = `${label} account`;
+    if (badge && !badge.hasAttribute("data-static")) badge.textContent = `${label} account`;
 
     const chipName = $(".user-chip__name");
     if (chipName) chipName.textContent = full;
@@ -385,11 +458,11 @@
     }
   }
 
-  /* Stamps the issue date on the overview ticket ("Tue 11 Nov 2026").
+  /* Stamps the topbar date ("Tue 18 Nov 2026").
      Assembled by hand rather than toLocaleDateString so every browser
-     prints the same ticket header. */
+     prints the same header. */
   function paintIssueDate() {
-    const el = $(".dash__meta-date");
+    const el = $("[data-dash-date]");
     if (!el) return;
 
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -406,24 +479,64 @@
     el.textContent = `${day} ${date} ${month} ${now.getFullYear()}`;
   }
 
+  /* --- Role blocks on the dedicated pages -------------------------------- */
+
+  /**
+   * The dedicated pages carry one copy of the content per role they serve,
+   * each wrapped in [data-role-block]. Only the block matching the
+   * signed-in role stays in the DOM, the rest are removed, so every id
+   * stays unique and the search filter only ever sees the role's own
+   * markup. (Pages that serve a single role don't use blocks at all.)
+   */
+  function renderRoleBlocks(user) {
+    const blocks = $$("[data-role-block]");
+    if (!blocks.length) return;
+
+    const wanted = (user && user.role) || "freelancer";
+    blocks.forEach((block) => {
+      if (block.dataset.roleBlock === wanted) block.removeAttribute("hidden");
+      else block.remove();
+    });
+  }
+
+  // "Back to overview" links on the dedicated pages point at the role's
+  // dashboard, which site.json cannot know.
+  function resolveDashHomeLinks(user) {
+    const dash = user && Session.dashboardFor(user.role);
+    if (!dash) return;
+    $$("[data-dash-home]").forEach((link) => link.setAttribute("href", dash));
+  }
+
   function init() {
     paintIssueDate();
 
     const user = guardSession();
     if (!user) return;
 
+    renderRoleBlocks(user);
+    resolveDashHomeLinks(user);
     personalize(user);
     wireToggle();
     wireActions();
     wireSearch();
   }
 
+  // Roles whose sidebar mirrors the super-admin Platform menu. Explicit
+  // data-variant on the element always wins (the role dashboards set it);
+  // the dedicated pages rely on this lookup instead.
+  const ROLE_VARIANTS = { "super-admin": "super-admin" };
+
+  const roleVariant = () => {
+    const user = typeof Session !== "undefined" && Session.get();
+    return (user && ROLE_VARIANTS[user.role]) || "";
+  };
+
   class DashboardSidebar extends HTMLElement {
     connectedCallback() {
       if (this.dataset.rendered) return;
       this.dataset.rendered = "true";
 
-      const variant = this.dataset.variant || "";
+      const variant = this.dataset.variant || roleVariant();
 
       Data.get("site")
         .then((site) => {

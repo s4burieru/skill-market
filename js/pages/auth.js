@@ -4,18 +4,12 @@
 
   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-  const eye = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"></path>
-    <circle cx="12" cy="12" r="3"></circle>
+  const eye = `<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd" d="M12 5.5c5.5 0 8.9 4.7 9.8 6.5-.9 1.8-4.3 6.5-9.8 6.5S3.1 13.8 2.2 12c.9-1.8 4.3-6.5 9.8-6.5Zm0 2.6a3.9 3.9 0 1 0 0 7.8 3.9 3.9 0 0 0 0-7.8Z"/>
   </svg>`;
 
-  const eyeOff = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M3 3l18 18"></path>
-    <path d="M10.6 6.3A10.4 10.4 0 0 1 12 6.2c6.4 0 10 5.8 10 5.8a18.5 18.5 0 0 1-3.5 4.1"></path>
-    <path d="M6.4 8A17.4 17.4 0 0 0 2 12s3.6 5.8 10 5.8a10.2 10.2 0 0 0 3.9-.8"></path>
-    <path d="M9.9 10.1a3 3 0 0 0 4.2 4.2"></path>
+  const eyeOff = `<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd" d="M12 5.5c5.5 0 8.9 4.7 9.8 6.5-.9 1.8-4.3 6.5-9.8 6.5S3.1 13.8 2.2 12c.9-1.8 4.3-6.5 9.8-6.5Zm0 2.6a3.9 3.9 0 1 0 0 7.8 3.9 3.9 0 0 0 0-7.8Z"/><rect x="2.6" y="11" width="18.8" height="2.1" rx="1.05" transform="rotate(-45 12 12)"/>
   </svg>`;
 
   const levels = [
@@ -244,6 +238,17 @@
     if (meter) meter.hidden = true;
   }
 
+  /* Preselect the account type from ?role=freelancer|hire-talent so links
+     like join.html?role=freelancer land on the right radio. */
+  function wireAccountTypeFromUrl() {
+    const role = new URLSearchParams(window.location.search).get("role");
+    if (!role || !/^[a-z-]+$/.test(role)) return;
+    const input = document.querySelector(
+      `input[name="accountType"][value="${role}"]`
+    );
+    if (input) input.checked = true;
+  }
+
   function wireForm() {
     const form = $("[data-form]");
     if (!form) return;
@@ -270,6 +275,7 @@
   wireLinkRewrite();
   wirePasswordToggles();
   wireStrength();
+  wireAccountTypeFromUrl();
   wireForm();
 
   const form = $("[data-form]");

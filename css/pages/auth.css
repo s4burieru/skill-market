@@ -85,8 +85,8 @@
 
 .field__input:focus {
   outline: none;
-  border-color: var(--green-500);
-  box-shadow: 0 0 0 4px rgba(29, 191, 115, 0.15);
+  border-color: var(--green-600);
+  box-shadow: 0 0 0 3px var(--green-200);
 }
 
 .field__input[aria-invalid="true"] {
@@ -94,7 +94,7 @@
 }
 
 .field__input[aria-invalid="true"]:focus {
-  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.13);
+  box-shadow: 0 0 0 3px #f6d2d0;
 }
 
 .field__control .field__input {

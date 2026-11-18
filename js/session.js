@@ -50,7 +50,7 @@ const Session = (() => {
     try {
       storage.setItem(KEY, JSON.stringify(user));
     } catch (error) {
-      /* storage unavailable (private mode) — sign-in still works for this page */
+      /* storage unavailable (private mode), sign-in still works for this page */
     }
   };
 
@@ -94,6 +94,27 @@ const Session = (() => {
     return record;
   }
 
+  /**
+   * Patch the signed-in record in place (used by the edit-profile page).
+   * Writes back to whichever storage holds the session, so a name change
+   * shows up in the sidebar chip and dashboards without signing in again.
+   */
+  function update(patch) {
+    const current = get();
+    if (!current) return null;
+
+    const inLocal = !!read(store("localStorage"));
+    const record = {
+      email: String(patch.email !== undefined ? patch.email : current.email || ""),
+      name: String(patch.name !== undefined ? patch.name : current.name || ""),
+      role: String(current.role || "")
+    };
+
+    write(inLocal ? store("localStorage") : store("sessionStorage"), record);
+    notify();
+    return record;
+  }
+
   function clear() {
     drop(store("localStorage"));
     drop(store("sessionStorage"));
@@ -110,5 +131,5 @@ const Session = (() => {
     window.addEventListener(EVENT, callback);
   }
 
-  return { get, set, clear, roleLabel, dashboardFor, firstName, onChange, EVENT };
+  return { get, set, update, clear, roleLabel, dashboardFor, firstName, onChange, EVENT };
 })();

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open Reports · SkillMarket</title>
+  <meta name="description" content="Open SkillMarket reports: urgent disputes, SLA track record, most-reported categories and recently resolved cases." />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+
+<body id="top" class="page-dash" data-roles="super-admin">
+
+  <dashboard-sidebar></dashboard-sidebar>
+
+  <div class="dash">
+
+    <header class="dash__top">
+      <button
+        class="nav-toggle"
+        type="button"
+        data-nav-toggle
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="dashboard-nav"
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="4" y="6.2" width="16" height="2.5" rx="1.25"/><rect x="4" y="10.75" width="16" height="2.5" rx="1.25"/><rect x="4" y="15.3" width="16" height="2.5" rx="1.25"/></svg>
+      </button>
+
+      <form class="search dash__search" role="search" data-dash-search>
+        <span class="search__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.4 3.2a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm0 2.5a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/><rect x="13.85" y="16.3" width="7.5" height="2.6" rx="1.3" transform="rotate(45 17.6 17.6)"/></svg>
+        </span>
+        <label class="sr-only" for="dash-search">Search reports</label>
+        <input
+          class="search__input"
+          id="dash-search"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="Search reports, orders, users…"
+        />
+      </form>
+
+      <div class="dash__top-actions">
+        <span class="dash__date">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14v10ZM5 8V6h14v2H5Z"/></svg>
+          <span data-dash-date></span>
+        </span>
+        <button
+          class="icon-btn"
+          type="button"
+          aria-label="Notifications"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          data-act="notifications"
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8a6.3 6.3 0 0 1 6.3 6.3v4.02l1.44 3.16a1.25 1.25 0 0 1-1.16 1.72H5.42a1.25 1.25 0 0 1-1.16-1.72L5.7 13.12v-4A6.3 6.3 0 0 1 12 2.8Z"/><path d="M9.55 19.6a2.55 2.55 0 0 0 4.9 0Z"/></svg>
+          <span class="icon-btn__dot" aria-hidden="true"></span>
+        </button>
+
+        <div class="user-chip">
+          <span class="user-chip__avatar">
+            <img src="img/avatar-klein.svg" alt="" width="32" height="32" />
+          </span>
+          <span class="user-chip__text">
+            <span class="user-chip__name">Klein Wesley De Roxas</span>
+            <span class="user-chip__role">Super admin</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container dash__body">
+
+      <!-- Page head: plain heading row; the branded banner is overview-only -->
+      <div class="page__head">
+        <div class="page__head-text">
+          <h1 class="page__title">Open reports</h1>
+          <p class="page__subtitle">Member reports waiting on a decision, payment disputes first, abuse allegations next, noise last.</p>
+        </div>
+        <div class="page__head-actions">
+          <button class="btn btn--secondary" type="button" data-act="help">Help center</button>
+          <a class="btn btn--primary" href="super-admin-dashboard.html" data-dash-home>Back to overview</a>
+        </div>
+      </div>
+
+      <section class="stats" aria-label="Reports summary">
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 3.5a1.5 1.5 0 0 1 3 0v1.1h9.6a1.3 1.3 0 0 1 1 2.2l-2.8 3.3 2.8 3.3a1.3 1.3 0 0 1-1 2.2H7.5v4.3a1.5 1.5 0 0 1-3 0V3.5Z"/></svg>
+            </span>
+            <span class="stat__trend stat__trend--warn">2 urgent</span>
+          </div>
+          <p class="stat__value">7</p>
+          <p class="stat__label">Open reports</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.3a9.7 9.7 0 1 0 0 19.4 9.7 9.7 0 0 0 0-19.4ZM9.2 11.9l1.9 1.9 4.6-5 1.7 1.6-6.3 6.8-3.6-3.6 1.7-1.7Z"/></svg>
+            </span>
+            <span class="stat__trend stat__trend--up">+13 vs October</span>
+          </div>
+          <p class="stat__value">41</p>
+          <p class="stat__label">Resolved (30 days)</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm.95 4.35a1.25 1.25 0 0 0-2.5 0v5.85a1.25 1.25 0 0 0 .63 1.09l3.6 2.1a1.25 1.25 0 0 0 1.25-2.17l-2.98-1.74V6.85Z"/></svg>
+            </span>
+            <span class="stat__trend stat__trend--up">SLA is 4 hours for urgent</span>
+          </div>
+          <p class="stat__value">3h</p>
+          <p class="stat__label">Average first response</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.31 18.31 9.7 11.93l3.5 3.5L21.81 6.81 20.19 5.19 13.2 12.17 9.7 8.67 1.69 16.69Z"/><path d="M22.84 4.16 23.4 8.4 18.6 3.6Z"/></svg>
+            </span>
+            <span class="stat__trend stat__trend--up">Down from 0.9%</span>
+          </div>
+          <p class="stat__value">0.4%</p>
+          <p class="stat__label">Abuse rate</p>
+        </article>
+      </section>
+
+      <div class="dash__grid">
+
+        <section class="panel" id="reports" aria-labelledby="reports-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="reports-title">Open reports</h2>
+              <p class="panel__subtitle">7 open · 2 marked urgent</p>
+            </div>
+            <a class="text-link" href="#" data-act="reports-all">All reports</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <span class="avatar" style="background:#fef2f2;color:#dc2626">R1</span>
+              <div class="list__main">
+                <p class="list__title">Refund request · Order #4821</p>
+                <p class="list__meta"><span>Payment dispute</span><span aria-hidden="true">·</span><span>1h ago</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--danger">Urgent</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fef2f2;color:#dc2626">R2</span>
+              <div class="list__main">
+                <p class="list__title">Harassment in message thread</p>
+                <p class="list__meta"><span>User report</span><span aria-hidden="true">·</span><span>3h ago</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--danger">Urgent</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fff7ed;color:#b45309">R3</span>
+              <div class="list__main">
+                <p class="list__title">Duplicate service listing</p>
+                <p class="list__meta"><span>Member report</span><span aria-hidden="true">·</span><span>Yesterday</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Triaged</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#eff6ff;color:#1d4ed8">R4</span>
+              <div class="list__main">
+                <p class="list__title">Payout not received</p>
+                <p class="list__meta"><span>Freelancer report</span><span aria-hidden="true">·</span><span>Nov 2</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">Investigating</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="sla" aria-labelledby="sla-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="sla-title">SLA at a glance</h2>
+              <p class="panel__subtitle">Trailing 30 days, both lanes</p>
+            </div>
+          </header>
+
+          <div class="panel__body">
+            <div class="meter">
+              <div class="meter__row">
+                <span class="meter__label">Urgent handled within 4h · 2 of 2</span>
+                <span class="meter__value">100%</span>
+              </div>
+              <div class="progress progress--lg"><span class="progress__bar" style="width: 100%"></span></div>
+            </div>
+
+            <div class="meter">
+              <div class="meter__row">
+                <span class="meter__label">Standard handled within 24h · 38 of 41</span>
+                <span class="meter__value">93%</span>
+              </div>
+              <div class="progress progress--lg"><span class="progress__bar" style="width: 93%"></span></div>
+            </div>
+
+            <div class="meter">
+              <div class="meter__row">
+                <span class="meter__label">Appeals reviewed within 72h · 27 of 28</span>
+                <span class="meter__value">96%</span>
+              </div>
+              <div class="progress progress--lg"><span class="progress__bar" style="width: 96%"></span></div>
+            </div>
+          </div>
+
+          <div class="panel__foot">
+            <p class="panel__foot-note">Missing SLA pages both admins immediately, no report waits its turn silently.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="categories" aria-labelledby="categories-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="categories-title">Most reported categories</h2>
+              <p class="panel__subtitle">Where abuse actually clusters</p>
+            </div>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <div class="list__main">
+                <p class="list__title">Payment disputes</p>
+                <p class="list__meta"><span>31% of 90-day volume</span><span aria-hidden="true">·</span><span>Trend down 6%</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Watch</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <div class="list__main">
+                <p class="list__title">Harassment</p>
+                <p class="list__meta"><span>24% of 90-day volume</span><span aria-hidden="true">·</span><span>Flat vs October</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--danger">Focus</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <div class="list__main">
+                <p class="list__title">Spam &amp; duplicate listings</p>
+                <p class="list__meta"><span>18% of 90-day volume</span><span aria-hidden="true">·</span><span>Trend down 11%</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Improving</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <div class="list__main">
+                <p class="list__title">Intellectual property</p>
+                <p class="list__meta"><span>12% of 90-day volume</span><span aria-hidden="true">·</span><span>Flat vs October</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">Monitor</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="resolved" aria-labelledby="resolved-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="resolved-title">Recently resolved</h2>
+              <p class="panel__subtitle">Closed in the last 7 days</p>
+            </div>
+            <a class="text-link" href="moderation.html">Queue</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <div class="list__main">
+                <p class="list__title">Order #4798 · Refund upheld</p>
+                <p class="list__meta"><span>Non-delivery</span><span aria-hidden="true">·</span><span>Nov 3</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Resolved</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <div class="list__main">
+                <p class="list__title">Listing #2211 · Duplicate removed</p>
+                <p class="list__meta"><span>Spam sweep</span><span aria-hidden="true">·</span><span>Nov 2</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Resolved</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <div class="list__main">
+                <p class="list__title">Order #4750 · Harassment action taken</p>
+                <p class="list__meta"><span>Offender warned · 2nd offense logged</span><span aria-hidden="true">·</span><span>Oct 30</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Resolved</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+      </div>
+
+      <p class="empty-state" data-empty="dash" hidden>No reports match your search. Try a different keyword.</p>
+
+    </main>
+  </div>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/pages/dashboard-actions.js" defer></script>
+</body>
+</html>

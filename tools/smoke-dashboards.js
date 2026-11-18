@@ -1,10 +1,14 @@
 /**
- * Headless smoke test for the three SkillMarket dashboards.
+ * Headless smoke test for the SkillMarket dashboards and every dedicated
+ * sidebar page (projects, applications, messages, payments, activity,
+ * users, moderation, reports, revenue, profile, settings).
  *
- * Boots Chrome over CDP, seeds a session for a role, then clicks every
- * [data-act] control, every clickable row and the sidebar dialogs,
- * asserting that each one produces a visible effect (dialog, dropdown or
- * toast) with no console errors.
+ * Boots Chrome over CDP, seeds a session per role, then for each page
+ * asserts that the sidebar renders with the right targets, clicks every
+ * [data-act] control and every clickable row and checks that each one
+ * produces a visible effect (dialog, dropdown or toast), with no console
+ * errors. Also verifies that pages a role may not open bounce back to
+ * that role's dashboard.
  *
  *   node tools/smoke-dashboards.js
  */
@@ -30,6 +34,24 @@ const PAGES = {
   "hire-talent": "hire-talent-dashboard.html",
   "super-admin": "super-admin-dashboard.html"
 };
+
+// Dedicated sidebar pages shared by several roles. `roles` gates who may
+// open the page; `multi` marks pages carrying one [data-role-block] per
+// role (single-role pages have no blocks); `rows` flags pages whose rows
+// should open detail dialogs.
+const SHARED = [
+  { file: "projects.html", rows: true, multi: true, roles: ["freelancer", "hire-talent"] },
+  { file: "applications.html", rows: true, multi: true, roles: ["freelancer", "hire-talent"] },
+  { file: "messages.html", rows: true, multi: true, roles: ["freelancer", "hire-talent"] },
+  { file: "payments.html", rows: false, multi: true, roles: ["freelancer", "hire-talent"] },
+  { file: "activity.html", rows: false, multi: true, roles: ["freelancer", "hire-talent", "super-admin"] },
+  { file: "users.html", rows: true, multi: false, roles: ["super-admin"] },
+  { file: "moderation.html", rows: true, multi: false, roles: ["super-admin"] },
+  { file: "reports.html", rows: true, multi: false, roles: ["super-admin"] },
+  { file: "revenue.html", rows: false, multi: false, roles: ["super-admin"] },
+  { file: "profile.html", rows: false, multi: true, roles: ["freelancer", "hire-talent", "super-admin"] },
+  { file: "settings.html", rows: false, multi: true, roles: ["freelancer", "hire-talent", "super-admin"], settings: true }
+];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -114,6 +136,202 @@ async function main() {
   const failures = [];
   const report = [];
 
+  const pageUrl = (file) =>
+    "file:///" + path.join(ROOT, file).replace(/\\/g, "/");
+
+  // Reset dialogs / dropdowns / toasts between interaction probes.
+  const resetPage = (cdp) =>
+    cdp.evaluate(`(async () => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+      const m = document.querySelector("[data-modal]");
+      if (m) { m.hidden = true; document.body.classList.remove("is-modal-open"); document.documentElement.classList.remove("is-modal-open"); }
+      document.querySelectorAll(".drop").forEach((d) => d.remove());
+      document.querySelectorAll(".toasts").forEach((t) => t.remove());
+      await new Promise((r) => setTimeout(r, 60));
+    })()`);
+
+  // Click every [data-act] control on the current page and check it does something.
+  async function clickDataActs(cdp, label) {
+    const acts = await cdp.evaluate(
+      `Array.from(document.querySelectorAll("[data-act]")).map((el, i) => ({
+         i,
+         act: el.dataset.act,
+         tag: el.tagName,
+         text: (el.textContent || "").trim().slice(0, 40)
+       }))`
+    );
+
+    for (const item of acts) {
+      const result = await cdp.evaluate(`(async () => {
+        const el = document.querySelectorAll("[data-act]")[${item.i}];
+        if (!el) return { ok: false, why: "gone" };
+        el.scrollIntoView({ block: "center" });
+        el.click();
+        await new Promise((r) => setTimeout(r, 260));
+        const modal = document.querySelector("[data-modal]");
+        const drop = document.querySelector(".drop");
+        const toast = document.querySelector(".toasts .toast");
+        const open = modal && !modal.hidden;
+        const title = open ? (modal.querySelector("[data-modal-title]") || {}).textContent : "";
+        const effect = open ? "modal:" + (title || "?") : drop ? "drop" : toast ? "toast" : "none";
+        return { ok: open || !!drop || !!toast, effect, body: open ? (modal.querySelector("[data-modal-body]") || {}).innerHTML.length : 0 };
+      })()`);
+
+      if (!result.ok) {
+        failures.push(`${label}: [data-act=${item.act}] produced no effect (${item.tag} "${item.text}")`);
+      } else if (result.effect.startsWith("modal:") && result.body < 20) {
+        failures.push(`${label}: [data-act=${item.act}] opened an empty dialog`);
+      }
+
+      await resetPage(cdp);
+    }
+
+    return acts.length;
+  }
+
+  // Sidebar rendering + href targets + the help dialog.
+  async function checkSidebar(cdp, label, role) {
+    const dash = PAGES[role];
+
+    const side = await cdp.evaluate(`(async () => {
+      const q = (sel) => document.querySelector(sel);
+      const href = (sel) => { const a = q(sel); return a ? a.getAttribute("href") : null; };
+
+      const out = {
+        hasSidebar: !!q(".sidebar__link"),
+        overview: href('.sidebar__link[href$="overview"], .sidebar__link[href="#overview"]'),
+        settings: href('.sidebar__link[href="settings.html"]'),
+        profile: href('.sidebar__link[href="profile.html"]'),
+        projects: href('.sidebar__link[href="projects.html"]'),
+        users: href('.sidebar__link[href="users.html"]'),
+        helpOpensDialog: false
+      };
+
+      const help = q('.sidebar__link[href="#help"]');
+      if (help) {
+        help.click();
+        await new Promise((r) => setTimeout(r, 260));
+        const m = q("[data-modal]");
+        out.helpOpensDialog = !!(m && !m.hidden);
+        if (m) { m.hidden = true; document.body.classList.remove("is-modal-open"); document.documentElement.classList.remove("is-modal-open"); }
+      }
+      return out;
+    })()`);
+
+    if (!side.hasSidebar) failures.push(`${label}: sidebar did not render`);
+    if (side.overview !== "#overview" && side.overview !== `${dash}#overview`) {
+      failures.push(`${label}: overview link points at ${side.overview} (expected #overview or ${dash}#overview)`);
+    }
+    if (side.settings !== "settings.html") {
+      failures.push(`${label}: settings link points at ${side.settings} (expected settings.html)`);
+    }
+    if (side.profile !== "profile.html") {
+      failures.push(`${label}: profile link points at ${side.profile} (expected profile.html)`);
+    }
+    if (role === "super-admin") {
+      if (side.users !== "users.html") {
+        failures.push(`${label}: users link points at ${side.users} (expected users.html)`);
+      }
+    } else if (side.projects !== "projects.html") {
+      failures.push(`${label}: projects link points at ${side.projects} (expected projects.html)`);
+    }
+    if (!side.helpOpensDialog) failures.push(`${label}: sidebar help link did not open a dialog`);
+
+    return side;
+  }
+
+  // Exactly one role block may remain, and it must be the role's own.
+  async function checkRoleBlock(cdp, label, role) {
+    const state = await cdp.evaluate(`(() => {
+      const blocks = Array.from(document.querySelectorAll("[data-role-block]"));
+      return {
+        count: blocks.length,
+        roles: blocks.map((b) => b.dataset.roleBlock),
+        anyHidden: blocks.some((b) => b.hasAttribute("hidden"))
+      };
+    })()`);
+    if (state.count !== 1 || state.roles[0] !== role) {
+      failures.push(`${label}: expected exactly one [data-role-block="${role}"], got ${JSON.stringify(state)}`);
+    }
+    if (state.anyHidden) failures.push(`${label}: the surviving role block is still hidden`);
+    return state;
+  }
+
+  async function checkUniqueIds(cdp, label) {
+    const dupes = await cdp.evaluate(`(() => {
+      const seen = new Map();
+      document.querySelectorAll("[id]").forEach((el) => seen.set(el.id, (seen.get(el.id) || 0) + 1));
+      return Array.from(seen.entries()).filter(([, count]) => count > 1).map(([id]) => id);
+    })()`);
+    if (dupes.length) failures.push(`${label}: duplicate ids in document, ${dupes.join(", ")}`);
+  }
+
+  // The account page's inline switches must persist to the same
+  // localStorage key the settings dialog uses.
+  async function checkSettingsSwitch(cdp, label, role) {
+    const result = await cdp.evaluate(`(async () => {
+      const block = document.querySelector('[data-setting-block="${role}"]');
+      if (!block) return { ok: false, why: "switch block missing" };
+      const key = "skillmarket.settings.${role}";
+      const btn = block.querySelector("[data-setting-key]");
+      const settingKey = btn.dataset.settingKey;
+      const before = btn.getAttribute("aria-checked") === "true";
+      btn.click();
+      await new Promise((r) => setTimeout(r, 200));
+      const stored = JSON.parse(localStorage.getItem(key) || "{}");
+      const toast = !!document.querySelector(".toasts .toast");
+      btn.click(); // restore
+      await new Promise((r) => setTimeout(r, 120));
+      return { ok: stored[settingKey] === !before && toast, settingKey, before, stored: stored[settingKey], toast };
+    })()`);
+    if (!result.ok) {
+      failures.push(`${label}: settings switch did not persist, ${JSON.stringify(result)}`);
+    }
+    return result;
+  }
+
+  async function checkRows(cdp, label) {
+    const rowCheck = await cdp.evaluate(`(async () => {
+      const rows = Array.from(document.querySelectorAll(".dash__grid .list__item")).slice(0, 6);
+      let opened = 0, skipped = 0;
+      for (const row of rows) {
+        row.click();
+        await new Promise((r) => setTimeout(r, 220));
+        const m = document.querySelector("[data-modal]");
+        if (m && !m.hidden) {
+          opened++;
+          m.hidden = true;
+          document.body.classList.remove("is-modal-open");
+          document.documentElement.classList.remove("is-modal-open");
+        } else { skipped++; }
+        document.querySelectorAll(".toasts").forEach((t) => t.remove());
+      }
+      return { total: rows.length, opened, skipped };
+    })()`);
+    if (rowCheck.opened === 0) {
+      failures.push(`${label}: none of the ${rowCheck.total} sampled rows opened a detail dialog`);
+    }
+    return rowCheck;
+  }
+
+  const drainConsoleErrors = (cdp, label) => {
+    const errors = [];
+    for (const ev of cdp.events) {
+      if (ev.method === "Runtime.exceptionThrown") {
+        errors.push(ev.params.exceptionDetails?.exception?.description || "exception");
+      }
+      if (ev.method === "Log.entryAdded" && ev.params.entry.level === "error") {
+        const text = ev.params.entry.text;
+        // file:// pages have no server; a favicon 404 is not a code error.
+        if (!/favicon/i.test(text)) errors.push(text);
+      }
+      if (ev.method === "Runtime.consoleAPICalled" && ev.params.type === "error") {
+        errors.push(ev.params.args.map((a) => a.value || a.description).join(" "));
+      }
+    }
+    for (const e of errors) failures.push(`${label}: console error, ${e}`);
+  };
+
   try {
     await waitEndpoint();
     const list = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json();
@@ -124,142 +342,92 @@ async function main() {
     await cdp.send("Log.enable");
 
     for (const [role, file] of Object.entries(PAGES)) {
-      const url = "file:///" + path.join(ROOT, file).replace(/\\/g, "/");
-      const errors = [];
-
-      // Seed the session on the origin before the dashboard boots.
-      await cdp.send("Page.navigate", { url: "file:///" + path.join(ROOT, "login.html").replace(/\\/g, "/") });
+      // Seed the session on the origin before any dashboard boots.
+      await cdp.send("Page.navigate", { url: pageUrl("login.html") });
       await sleep(500);
       await cdp.evaluate(
         `localStorage.setItem("skillmarket.session", ${JSON.stringify(JSON.stringify(USERS[role]))}); "ok"`
       );
 
-      cdp.events.length = 0;
-      await cdp.send("Page.navigate", { url });
-      await sleep(1400);
+      const targets = [{ file, rows: false }, ...SHARED.filter((p) => p.roles.includes(role))];
 
-      const state = await cdp.evaluate(`(() => ({
-        title: document.title,
-        hasSidebar: !!document.querySelector(".sidebar__link"),
-        acts: document.querySelectorAll("[data-act]").length,
-        rows: document.querySelectorAll(".dash__grid .list__item").length,
-        titleText: (document.querySelector(".dash__title") || {}).textContent || "",
-        url: location.pathname.split("/").pop()
-      }))()`);
-      report.push({ role, ...state });
+      for (const target of targets) {
+        const label = `${role}@${target.file}`;
+        cdp.events.length = 0;
+        await cdp.send("Page.navigate", { url: pageUrl(target.file) });
+        await sleep(1300);
 
-      if (state.url !== file) {
-        failures.push(`${role}: redirected to ${state.url} (expected ${file})`);
-      }
-      if (!state.hasSidebar) failures.push(`${role}: sidebar did not render`);
-      if (state.acts === 0) failures.push(`${role}: no [data-act] controls found`);
+        const state = await cdp.evaluate(`(() => ({
+          title: document.title,
+          hasSidebar: !!document.querySelector(".sidebar__link"),
+          acts: document.querySelectorAll("[data-act]").length,
+          url: location.pathname.split("/").pop()
+        }))()`);
+        report.push({ role, file: target.file, ...state });
 
-      // --- Every data-act control -------------------------------------
-      const acts = await cdp.evaluate(
-        `Array.from(document.querySelectorAll("[data-act]")).map((el, i) => ({
-           i,
-           act: el.dataset.act,
-           tag: el.tagName,
-           text: (el.textContent || "").trim().slice(0, 40)
-         }))`
-      );
+        if (state.url !== target.file) {
+          failures.push(`${label}: redirected to ${state.url} (expected ${target.file})`);
+        }
+        if (!state.hasSidebar) failures.push(`${label}: sidebar did not render`);
+        if (state.acts === 0) failures.push(`${label}: no [data-act] controls found`);
 
-      for (const item of acts) {
-        const result = await cdp.evaluate(`(async () => {
-          const el = document.querySelectorAll("[data-act]")[${item.i}];
-          if (!el) return { ok: false, why: "gone" };
-          el.scrollIntoView({ block: "center" });
-          el.click();
-          await new Promise((r) => setTimeout(r, 260));
-          const modal = document.querySelector("[data-modal]");
-          const drop = document.querySelector(".drop");
-          const toast = document.querySelector(".toasts .toast");
-          const open = modal && !modal.hidden;
-          const title = open ? (modal.querySelector("[data-modal-title]") || {}).textContent : "";
-          const effect = open ? "modal:" + (title || "?") : drop ? "drop" : toast ? "toast" : "none";
-          return { ok: open || !!drop || !!toast, effect, body: open ? (modal.querySelector("[data-modal-body]") || {}).innerHTML.length : 0 };
-        })()`);
+        await checkSidebar(cdp, label, role);
 
-        if (!result.ok) {
-          failures.push(`${role}: [data-act=${item.act}] produced no effect (${item.tag} "${item.text}")`);
-        } else if (result.effect.startsWith("modal:") && result.body < 20) {
-          failures.push(`${role}: [data-act=${item.act}] opened an empty dialog`);
+        if (target.file !== PAGES[role]) {
+          if (target.multi) await checkRoleBlock(cdp, label, role);
+          await checkUniqueIds(cdp, label);
         }
 
-        // Reset: close dialog / dropdown / toasts before the next click.
-        await cdp.evaluate(`(async () => {
-          document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
-          const m = document.querySelector("[data-modal]");
-          if (m) { m.hidden = true; document.body.classList.remove("is-modal-open"); document.documentElement.classList.remove("is-modal-open"); }
-          document.querySelectorAll(".drop").forEach((d) => d.remove());
-          document.querySelectorAll(".toasts").forEach((t) => t.remove());
-          await new Promise((r) => setTimeout(r, 60));
-        })()`);
+        // "Back to overview" must point at the role's dashboard.
+        const dashHome = await cdp.evaluate(
+          `(() => { const a = document.querySelector("[data-dash-home]"); return a ? a.getAttribute("href") : null; })()`
+        );
+        if (target.file !== PAGES[role] && dashHome !== PAGES[role]) {
+          failures.push(`${label}: data-dash-home link points at ${dashHome} (expected ${PAGES[role]})`);
+        }
+
+        const acts = await clickDataActs(cdp, label);
+
+        let rowCheck = null;
+        if (target.rows) rowCheck = await checkRows(cdp, label);
+
+        let switchCheck = null;
+        if (target.settings) switchCheck = await checkSettingsSwitch(cdp, label, role);
+
+        drainConsoleErrors(cdp, label);
+        report.push({ role, file: target.file, acts, rows: rowCheck, switch: switchCheck });
       }
 
-      // --- Sidebar #settings / #help ----------------------------------
-      const side = await cdp.evaluate(`(async () => {
-        const out = [];
-        for (const href of ["#settings", "#help"]) {
-          const a = document.querySelector('.sidebar__link[href="' + href + '"]');
-          if (!a) { out.push({ href, ok: false, why: "link missing" }); continue; }
-          a.click();
-          await new Promise((r) => setTimeout(r, 260));
-          const m = document.querySelector("[data-modal]");
-          const open = m && !m.hidden;
-          out.push({ href, ok: !!open, title: open ? (m.querySelector("[data-modal-title]")||{}).textContent : "" });
-          if (m) { m.hidden = true; document.body.classList.remove("is-modal-open"); document.documentElement.classList.remove("is-modal-open"); }
+      // --- Cross-role pages must bounce to the role's own dashboard -----
+      const blocked = SHARED.filter((p) => !p.roles.includes(role)).slice(0, 2);
+      for (const target of blocked) {
+        const label = `${role}@${target.file} (blocked)`;
+        cdp.events.length = 0;
+        await cdp.send("Page.navigate", { url: pageUrl(target.file) });
+        // The guard redirects in two steps (load → replace), so poll until
+        // the URL settles or we time out.
+        let landed = target.file;
+        for (let i = 0; i < 25; i++) {
+          await sleep(200);
+          landed = await cdp.evaluate(`location.pathname.split("/").pop()`);
+          if (landed !== target.file) break;
         }
-        return out;
-      })()`);
-      for (const s of side) {
-        if (!s.ok) failures.push(`${role}: sidebar ${s.href} did not open a dialog`);
+        if (landed !== PAGES[role]) {
+          failures.push(`${label}: expected redirect to ${PAGES[role]}, landed on ${landed}`);
+        }
+        drainConsoleErrors(cdp, label);
       }
-
-      // --- Clickable rows ---------------------------------------------
-      const rowCheck = await cdp.evaluate(`(async () => {
-        const rows = Array.from(document.querySelectorAll(".dash__grid .list__item")).slice(0, 6);
-        let opened = 0, skipped = 0;
-        for (const row of rows) {
-          row.click();
-          await new Promise((r) => setTimeout(r, 220));
-          const m = document.querySelector("[data-modal]");
-          if (m && !m.hidden) {
-            opened++;
-            m.hidden = true;
-            document.body.classList.remove("is-modal-open");
-            document.documentElement.classList.remove("is-modal-open");
-          } else { skipped++; }
-          document.querySelectorAll(".toasts").forEach((t) => t.remove());
-        }
-        return { total: rows.length, opened, skipped };
-      })()`);
-      if (rowCheck.opened === 0) {
-        failures.push(`${role}: none of the ${rowCheck.total} sampled rows opened a detail dialog`);
-      }
-
-      // --- Console errors ---------------------------------------------
-      for (const ev of cdp.events) {
-        if (ev.method === "Runtime.exceptionThrown") {
-          errors.push(ev.params.exceptionDetails?.exception?.description || "exception");
-        }
-        if (ev.method === "Log.entryAdded" && ev.params.entry.level === "error") {
-          const text = ev.params.entry.text;
-          // file:// pages have no server; a favicon 404 is not a code error.
-          if (!/favicon/i.test(text)) errors.push(text);
-        }
-        if (ev.method === "Runtime.consoleAPICalled" && ev.params.type === "error") {
-          errors.push(ev.params.args.map((a) => a.value || a.description).join(" "));
-        }
-      }
-      for (const e of errors) failures.push(`${role}: console error — ${e}`);
-
-      report.push({ role, acts: acts.length, rows: rowCheck, side: side.map((s) => s.href + "=" + (s.ok ? "ok" : "FAIL")) });
     }
 
     // --- CSV export sanity (Blob + anchor, no real download) -----------
-    await cdp.send("Page.navigate", { url: "file:///" + path.join(ROOT, PAGES["super-admin"]).replace(/\\/g, "/") });
-    await sleep(1400);
+    // The loop leaves the super-admin session seeded; re-seed to be safe.
+    await cdp.send("Page.navigate", { url: pageUrl("login.html") });
+    await sleep(400);
+    await cdp.evaluate(
+      `localStorage.setItem("skillmarket.session", ${JSON.stringify(JSON.stringify(USERS["super-admin"]))}); "ok"`
+    );
+    await cdp.send("Page.navigate", { url: pageUrl("revenue.html") });
+    await sleep(1300);
     await cdp.evaluate(`window.__csv = null;
       const orig = HTMLAnchorElement.prototype.click;
       HTMLAnchorElement.prototype.click = function () { window.__csv = { href: this.href.slice(0, 5), name: this.download }; };`);
@@ -270,24 +438,37 @@ async function main() {
       await new Promise((r) => setTimeout(r, 400));
       return { ok: window.__csv && window.__csv.href === "blob:", name: window.__csv && window.__csv.name };
     })()`);
-    if (!csv.ok) failures.push(`super-admin: export-report did not create a CSV blob download`);
+    if (!csv.ok) failures.push(`super-admin@revenue.html: export-report did not create a CSV blob download`);
 
     // --- Screenshots ---------------------------------------------------
     const shots = path.join(os.tmpdir(), "sm-shots");
     fs.mkdirSync(shots, { recursive: true });
     for (const [role, file] of Object.entries(PAGES)) {
-      await cdp.send("Page.navigate", { url: "file:///" + path.join(ROOT, file).replace(/\\/g, "/") });
-      await sleep(1300);
-      const shot = await cdp.send("Page.captureScreenshot", { format: "png" });
-      fs.writeFileSync(path.join(shots, `${role}.png`), Buffer.from(shot.data, "base64"));
-      // Dialog shot
+      await cdp.send("Page.navigate", { url: pageUrl("login.html") });
+      await sleep(400);
+      await cdp.evaluate(
+        `localStorage.setItem("skillmarket.session", ${JSON.stringify(JSON.stringify(USERS[role]))}); "ok"`
+      );
+
+      const shotsFor = [file, ...SHARED.filter((p) => p.roles.includes(role)).map((p) => p.file)];
+      for (const shot of shotsFor) {
+        await cdp.send("Page.navigate", { url: pageUrl(shot) });
+        await sleep(1100);
+        const name = shot.replace(".html", "");
+        const image = await cdp.send("Page.captureScreenshot", { format: "png" });
+        fs.writeFileSync(path.join(shots, `${role}-${name}.png`), Buffer.from(image.data, "base64"));
+      }
+
+      // Dialog shot: open the profile page's preview.
+      await cdp.send("Page.navigate", { url: pageUrl("profile.html") });
+      await sleep(1100);
       await cdp.evaluate(`(() => {
         const b = document.querySelector('[data-act="profile-preview"]') || document.querySelector('[data-act="settings"]');
         if (b) b.click();
       })()`);
       await sleep(500);
-      const shot2 = await cdp.send("Page.captureScreenshot", { format: "png" });
-      fs.writeFileSync(path.join(shots, `${role}-dialog.png`), Buffer.from(shot2.data, "base64"));
+      const dialog = await cdp.send("Page.captureScreenshot", { format: "png" });
+      fs.writeFileSync(path.join(shots, `${role}-dialog.png`), Buffer.from(dialog.data, "base64"));
       await cdp.evaluate(`document.dispatchEvent(new KeyboardEvent("keydown",{key:"Escape",bubbles:true}));`);
     }
     report.push({ screenshots: shots });
