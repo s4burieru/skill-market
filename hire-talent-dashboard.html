@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap"
     rel="stylesheet"
   />
 
@@ -38,32 +38,29 @@
         aria-expanded="false"
         aria-controls="dashboard-nav"
       >
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M4 7h16M4 12h16M4 17h16"></path>
-        </svg>
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="4" y="6.2" width="16" height="2.5" rx="1.25"/><rect x="4" y="10.75" width="16" height="2.5" rx="1.25"/><rect x="4" y="15.3" width="16" height="2.5" rx="1.25"/></svg>
       </button>
 
       <form class="search dash__search" role="search" data-dash-search>
         <span class="search__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="7"></circle>
-            <path d="m20 20-3.6-3.6"></path>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.4 3.2a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm0 2.5a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/><rect x="13.85" y="16.3" width="7.5" height="2.6" rx="1.3" transform="rotate(45 17.6 17.6)"/></svg>
         </span>
-        <label class="sr-only" for="dash-search">Search your dashboard</label>
+        <label class="sr-only" for="dash-search">Search overview</label>
         <input
           class="search__input"
           id="dash-search"
           name="q"
           type="search"
           autocomplete="off"
-          placeholder="Search projects, candidates, messages…"
+          placeholder="Search overview…"
         />
       </form>
 
       <div class="dash__top-actions">
+        <span class="dash__date">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14v10ZM5 8V6h14v2H5Z"/></svg>
+          <span data-dash-date></span>
+        </span>
         <button
           class="icon-btn"
           type="button"
@@ -72,20 +69,16 @@
           aria-expanded="false"
           data-act="notifications"
         >
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
-            <path d="M13.7 21a2 2 0 0 1-3.4 0"></path>
-          </svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8a6.3 6.3 0 0 1 6.3 6.3v4.02l1.44 3.16a1.25 1.25 0 0 1-1.16 1.72H5.42a1.25 1.25 0 0 1-1.16-1.72L5.7 13.12v-4A6.3 6.3 0 0 1 12 2.8Z"/><path d="M9.55 19.6a2.55 2.55 0 0 0 4.9 0Z"/></svg>
           <span class="icon-btn__dot" aria-hidden="true"></span>
         </button>
 
         <div class="user-chip">
           <span class="user-chip__avatar">
-            <img src="img/avatar-james.svg" alt="" width="32" height="32" />
+            <img src="img/avatar-chris.svg" alt="" width="32" height="32" />
           </span>
           <span class="user-chip__text">
-            <span class="user-chip__name">James Porter</span>
+            <span class="user-chip__name">Chris Emerson Salvador</span>
             <span class="user-chip__role">Hire talent</span>
           </span>
         </div>
@@ -97,21 +90,13 @@
       <!-- Overview -->
       <header class="dash__head" id="overview">
         <div class="dash__head-text">
-          <span class="badge badge--soft">Hire talent account</span>
-          <p class="dash__meta">
-            <span class="dash__meta-date">Today</span>
-            <span class="dash__meta-item">12 new applications · 1 milestone to approve</span>
-          </p>
-          <h1 class="dash__title">Welcome back, James</h1>
+          <h1 class="dash__title">Welcome back, Chris</h1>
           <p class="dash__subtitle">
             Your React role picked up 12 new applications this week and one milestone is waiting for
             your approval. Here is your hiring snapshot.
           </p>
         </div>
-        <div class="dash__head-actions">
-          <a class="btn btn--secondary" href="#applications">Review applications</a>
-          <a class="btn btn--primary" href="#" data-act="post-job">Post a job</a>
-        </div>
+        <img class="dash__head-logo" src="img/logo-2.png" alt="SkillMarket" width="1261" height="1247" />
       </header>
 
       <!-- Stats -->
@@ -119,12 +104,7 @@
         <article class="stat">
           <div class="stat__top">
             <span class="stat__icon" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="7" width="18" height="13" rx="2"></rect>
-                <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-                <path d="M3 12h18"></path>
-              </svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 8h13.6A2.2 2.2 0 0 1 21 10.2v8.6a2.7 2.7 0 0 1-2.7 2.7H5.7A2.7 2.7 0 0 1 3 18.8v-8.6A2.2 2.2 0 0 1 5.2 8Z"/><rect x="8" y="3" width="8" height="3.2" rx="1.6"/><path fill-opacity=".38" d="M3 12.2h6.3a.9.9 0 0 1 .8.55 2.9 2.9 0 0 0 4.6 0 .9.9 0 0 1 .8-.55H21v1.65h-5a4.4 4.4 0 0 1-4.4 3.2 4.4 4.4 0 0 1-4.4-3.2H3v-1.65Z"/></svg>
             </span>
             <span class="stat__trend stat__trend--up">+1 this week</span>
           </div>
@@ -135,13 +115,7 @@
         <article class="stat">
           <div class="stat__top">
             <span class="stat__icon" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.9"></path>
-                <path d="M16 3.1a4 4 0 0 1 0 7.8"></path>
-              </svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9.3" cy="8.2" r="3.4"/><path d="M3.4 19.6a6 6 0 0 1 11.8 0 1.1 1.1 0 0 1-1.1 1.4H4.5a1.1 1.1 0 0 1-1.1-1.4Z"/><circle cx="16.7" cy="9" r="2.7" fill-opacity=".55"/><path fill-opacity=".55" d="M15.3 14.2a6 6 0 0 1 5 6.35 1.15 1.15 0 0 1-1.2 1.15h-2.5a7.4 7.4 0 0 0-1.3-7.5Z"/></svg>
             </span>
             <span class="stat__trend stat__trend--up">+2 this month</span>
           </div>
@@ -152,13 +126,7 @@
         <article class="stat">
           <div class="stat__top">
             <span class="stat__icon" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path>
-                <path d="M14 3v5h5"></path>
-                <path d="M9 13h6"></path>
-                <path d="M9 17h4"></path>
-              </svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.3 2.5h5.1l6 6V22a2.1 2.1 0 0 1-2.1 2.1H7.3a2.1 2.1 0 0 1-2.1-2.1V4.6a2.1 2.1 0 0 1 2.1-2.1Zm2 10.5a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Zm0-3.7a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Z"/><path fill-opacity=".4" d="M12.4 2.5v5.1a.9.9 0 0 0 .9.9h5.1L12.4 2.5Z"/></svg>
             </span>
             <span class="stat__trend stat__trend--up">+12 this week</span>
           </div>
@@ -169,12 +137,7 @@
         <article class="stat">
           <div class="stat__top">
             <span class="stat__icon" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 7H5a2 2 0 0 1 0-4h13v4"></path>
-                <path d="M3 5v14a2 2 0 0 0 2 2h15V7H5"></path>
-                <path d="M16 13h2"></path>
-              </svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 5.5h13A2.5 2.5 0 0 1 20.5 8v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 17V8A2.5 2.5 0 0 1 5 5.5ZM11.6 10.2h7.7a1.15 1.15 0 0 1 1.15 1.15v2.3a1.15 1.15 0 0 1-1.15 1.15h-7.7a1.3 1.3 0 0 1-1.3-1.3v-2a1.3 1.3 0 0 1 1.3-1.3Z"/><circle cx="15.4" cy="12.5" r="1.1"/></svg>
             </span>
             <span class="stat__trend">68% of budget</span>
           </div>
@@ -183,84 +146,16 @@
         </article>
       </section>
 
-      <!-- Panels -->
+      <!-- Overview panels: condensed previews, each links to its dedicated page -->
       <div class="dash__grid">
-
-        <section class="panel" id="projects" aria-labelledby="projects-title">
-          <header class="panel__head">
-            <div>
-              <h2 class="panel__title" id="projects-title">Active projects</h2>
-              <p class="panel__subtitle">4 engagements currently in progress</p>
-            </div>
-            <a class="text-link" href="#" data-act="projects-all">View all</a>
-          </header>
-
-          <ul class="panel__body panel__body--flush">
-            <li class="list__item list__item--top">
-              <div class="list__main">
-                <p class="list__title">Website redesign</p>
-                <p class="list__meta"><span>Sarah Jenkins</span><span aria-hidden="true">·</span><span>Due Dec 4</span></p>
-                <div class="list__progress">
-                  <span class="progress"><span class="progress__bar" style="width: 65%"></span></span>
-                  <span class="list__percent">65%</span>
-                </div>
-              </div>
-              <div class="list__aside">
-                <span class="status status--ok">On track</span>
-              </div>
-            </li>
-
-            <li class="list__item list__item--top">
-              <div class="list__main">
-                <p class="list__title">Data pipeline setup</p>
-                <p class="list__meta"><span>David Kim</span><span aria-hidden="true">·</span><span>Due Nov 20</span></p>
-                <div class="list__progress">
-                  <span class="progress"><span class="progress__bar" style="width: 90%"></span></span>
-                  <span class="list__percent">90%</span>
-                </div>
-              </div>
-              <div class="list__aside">
-                <span class="status status--warn">Due soon</span>
-              </div>
-            </li>
-
-            <li class="list__item list__item--top">
-              <div class="list__main">
-                <p class="list__title">SEO content program</p>
-                <p class="list__meta"><span>Elena Rodriguez</span><span aria-hidden="true">·</span><span>Ongoing</span></p>
-                <div class="list__progress">
-                  <span class="progress"><span class="progress__bar" style="width: 40%"></span></span>
-                  <span class="list__percent">40%</span>
-                </div>
-              </div>
-              <div class="list__aside">
-                <span class="status status--ok">On track</span>
-              </div>
-            </li>
-
-            <li class="list__item list__item--top">
-              <div class="list__main">
-                <p class="list__title">Brand identity refresh</p>
-                <p class="list__meta"><span>Michael Chen</span><span aria-hidden="true">·</span><span>Due Dec 18</span></p>
-                <div class="list__progress">
-                  <span class="progress"><span class="progress__bar" style="width: 25%"></span></span>
-                  <span class="list__percent">25%</span>
-                </div>
-              </div>
-              <div class="list__aside">
-                <span class="status status--info">In review</span>
-              </div>
-            </li>
-          </ul>
-        </section>
 
         <section class="panel" id="applications" aria-labelledby="applications-title">
           <header class="panel__head">
             <div>
               <h2 class="panel__title" id="applications-title">New applications</h2>
-              <p class="panel__subtitle">37 received this month · 12 this week</p>
+              <p class="panel__subtitle">12 this week · 37 this month</p>
             </div>
-            <a class="text-link" href="index.html#freelancers">Browse talent</a>
+            <a class="text-link" href="applications.html">All applications</a>
           </header>
 
           <ul class="panel__body panel__body--flush">
@@ -296,155 +191,103 @@
                 <span class="status status--warn">Interview</span>
               </div>
             </li>
+          </ul>
+        </section>
 
-            <li class="list__item">
-              <span class="avatar" style="background:#f5f3ff;color:#6d28d9">PR</span>
+        <section class="panel" id="projects" aria-labelledby="projects-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="projects-title">Active engagements</h2>
+              <p class="panel__subtitle">What is due, and what is in review</p>
+            </div>
+            <a class="text-link" href="projects.html">All projects</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item list__item--top">
               <div class="list__main">
-                <p class="list__title">Priya Raman</p>
-                <p class="list__meta"><span>UI/UX Designer</span><span aria-hidden="true">·</span><span>₱4,600/hr</span></p>
+                <p class="list__title">Website redesign</p>
+                <p class="list__meta"><span>Sarah Jenkins</span><span aria-hidden="true">·</span><span>Due Dec 4</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 65%"></span></span>
+                  <span class="list__percent">65%</span>
+                </div>
               </div>
               <div class="list__aside">
-                <span class="status status--danger">Rejected</span>
+                <span class="status status--ok">On track</span>
+              </div>
+            </li>
+
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">Data pipeline setup</p>
+                <p class="list__meta"><span>David Kim</span><span aria-hidden="true">·</span><span>Due Nov 20</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 90%"></span></span>
+                  <span class="list__percent">90%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Due soon</span>
+              </div>
+            </li>
+
+            <li class="list__item list__item--top">
+              <div class="list__main">
+                <p class="list__title">Brand identity refresh</p>
+                <p class="list__meta"><span>Michael Chen</span><span aria-hidden="true">·</span><span>Due Dec 18</span></p>
+                <div class="list__progress">
+                  <span class="progress"><span class="progress__bar" style="width: 25%"></span></span>
+                  <span class="list__percent">25%</span>
+                </div>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">In review</span>
               </div>
             </li>
           </ul>
         </section>
 
-        <section class="panel" id="messages" aria-labelledby="messages-title">
+        <section class="panel" id="milestones" aria-labelledby="milestones-title">
           <header class="panel__head">
             <div>
-              <h2 class="panel__title" id="messages-title">Messages</h2>
-              <p class="panel__subtitle">3 recent conversations</p>
+              <h2 class="panel__title" id="milestones-title">Milestones to approve</h2>
+              <p class="panel__subtitle">Approving releases payment from escrow</p>
             </div>
-            <a class="text-link" href="#" data-act="inbox">Open inbox</a>
+            <a class="text-link" href="payments.html">Payments</a>
           </header>
 
           <ul class="panel__body panel__body--flush">
             <li class="list__item">
-              <span class="avatar"><img src="img/avatar-sarah.svg" alt="" width="38" height="38" /></span>
               <div class="list__main">
-                <p class="list__title">Sarah Jenkins</p>
-                <p class="list__sub">Just pushed the checkout fixes to staging.</p>
+                <p class="list__title">Brand identity refresh · Final delivery review</p>
+                <p class="list__meta"><span>Michael Chen</span><span aria-hidden="true">·</span><span>Delivered Nov 15</span></p>
               </div>
               <div class="list__aside">
-                <span class="list__time">8m</span>
-                <span class="list__unread" aria-label="Unread"></span>
+                <span class="status status--warn">₱95,000</span>
               </div>
             </li>
 
             <li class="list__item">
-              <span class="avatar"><img src="img/avatar-david.svg" alt="" width="38" height="38" /></span>
               <div class="list__main">
-                <p class="list__title">David Kim</p>
-                <p class="list__sub">Pipeline KPIs confirmed, starting the build Monday.</p>
+                <p class="list__title">Data pipeline setup · KPI report sign-off</p>
+                <p class="list__meta"><span>David Kim</span><span aria-hidden="true">·</span><span>Delivered Nov 16</span></p>
               </div>
               <div class="list__aside">
-                <span class="list__time">2h</span>
-                <span class="list__unread" aria-label="Unread"></span>
+                <span class="status status--warn">₱120,000</span>
               </div>
             </li>
 
             <li class="list__item">
-              <span class="avatar"><img src="img/avatar-elena.svg" alt="" width="38" height="38" /></span>
               <div class="list__main">
-                <p class="list__title">Elena Rodriguez</p>
-                <p class="list__sub">November content calendar is ready to review.</p>
+                <p class="list__title">SEO content program · Batch 2 publish</p>
+                <p class="list__meta"><span>Elena Rodriguez</span><span aria-hidden="true">·</span><span>Expected Dec 1</span></p>
               </div>
               <div class="list__aside">
-                <span class="list__time">Yesterday</span>
+                <span class="status status--info">₱60,000</span>
               </div>
             </li>
           </ul>
-        </section>
-
-        <section class="panel" id="profile" aria-labelledby="profile-title">
-          <header class="panel__head">
-            <div>
-              <h2 class="panel__title" id="profile-title">Company profile</h2>
-              <p class="panel__subtitle">70% complete · verified business</p>
-            </div>
-            <a class="text-link" href="#" data-act="profile-preview">Preview</a>
-          </header>
-
-          <div class="panel__body">
-            <div class="meter">
-              <div class="meter__row">
-                <span class="meter__label">Profile strength</span>
-                <span class="meter__value">70%</span>
-              </div>
-              <div class="progress progress--lg"><span class="progress__bar" style="width: 70%"></span></div>
-            </div>
-
-            <ul class="checklist">
-              <li class="checklist__item">
-                <span class="checklist__mark" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
-                </span>
-                Company verified
-              </li>
-              <li class="checklist__item">
-                <span class="checklist__mark" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
-                </span>
-                Payment method added
-              </li>
-              <li class="checklist__item">
-                <span class="checklist__mark" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                    stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
-                </span>
-                3 job posts created
-              </li>
-              <li class="checklist__item checklist__item--todo">
-                <span class="checklist__mark" aria-hidden="true"></span>
-                Add 2 teammates to your hiring team
-              </li>
-              <li class="checklist__item checklist__item--todo">
-                <span class="checklist__mark" aria-hidden="true"></span>
-                Upload your company logo
-              </li>
-            </ul>
-          </div>
-
-          <div class="panel__foot">
-            <p class="panel__foot-note">Complete company profiles get 3× more applications.</p>
-            <button class="btn btn--primary btn--sm" type="button"
-              data-act="finish-setup">Finish setup</button>
-          </div>
-        </section>
-
-        <section class="panel" id="payments" aria-labelledby="payments-title">
-          <header class="panel__head">
-            <div>
-              <h2 class="panel__title" id="payments-title">Spending</h2>
-              <p class="panel__subtitle">₱707,000 in November · 68% of budget</p>
-            </div>
-            <a class="text-link" href="#" data-act="invoices">Invoices</a>
-          </header>
-
-          <div class="panel__body">
-            <div class="chart" role="img" aria-label="Monthly spending from June to November, ₱707,000 in November">
-              <div class="chart__bars">
-                <div class="chart__col"><span class="chart__bar" style="height: 69%" title="₱507,000"></span><span class="chart__label">Jun</span></div>
-                <div class="chart__col"><span class="chart__bar" style="height: 81%" title="₱593,000"></span><span class="chart__label">Jul</span></div>
-                <div class="chart__col"><span class="chart__bar" style="height: 74%" title="₱547,000"></span><span class="chart__label">Aug</span></div>
-                <div class="chart__col"><span class="chart__bar" style="height: 87%" title="₱638,000"></span><span class="chart__label">Sep</span></div>
-                <div class="chart__col"><span class="chart__bar" style="height: 100%" title="₱735,000"></span><span class="chart__label">Oct</span></div>
-                <div class="chart__col"><span class="chart__bar is-active" style="height: 96%" title="₱707,000"></span><span class="chart__label">Nov</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel__foot">
-            <div>
-              <p class="panel__foot-label">Held in escrow</p>
-              <p class="panel__foot-value">₱371,000</p>
-            </div>
-            <button class="btn btn--primary btn--sm" type="button"
-              data-act="add-funds">Add funds</button>
-          </div>
         </section>
 
         <section class="panel" id="activity" aria-labelledby="activity-title">
@@ -453,20 +296,14 @@
               <h2 class="panel__title" id="activity-title">Recent activity</h2>
               <p class="panel__subtitle">Everything that happened this week</p>
             </div>
-            <a class="text-link" href="#" data-act="activity-all">View all</a>
+            <a class="text-link" href="activity.html">All activity</a>
           </header>
 
           <div class="panel__body">
             <ul class="timeline">
               <li class="timeline__item">
                 <span class="timeline__icon" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path>
-                    <path d="M14 3v5h5"></path>
-                    <path d="M9 13h6"></path>
-                    <path d="M9 17h4"></path>
-                  </svg>
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.3 2.5h5.1l6 6V22a2.1 2.1 0 0 1-2.1 2.1H7.3a2.1 2.1 0 0 1-2.1-2.1V4.6a2.1 2.1 0 0 1 2.1-2.1Zm2 10.5a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Zm0-3.7a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Z"/><path fill-opacity=".4" d="M12.4 2.5v5.1a.9.9 0 0 0 .9.9h5.1L12.4 2.5Z"/></svg>
                 </span>
                 <div>
                   <p class="timeline__title">Job posted · Senior React Developer</p>
@@ -476,11 +313,7 @@
 
               <li class="timeline__item">
                 <span class="timeline__icon" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="7.6" r="4.1"/><path d="M4.5 20.4a7.5 7.5 0 0 1 15 0 1.2 1.2 0 0 1-1.2 1.5H5.7a1.2 1.2 0 0 1-1.2-1.5Z"/></svg>
                 </span>
                 <div>
                   <p class="timeline__title">12 new applications received</p>
@@ -490,11 +323,7 @@
 
               <li class="timeline__item">
                 <span class="timeline__icon" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12a9 9 0 1 1-4.7-7.9"></path>
-                    <path d="m8.6 12.2 2.4 2.4 4.6-4.9"></path>
-                  </svg>
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.3a9.7 9.7 0 1 0 0 19.4 9.7 9.7 0 0 0 0-19.4ZM9.2 11.9l1.9 1.9 4.6-5 1.7 1.6-6.3 6.8-3.6-3.6 1.7-1.7Z"/></svg>
                 </span>
                 <div>
                   <p class="timeline__title">Milestone approved · Brand identity refresh</p>
@@ -504,12 +333,7 @@
 
               <li class="timeline__item">
                 <span class="timeline__icon" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 7H5a2 2 0 0 1 0-4h13v4"></path>
-                    <path d="M3 5v14a2 2 0 0 0 2 2h15V7H5"></path>
-                    <path d="M16 13h2"></path>
-                  </svg>
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 5.5h13A2.5 2.5 0 0 1 20.5 8v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 17V8A2.5 2.5 0 0 1 5 5.5ZM11.6 10.2h7.7a1.15 1.15 0 0 1 1.15 1.15v2.3a1.15 1.15 0 0 1-1.15 1.15h-7.7a1.3 1.3 0 0 1-1.3-1.3v-2a1.3 1.3 0 0 1 1.3-1.3Z"/><circle cx="15.4" cy="12.5" r="1.1"/></svg>
                 </span>
                 <div>
                   <p class="timeline__title">Payment released · ₱182,000 to David Kim</p>
@@ -522,9 +346,7 @@
 
       </div>
 
-      <p class="empty-state" data-empty="dash" hidden>
-        No projects, messages or applications match your search. Try a different keyword.
-      </p>
+      <p class="empty-state" data-empty="dash" hidden>No items match your search. Try a different keyword.</p>
 
     </main>
   </div>
@@ -532,6 +354,7 @@
   <script src="js/data-bundle.js" defer></script>
   <script src="js/data.js" defer></script>
   <script src="js/components.js" defer></script>
+  <script src="js/reveal.js" defer></script>
   <script src="js/session.js" defer></script>
   <script src="js/dashboard.js" defer></script>
   <script src="js/pages/dashboard-actions.js" defer></script>

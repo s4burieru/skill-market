@@ -21,7 +21,7 @@
   font-size: var(--fs-display);
   font-weight: 800;
   line-height: 1.13;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .ht-hero__desc {
@@ -83,7 +83,7 @@
   margin-top: 8px;
   font-size: clamp(2rem, 4vw, 2.6rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
@@ -157,6 +157,7 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 
 .ht-stat__label {

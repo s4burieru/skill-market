@@ -61,7 +61,7 @@
   }
 
   function renderStaticSections(data) {
-    const { services: svc, freelancers, jobs, site } = data;
+    const { services: svc, freelancers, jobs } = data;
 
     services = svc.items;
     categories = svc.categories;
@@ -69,14 +69,47 @@
     renderServices();
     renderPills();
 
-    $('[data-grid="freelancers"]').innerHTML = freelancers.items
+    // Two lines of cards only (matches the 10 popular services above);
+    // the "View all freelancers" link carries the rest.
+    $('[data-grid="freelancers"]').innerHTML = Components.rankedList(freelancers.items)
+      .slice(0, 10)
       .map(Components.FreelancerCard)
       .join("");
     $('[data-grid="jobs"]').innerHTML = jobs.items.map(Components.JobCard).join("");
-    $('[data-cta]').innerHTML = Components.Cta(site.cta);
+  }
+
+  function wireHowToggle() {
+    const tabs = $$("[data-how-tab]");
+    if (!tabs.length) return;
+    const panels = $$("[data-how-panel]");
+
+    const select = (name, moveFocus) => {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.howTab === name;
+        tab.setAttribute("aria-selected", String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && moveFocus) tab.focus();
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.howPanel !== name;
+      });
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => select(tab.dataset.howTab, false));
+      tab.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        const dir = event.key === "ArrowRight" ? 1 : -1;
+        const next = tabs[(index + dir + tabs.length) % tabs.length];
+        select(next.dataset.howTab, true);
+      });
+    });
   }
 
   function wireInteractions() {
+    wireHowToggle();
+
     $("[data-search-form]").addEventListener("submit", (event) => {
       event.preventDefault();
       state.query = $("#hero-search").value;
@@ -112,9 +145,9 @@
     });
   }
 
-  Data.getAll(["services", "freelancers", "jobs", "site"])
-    .then(([svc, freelancers, jobs, site]) => {
-      renderStaticSections({ services: svc, freelancers, jobs, site });
+  Data.getAll(["services", "freelancers", "jobs"])
+    .then(([svc, freelancers, jobs]) => {
+      renderStaticSections({ services: svc, freelancers, jobs });
       wireInteractions();
     })
     .catch((error) => {

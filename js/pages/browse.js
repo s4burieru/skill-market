@@ -9,7 +9,6 @@
  *   [data-browse-grid]    results grid
  *   [data-browse-empty]   empty state, toggled by the script
  *   [data-browse-count]   "12 of 24 services" counter
- *   [data-cta]            green CTA band
  */
 (() => {
   const esc = (value) => Components.esc(value);
@@ -34,6 +33,7 @@
     freelancers: {
       key: "freelancers",
       noun: "freelancer",
+      ranked: true,
       card: (item) => Components.FreelancerCard(item),
       chips: (data) => [
         { id: "all", label: "All Freelancers" },
@@ -77,7 +77,7 @@
   const count = $("[data-browse-count]");
   const input = $("[data-browse-input]");
 
-  const state = { category: "all", query: "" };
+  const state = { category: "all", query: "", sort: "rank", filters: { verified: false, premium: false } };
 
   let items = [];
   let chips = [];
@@ -88,13 +88,40 @@
   function filtered() {
     const query = state.query.trim().toLowerCase();
 
-    if (query) {
-      return items.filter((item) => config.haystack(item).toLowerCase().includes(query));
+    let list = query
+      ? items.filter((item) => config.haystack(item).toLowerCase().includes(query))
+      : state.category !== "all"
+        ? items.filter((item) => config.matchesChip(item, state.category))
+        : [...items];
+
+    if (state.filters.verified) list = list.filter((item) => item.verified);
+    if (state.filters.premium) list = list.filter((item) => item.premium);
+
+    if (config.ranked) list = sortList(list);
+
+    return list;
+  }
+
+  function sortList(list) {
+    const copy = [...list];
+    switch (state.sort) {
+      case "rating":
+        return copy.sort(
+          (a, b) => b.rating - a.rating || b.reviewsCount - a.reviewsCount
+        );
+      case "reviews":
+        return copy.sort((a, b) => b.reviewsCount - a.reviewsCount);
+      case "completed":
+        return copy.sort(
+          (a, b) =>
+            (Number(b.stats && b.stats.completed) || 0) -
+            (Number(a.stats && a.stats.completed) || 0)
+        );
+      default: // "rank": per-category rank, best score first on ties
+        return copy.sort(
+          (a, b) => (a.rank || 0) - (b.rank || 0) || (b.score || 0) - (a.score || 0)
+        );
     }
-    if (state.category !== "all") {
-      return items.filter((item) => config.matchesChip(item, state.category));
-    }
-    return items;
   }
 
   function renderPills() {
@@ -161,19 +188,35 @@
         if (pill) setCategory(pill.dataset.category);
       });
     }
+
+    // Freelancer trust toolbar: sort select + verified/premium toggles.
+    const sortSelect = document.querySelector("[data-browse-sort]");
+    if (sortSelect) {
+      sortSelect.addEventListener("change", () => {
+        state.sort = sortSelect.value;
+        renderResults();
+      });
+    }
+
+    document.querySelectorAll("[data-browse-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const key = button.dataset.browseFilter;
+        if (!key || !(key in state.filters)) return;
+        state.filters[key] = !state.filters[key];
+        button.setAttribute("aria-pressed", String(state.filters[key]));
+        renderResults();
+      });
+    });
   }
 
-  Data.getAll([config.key, "site"])
-    .then(([data, site]) => {
-      items = data.items;
+  Data.getAll([config.key])
+    .then(([data]) => {
+      items = config.ranked ? Components.rankedList(data.items) : data.items;
       chips = config.chips(data);
 
       renderPills();
       renderResults();
       wire();
-
-      const cta = $("[data-cta]");
-      if (cta && site && site.cta) cta.innerHTML = Components.Cta(site.cta);
     })
     .catch((error) => {
       console.error(error);

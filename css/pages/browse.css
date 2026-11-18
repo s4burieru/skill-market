@@ -11,7 +11,7 @@
   max-width: 780px;
   font-size: var(--fs-display-sm);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
@@ -53,6 +53,73 @@
 
 .browse .empty-state {
   margin-top: 0;
+}
+
+/* Trust toolbar: ranking sort + verified/premium filters -------------------- */
+
+.browse__tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-bottom: 22px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+}
+
+.browse__sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.browse__select {
+  appearance: none;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7280'%3E%3Cpath d='M6.7 8.7a1.35 1.35 0 0 1 1.9 0l3.4 3.4 3.4-3.4a1.35 1.35 0 1 1 1.9 1.9l-4.35 4.35a1.35 1.35 0 0 1-1.9 0l-4.35-4.35a1.35 1.35 0 0 1 0-1.9Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  padding: 8px 34px 8px 12px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.browse__select:hover {
+  border-color: var(--green-500);
+}
+
+.browse__toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip--filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  font-size: var(--fs-xs);
+}
+
+.chip--filter svg {
+  width: 13px;
+  height: 13px;
+}
+
+.chip--link {
+  border-style: dashed;
 }
 
 @media (max-width: 760px) {

@@ -137,12 +137,12 @@
     section.removeAttribute("hidden");
   }
 
-  Data.getAll(["services", "freelancers", "site"])
-    .then(([services, freelancers, site]) => {
+  Data.getAll(["services", "freelancers"])
+    .then(([services, freelancers]) => {
       const service = services.items.find((item) => item.id === id);
 
       if (!service) {
-        notFound("That service does not exist — it may have been removed.");
+        notFound("That service does not exist, it may have been removed.");
         return;
       }
 
@@ -160,9 +160,6 @@
 
       render(service, seller);
       renderRelated(service, services);
-
-      const cta = $("[data-cta]");
-      if (cta && site && site.cta) cta.innerHTML = Components.Cta(site.cta);
     })
     .catch((error) => {
       console.error(error);

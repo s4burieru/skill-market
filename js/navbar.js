@@ -62,7 +62,7 @@ const Navbar = (site) => {
       <div class="navbar__profile" data-profile>
         <button class="navbar__profile-btn" type="button" data-profile-toggle
                 aria-haspopup="menu" aria-expanded="false" aria-controls="profile-menu"
-                aria-label="${esc(user.name)} — account menu" title="${esc(user.name)}">
+                aria-label="${esc(user.name)}, account menu" title="${esc(user.name)}">
           <span class="navbar__avatar" aria-hidden="true">${esc(initials(user.name))}</span>
           ${Icons.svg("chevron-down")}
         </button>

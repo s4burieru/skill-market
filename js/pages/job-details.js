@@ -110,7 +110,7 @@
 
           <a class="btn btn--primary" href="join.html">Apply now</a>
           <a class="btn btn--secondary" href="login.html">Save job</a>
-          <p class="price-card__note">Applications go straight to the hiring team — expect a reply within a week.</p>
+          <p class="price-card__note">Applications go straight to the hiring team, expect a reply within a week.</p>
         </div>
 
         <div class="side-card">
@@ -140,12 +140,12 @@
     section.removeAttribute("hidden");
   }
 
-  Data.getAll(["jobs", "site"])
-    .then(([jobs, site]) => {
+  Data.getAll(["jobs"])
+    .then(([jobs]) => {
       const job = jobs.items.find((item) => item.id === id);
 
       if (!job) {
-        notFound("That job posting does not exist — it may have been filled.");
+        notFound("That job posting does not exist, it may have been filled.");
         return;
       }
 
@@ -161,9 +161,6 @@
 
       render(job);
       renderRelated(job, jobs);
-
-      const cta = $("[data-cta]");
-      if (cta && site && site.cta) cta.innerHTML = Components.Cta(site.cta);
     })
     .catch((error) => {
       console.error(error);

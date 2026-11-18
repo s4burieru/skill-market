@@ -13,13 +13,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap"
     rel="stylesheet"
   />
 
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/home.css" />
 </head>
 
 <body id="top" class="page-home">
@@ -29,10 +30,72 @@
   <main>
 
     <section class="hero" id="explore">
-      <div class="container hero__inner">
-        <span class="badge badge--soft">Trusted by 500+ businesses</span>
+      <div class="hero__decor" aria-hidden="true">
+        <span class="hero-shape hero-shape--arc"></span>
+        <span class="hero-shape hero-shape--disc"></span>
+        <span class="hero-shape hero-shape--disc hero-shape--disc2"></span>
+        <span class="hero-shape hero-shape--ring"></span>
 
-        <h1 class="hero__title">Hire skilled freelancers or discover your next career opportunity.</h1>
+        <svg class="hero-spark hero-spark--1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1c.83 5.31 4.24 8.66 9.55 9.5-5.31.84-8.72 4.19-9.55 9.5-.83-5.31-4.24-8.66-9.55-9.5C7.76 9.66 11.17 6.31 12 1Z"/></svg>
+        <svg class="hero-spark hero-spark--2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1c.83 5.31 4.24 8.66 9.55 9.5-5.31.84-8.72 4.19-9.55 9.5-.83-5.31-4.24-8.66-9.55-9.5C7.76 9.66 11.17 6.31 12 1Z"/></svg>
+
+        <div class="hero-mock hero-mock--browser">
+          <div class="hero-mock__bar">
+            <span class="hero-mock__dot" style="background:#ff5f57"></span>
+            <span class="hero-mock__dot" style="background:#febc2e"></span>
+            <span class="hero-mock__dot" style="background:#28c840"></span>
+          </div>
+          <div class="hero-mock__body">
+            <div class="mock-head">
+              <span class="mock-line mock-line--label"></span>
+              <span class="mock-pill mock-pill--soft">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 15.6 4.9 11.3l1.6-1.6 2.7 2.7 8.3-8.3 1.6 1.6-9.9 9.9Z"/></svg>
+                Hired
+              </span>
+            </div>
+            <span class="mock-line mock-line--w60"></span>
+            <span class="mock-line mock-line--w40"></span>
+            <div class="mock-cols">
+              <span class="mock-tile"></span>
+              <span class="mock-tile mock-tile--tall"></span>
+              <span class="mock-tile"></span>
+            </div>
+          </div>
+          <svg class="mock-cursor" viewBox="0 0 24 24" fill="currentColor"><path d="M5.2 3.1 20.4 12.3l-6.9 1.4-3.2 6.7L5.2 3.1Z" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke"/></svg>
+        </div>
+
+        <div class="hero-mock hero-mock--mini">
+          <div class="hero-mock__bar">
+            <span class="hero-mock__dot" style="background:#ff5f57"></span>
+            <span class="hero-mock__dot" style="background:#febc2e"></span>
+            <span class="hero-mock__dot" style="background:#28c840"></span>
+          </div>
+          <div class="hero-mock__body">
+            <div class="mock-head">
+              <span class="mock-line mock-line--label"></span>
+              <span class="mock-pill">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 15.6 4.9 11.3l1.6-1.6 2.7 2.7 8.3-8.3 1.6 1.6-9.9 9.9Z"/></svg>
+                Paid
+              </span>
+            </div>
+            <span class="mock-line mock-line--w70"></span>
+            <span class="mock-line mock-line--w30"></span>
+            <div class="mock-cols">
+              <span class="mock-tile mock-tile--sm"></span>
+              <span class="mock-tile mock-tile--sm mock-tile--green"></span>
+            </div>
+          </div>
+          <svg class="mock-cursor mock-cursor--alt" viewBox="0 0 24 24" fill="currentColor"><path d="M5.2 3.1 20.4 12.3l-6.9 1.4-3.2 6.7L5.2 3.1Z" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke"/></svg>
+        </div>
+      </div>
+
+      <div class="container hero__inner">
+        <span class="badge badge--soft hero__badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1c.83 5.31 4.24 8.66 9.55 9.5-5.31.84-8.72 4.19-9.55 9.5-.83-5.31-4.24-8.66-9.55-9.5C7.76 9.66 11.17 6.31 12 1Z"/></svg>
+          Trusted by 500+ businesses
+        </span>
+
+        <h1 class="hero__title">Hire skilled <em class="hero-mark">freelancers</em> or discover your next <span class="hero-pill" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="rotate(-45 12 12)"><rect x="3.5" y="10.45" width="11.6" height="3.1" rx="1.55"/><path d="M12.7 5.8 21.6 12l-8.9 6.2Z"/></g></svg></span> career opportunity.</h1>
 
         <p class="hero__desc">
           Access a global network of top-rated professionals. From strategy to execution,
@@ -41,11 +104,7 @@
 
         <form class="search" data-search-form role="search">
           <span class="search__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="m20 20-3.6-3.6"></path>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.4 3.2a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm0 2.5a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/><rect x="13.85" y="16.3" width="7.5" height="2.6" rx="1.3" transform="rotate(45 17.6 17.6)"/></svg>
           </span>
           <label class="sr-only" for="hero-search">Search services</label>
           <input
@@ -56,7 +115,9 @@
             autocomplete="off"
             placeholder="What service are you looking for?"
           />
-          <button class="btn btn--primary search__btn" type="submit">Search</button>
+          <button class="btn btn--primary search__btn" type="submit">Search
+            <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="10.65" width="11.4" height="2.7" rx="1.35"/><path d="M12.6 4.6 22 12l-9.4 7.4Z"/></svg>
+          </button>
         </form>
 
         <ul class="suggestions">
@@ -71,12 +132,71 @@
       </div>
     </section>
 
+    <section class="marquee">
+      <div class="container">
+        <h2 class="marquee__title" data-reveal>Trusted by teams at <em class="hero-mark">every</em> scale.</h2>
+<div class="marquee__row">
+        <div class="marquee__viewport">
+          <div class="marquee__track" data-marquee-track>
+            <div class="marquee__group">
+<span class="marquee__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="1.5" y="1.5" width="10" height="10" rx="1"/><rect x="12.5" y="1.5" width="10" height="10" rx="1"/><rect x="1.5" y="12.5" width="10" height="10" rx="1"/><rect x="12.5" y="12.5" width="10" height="10" rx="1"/></svg>
+                Microsoft
+              </span>
+<span class="marquee__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m.66 16.95 13.242-4.926L.66 6.852V0l22.68 9.132v5.682L.66 24Z"/></svg>
+                Accenture
+              </span>
+<span class="marquee__item marquee__item--wordmark" role="img" aria-label="SAP">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 6.064v11.872h12.13L24 6.064zm3.264 2.208h.005c.863.001 1.915.245 2.676.633l-.82 1.43c-.835-.404-1.255-.442-1.73-.467-.708-.038-1.064.215-1.069.488-.007.332.669.633 1.305.838.964.306 2.19.715 2.377 1.9L7.77 8.437h2.046l2.064 5.576-.007-5.575h2.37c2.257 0 3.318.764 3.318 2.519 0 1.575-1.09 2.514-2.936 2.514h-.763l-.01 2.094-3.588-.003-.25-.908c-.37.122-.787.189-1.23.189-.456 0-.885-.071-1.263-.2l-.358.919-2 .006.09-.462c-.029.025-.057.05-.087.074-.535.43-1.208.629-2.037.644l-.213.002a5.075 5.075 0 0 1-2.581-.675l.73-1.448c.79.467 1.286.572 1.956.558.347-.007.598-.07.761-.239a.557.557 0 0 0 .156-.369c.007-.376-.53-.553-1.185-.756-.531-.164-1.135-.389-1.606-.735-.559-.41-.825-.924-.812-1.65a1.99 1.99 0 0 1 .566-1.377c.519-.537 1.357-.863 2.363-.863zm10.597 1.67v1.904h.521c.694 0 1.247-.23 1.248-.964 0-.709-.554-.94-1.248-.94zm-5.087.767l-.748 2.362c.223.085.481.133.757.133.268 0 .52-.047.742-.126l-.736-2.37z"/></svg>
+              </span>
+<span class="marquee__item marquee__item--wordmark" role="img" aria-label="Grab">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.129 10.863a2.927 2.927 0 00-2.079-.872c-.57 0-1.141.212-1.455.421-.651.434-1.186.904-2.149 2.148v.894c.817-1.064 1.59-1.903 2.177-2.364.386-.31.933-.501 1.427-.501 1.275 0 2.352 1.077 2.352 2.352v.538c0 .63-.247 1.223-.698 1.668a2.341 2.341 0 01-1.654.685c-1.048 0-1.97-.719-2.22-1.701l-.422.51c.307 1.03 1.417 1.789 2.642 1.789.778 0 1.516-.31 2.079-.872.562-.562.871-1.3.871-2.079v-.538c0-.778-.31-1.517-.871-2.078m-12.8-.274c.406 0 .757.087 1.074.266.149-.186.299-.337.411-.449-.335-.256-.903-.415-1.485-.415-.83 0-1.584.3-2.122.843-.534.54-.83 1.287-.83 2.107v3.489h.598V12.94c0-1.385.968-2.352 2.354-2.352m5.678 5.84v-3.488c0-1.072-.84-1.913-1.913-1.913-.5 0-.976.203-1.343.57a1.895 1.895 0 00-.57 1.343v.538c0 1.037.877 1.913 1.913 1.913.285 0 .671-.07.908-.264v-.631c-.232.187-.57.298-.908.298a1.302 1.302 0 01-1.315-1.316v-.538a1.3 1.3 0 011.315-1.314 1.3 1.3 0 011.316 1.314v3.489zM0 12.596v.193c0 1.036.393 2.003 1.107 2.722a3.759 3.759 0 002.689 1.112c.82 0 1.548-.186 2.162-.551.506-.302.73-.607.75-.635V12.22H3.65v.597H6.11v2.434l-.002.002c-.288.288-.972.77-2.312.77a3.165 3.165 0 01-2.279-.938 3.247 3.247 0 01-.92-2.297v-.193c0-.83.375-1.656 1.026-2.269a3.558 3.558 0 012.442-.967c.847 0 1.438.129 1.913.416v-.67c-.494-.21-1.085-.305-1.913-.305C1.862 8.8 0 10.538 0 12.595m10.329-.968c.226 0 .419.037.571.112.075-.186.151-.339.262-.525-.162-.116-.549-.186-.833-.186-1.09 0-1.913.823-1.913 1.913v3.489h.598V12.94c0-.774.54-1.314 1.315-1.314m-4.351-.702v-.707c-.541-.29-1.131-.419-1.913-.419-.799 0-1.555.293-2.132.824-.577.532-.895 1.233-.895 1.972v.193c0 1.542 1.237 2.796 2.758 2.796 1.237 0 1.745-.405 1.874-.533v-1.794H3.65v.598h1.46v.899l-.005.001c-.187.075-.578.231-1.31.231-.58 0-1.122-.225-1.528-.636a2.203 2.203 0 01-.632-1.562v-.193c0-1.192 1.113-2.198 2.43-2.198.91 0 1.45.147 1.913.528m14.105 1.126c.27-.27.623-.424.967-.424.737 0 1.315.577 1.315 1.314v.538c0 .738-.578 1.316-1.315 1.316-.357 0-.702-.196-.972-.55a2.151 2.151 0 01-.418-1.12l-.484.591c.095.452.33.885.665 1.19.344.313.774.486 1.209.486a1.915 1.915 0 001.913-1.913v-.538c0-.499-.202-.977-.57-1.343a1.896 1.896 0 00-1.343-.57c-.316 0-.818.114-1.417.652l-.002.002c-.16.16-.536.536-.765.804-.384.42-.943 1.054-1.42 1.688v.933c.529-.68.833-1.06 1.33-1.634.445-.519.996-1.15 1.307-1.422m-8.939 1.428c0 .779.31 1.517.872 2.08a2.93 2.93 0 002.078.87c.33 0 .669-.07.908-.188v-.597c-.28.117-.618.188-.908.188-1.274 0-2.352-1.077-2.352-2.353v-.538c0-1.275 1.078-2.352 2.352-2.352a2.34 2.34 0 012.353 2.353v3.488h.598v-3.604a2.979 2.979 0 00-.915-2.006 2.92 2.92 0 00-2.036-.83c-.778 0-1.516.31-2.078.873a2.926 2.926 0 00-.872 2.078zm6.918-2.313c.183-.22.372-.443.596-.631V7.378h-.596zm1.037-.876V7.378h.597V9.88a3.601 3.601 0 00-.597.41"/></svg>
+              </span>
+<span class="marquee__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.629 0 2.295-1.44 3.76-3.406 3.76-2.354 0-3.54-1.465-3.54-1.465l.646-2.086s1.245 1.066 2.28 1.066c.675 0 .975-.545.975-.932 0-1.619-2.654-1.694-2.654-4.359-.034-2.237 1.571-4.416 4.827-4.416 1.257 0 1.875.361 1.875.361l-.945 2.715-.02.01zM11.17.83c.136 0 .271.038.405.135-.984.465-2.064 1.639-2.508 3.992-.656.213-1.293.405-1.889.578C7.697 3.75 8.951.84 11.17.84V.83zm1.235 2.949v.135c-.754.232-1.583.484-2.394.736.466-1.777 1.333-2.645 2.085-2.971.193.501.309 1.176.309 2.1zm.539-2.234c.694.074 1.141.867 1.429 1.755-.349.114-.735.231-1.158.366v-.252c0-.752-.096-1.371-.271-1.871v.002zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.21c-.423-1.233-1.176-2.37-2.508-2.37h-.115C12.135.209 11.669 0 11.265 0 8.159 0 6.675 3.877 6.21 5.846c-1.194.365-2.063.636-2.16.674-.675.213-.694.232-.772.87-.075.462-1.83 14.063-1.83 14.063L15.009 24l.927-21.166z"/></svg>
+                Shopify
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class="marquee__row marquee__row--reverse">
+        <div class="marquee__viewport">
+          <div class="marquee__track" data-marquee-track>
+            <div class="marquee__group">
+<span class="marquee__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+                Google
+              </span>
+<span class="marquee__item marquee__item--wordmark" role="img" aria-label="Infosys">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.2734 7.5703c-.3984 0-.7246.3282-.7246.7266 0 .4013.3262.7246.7246.7246.3982 0 .7266-.3233.7266-.7246 0-.3984-.3284-.7266-.7266-.7266zm0 .1074c.3395 0 .6192.2795.6192.6192 0 .3396-.2797.6172-.6192.6172-.3397 0-.6171-.2776-.6171-.6172 0-.3397.2774-.6192.6171-.6192zm-15.1367.0547c-.9001 0-1.549.5917-1.6387 1.6406h-.6953v.5215h.6856c.0028 1.6664-.002 3.334-.002 4.998h.7774c-.0022-1.6659-.002-3.3319-.002-4.998h1.748c-.646.5242-1.0663 1.3739-1.0663 2.334 0 1.593 1.1564 2.8848 2.582 2.8848 1.4258 0 2.582-1.2918 2.582-2.8848 0-.1896-.0174-.3753-.0488-.5547.2565.4131.7488.6133 1.4082.8985.7784.329 1.2129.6165 1.2129 1.1074 0 .5885-.556.8955-1.1817.8906-.611 0-1.0883-.249-1.6191-.7305v.9239c.3239.2088.8256.3281 1.3691.3281.6844-.0023 2.0918-.249 2.0918-1.6758-.0044-.8557-.715-1.2239-1.4863-1.5586-.9383-.4653-1.2965-.5629-1.2871-1.0957 0-.7088.6178-.9219 1.0996-.9219.2099 0 .3891.0293.5586.086.3163.1194.4209.3553.5332.6113.5283 1.2356 1.0344 2.4811 1.5488 3.7227-.2464.5637-.526 1.1519-.7168 1.5273l-.0039.0098-.1601.2969-.1797.336h.7617c.3322-.7342 1.7436-4.1688 2.0469-4.9083.1995.533.6857.7467 1.4297 1.0684.7783.329 1.2148.6166 1.2148 1.1074 0 .5886-.5562.8936-1.1816.8887-.6348 0-1.1257-.2685-1.6817-.7871l-.0507-.041v.9413c.3115.259.8713.4102 1.4824.4102.6844-.0022 2.0918-.249 2.0918-1.6758-.0042-.8557-.7151-1.2258-1.4863-1.5605-.9384-.4654-1.2593-.563-1.25-1.0957 0-.709.5787-.9219 1.0605-.9219.5483 0 .8958.2037 1.379.5547V9.584c-.3923-.1381-.7212-.1915-1.1642-.1895-.8912-.0018-1.6966.3234-1.9004 1.0762l-1.1054 2.7344-.1153.3437-.1015-.3437c-.5022-1.2089-.9934-2.4236-1.4863-3.6309-.3154-.0828-.8307-.201-1.1934-.1953-.0377-.0007-.0758-.0002-.1152 0-1.0302-.002-2.0235.4332-2.0235 1.457 0 .0596.0022.1155.006.17-.412-.9813-1.3036-1.6602-2.338-1.6602-.1245 0-.2472.0085-.3672.0273H7.254c-.1194-.733.2228-1.1503.7383-1.1503.6472-.0006.9242.192 1.205.4511 0 0 .0195-.0007.0274 0 .0038-.2457.002-.5318.002-.7949-.185-.0857-.5061-.1465-1.0899-.1465zM0 7.756v7.1367h.8594V7.7559zm23 .1386v.7657h.1387v-.3086h.164l.1192.3086h.1543l-.1407-.3301c.0494-.0248.1329-.0518.1329-.1875 0-.2224-.1673-.248-.3125-.248zm.1387.1328h.1543c.0834 0 .1289.0337.1289.1016 0 .068-.0524.0996-.1172.0996h-.166zM4.1719 9.3555c-.945 0-1.3429.3359-1.6582.6738a.2474.2474 0 00-.0352.0644h-.0078v-.043l-.0098-.623H1.707v5.4649h.7754v-3.9961c.0226-.4905.7134-.9746 1.252-.9746.6477 0 1.1777.4364 1.1777 1.039v3.9317h.7754c-.0019-1.429-.002-2.858-.002-4.2871-.0234-.4835-.6094-1.25-1.5136-1.25zm6.2832.5566c.9741-.0175 1.7825 1.0214 1.8047 2.3184.022 1.297-.7504 2.3614-1.7246 2.3789-.9742.0171-1.7825-1.0195-1.8047-2.3164-.0221-1.2971.7503-2.3634 1.7246-2.3809Z"/></svg>
+              </span>
+<span class="marquee__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5415 12.0352c0-.8754-.69-1.5851-1.541-1.5851-.8513 0-1.5415.7097-1.5415 1.585 0 .8757.6902 1.5854 1.5416 1.5854.851 0 1.541-.7097 1.541-1.5853zm-1.541.837c-.4373 0-.7927-.3755-.7927-.837 0-.4611.3554-.8366.7928-.8366.437 0 .7923.3755.7923.8366 0 .4615-.3554.837-.7923.837zm-9.5842-2.2084l-.9272 2.8733c-.0148.046-.0665.0835-.1152.0835h-.084c-.0484 0-.1064-.0352-.1287-.078l-.95-1.8242-.9496 1.8243c-.0225.0427-.0803.0779-.1289.0779h-.0842c-.0483 0-.1002-.0374-.115-.0835L.006 10.6638c-.0222-.0693.019-.126.0915-.126h.5677c.0483 0 .1002.0379.115.084l.4688 1.452.8047-1.5458c.0223-.0428.0804-.0779.1289-.0779H2.24c.0485 0 .1063.0351.1289.0779l.805 1.5458.4685-1.452c.0148-.0461.0667-.084.1152-.084h.5672c.0727 0 .1138.0567.0915.126zm1.368 2.7367a.1323.1323 0 01-.1321.1322h-.5726a.1321.1321 0 01-.132-.1322v-2.7304c0-.0729.059-.1322.132-.1322h.5726a.1323.1323 0 01.1322.1322v2.7304zm.7409-2.7305v4.3155c0 .0733.059.1322.1321.1322h.5725a.1318.1318 0 00.132-.1322v-1.497c.2426.085.5106.132.7927.132.8024 0 1.4531-.7097 1.4531-1.5853 0-.8754-.6507-1.5851-1.4531-1.5851-.394 0-.751.171-1.0127.4487l-.0002-.0004-.1018-.2777c-.0167-.0453-.07-.0829-.1183-.0829h-.2642a.1321.1321 0 00-.1321.1322zm.8365.9c.1376-.2239.3713-.3714.6373-.3714.4235 0 .7667.3746.7667.8366 0 .4622-.3432.837-.7667.837-.2396 0-.4599-.063-.6373-.1694V11.57zm3.5755 1.9627h-.5723a.1321.1321 0 01-.1321-.1321V10.67c0-.0729.059-.1322.1321-.1322h.2642c.0483 0 .1016.0376.1183.0829l.1018.2777s.3195-.4483.87-.4483c.5507 0 .6172.1897.5712.2947-.0463.1047-.1714.3878-.197.4454-.0254.058-.0903.099-.1772.0657-.087-.0335-.5128-.1723-.8469.2329v1.9118a.1323.1323 0 01-.1321.1321zm4.6893-10.3422a.704.704 0 01.8628-.4977.7043.7043 0 11-.3647 1.3607.7046.7046 0 01-.498-.863zm1.8466 2.7892a.5286.5286 0 01.1935.722.528.528 0 01-.7218.193.5281.5281 0 01-.1935-.7215.5281.5281 0 01.7218-.1935zm.664 10.9686a.5727.5727 0 010-.8099.5722.5722 0 01.8096 0 .5727.5727 0 010 .81.573.573 0 01-.8095 0zm-2.4577-7.377a.2423.2423 0 01-.4196-.2423.2422.2422 0 11.4196.2422zm-.4196 5.1001a.2423.2423 0 01.4196-.2422.2425.2425 0 01-.0888.331.2426.2426 0 01-.3308-.0888zm3.7296-2.6713a.517.517 0 11-.5169-.5169.517.517 0 01.517.5169zM17.816 3.8893a.7485.7485 0 111.2962.749.7485.7485 0 01-1.2962-.749zm-5.43 10.5742a.154.154 0 11.2666.154.154.154 0 01-.2666-.154zm2.8037-8.7912a.4842.4842 0 11.9354.2502.4843.4843 0 01-.593.3428.4844.4844 0 01-.3424-.593zM13.993 7.8486a.308.308 0 110-.6162.308.308 0 110 .6162zm0 1.0129a.1982.1982 0 11.0002.3962.1982.1982 0 01-.0002-.3962zm0-2.84a.4404.4404 0 110-.881.4404.4404 0 010 .881zm-1.6072 3.5154a.154.154 0 11.2102.0564.1537.1537 0 01-.2102-.0564zm1.6072 5.602a.1982.1982 0 11-.0001-.3963.1982.1982 0 010 .3964zm0 1.0127a.3081.3081 0 010 .6165.3081.3081 0 110-.6165zm3.4944-2.1381a.4399.4399 0 01.6014-.161.44.44 0 01.161.6013.4402.4402 0 01-.7624-.4403zm-3.4944 3.9655a.4404.4404 0 11-.0002.8808.4404.4404 0 01.0002-.8808zm9.5772-8.5426c.1383.5164-.168 1.0476-.6848 1.186-.5165.1383-1.0478-.1684-1.1861-.6849-.1386-.5164.1682-1.0475.6847-1.186.5165-.1384 1.0476.168 1.1862.6849zm-6.694 6.0018a.3963.3963 0 01.5602-.5607.396.396 0 010 .5602.3958.3958 0 01-.5602.0005zm.9736-4.4694a.484.484 0 01.3424-.5928.4841.4841 0 11.2507.9353.484.484 0 01-.593-.3425zm1.4076-2.7157a.6165.6165 0 01.6166 1.0676.6165.6165 0 01-.6166-1.0676zm-.3108-.3913a.5722.5722 0 01-.8095 0 .5725.5725 0 010-.8097.5722.5722 0 01.8095 0 .5725.5725 0 010 .8097zm-1.0968 5.1692a.4842.4842 0 01.9355.2509.4842.4842 0 11-.9355-.251zm-3.0186-5.4263a.3303.3303 0 01.4041-.2336.3303.3303 0 01-.1706.6381.3303.3303 0 01-.2335-.4045zm6.4676-.835c.4213-.2434.96-.0992 1.2031.3218a.8806.8806 0 11-1.5254.8808c-.2429-.421-.0987-.9596.3223-1.2027zm-3.049 2.777a.4401.4401 0 11-.7624.4402.4401.4401 0 11.7624-.4402zm1.3227.9608a.6606.6606 0 01.4667-.8089.6605.6605 0 01.342 1.2758.6605.6605 0 01-.8087-.467zm0 2.9854a.6603.6603 0 111.2756.3416.6602.6602 0 11-1.2756-.3416zm.8594-.7354a.7574.7574 0 11-.0002-1.5146.7574.7574 0 01.0002 1.5146zm-.6756-6.5149a.7921.7921 0 010-1.1207c.3095-.3095.8115-.31 1.1209 0a.7926.7926 0 01-1.1209 1.1207zm-3.2223 2.068a.3522.3522 0 11-.61-.3523.3522.3522 0 01.61.3522zm-.6387 5.5862a.2642.2642 0 01.3738-.0004.2646.2646 0 010 .3738.2638.2638 0 01-.3738 0 .2637.2637 0 010-.3734zm0-4.1666a.2642.2642 0 01.3738-.0004.2642.2642 0 11-.3738.0004zm.5146 3.9917a.2868.2868 0 01-.105-.391.2862.2862 0 01.3912-.1046.2863.2863 0 01-.2862.4956zm-.486 2.3203a.352.352 0 01.129-.4811.352.352 0 01.4811.1288.352.352 0 01-.1289.4811.3521.3521 0 01-.4811-.1288zm.877-5.659a.286.286 0 01-.1048.3909.2867.2867 0 01-.3911-.1049.2862.2862 0 01.4958-.286zm-.2485.9334a.3082.3082 0 11.5955-.1596.3082.3082 0 01-.5955.1596zm0 1.3668a.3083.3083 0 11.5953.1602.3083.3083 0 01-.5953-.1602zm.4008-.3467a.3366.3366 0 11.0001-.6731.3366.3366 0 01-.0001.6731zm.4832-3.7744a.3963.3963 0 11-.5602.5608.3963.3963 0 01.5602-.5608zm-7.416 11.4507a.573.573 0 01-.782.2096.5726.5726 0 01.5725-.9916.5725.5725 0 01.2096.782zM14.814 8.945a.2202.2202 0 11-.114.4253.2202.2202 0 01.114-.4254zm-2.5387 11.8366a.6164.6164 0 11-1.1908-.3189.6164.6164 0 011.1908.319zm2.5387-5.726a.2203.2203 0 01-.1138-.4255.22.22 0 11.1138.4254zm-.1604 5.8739a.6603.6603 0 01-.6604.6602.6603.6603 0 01-.6606-.6602c0-.3649.2959-.6608.6606-.6608.3647 0 .6604.296.6604.6608zm-1.4693-5.9217a.1767.1767 0 01-.1247-.2158.1766.1766 0 01.216-.1245.1761.1761 0 01-.0913.3403zm-.0712 1.3712a.2863.2863 0 11-.5526-.1478.2863.2863 0 01.5526.1478zm-2.795-2.2726a.2202.2202 0 01-.3812.2202.2195.2195 0 01.0805-.3005.2198.2198 0 01.3007.0803zm1.6704 1.8817a.2642.2642 0 11-.4578-.2638.2642.2642 0 01.4578.2638zm.0148-1.8253a.1321.1321 0 11-.1869-.1869.1328.1328 0 01.187 0 .1325.1325 0 010 .187zm-.9966.81a.242.242 0 11-.3423.342.2418.2418 0 010-.342.2417.2417 0 01.3423 0zm.0783 2.7563a.3518.3518 0 01-.4811.1289.3522.3522 0 11.4811-.1289zm9.7924.0285a.7926.7926 0 010 1.121c-.3094.3097-.8114.3093-1.121 0-.3097-.3094-.3095-.8114 0-1.121a.793.793 0 011.121 0zm-1.6198-2.0103a.6169.6169 0 01-.2255-.8423.6168.6168 0 01.842-.2255.6165.6165 0 01-.6166 1.0678zm3.2445 1.1612c-.243.4214-.7818.5656-1.203.3223-.4211-.243-.5653-.7816-.3224-1.2026.2437-.4211.782-.5655 1.203-.3224.4213.2433.5657.7816.3224 1.2027zm-7.2666-.2796a.33.33 0 11-.1706-.638.3301.3301 0 01.1706.638zM24 12c0 .584-.4735 1.058-1.058 1.058-.5843 0-1.0578-.474-1.0578-1.058 0-.5842.4735-1.0579 1.0579-1.0579S24 11.4159 24 12.0001zm-.4297 2.564c-.1386.5164-.6697.8233-1.1862.685-.5165-.1387-.8233-.6698-.6847-1.1862.1383-.5169.6696-.8234 1.1861-.685.5169.1386.8231.6697.6848 1.1861zm-6.583 5.881a.7044.7044 0 11-1.3608.3643.7042.7042 0 01.4981-.8625.7043.7043 0 01.8628.4981zm2.1248-1.0825a.748.748 0 01-.274 1.0221.7482.7482 0 01-1.0222-.2738.748.748 0 01.2738-1.0224.7484.7484 0 011.0224.274zm-3.9225-1.0344a.4843.4843 0 11.9355-.2507.4843.4843 0 01-.9355.2507zm2.2835-.3077a.5284.5284 0 11-.5284-.9153.5284.5284 0 01.5284.9153zm-4.761.2798a.3963.3963 0 01-.7655-.205.396.396 0 01.4853-.2803.3964.3964 0 01.2802.4853zm-.8958-8.2762a.132.132 0 11.1868-.1869.132.132 0 01-.1868.1869zm.0754-1.651a.2643.2643 0 01-.2643-.4576.2642.2642 0 01.2643.4576zm-.8072-4.8355a.6164.6164 0 111.1905-.3188.6164.6164 0 01-1.1905.3188zm-.847 6.0555a.22.22 0 11-.2201.3812.2195.2195 0 01-.0806-.3004.22.22 0 01.3006-.0808zm.7691-.908a.2423.2423 0 01-.3423.3426.2423.2423 0 01.3423-.3426zm-.5319-2.0617a.3524.3524 0 01.6102-.352.3522.3522 0 01-.6102.352zm2.8578-3.5523c0-.3648.2959-.6608.6606-.6608.3647 0 .6604.296.6604.6608a.6606.6606 0 01-.6604.6607.6608.6608 0 01-.6606-.6607zm-.1483 5.9215a.1761.1761 0 11.091.3404.1761.1761 0 01-.091-.3404zm-.9575-3.5729a.3964.3964 0 01.2053.7657.3962.3962 0 01-.4854-.2802.3966.3966 0 01.28-.4855zm.5358 1.9992a.2863.2863 0 11.148.553.2863.2863 0 01-.148-.553zM9.0292 4.5596a.5724.5724 0 01.2094-.7818.5725.5725 0 01.5724.9914.572.572 0 01-.7818-.2096zm-.37 10.5048a.2643.2643 0 11-.458.264.2643.2643 0 01.458-.264zM4.9193 9.4585a.462.462 0 01.566-.3267.462.462 0 01.327.5658.4621.4621 0 01-.5661.3271.4624.4624 0 01-.327-.5662zm.9001-2.1691a.4843.4843 0 11.1772.6616.4845.4845 0 01-.1772-.6616zm2.2292 10.6412a.528.528 0 010 .7472.5286.5286 0 01-.7473 0 .5285.5285 0 010-.7472.5282.5282 0 01.7473 0zM6.676 16.2091a.4842.4842 0 11-.8386.4845.4842.4842 0 01.8386-.4845zm.6255-10.1393a.5285.5285 0 010-.7472.5286.5286 0 01.7473 0 .528.528 0 010 .7472.5282.5282 0 01-.7473 0zM9.6679 7.689a.3086.3086 0 01-.436 0 .3085.3085 0 010-.4362.3086.3086 0 01.436 0 .3085.3085 0 010 .4362zm0 8.6225a.3082.3082 0 11-.4359.4359.3082.3082 0 01.4359-.436zM8.2015 8.6719a.2642.2642 0 11.4574.2642.2642.2642 0 01-.4574-.2642z"/></svg>
+                Wipro
+              </span>
+<span class="marquee__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.9414 17.9633c.229-1.879-.981-3.077-4.1758-4.0969-1.548-.528-2.277-1.22-2.26-2.1719.065-1.056 1.048-1.825 2.352-1.85a5.2898 5.2898 0 0 1 2.8838.89c.116.072.197.06.263-.039.09-.145.315-.494.39-.62.051-.081.061-.187-.068-.281-.185-.1369-.704-.4149-.983-.5319a6.4697 6.4697 0 0 0-2.5118-.514c-1.909.008-3.4129 1.215-3.5389 2.826-.082 1.1629.494 2.1078 1.73 2.8278.262.152 1.6799.716 2.2438.892 1.774.552 2.695 1.5419 2.478 2.6969-.197 1.047-1.299 1.7239-2.818 1.7439-1.2039-.046-2.2878-.537-3.1278-1.19l-.141-.11c-.104-.08-.218-.075-.287.03-.05.077-.376.547-.458.67-.077.108-.035.168.045.234.35.293.817.613 1.134.775a6.7097 6.7097 0 0 0 2.8289.727 4.9048 4.9048 0 0 0 2.0759-.354c1.095-.465 1.8029-1.394 1.9449-2.554zM11.9986 1.4009c-2.068 0-3.7539 1.95-3.8329 4.3899h7.6657c-.08-2.44-1.765-4.3899-3.8328-4.3899zm7.8516 22.5981-.08.001-15.7843-.002c-1.074-.04-1.863-.91-1.971-1.991l-.01-.195L1.298 6.2858a.459.459 0 0 1 .45-.494h4.9748C6.8448 2.568 9.1607 0 11.9996 0c2.8388 0 5.1537 2.5689 5.2757 5.7898h4.9678a.459.459 0 0 1 .458.483l-.773 15.5883-.007.131c-.094 1.094-.979 1.9769-2.0709 2.0059z"/></svg>
+                Shopee
+              </span>
+<span class="marquee__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg>
+                Stripe
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
     <section class="section" id="services">
       <div class="container">
         <header class="section__head">
           <div>
-            <h2 class="section__title">Popular Services</h2>
-            <p class="section__subtitle">Top-rated services trending this week</p>
+            <h2 class="section__title">Services, <em class="hero-mark">in&nbsp;demand</em>.</h2>
+            <p class="section__subtitle">The services getting the most love on SkillMarket this week.</p>
           </div>
           <a class="text-link" href="explore.html">View all services</a>
         </header>
@@ -92,8 +212,8 @@
       <div class="container">
         <header class="section__head">
           <div>
-            <h2 class="section__title">Recommended Freelancers</h2>
-            <p class="section__subtitle">Top-rated professionals ready to start</p>
+            <h2 class="section__title">Freelancers, <em class="hero-mark">recommended</em>.</h2>
+            <p class="section__subtitle">Ranked weekly within each category by rating, reviews and completed work. Category leaders wear the crown.</p>
           </div>
           <a class="text-link" href="freelancers.html">View all freelancers</a>
         </header>
@@ -106,8 +226,8 @@
       <div class="container">
         <header class="section__head">
           <div>
-            <h2 class="section__title">Featured Jobs</h2>
-            <p class="section__subtitle">Find your next opportunity</p>
+            <h2 class="section__title">Jobs, <em class="hero-mark">handpicked</em>.</h2>
+            <p class="section__subtitle">A fresh rotation of verified briefs from teams hiring right now.</p>
           </div>
           <a class="text-link" href="jobs.html">View all jobs</a>
         </header>
@@ -116,54 +236,126 @@
       </div>
     </section>
 
-    <section class="section" id="how-it-works">
+    <section class="section-stats">
+      <div class="container">
+        <h2 class="stats__title" data-reveal>SkillMarket by the <em class="hero-mark">numbers</em>.</h2>
+        <div class="stats">
+          <div class="stat">
+            <p class="stat__num"><span data-count-to="500" data-count-suffix="+">500+</span></p>
+            <p class="stat__label">Businesses hire and get hired on SkillMarket</p>
+          </div>
+          <div class="stat">
+            <p class="stat__num"><span data-count-to="12400" data-count-suffix="+">12,400+</span></p>
+            <p class="stat__label">Projects delivered, end to end, since launch</p>
+          </div>
+          <div class="stat">
+            <p class="stat__num"><span data-count-to="96" data-count-suffix="%">96%</span></p>
+            <p class="stat__label">Clients who would hire the same freelancer again</p>
+          </div>
+          <div class="stat">
+            <p class="stat__num"><span data-count-to="980" data-count-prefix="&#8369;" data-count-suffix="M+">&#8369;980M+</span></p>
+            <p class="stat__label">Paid out to freelancers, milestone by milestone</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how" id="how-it-works">
       <div class="container">
         <header class="section__head section__head--center">
           <div>
-            <h2 class="section__title">How SkillMarket Works</h2>
-            <p class="section__subtitle">A seamless experience for both clients and freelancers.</p>
+            <h2 class="section__title">How SkillMarket <em class="hero-mark">works</em>.</h2>
+            <p class="section__subtitle">One straightforward flow, whichever side of the marketplace you are on.</p>
           </div>
         </header>
 
-        <div class="grid grid--steps">
-          <article class="step-card">
-            <span class="step-card__icon" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path>
-                <path d="M14 3v5h5"></path>
-                <path d="M12 11v6M9 14h6"></path>
-              </svg>
-            </span>
-            <h3 class="step-card__title">1. Post a Job</h3>
-            <p class="step-card__desc">Describe your project needs and set a budget.</p>
-          </article>
+        <div class="how-toggle" role="tablist" aria-label="Choose your view">
+          <button class="how-toggle__btn" type="button" role="tab" id="how-tab-clients" data-how-tab="clients" aria-selected="true" aria-controls="how-clients">For clients</button>
+          <button class="how-toggle__btn" type="button" role="tab" id="how-tab-freelancers" data-how-tab="freelancers" aria-selected="false" aria-controls="how-freelancers" tabindex="-1">For freelancers</button>
+        </div>
 
-          <article class="step-card">
-            <span class="step-card__icon" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M22 20v-2a4 4 0 0 0-3-3.9"></path>
-                <path d="M16 3.1a4 4 0 0 1 0 7.8"></path>
-              </svg>
-            </span>
-            <h3 class="step-card__title">2. Find Freelancers</h3>
-            <p class="step-card__desc">Browse profiles, reviews, and portfolios.</p>
-          </article>
+        <div class="how-panel" role="tabpanel" id="how-clients" aria-labelledby="how-tab-clients" data-how-panel="clients">
+          <div class="grid grid--steps steps">
+            <article class="step-card">
+              <div class="step-card__top">
+                <span class="step-card__icon">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.3 2.5h5.1l6 6V22a2.1 2.1 0 0 1-2.1 2.1H7.3a2.1 2.1 0 0 1-2.1-2.1V4.6a2.1 2.1 0 0 1 2.1-2.1Zm2 10.5a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Zm0-3.7a1.15 1.15 0 0 0 0 2.3h5.4a1.15 1.15 0 0 0 0-2.3H9.3Z"/><path fill-opacity=".4" d="M12.4 2.5v5.1a.9.9 0 0 0 .9.9h5.1L12.4 2.5Z"/></svg>
+                </span>
+                <span class="step-card__num" aria-hidden="true">01</span>
+              </div>
+              <h3 class="step-card__title">Post your brief</h3>
+              <p class="step-card__desc">Tell us what you need, your budget and your deadline. It takes about five minutes.</p>
+            </article>
 
-          <article class="step-card">
-            <span class="step-card__icon" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12a9 9 0 1 1-4.7-7.9"></path>
-                <path d="m8.6 12.2 2.4 2.4 4.6-4.9"></path>
-              </svg>
-            </span>
-            <h3 class="step-card__title">3. Get Work Done</h3>
-            <p class="step-card__desc">Collaborate and pay securely through the platform.</p>
-          </article>
+            <article class="step-card">
+              <div class="step-card__top">
+                <span class="step-card__icon">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9.3" cy="8.2" r="3.4"/><path d="M3.4 19.6a6 6 0 0 1 11.8 0 1.1 1.1 0 0 1-1.1 1.4H4.5a1.1 1.1 0 0 1-1.1-1.4Z"/><circle cx="16.7" cy="9" r="2.7" fill-opacity=".55"/><path fill-opacity=".55" d="M15.3 14.2a6 6 0 0 1 5 6.35 1.15 1.15 0 0 1-1.2 1.15h-2.5a7.4 7.4 0 0 0-1.3-7.5Z"/></svg>
+                </span>
+                <span class="step-card__num" aria-hidden="true">02</span>
+              </div>
+              <h3 class="step-card__title">Compare proposals</h3>
+              <p class="step-card__desc">Matched freelancers send a plan, a rate and proof of past work. Compare them side by side.</p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-card__top">
+                <span class="step-card__icon">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.2 19 5.6a1.6 1.6 0 0 1 1 1.5v5.3c0 5.1-3.1 8.7-8 9.9-4.9-1.2-8-4.8-8-9.9V7.1a1.6 1.6 0 0 1 1-1.5L12 2.2Zm-1.15 12.75-2.9-2.9 1.7-1.7 1.2 1.2 4.05-4 1.7 1.7-5.75 5.7Z"/></svg>
+                </span>
+                <span class="step-card__num" aria-hidden="true">03</span>
+              </div>
+              <h3 class="step-card__title">Hire with escrow</h3>
+              <p class="step-card__desc">Approve a candidate and lock the budget in escrow. Payment moves only when you release it.</p>
+            </article>
+          </div>
+          <p class="how-panel__foot">
+            <a class="text-link" href="hire-talent.html">Post a job, it&rsquo;s free
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="10.65" width="11.4" height="2.7" rx="1.35"/><path d="M12.6 4.6 22 12l-9.4 7.4Z"/></svg>
+            </a>
+          </p>
+        </div>
+
+        <div class="how-panel" role="tabpanel" id="how-freelancers" aria-labelledby="how-tab-freelancers" data-how-panel="freelancers" hidden>
+          <div class="grid grid--steps steps">
+            <article class="step-card">
+              <div class="step-card__top">
+                <span class="step-card__icon">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="7.6" r="4.1"/><path d="M4.5 20.4a7.5 7.5 0 0 1 15 0 1.2 1.2 0 0 1-1.2 1.5H5.7a1.2 1.2 0 0 1-1.2-1.5Z"/></svg>
+                </span>
+                <span class="step-card__num" aria-hidden="true">01</span>
+              </div>
+              <h3 class="step-card__title">Create your profile</h3>
+              <p class="step-card__desc">Show what you do, what you charge and the work you are proudest of.</p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-card__top">
+                <span class="step-card__icon">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.4 3.2a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm0 2.5a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/><rect x="13.85" y="16.3" width="7.5" height="2.6" rx="1.3" transform="rotate(45 17.6 17.6)"/></svg>
+                </span>
+                <span class="step-card__num" aria-hidden="true">02</span>
+              </div>
+              <h3 class="step-card__title">Get discovered</h3>
+              <p class="step-card__desc">Get matched with briefed work, or publish a service and let clients find you in search.</p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-card__top">
+                <span class="step-card__icon">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 5.5h13A2.5 2.5 0 0 1 20.5 8v9a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 17V8A2.5 2.5 0 0 1 5 5.5ZM11.6 10.2h7.7a1.15 1.15 0 0 1 1.15 1.15v2.3a1.15 1.15 0 0 1-1.15 1.15h-7.7a1.3 1.3 0 0 1-1.3-1.3v-2a1.3 1.3 0 0 1 1.3-1.3Z"/><circle cx="15.4" cy="12.5" r="1.1"/></svg>
+                </span>
+                <span class="step-card__num" aria-hidden="true">03</span>
+              </div>
+              <h3 class="step-card__title">Deliver and get paid</h3>
+              <p class="step-card__desc">Milestone payments are released automatically once your client approves the work.</p>
+            </article>
+          </div>
+          <p class="how-panel__foot">
+            <a class="text-link" href="become-freelancer.html">Create your free profile
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="10.65" width="11.4" height="2.7" rx="1.35"/><path d="M12.6 4.6 22 12l-9.4 7.4Z"/></svg>
+            </a>
+          </p>
         </div>
       </div>
     </section>
@@ -172,8 +364,8 @@
       <div class="container">
         <header class="section__head">
           <div>
-            <h2 class="section__title">Categories</h2>
-            <p class="section__subtitle">Explore services by category.</p>
+            <h2 class="section__title">Categories, <em class="hero-mark">explored</em>.</h2>
+            <p class="section__subtitle">From code to content, every craft in one marketplace.</p>
           </div>
         </header>
 
@@ -181,9 +373,254 @@
       </div>
     </section>
 
-    <section class="cta" id="get-started">
-      <div class="container cta__inner" data-cta></div>
+    <section class="section" id="why">
+      <div class="container">
+        <div class="why__head">
+          <div data-reveal>
+            <h2 class="why__title">Great work happens when neither side has to <em class="hero-mark">gamble</em>.</h2>
+            <p class="why__desc">
+              Escrow, ID verification and weekly rankings work together behind every project,
+              so clients hire with confidence and freelancers start with guaranteed payment.
+            </p>
+          </div>
+          <aside class="why__note" data-reveal>
+            <strong>The promise</strong>
+            <p>Payment moves only when the work does. That&rsquo;s the whole idea.</p>
+          </aside>
+        </div>
+
+        <div class="why__grid">
+          <article class="why-card" data-reveal>
+            <span class="why-card__icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6.2V12c0 4.4 2.9 7.5 7 9.1 4.1-1.6 7-4.7 7-9.1V6.2L12 3Z"/><path d="m9.4 12.1 1.9 1.9 3.4-3.8"/></svg>
+            </span>
+            <h3 class="why-card__title">Milestone escrow</h3>
+            <p class="why-card__desc">
+              Clients fund each milestone before work begins; the money sits with us and releases
+              the moment the work is approved. Nobody chases invoices, ever.
+            </p>
+            <div class="why-card__foot">
+              <span class="why-card__metric">&#8369;0 lost to ghosting</span>
+            </div>
+          </article>
+
+          <article class="why-card" data-reveal>
+            <span class="why-card__icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="m8.9 12.3 2.2 2.2 4.2-4.6"/></svg>
+            </span>
+            <h3 class="why-card__title">Verified, ranked talent</h3>
+            <p class="why-card__desc">
+              Every profile is ID-verified, then ranked weekly on rating, reviews and on-time
+              delivery. Category leaders wear the crown and keep it honest.
+            </p>
+            <div class="why-card__foot">
+              <span class="why-card__metric">Top 3% earn the crown</span>
+            </div>
+          </article>
+
+          <article class="why-card" data-reveal>
+            <span class="why-card__icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.2 2 4.8 13.4H11L9.5 22 18 10.6h-6.2L13.2 2Z"/></svg>
+            </span>
+            <h3 class="why-card__title">Proposals within hours</h3>
+            <p class="why-card__desc">
+              Post a brief and we match you with vetted freelancers straight away.
+              Most briefs see their first strong proposals the very same day.
+            </p>
+            <div class="why-card__foot">
+              <span class="why-card__metric">Avg. first proposal: 9 hrs</span>
+            </div>
+          </article>
+
+          <article class="why-card" data-reveal>
+            <span class="why-card__icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3.5 13.5V3.5h10l7.1 7.1a2 2 0 0 1 0 2.8Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <h3 class="why-card__title">Transparent pricing</h3>
+            <p class="why-card__desc">
+              Browsing and posting are always free. Freelancers pay a flat 10% only when a
+              milestone is released: no subscriptions, no surprises.
+            </p>
+            <div class="why-card__foot">
+              <span class="why-card__metric">Free to post a brief</span>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
+
+    <section class="section section--alt" id="stories" aria-label="Testimonials">
+      <div class="container">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+          <symbol id="ic-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+        </svg>
+
+        <div class="quotes__head" data-reveal>
+          <h2 class="quotes__title">Don&rsquo;t take our <em class="hero-mark">word</em> for it.</h2>
+          <p class="quotes__sub">Clients and freelancers, on working through SkillMarket.</p>
+        </div>
+
+        <div class="quotes" data-quotes role="region" aria-roledescription="carousel" aria-label="Testimonials" tabindex="0">
+          <div class="quotes__viewport">
+            <div class="quotes__track">
+
+              <figure class="quote is-active" role="group" aria-roledescription="slide" aria-label="1 of 6" aria-hidden="false">
+                <svg class="quote__mark" viewBox="0 0 48 36" fill="currentColor" aria-hidden="true"><path d="M4 34h10V20H6c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H4Zm18 0h10V20h-8c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H22Z"/></svg>
+                <div class="quote__stars" role="img" aria-label="Rated 5 out of 5"><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg></div>
+                <blockquote class="quote__text">The most organised developer we have worked with. Daily updates, no surprises, and the launch was completely uneventful, in the best way.</blockquote>
+                <figcaption class="quote__meta">
+                  <img class="quote__avatar" src="img/avatar-frances.svg" alt="" width="54" height="54" />
+                  <span class="quote__id">
+                    <span class="quote__name">Rachel Adams</span>
+                    <span class="quote__role">Founder, Loop Studio &middot; hired Sarah Jenkins</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="quote" role="group" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true">
+                <svg class="quote__mark" viewBox="0 0 48 36" fill="currentColor" aria-hidden="true"><path d="M4 34h10V20H6c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H4Zm18 0h10V20h-8c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H22Z"/></svg>
+                <div class="quote__stars" role="img" aria-label="Rated 5 out of 5"><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg></div>
+                <blockquote class="quote__text">Posted the brief on a Tuesday morning, had five strong proposals by Wednesday, and held the new identity in our hands by the end of the month.</blockquote>
+                <figcaption class="quote__meta">
+                  <img class="quote__avatar" src="img/avatar-jasmine.svg" alt="" width="54" height="54" />
+                  <span class="quote__id">
+                    <span class="quote__name">Felix Grant</span>
+                    <span class="quote__role">Co-founder, Northwind Retail &middot; hired Michael Chen</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="quote" role="group" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true">
+                <svg class="quote__mark" viewBox="0 0 48 36" fill="currentColor" aria-hidden="true"><path d="M4 34h10V20H6c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H4Zm18 0h10V20h-8c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H22Z"/></svg>
+                <div class="quote__stars" role="img" aria-label="Rated 5 out of 5"><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg></div>
+                <blockquote class="quote__text">Escrow meant I never had to chase an invoice or sweat a payment before the work was done. That&rsquo;s the whole product for me.</blockquote>
+                <figcaption class="quote__meta">
+                  <img class="quote__avatar" src="img/avatar-rafael.svg" alt="" width="54" height="54" />
+                  <span class="quote__id">
+                    <span class="quote__name">Georgia Mills</span>
+                    <span class="quote__role">Content Editor &middot; repeat client since 2024</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="quote" role="group" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true">
+                <svg class="quote__mark" viewBox="0 0 48 36" fill="currentColor" aria-hidden="true"><path d="M4 34h10V20H6c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H4Zm18 0h10V20h-8c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H22Z"/></svg>
+                <div class="quote__stars" role="img" aria-label="Rated 5 out of 5"><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg></div>
+                <blockquote class="quote__text">Four long-term retainers in eight months and zero disputes. The ranking system rewards doing the work well, and it shows.</blockquote>
+                <figcaption class="quote__meta">
+                  <img class="quote__avatar" src="img/avatar-elena.svg" alt="" width="54" height="54" />
+                  <span class="quote__id">
+                    <span class="quote__name">Elena Rodriguez</span>
+                    <span class="quote__role">SEO content &amp; copywriting &middot; Top Rated freelancer</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="quote" role="group" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true">
+                <svg class="quote__mark" viewBox="0 0 48 36" fill="currentColor" aria-hidden="true"><path d="M4 34h10V20H6c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H4Zm18 0h10V20h-8c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H22Z"/></svg>
+                <div class="quote__stars" role="img" aria-label="Rated 5 out of 5"><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg></div>
+                <blockquote class="quote__text">I hit Top Rated in under a year. Clients arrive with escrow already funded, which means I can just start working: no pitch deck required.</blockquote>
+                <figcaption class="quote__meta">
+                  <img class="quote__avatar" src="img/avatar-james.svg" alt="" width="54" height="54" />
+                  <span class="quote__id">
+                    <span class="quote__name">James Carter</span>
+                    <span class="quote__role">Video editing &amp; motion design &middot; Top Rated freelancer</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="quote" role="group" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true">
+                <svg class="quote__mark" viewBox="0 0 48 36" fill="currentColor" aria-hidden="true"><path d="M4 34h10V20H6c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H4Zm18 0h10V20h-8c0-6 3.5-9.5 10-10v6c-3 .4-4.5 2.4-4.8 8H22Z"/></svg>
+                <div class="quote__stars" role="img" aria-label="Rated 5 out of 5"><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg><svg class="icon" aria-hidden="true"><use href="#ic-star"/></svg></div>
+                <blockquote class="quote__text">The briefs here are serious ones. Budgets are real, feedback is fast, and payment never depends on anyone&rsquo;s memory.</blockquote>
+                <figcaption class="quote__meta">
+                  <img class="quote__avatar" src="img/avatar-david.svg" alt="" width="54" height="54" />
+                  <span class="quote__id">
+                    <span class="quote__name">David Kim</span>
+                    <span class="quote__role">Analytics &amp; insights &middot; freelancer since 2022</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+            </div>
+          </div>
+
+          <div class="quotes__controls">
+            <button class="quotes__btn" type="button" data-quotes-prev aria-label="Previous testimonial">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+            <div class="quotes__dots" data-quotes-dots></div>
+            <span class="quotes__count" data-quotes-count>01 / 06</span>
+            <button class="quotes__btn" type="button" data-quotes-next aria-label="Next testimonial">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container faq__grid">
+        <div data-reveal>
+          <h2 class="faq__title">Questions, <em class="hero-mark">answered</em>.</h2>
+          <p class="faq__desc">
+            The five questions people ask most before posting their first brief,
+            or sending their first proposal.
+          </p>
+          <a class="faq__help" href="mailto:hello@skillmarket.ph">Still curious? Talk to a human
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="10.65" width="11.4" height="2.7" rx="1.35"/><path d="M12.6 4.6 22 12l-9.4 7.4Z"/></svg>
+          </a>
+        </div>
+
+        <div class="faq__list" data-faq>
+          <div class="faq__item" data-open="true">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q1" aria-expanded="true" aria-controls="faq-a1">How does payment protection work?<span class="faq__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <div class="faq__a-inner"><p>You approve a freelancer&rsquo;s offer and fund the milestone into escrow before work begins. SkillMarket holds the money and releases it automatically when you approve the milestone: no invoices, no chasing, no surprises.</p></div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-open="false">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">What does it cost to use SkillMarket?<span class="faq__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+              <div class="faq__a-inner"><p>Posting a brief and joining as a freelancer are always free. Clients pay the agreed price plus a small payment-processing fee at checkout. Freelancers pay a flat 10% service fee, deducted only when a milestone is released. Premium adds boosts and verification badges, optional, never required.</p></div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-open="false">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">How are freelancers ranked?<span class="faq__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+              <div class="faq__a-inner"><p>Every week we recalculate rankings within each category from star rating, completed projects and on-time delivery. Category leaders wear a crown, and it resets whenever performance slips, so the top spot always reflects current work.</p></div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-open="false">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">How fast will I get proposals?<span class="faq__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+              <div class="faq__a-inner"><p>Most briefs receive their first proposals within 24 hours. A clear scope, a realistic budget and example links move the needle the most. In a hurry? Mark the brief urgent and we&rsquo;ll nudge the best-matched freelancers directly.</p></div>
+            </div>
+          </div>
+
+          <div class="faq__item" data-open="false">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">What if I&rsquo;m not happy with the work?<span class="faq__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+              <div class="faq__a-inner"><p>Start with revisions: most services include them. If you and the freelancer still can&rsquo;t agree, open a dispute before approving the milestone: the escrow stays locked while our team reviews the contract, messages and deliverables, then releases payment as it was earned.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <site-footer></site-footer>
@@ -191,9 +628,12 @@
   <script src="js/data-bundle.js" defer></script>
   <script src="js/data.js" defer></script>
   <script src="js/components.js" defer></script>
+  <script src="js/reveal.js" defer></script>
   <script src="js/session.js" defer></script>
   <script src="js/navbar.js" defer></script>
   <script src="js/footer.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/count-up.js" defer></script>
+  <script src="js/pages/home.js" defer></script>
 </body>
 </html>

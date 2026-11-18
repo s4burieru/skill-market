@@ -10,11 +10,14 @@ window.__SKILL_MARKET_DATA__ = {
         "reviewsCount": 142,
         "rate": "₱4,300",
         "image": "img/avatar-sarah.svg",
+        "verified": true,
+        "premium": true,
+        "premiumSince": "January 2022",
         "level": "Top Rated",
         "location": "Lisbon, Portugal",
         "availability": "Available now",
         "joined": "March 2021",
-        "bio": "I build and ship web products end to end — front-end, APIs and the deployment pipeline. Ten years of experience across startups and agencies, and I like projects where I own the outcome rather than a ticket.",
+        "bio": "I build and ship web products end to end: front-end, APIs and the deployment pipeline. Ten years of experience across startups and agencies, and I like projects where I own the outcome rather than a ticket.",
         "skills": [
           "React",
           "Node.js",
@@ -33,7 +36,8 @@ window.__SKILL_MARKET_DATA__ = {
           "repeat": 84
         },
         "services": [
-          "svc-001"
+          "svc-001",
+          "svc-015"
         ],
         "reviews": [
           {
@@ -41,7 +45,7 @@ window.__SKILL_MARKET_DATA__ = {
             "role": "Founder, Loop Studio",
             "rating": 5,
             "date": "October 2026",
-            "text": "The most organised developer we have worked with. Daily updates, no surprises, and the launch was completely uneventful — in the best way."
+            "text": "The most organised developer we have worked with. Daily updates, no surprises, and the launch was completely uneventful, in the best way."
           },
           {
             "name": "Kevin Doyle",
@@ -68,6 +72,9 @@ window.__SKILL_MARKET_DATA__ = {
         "reviewsCount": 98,
         "rate": "₱6,800",
         "image": "img/avatar-michael.svg",
+        "verified": true,
+        "premium": true,
+        "premiumSince": "March 2021",
         "level": "Top Rated",
         "location": "Toronto, Canada",
         "availability": "Available in 2 weeks",
@@ -90,7 +97,8 @@ window.__SKILL_MARKET_DATA__ = {
           "repeat": 77
         },
         "services": [
-          "svc-004"
+          "svc-004",
+          "svc-017"
         ],
         "reviews": [
           {
@@ -125,6 +133,9 @@ window.__SKILL_MARKET_DATA__ = {
         "reviewsCount": 167,
         "rate": "₱2,600",
         "image": "img/avatar-elena.svg",
+        "verified": true,
+        "premium": true,
+        "premiumSince": "July 2023",
         "level": "Level 2 Seller",
         "location": "Madrid, Spain",
         "availability": "Available now",
@@ -183,6 +194,8 @@ window.__SKILL_MARKET_DATA__ = {
         "reviewsCount": 76,
         "rate": "₱5,700",
         "image": "img/avatar-david.svg",
+        "verified": true,
+        "premium": false,
         "level": "Top Rated",
         "location": "Seoul, South Korea",
         "availability": "Available in 1 week",
@@ -207,7 +220,8 @@ window.__SKILL_MARKET_DATA__ = {
         },
         "services": [
           "svc-006",
-          "svc-009"
+          "svc-009",
+          "svc-014"
         ],
         "reviews": [
           {
@@ -242,6 +256,9 @@ window.__SKILL_MARKET_DATA__ = {
         "reviewsCount": 89,
         "rate": "₱3,400",
         "image": "img/avatar-james.svg",
+        "verified": true,
+        "premium": true,
+        "premiumSince": "September 2024",
         "level": "Level 2 Seller",
         "location": "Austin, United States",
         "availability": "Available now",
@@ -286,7 +303,7 @@ window.__SKILL_MARKET_DATA__ = {
             "role": "Producer",
             "rating": 4,
             "date": "July 2026",
-            "text": "Strong creative and clean files. Book him early — his calendar fills up fast."
+            "text": "Strong creative and clean files. Book him early, his calendar fills up fast."
           }
         ]
       },
@@ -299,6 +316,8 @@ window.__SKILL_MARKET_DATA__ = {
         "reviewsCount": 64,
         "rate": "₱4,800",
         "image": "img/avatar-klein.svg",
+        "verified": false,
+        "premium": false,
         "level": "Level 2 Seller",
         "location": "Berlin, Germany",
         "availability": "Available now",
@@ -322,7 +341,8 @@ window.__SKILL_MARKET_DATA__ = {
           "repeat": 69
         },
         "services": [
-          "svc-002"
+          "svc-002",
+          "svc-018"
         ],
         "reviews": [
           {
@@ -357,6 +377,8 @@ window.__SKILL_MARKET_DATA__ = {
         "reviewsCount": 71,
         "rate": "₱5,100",
         "image": "img/avatar-marcus.svg",
+        "verified": true,
+        "premium": false,
         "level": "Top Rated",
         "location": "Singapore",
         "availability": "Available in 3 days",
@@ -401,6 +423,482 @@ window.__SKILL_MARKET_DATA__ = {
             "rating": 4,
             "date": "July 2026",
             "text": "Reliable and communicative. Slightly more expensive than alternatives, but the quality justifies it."
+          }
+        ]
+      },
+      {
+        "id": "flw-008",
+        "name": "Sabriel Adriel San Agustin",
+        "role": "Front-end developer",
+        "category": "Software Developer",
+        "rating": 5,
+        "reviewsCount": 150,
+        "rate": "₱3,200",
+        "image": "img/avatar-sabriel.svg",
+        "verified": true,
+        "premium": true,
+        "premiumSince": "November 2026",
+        "level": "Level 2 Seller",
+        "location": "Manila, Philippines",
+        "availability": "Available now",
+        "joined": "February 2023",
+        "bio": "Front-end developer turning designs into fast, accessible interfaces. I care about the unglamorous details: loading states, keyboard navigation and responsive layouts that survive real content, not just Figma.",
+        "skills": [
+          "React",
+          "TypeScript",
+          "JavaScript",
+          "Tailwind CSS",
+          "Next.js",
+          "Figma"
+        ],
+        "languages": [
+          "Filipino (native)",
+          "English (fluent)"
+        ],
+        "stats": {
+          "completed": 150,
+          "onTime": 97,
+          "repeat": 66
+        },
+        "services": [
+          "svc-010",
+          "svc-016"
+        ],
+        "reviews": [
+          {
+            "name": "Andrea Lim",
+            "role": "Product Manager",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Rebuilt our dashboard front-end in six weeks and it is night and day. Clean components, real TypeScript types and zero hand-waving."
+          },
+          {
+            "name": "Jose Ramirez",
+            "role": "Founder",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Delivers exactly what was scoped, when it was scoped. Rare to find someone this organised at this rate."
+          },
+          {
+            "name": "Claire Mendoza",
+            "role": "Marketing Lead",
+            "rating": 4,
+            "date": "June 2026",
+            "text": "Strong React work and great eye for detail. Would love more proactive suggestions on UX, but the output is always solid."
+          }
+        ]
+      },
+      {
+        "id": "flw-009",
+        "name": "Aeron Christoper Martinez",
+        "role": "Web designer",
+        "category": "Web Designer",
+        "rating": 4.7,
+        "reviewsCount": 41,
+        "rate": "₱2,900",
+        "image": "img/avatar-aeron.svg",
+        "verified": true,
+        "premium": true,
+        "premiumSince": "November 2026",
+        "level": "Level 2 Seller",
+        "location": "Quezon City, Philippines",
+        "availability": "Available now",
+        "joined": "August 2023",
+        "bio": "Web designer crafting fast, responsive sites for brands and creators. From wireframe to launch: layout, typography and the handful of details that turn casual visitors into customers.",
+        "skills": [
+          "Figma",
+          "HTML & CSS",
+          "Webflow",
+          "WordPress",
+          "Responsive Design",
+          "UI/UX Design"
+        ],
+        "languages": [
+          "Filipino (native)",
+          "English (fluent)"
+        ],
+        "stats": {
+          "completed": 96,
+          "onTime": 95,
+          "repeat": 61
+        },
+        "services": [
+          "svc-011"
+        ],
+        "reviews": [
+          {
+            "name": "Tricia Gomez",
+            "role": "Content Creator",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Redesigned my creator website in a week and enquiries doubled. Clean layouts and genuinely fast turnaround."
+          },
+          {
+            "name": "Benjamin Cruz",
+            "role": "Small Business Owner",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Understands what makes a small business look credible online. Our new site finally brings customers through the door."
+          },
+          {
+            "name": "Nathan Santiago",
+            "role": "Social Media Manager",
+            "rating": 4,
+            "date": "July 2026",
+            "text": "Fast turnaround and clean mockups. Occasionally needs a revision round on spacing, but always lands it."
+          }
+        ]
+      },
+      {
+        "id": "flw-010",
+        "name": "Jasmine Reyes",
+        "role": "Illustration & social media design",
+        "category": "Graphic Designer",
+        "rating": 4.6,
+        "reviewsCount": 38,
+        "rate": "₱2,400",
+        "image": "img/avatar-jasmine.svg",
+        "verified": true,
+        "premium": false,
+        "level": "Level 1 Seller",
+        "location": "Manila, Philippines",
+        "availability": "Available in 1 week",
+        "joined": "March 2024",
+        "bio": "Illustrator and social media designer for brands that want a human touch. Custom illustrations, carousel systems and profile kits that hold up in a fast-scrolling feed.",
+        "skills": [
+          "Illustrator",
+          "Procreate",
+          "Figma",
+          "Brand Illustration",
+          "Social Media Kits"
+        ],
+        "languages": [
+          "Filipino (native)",
+          "English (fluent)"
+        ],
+        "stats": {
+          "completed": 52,
+          "onTime": 96,
+          "repeat": 58
+        },
+        "services": [
+          "svc-012"
+        ],
+        "reviews": [
+          {
+            "name": "Katrina Aquino",
+            "role": "Brand Strategist",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Her illustration style gave our launch campaign a personality we could not have bought from a stock library."
+          },
+          {
+            "name": "Miguel Tan",
+            "role": "E-commerce Owner",
+            "rating": 4,
+            "date": "August 2026",
+            "text": "Lovely, cohesive social pack. Turnaround was a touch slower than promised, but the quality made up for it."
+          },
+          {
+            "name": "Diwata Santos",
+            "role": "Content Lead",
+            "rating": 5,
+            "date": "June 2026",
+            "text": "Exactly the warm, hand-drawn look the brand needed. The carousel templates are still in weekly rotation."
+          }
+        ]
+      },
+      {
+        "id": "flw-011",
+        "name": "Paolo Villanueva",
+        "role": "SEO & content marketing",
+        "category": "Growth Marketer",
+        "rating": 4.9,
+        "reviewsCount": 47,
+        "rate": "₱3,600",
+        "image": "img/avatar-paolo.svg",
+        "verified": true,
+        "premium": false,
+        "level": "Top Rated",
+        "location": "Cebu City, Philippines",
+        "availability": "Available in 3 days",
+        "joined": "October 2021",
+        "bio": "SEO content marketer focused on durable organic growth. Keyword strategy, brief writing and optimised articles that earn rankings instead of renting them.",
+        "skills": [
+          "SEO",
+          "Content Strategy",
+          "GA4",
+          "Keyword Research",
+          "Copywriting"
+        ],
+        "languages": [
+          "Filipino (native)",
+          "English (fluent)",
+          "Spanish (conversational)"
+        ],
+        "stats": {
+          "completed": 88,
+          "onTime": 98,
+          "repeat": 72
+        },
+        "services": [
+          "svc-013"
+        ],
+        "reviews": [
+          {
+            "name": "Ramon Villareal",
+            "role": "Head of Growth",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Organic signups up 48% in one quarter. Every recommendation came with a reason and a number behind it."
+          },
+          {
+            "name": "Liza Domingo",
+            "role": "Marketing Manager",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Audits our content calendar every month and it shows. Priorities are ruthless and always correct."
+          },
+          {
+            "name": "Ian Beltran",
+            "role": "Founder",
+            "rating": 5,
+            "date": "July 2026",
+            "text": "Half the freelancers we hired delivered articles; Paolo delivered a strategy. Renewed for another quarter."
+          }
+        ]
+      },
+      {
+        "id": "flw-012",
+        "name": "Camille Soriano",
+        "role": "Product & UI designer",
+        "category": "UI/UX Designer",
+        "rating": 4.8,
+        "reviewsCount": 43,
+        "rate": "₱4,100",
+        "image": "img/avatar-camille.svg",
+        "verified": true,
+        "premium": false,
+        "level": "Level 2 Seller",
+        "location": "Makati, Philippines",
+        "availability": "Available now",
+        "joined": "January 2022",
+        "bio": "Product designer who ships whole flows, not just screens. Research, wireframes and high-fidelity Figma files your engineers can build from without a single Slack escalation.",
+        "skills": [
+          "Figma",
+          "Prototyping",
+          "User Research",
+          "Wireframing",
+          "Design Systems"
+        ],
+        "languages": [
+          "Filipino (native)",
+          "English (fluent)"
+        ],
+        "stats": {
+          "completed": 74,
+          "onTime": 97,
+          "repeat": 70
+        },
+        "services": [
+          "svc-019"
+        ],
+        "reviews": [
+          {
+            "name": "Andrea Lim",
+            "role": "Product Manager",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Prototype tested well before a single line of code was written. Her flows have almost no dead ends."
+          },
+          {
+            "name": "Jose Ramirez",
+            "role": "Founder",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Weekly check-ins, clear decision logs and a handoff our devs loved. Expensive-feeling quality at a fair rate."
+          },
+          {
+            "name": "Grace Lim",
+            "role": "Small Business Owner",
+            "rating": 4,
+            "date": "July 2026",
+            "text": "Strong UX instincts and patient testing sessions. Branded visuals were more functional than glamorous."
+          }
+        ]
+      },
+      {
+        "id": "flw-013",
+        "name": "Rafael Mendoza",
+        "role": "Scriptwriting & copywriting",
+        "category": "Content Writer",
+        "rating": 4.7,
+        "reviewsCount": 36,
+        "rate": "₱2,700",
+        "image": "img/avatar-rafael.svg",
+        "verified": true,
+        "premium": false,
+        "level": "Level 1 Seller",
+        "location": "Davao City, Philippines",
+        "availability": "Available now",
+        "joined": "November 2022",
+        "bio": "Scriptwriter for podcasts, YouTube and branded video. Cold opens that hook, pacing that breathes and scripts that read aloud like they were never written to be read.",
+        "skills": [
+          "Scriptwriting",
+          "Copywriting",
+          "Storytelling",
+          "Editing",
+          "Show Notes"
+        ],
+        "languages": [
+          "Filipino (native)",
+          "English (fluent)"
+        ],
+        "stats": {
+          "completed": 61,
+          "onTime": 96,
+          "repeat": 63
+        },
+        "services": [
+          "svc-020"
+        ],
+        "reviews": [
+          {
+            "name": "Marco Villanueva",
+            "role": "Podcast Host",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Our edit time halved because the scripts breathe on their own. He writes for the ear, not the eye."
+          },
+          {
+            "name": "Luis Fernandez",
+            "role": "Content Lead",
+            "rating": 4,
+            "date": "August 2026",
+            "text": "Great hooks and tight pacing. Occasionally needs a brief clarified, then delivers clean drafts."
+          },
+          {
+            "name": "Marites Villanueva",
+            "role": "Boutique Owner",
+            "rating": 5,
+            "date": "June 2026",
+            "text": "Rescued our founder-led video series from rambling. Watch time is up across every episode."
+          }
+        ]
+      },
+      {
+        "id": "flw-014",
+        "name": "Frances Dela Cruz",
+        "role": "Virtual assistant & support",
+        "category": "Customer Service",
+        "rating": 4.9,
+        "reviewsCount": 51,
+        "rate": "₱1,800",
+        "image": "img/avatar-frances.svg",
+        "verified": true,
+        "premium": false,
+        "level": "Level 2 Seller",
+        "location": "Iloilo City, Philippines",
+        "availability": "Available now",
+        "joined": "July 2021",
+        "bio": "Virtual assistant who runs inboxes, calendars and follow-ups before you notice they were messy. Quiet, documented, and allergic to missed deadlines.",
+        "skills": [
+          "Inbox Management",
+          "Scheduling",
+          "CRM",
+          "Live Chat",
+          "Data Entry"
+        ],
+        "languages": [
+          "Filipino (native)",
+          "English (fluent)"
+        ],
+        "stats": {
+          "completed": 124,
+          "onTime": 99,
+          "repeat": 81
+        },
+        "services": [
+          "svc-021"
+        ],
+        "reviews": [
+          {
+            "name": "Ian Beltran",
+            "role": "Founder",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Inbox zero every weekday and a calendar that defends my focus time. I genuinely cannot run without her now."
+          },
+          {
+            "name": "Liza Domingo",
+            "role": "Marketing Manager",
+            "rating": 5,
+            "date": "August 2026",
+            "text": "Set up our CRM, cleaned six months of duplicates and wrote the SOPs in her first week. Impressive."
+          },
+          {
+            "name": "Grace Lim",
+            "role": "Small Business Owner",
+            "rating": 5,
+            "date": "June 2026",
+            "text": "Replies in our voice, flags what matters, documents everything. The safest hire I have made here."
+          }
+        ]
+      },
+      {
+        "id": "flw-015",
+        "name": "Gabriel Navarro",
+        "role": "Flutter & Android developer",
+        "category": "Mobile Developer",
+        "rating": 4.8,
+        "reviewsCount": 39,
+        "rate": "₱4,500",
+        "image": "img/avatar-gabriel.svg",
+        "verified": true,
+        "premium": false,
+        "level": "Level 2 Seller",
+        "location": "Manila, Philippines",
+        "availability": "Available in 3 days",
+        "joined": "May 2022",
+        "bio": "Cross-platform developer shipping Flutter apps from prototype to store. Solid architecture, sensible state management and builds that survive real devices.",
+        "skills": [
+          "Flutter",
+          "Dart",
+          "Kotlin",
+          "Firebase",
+          "CI/CD"
+        ],
+        "languages": [
+          "Filipino (native)",
+          "English (fluent)"
+        ],
+        "stats": {
+          "completed": 69,
+          "onTime": 96,
+          "repeat": 67
+        },
+        "services": [],
+        "reviews": [
+          {
+            "name": "Priyanka Nair",
+            "role": "Product Lead",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Took our Flutter MVP from Figma to the Play Store in seven weeks. Clean architecture, no shortcuts."
+          },
+          {
+            "name": "Eric Lund",
+            "role": "CTO",
+            "rating": 4,
+            "date": "September 2026",
+            "text": "Solid engineer, honest estimates. Onboarding into our repo took a little longer than planned."
+          },
+          {
+            "name": "Siti Rahman",
+            "role": "Founder",
+            "rating": 5,
+            "date": "July 2026",
+            "text": "Shipped our field-service app and handled the store submission solo. Smooth all the way through."
           }
         ]
       }
@@ -505,7 +1003,7 @@ window.__SKILL_MARKET_DATA__ = {
           "Content Strategy"
         ],
         "companyAbout": "Growth Hub is a performance marketing team of 18 people running organic and paid programmes for B2B SaaS clients.",
-        "description": "A part-time SEO role supporting two account managers. You will run audits, track rankings and help shape content briefs — a great first SEO job with real mentorship.",
+        "description": "A part-time SEO role supporting two account managers. You will run audits, track rankings and help shape content briefs, a great first SEO job with real mentorship.",
         "responsibilities": [
           "Run technical audits and track fixes with developers",
           "Build keyword maps and content briefs",
@@ -677,6 +1175,10 @@ window.__SKILL_MARKET_DATA__ = {
       {
         "id": "writing-translation",
         "label": "Writing & Translation"
+      },
+      {
+        "id": "ui-ux-design",
+        "label": "UI/UX Design"
       },
       {
         "id": "customer-service",
@@ -1110,6 +1612,570 @@ window.__SKILL_MARKET_DATA__ = {
             "text": "Accurate and responsive. Onboarding took a little longer than promised but everything has been smooth since."
           }
         ]
+      },
+      {
+        "id": "svc-010",
+        "title": "React Front-End Development",
+        "category": "Web Development",
+        "description": "Fast, accessible React interfaces built to your designs.",
+        "rating": 4.8,
+        "reviewsCount": 36,
+        "price": {
+          "min": "₱18,000",
+          "max": "₱85,500"
+        },
+        "image": "img/service-web-development.svg",
+        "popular": true,
+        "seller": "flw-008",
+        "delivery": "10 days",
+        "revisions": 3,
+        "about": "Design-to-code delivery for React apps: component libraries, state management, accessibility and performance budgets, reviewed weekly so there are no surprises at handover.",
+        "features": [
+          "Pixel-accurate build from Figma or Sketch",
+          "Reusable, typed component library",
+          "Accessibility and performance audit included",
+          "Two weeks of post-delivery support"
+        ],
+        "reviews": [
+          {
+            "name": "Andrea Lim",
+            "role": "Product Manager",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Our dashboard rebuild shipped on time and the codebase is a pleasure to maintain. Typed, tested and documented."
+          },
+          {
+            "name": "Marco Villanueva",
+            "role": "Startup Founder",
+            "rating": 5,
+            "date": "August 2026",
+            "text": "Turned a messy prototype into something our investors could actually click through. Fast and communicative."
+          },
+          {
+            "name": "Claire Mendoza",
+            "role": "Marketing Lead",
+            "rating": 4,
+            "date": "June 2026",
+            "text": "Clean, modern front-end work. A couple of revision rounds ran long, but the final result is excellent."
+          }
+        ]
+      },
+      {
+        "id": "svc-011",
+        "title": "Web Design & Landing Pages",
+        "category": "Web Development",
+        "description": "Custom website designs, from wireframe to launch-ready files.",
+        "rating": 4.7,
+        "reviewsCount": 29,
+        "price": {
+          "min": "₱9,500",
+          "max": "₱38,000"
+        },
+        "image": "img/service-web-development.svg",
+        "popular": true,
+        "seller": "flw-009",
+        "delivery": "5 days",
+        "revisions": 2,
+        "about": "Mobile-first website design from wireframe to launch-ready files: layout, typography, colour and responsive behaviour, delivered as Figma handoff or built pages you can ship straight away.",
+        "features": [
+          "Custom homepage and inner-page designs",
+          "Mobile-first responsive layouts",
+          "Type, colour and button design system",
+          "Two revision rounds plus Figma source files"
+        ],
+        "reviews": [
+          {
+            "name": "Tricia Gomez",
+            "role": "Content Creator",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "A sharp, modern site in nine days. Two of my readers said they booked because of it."
+          },
+          {
+            "name": "Ben Navarro",
+            "role": "Small Business Owner",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Our site finally looks like the shop does in person. Honest pricing, clean work."
+          },
+          {
+            "name": "Katrina Aquino",
+            "role": "Brand Strategist",
+            "rating": 4,
+            "date": "July 2026",
+            "text": "Great eye for hierarchy and whitespace. One section needed a rethink on mobile, handled quickly."
+          }
+        ]
+      },
+      {
+        "id": "svc-012",
+        "title": "Social Media Illustration Pack",
+        "category": "Graphic Design",
+        "description": "Custom illustrations and carousels that match your brand.",
+        "rating": 4.6,
+        "reviewsCount": 24,
+        "price": {
+          "min": "₱6,000",
+          "max": "₱22,800"
+        },
+        "image": "img/service-graphic-design.svg",
+        "popular": true,
+        "seller": "flw-010",
+        "delivery": "7 days",
+        "revisions": 3,
+        "about": "A cohesive illustration system for your socials: profile kit, carousel templates and a library of custom spot illustrations in your brand palette.",
+        "features": [
+          "Custom spot illustrations in your palette",
+          "3 carousel templates plus source files",
+          "Profile, cover and highlight icons",
+          "Export presets for every platform"
+        ],
+        "reviews": [
+          {
+            "name": "Katrina Aquino",
+            "role": "Brand Strategist",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "The illustrations gave our feed a voice. Followers actually comment on the artwork now."
+          },
+          {
+            "name": "Miguel Tan",
+            "role": "E-commerce Owner",
+            "rating": 4,
+            "date": "August 2026",
+            "text": "Beautiful pack and organised delivery. Timeline slipped by a day, but it was worth the wait."
+          },
+          {
+            "name": "Diwata Santos",
+            "role": "Content Lead",
+            "rating": 5,
+            "date": "June 2026",
+            "text": "Exactly the hand-drawn warmth we wanted. The templates are still powering our weekly carousels."
+          }
+        ]
+      },
+      {
+        "id": "svc-013",
+        "title": "SEO Content Marketing",
+        "category": "Digital Marketing",
+        "description": "Keyword strategy and articles that earn durable rankings.",
+        "rating": 4.9,
+        "reviewsCount": 33,
+        "price": {
+          "min": "₱12,500",
+          "max": "₱57,000"
+        },
+        "image": "img/service-digital-marketing.svg",
+        "popular": false,
+        "seller": "flw-011",
+        "delivery": "12 days",
+        "revisions": 2,
+        "about": "End-to-end organic content: keyword mapping, briefs, optimised drafts and a reporting loop, so every article published has a reason to exist and a number attached to it.",
+        "features": [
+          "Keyword and intent map for your niche",
+          "4 SEO-optimised articles per month",
+          "On-page optimisation and internal links",
+          "Monthly ranking and traffic report"
+        ],
+        "reviews": [
+          {
+            "name": "Ramon Villareal",
+            "role": "Head of Growth",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Twelve articles, three first-page rankings, one that beats a competitor's pillar page. Superb ROI."
+          },
+          {
+            "name": "Liza Domingo",
+            "role": "Marketing Manager",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Briefs are sharp, drafts need minimal editing and the monthly reports are genuinely actionable."
+          },
+          {
+            "name": "Ian Beltran",
+            "role": "Founder",
+            "rating": 5,
+            "date": "July 2026",
+            "text": "Finally a content retainer where we can see exactly what the money went toward. Renewed twice."
+          }
+        ]
+      },
+      {
+        "id": "svc-014",
+        "title": "Data Visualization & Reporting",
+        "category": "Data Science",
+        "description": "Boardroom-ready dashboards and monthly KPI reports.",
+        "rating": 4.9,
+        "reviewsCount": 19,
+        "price": {
+          "min": "₱25,000",
+          "max": "₱95,000"
+        },
+        "image": "img/service-data-science.svg",
+        "popular": false,
+        "seller": "flw-004",
+        "delivery": "12 days",
+        "revisions": 2,
+        "about": "From raw exports to a polished reporting layer: executive dashboards, KPI definitions your team trusts and a monthly written commentary on what changed and why.",
+        "features": [
+          "Executive dashboard in Tableau, Power BI or Looker",
+          "KPI definitions agreed and documented",
+          "Automated monthly refresh and delivery",
+          "Written commentary on key movements"
+        ],
+        "reviews": [
+          {
+            "name": "Elena Petrova",
+            "role": "Finance Director",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Board packs that used to take a week now take an hour. The KPI definitions alone were worth it."
+          },
+          {
+            "name": "Samir Haddad",
+            "role": "Head of Product",
+            "rating": 5,
+            "date": "August 2026",
+            "text": "His commentary is the best part: not just what changed, but what to do about it."
+          },
+          {
+            "name": "Victor Huang",
+            "role": "COO",
+            "rating": 5,
+            "date": "June 2026",
+            "text": "Rebuilt our entire leadership dashboard. One trusted source, finally."
+          }
+        ]
+      },
+      {
+        "id": "svc-015",
+        "title": "WordPress Website Build",
+        "category": "Web Development",
+        "description": "Fast, secure WordPress sites you can update yourself.",
+        "rating": 4.8,
+        "reviewsCount": 27,
+        "price": {
+          "min": "₱22,800",
+          "max": "₱68,400"
+        },
+        "image": "img/service-web-development.svg",
+        "popular": false,
+        "seller": "flw-001",
+        "delivery": "10 days",
+        "revisions": 3,
+        "about": "A conversion-focused WordPress build: custom theme or block-based, performance-tuned, security-hardened and handed over with a short video so your team can update it confidently.",
+        "features": [
+          "Custom design or block-based theme",
+          "Performance score of 90+ on PageSpeed",
+          "Security hardening and backup setup",
+          "Handover video and 30 days of support"
+        ],
+        "reviews": [
+          {
+            "name": "Tomás Herrera",
+            "role": "Product Lead",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "The site loads in under a second and marketing updates it without calling us. Exactly what we needed."
+          },
+          {
+            "name": "Nadia Osei",
+            "role": "Marketing Manager",
+            "rating": 5,
+            "date": "August 2026",
+            "text": "Professional build, honest pricing and a handover that actually taught our team."
+          },
+          {
+            "name": "Rachel Adams",
+            "role": "Founder, Loop Studio",
+            "rating": 4,
+            "date": "June 2026",
+            "text": "Solid, fast and secure. Migration from our old site took a little longer than planned but went smoothly."
+          }
+        ]
+      },
+      {
+        "id": "svc-016",
+        "title": "E-commerce Store Setup",
+        "category": "Web Development",
+        "description": "Launch-ready online stores, from catalog to checkout.",
+        "rating": 4.7,
+        "reviewsCount": 22,
+        "price": {
+          "min": "₱25,000",
+          "max": "₱95,000"
+        },
+        "image": "img/service-web-development.svg",
+        "popular": true,
+        "seller": "flw-008",
+        "delivery": "14 days",
+        "revisions": 3,
+        "about": "A complete online store build: theme setup, product catalog, payments, shipping rules and the plugins that keep it fast, handed over with a walkthrough of the admin.",
+        "features": [
+          "Storefront design matched to your brand",
+          "Product catalog, variants and inventory setup",
+          "Payment gateway and shipping configuration",
+          "Training video plus 14 days of support"
+        ],
+        "reviews": [
+          {
+            "name": "Marites Villanueva",
+            "role": "Boutique Owner",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Our store opened on time and the first week of orders ran without a single hiccup. Clear instructions on managing stock."
+          },
+          {
+            "name": "Luis Fernandez",
+            "role": "E-commerce Manager",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Migrated 400 products cleanly and set up GA4 tracking before launch. Professional from start to finish."
+          },
+          {
+            "name": "Grace Lim",
+            "role": "Small Business Owner",
+            "rating": 4,
+            "date": "July 2026",
+            "text": "Solid build and helpful handover. Custom checkout tweaks took a little longer than planned."
+          }
+        ]
+      },
+      {
+        "id": "svc-017",
+        "title": "Brand Guidelines & Style Guide",
+        "category": "Graphic Design",
+        "description": "The rulebook that keeps your brand consistent everywhere.",
+        "rating": 4.8,
+        "reviewsCount": 26,
+        "price": {
+          "min": "₱15,000",
+          "max": "₱60,000"
+        },
+        "image": "img/service-graphic-design.svg",
+        "popular": true,
+        "seller": "flw-002",
+        "delivery": "11 days",
+        "revisions": 3,
+        "about": "A practical guidelines document covering logo usage, type, colour, imagery and tone, so every designer, printer and agency extends your brand the same way.",
+        "features": [
+          "Logo usage, spacing and misuse examples",
+          "Colour and type system with hex/RGB/print values",
+          "Imagery, iconography and tone-of-voice rules",
+          "PDF plus web link, layered source files included"
+        ],
+        "reviews": [
+          {
+            "name": "Felix Grant",
+            "role": "Co-founder",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Our agency followed the guideline perfectly on the first brief. That never happened before."
+          },
+          {
+            "name": "Sofia Marino",
+            "role": "Creative Producer",
+            "rating": 5,
+            "date": "August 2026",
+            "text": "Thorough without being bloated. Every rule exists for a reason and our team actually uses it."
+          },
+          {
+            "name": "Ben Whitaker",
+            "role": "Startup Advisor",
+            "rating": 4,
+            "date": "June 2026",
+            "text": "Clear, organised and genuinely useful. A couple of rounds to lock the imagery direction."
+          }
+        ]
+      },
+      {
+        "id": "svc-018",
+        "title": "Email Marketing Campaigns",
+        "category": "Digital Marketing",
+        "description": "Lifecycle emails and campaigns that actually get clicked.",
+        "rating": 4.6,
+        "reviewsCount": 31,
+        "price": {
+          "min": "₱9,000",
+          "max": "₱42,000"
+        },
+        "image": "img/service-digital-marketing.svg",
+        "popular": true,
+        "seller": "flw-006",
+        "delivery": "8 days",
+        "revisions": 2,
+        "about": "Strategy, copy and setup for newsletters, welcome flows and re-engagement campaigns, with A/B tests and a plain-English report on what moved revenue.",
+        "features": [
+          "Welcome, nurture or win-back flow copy",
+          "Template design in your ESP (Klaviyo, Mailchimp, etc.)",
+          "Subject line and CTA A/B testing",
+          "Monthly performance report and next steps"
+        ],
+        "reviews": [
+          {
+            "name": "Owen Fletcher",
+            "role": "E-commerce Owner",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Our welcome flow now drives 18% of first-order revenue. Measured, written and reported with real clarity."
+          },
+          {
+            "name": "Julia Rossi",
+            "role": "Head of E-commerce",
+            "rating": 4,
+            "date": "August 2026",
+            "text": "Strong copy and clean segmentation. Wanted more send-time optimisation, which came in month two."
+          },
+          {
+            "name": "Mark Sullivan",
+            "role": "Founder",
+            "rating": 5,
+            "date": "June 2026",
+            "text": "Reactivation campaign won back 240 dormant customers. Easily the most profitable thing we did this quarter."
+          }
+        ]
+      },
+      {
+        "id": "svc-019",
+        "title": "UI/UX Design Sprint",
+        "category": "UI/UX Design",
+        "description": "From problem to tested prototype in ten days.",
+        "rating": 4.8,
+        "reviewsCount": 34,
+        "price": {
+          "min": "₱30,000",
+          "max": "₱120,000"
+        },
+        "image": "img/service-web-development.svg",
+        "popular": false,
+        "seller": "flw-012",
+        "delivery": "10 days",
+        "revisions": 2,
+        "about": "A structured two-week sprint: discovery workshop, user flows, wireframes and a high-fidelity prototype, validated with real users before a single line of code is written.",
+        "features": [
+          "Discovery workshop and problem mapping",
+          "User flows and clickable wireframes",
+          "High-fidelity prototype in Figma",
+          "Moderated test with 5 users and findings report"
+        ],
+        "reviews": [
+          {
+            "name": "Andrea Lim",
+            "role": "Product Manager",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "The sprint killed three features we were about to build and validated two we were unsure about. Saved us a quarter."
+          },
+          {
+            "name": "Jose Ramirez",
+            "role": "Founder",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Structured, fast and genuinely user-informed. The prototype tested well before our devs wrote a line."
+          },
+          {
+            "name": "Grace Lim",
+            "role": "Small Business Owner",
+            "rating": 4,
+            "date": "July 2026",
+            "text": "Great process and clear deliverables. Scheduling the workshop needed some wrangling but it was worth it."
+          }
+        ]
+      },
+      {
+        "id": "svc-020",
+        "title": "Podcast & Video Scriptwriting",
+        "category": "Writing & Translation",
+        "description": "Story-driven scripts for shows and channels.",
+        "rating": 4.7,
+        "reviewsCount": 17,
+        "price": {
+          "min": "₱8,000",
+          "max": "₱30,000"
+        },
+        "image": "img/service-content-creation.svg",
+        "popular": false,
+        "seller": "flw-013",
+        "delivery": "7 days",
+        "revisions": 2,
+        "about": "Scripts built for the ear: episode outlines, cold opens, segment pacing and read-aloud polish for podcasts, YouTube and corporate video.",
+        "features": [
+          "Episode outline and cold-open hook",
+          "Full read-aloud script with pacing notes",
+          "Guest question sets and show notes",
+          "Two rounds of revision included"
+        ],
+        "reviews": [
+          {
+            "name": "Marco Villanueva",
+            "role": "Podcast Host",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Scripts sound written to be spoken, not read. Our edit time dropped by half."
+          },
+          {
+            "name": "Luis Fernandez",
+            "role": "Content Lead",
+            "rating": 4,
+            "date": "August 2026",
+            "text": "Sharp hooks and tidy pacing. Wanted slightly shorter cold opens; he adjusted immediately."
+          },
+          {
+            "name": "Marites Villanueva",
+            "role": "Boutique Owner",
+            "rating": 5,
+            "date": "June 2026",
+            "text": "Turned our rambling product stories into a watchable series. Audience retention is up across the board."
+          }
+        ]
+      },
+      {
+        "id": "svc-021",
+        "title": "Virtual Assistant & Admin Support",
+        "category": "Customer Service",
+        "description": "Inbox, calendar and admin handled, daily or weekly.",
+        "rating": 4.9,
+        "reviewsCount": 45,
+        "price": {
+          "min": "₱7,000",
+          "max": "₱28,000"
+        },
+        "image": "img/service-digital-marketing.svg",
+        "popular": false,
+        "seller": "flw-014",
+        "delivery": "3 days",
+        "revisions": 1,
+        "about": "Reliable remote support for inboxes, calendars, data entry and customer follow-ups, with SOPs handed over so nothing lives in one person's head.",
+        "features": [
+          "Inbox triage, labels and priority replies",
+          "Calendar management and scheduling",
+          "CRM cleanup, data entry and follow-ups",
+          "Documented SOPs for every recurring task"
+        ],
+        "reviews": [
+          {
+            "name": "Ian Beltran",
+            "role": "Founder",
+            "rating": 5,
+            "date": "October 2026",
+            "text": "Inbox zero every morning and meetings booked without me lifting a finger. Genuinely life-changing."
+          },
+          {
+            "name": "Liza Domingo",
+            "role": "Marketing Manager",
+            "rating": 5,
+            "date": "September 2026",
+            "text": "Methodical, discreet and fast. The SOPs she wrote are still how our team runs the inbox."
+          },
+          {
+            "name": "Grace Lim",
+            "role": "Small Business Owner",
+            "rating": 5,
+            "date": "July 2026",
+            "text": "Replies in our voice and never misses a follow-up. First VA we have kept for more than a quarter."
+          }
+        ]
       }
     ]
   },
@@ -1141,6 +2207,10 @@ window.__SKILL_MARKET_DATA__ = {
         {
           "label": "Become a Freelancer",
           "href": "become-freelancer.html"
+        },
+        {
+          "label": "Premium",
+          "href": "premium.html"
         }
       ],
       "login": {
@@ -1159,32 +2229,32 @@ window.__SKILL_MARKET_DATA__ = {
           "items": [
             {
               "label": "Overview",
-              "href": "#overview",
+              "href": "{dash}#overview",
               "icon": "grid"
             },
             {
               "label": "Projects",
-              "href": "#projects",
+              "href": "projects.html",
               "icon": "folder"
             },
             {
               "label": "Applications",
-              "href": "#applications",
+              "href": "applications.html",
               "icon": "file-text"
             },
             {
               "label": "Messages",
-              "href": "#messages",
+              "href": "messages.html",
               "icon": "message"
             },
             {
               "label": "Payments",
-              "href": "#payments",
+              "href": "payments.html",
               "icon": "wallet"
             },
             {
               "label": "Activity",
-              "href": "#activity",
+              "href": "activity.html",
               "icon": "bar-chart"
             }
           ]
@@ -1194,12 +2264,12 @@ window.__SKILL_MARKET_DATA__ = {
           "items": [
             {
               "label": "Profile",
-              "href": "#profile",
+              "href": "profile.html",
               "icon": "user"
             },
             {
               "label": "Settings",
-              "href": "#settings",
+              "href": "settings.html",
               "icon": "settings"
             }
           ]
@@ -1223,32 +2293,32 @@ window.__SKILL_MARKET_DATA__ = {
               "items": [
                 {
                   "label": "Overview",
-                  "href": "#overview",
+                  "href": "{dash}#overview",
                   "icon": "grid"
                 },
                 {
                   "label": "Users",
-                  "href": "#users",
+                  "href": "users.html",
                   "icon": "users"
                 },
                 {
                   "label": "Moderation",
-                  "href": "#moderation",
+                  "href": "moderation.html",
                   "icon": "shield"
                 },
                 {
                   "label": "Reports",
-                  "href": "#reports",
+                  "href": "reports.html",
                   "icon": "flag"
                 },
                 {
                   "label": "Revenue",
-                  "href": "#revenue",
+                  "href": "revenue.html",
                   "icon": "wallet"
                 },
                 {
                   "label": "Activity",
-                  "href": "#activity",
+                  "href": "activity.html",
                   "icon": "bar-chart"
                 }
               ]
@@ -1258,26 +2328,18 @@ window.__SKILL_MARKET_DATA__ = {
               "items": [
                 {
                   "label": "Profile",
-                  "href": "#profile",
+                  "href": "profile.html",
                   "icon": "user"
                 },
                 {
                   "label": "Settings",
-                  "href": "#settings",
+                  "href": "settings.html",
                   "icon": "settings"
                 }
               ]
             }
           ]
         }
-      }
-    },
-    "cta": {
-      "title": "Ready to grow your business?",
-      "text": "Join thousands of entrepreneurs and freelancers using SkillMarket to find and offer high-quality services.",
-      "button": {
-        "label": "Get Started",
-        "href": "join.html"
       }
     },
     "footer": {
@@ -1304,6 +2366,10 @@ window.__SKILL_MARKET_DATA__ = {
             {
               "label": "Become a Freelancer",
               "href": "become-freelancer.html"
+            },
+            {
+              "label": "Premium & Verification",
+              "href": "premium.html"
             }
           ]
         },
@@ -1401,6 +2467,62 @@ window.__SKILL_MARKET_DATA__ = {
         "email": "kleinwesley@skillmarket.com",
         "password": "klein123",
         "role": "super-admin"
+      },
+      {
+        "id": "usr-006",
+        "name": "Jasmine Reyes",
+        "email": "jasminereyes@skillmarket.com",
+        "password": "jasmine123",
+        "role": "freelancer"
+      },
+      {
+        "id": "usr-007",
+        "name": "Paolo Villanueva",
+        "email": "paolovillanueva@skillmarket.com",
+        "password": "paolo123",
+        "role": "freelancer"
+      },
+      {
+        "id": "usr-008",
+        "name": "Miguel Santos",
+        "email": "miguelsantos@skillmarket.com",
+        "password": "miguel123",
+        "role": "hire-talent"
+      },
+      {
+        "id": "usr-009",
+        "name": "Bea Navarro",
+        "email": "bearnavarro@skillmarket.com",
+        "password": "bea123",
+        "role": "hire-talent"
+      },
+      {
+        "id": "usr-010",
+        "name": "Camille Soriano",
+        "email": "camillesoriano@skillmarket.com",
+        "password": "camille123",
+        "role": "freelancer"
+      },
+      {
+        "id": "usr-011",
+        "name": "Rafael Mendoza",
+        "email": "rafaelmendoza@skillmarket.com",
+        "password": "rafael123",
+        "role": "freelancer"
+      },
+      {
+        "id": "usr-012",
+        "name": "Frances Dela Cruz",
+        "email": "francesdelacruz@skillmarket.com",
+        "password": "frances123",
+        "role": "freelancer"
+      },
+      {
+        "id": "usr-013",
+        "name": "Gabriel Navarro",
+        "email": "gabrielnavarro@skillmarket.com",
+        "password": "gabriel123",
+        "role": "freelancer"
       }
     ]
   }

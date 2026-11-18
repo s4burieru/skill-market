@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Users · SkillMarket</title>
+  <meta name="description" content="SkillMarket platform members: new signups, growth by segment and the pending verification queue." />
+  <link rel="icon" type="image/png" href="img/logo-2.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+
+<body id="top" class="page-dash" data-roles="super-admin">
+
+  <dashboard-sidebar></dashboard-sidebar>
+
+  <div class="dash">
+
+    <header class="dash__top">
+      <button
+        class="nav-toggle"
+        type="button"
+        data-nav-toggle
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="dashboard-nav"
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="4" y="6.2" width="16" height="2.5" rx="1.25"/><rect x="4" y="10.75" width="16" height="2.5" rx="1.25"/><rect x="4" y="15.3" width="16" height="2.5" rx="1.25"/></svg>
+      </button>
+
+      <form class="search dash__search" role="search" data-dash-search>
+        <span class="search__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.4 3.2a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm0 2.5a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Z"/><rect x="13.85" y="16.3" width="7.5" height="2.6" rx="1.3" transform="rotate(45 17.6 17.6)"/></svg>
+        </span>
+        <label class="sr-only" for="dash-search">Search users</label>
+        <input
+          class="search__input"
+          id="dash-search"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="Search users, emails, companies…"
+        />
+      </form>
+
+      <div class="dash__top-actions">
+        <span class="dash__date">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14v10ZM5 8V6h14v2H5Z"/></svg>
+          <span data-dash-date></span>
+        </span>
+        <button
+          class="icon-btn"
+          type="button"
+          aria-label="Notifications"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          data-act="notifications"
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8a6.3 6.3 0 0 1 6.3 6.3v4.02l1.44 3.16a1.25 1.25 0 0 1-1.16 1.72H5.42a1.25 1.25 0 0 1-1.16-1.72L5.7 13.12v-4A6.3 6.3 0 0 1 12 2.8Z"/><path d="M9.55 19.6a2.55 2.55 0 0 0 4.9 0Z"/></svg>
+          <span class="icon-btn__dot" aria-hidden="true"></span>
+        </button>
+
+        <div class="user-chip">
+          <span class="user-chip__avatar">
+            <img src="img/avatar-klein.svg" alt="" width="32" height="32" />
+          </span>
+          <span class="user-chip__text">
+            <span class="user-chip__name">Klein Wesley De Roxas</span>
+            <span class="user-chip__role">Super admin</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container dash__body">
+
+      <!-- Page head: plain heading row; the branded banner is overview-only -->
+      <div class="page__head">
+        <div class="page__head-text">
+          <h1 class="page__title">Users</h1>
+          <p class="page__subtitle">Who joined, who is verified, and who is waiting on an ID check, the whole member base at a glance.</p>
+        </div>
+        <div class="page__head-actions">
+          <button class="btn btn--secondary" type="button" data-act="help">Help center</button>
+          <a class="btn btn--primary" href="super-admin-dashboard.html" data-dash-home>Back to overview</a>
+        </div>
+      </div>
+
+      <section class="stats" aria-label="Platform users summary">
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9.3" cy="8.2" r="3.4"/><path d="M3.4 19.6a6 6 0 0 1 11.8 0 1.1 1.1 0 0 1-1.1 1.4H4.5a1.1 1.1 0 0 1-1.1-1.4Z"/><circle cx="16.7" cy="9" r="2.7" fill-opacity=".55"/><path fill-opacity=".55" d="M15.3 14.2a6 6 0 0 1 5 6.35 1.15 1.15 0 0 1-1.2 1.15h-2.5a7.4 7.4 0 0 0-1.3-7.5Z"/></svg>
+            </span>
+            <span class="stat__trend stat__trend--up">+312 this week</span>
+          </div>
+          <p class="stat__value">12,480</p>
+          <p class="stat__label">Total users</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm.95 4.35a1.25 1.25 0 0 0-2.5 0v5.85a1.25 1.25 0 0 0 .63 1.09l3.6 2.1a1.25 1.25 0 0 0 1.25-2.17l-2.98-1.74V6.85Z"/></svg>
+            </span>
+            <span class="stat__trend stat__trend--up">Peak 1,240 online</span>
+          </div>
+          <p class="stat__value">843</p>
+          <p class="stat__label">Active right now</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2 19 5.6a1.6 1.6 0 0 1 1 1.5v5.3c0 5.1-3.1 8.7-8 9.9-4.9-1.2-8-4.8-8-9.9V7.1a1.6 1.6 0 0 1 1-1.5L12 2.2Z"/></svg>
+            </span>
+            <span class="stat__trend stat__trend--warn">SLA is 2 days</span>
+          </div>
+          <p class="stat__value">48</p>
+          <p class="stat__label">Awaiting verification</p>
+        </article>
+
+        <article class="stat">
+          <div class="stat__top">
+            <span class="stat__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="7.6" r="4.1"/><path d="M4.5 20.4a7.5 7.5 0 0 1 15 0 1.2 1.2 0 0 1-1.2 1.5H5.7a1.2 1.2 0 0 1-1.2-1.5Z"/></svg>
+            </span>
+            <span class="stat__trend">Reviewed monthly</span>
+          </div>
+          <p class="stat__value">17</p>
+          <p class="stat__label">Suspended accounts</p>
+        </article>
+      </section>
+
+      <div class="dash__grid">
+
+        <section class="panel" id="users" aria-labelledby="users-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="users-title">New users</h2>
+              <p class="panel__subtitle">312 joined this week · 48 awaiting verification</p>
+            </div>
+            <a class="text-link" href="#" data-act="users-all">View all</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <span class="avatar" style="background:#eff6ff;color:#1d4ed8">SA</span>
+              <div class="list__main">
+                <p class="list__title">Sabriel Adriel San Agustin</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>sabrieladriel@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Active</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#f5f3ff;color:#6d28d9">CE</span>
+              <div class="list__main">
+                <p class="list__title">Chris Emerson Salvador</p>
+                <p class="list__meta"><span>Hire talent</span><span aria-hidden="true">·</span><span>chrisemerson@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Active</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fff7ed;color:#b45309">AM</span>
+              <div class="list__main">
+                <p class="list__title">Aeron Christoper Martinez</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>aeronchristoper@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">New</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fdf4ff;color:#a21caf">JR</span>
+              <div class="list__main">
+                <p class="list__title">Jasmine Reyes</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>jasminereyes@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">New</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#ecfeff;color:#0e7490">PV</span>
+              <div class="list__main">
+                <p class="list__title">Paolo Villanueva</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>paolovillanueva@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">New</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#f0fdf4;color:#15803d">MS</span>
+              <div class="list__main">
+                <p class="list__title">Miguel Santos</p>
+                <p class="list__meta"><span>Hire talent</span><span aria-hidden="true">·</span><span>miguelsantos@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Active</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fef2f2;color:#b91c1c">BN</span>
+              <div class="list__main">
+                <p class="list__title">Bea Navarro</p>
+                <p class="list__meta"><span>Hire talent</span><span aria-hidden="true">·</span><span>bearnavarro@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Unverified</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#ecfeff;color:#155e75">CS</span>
+              <div class="list__main">
+                <p class="list__title">Camille Soriano</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>camillesoriano@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">New</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fff1f2;color:#9f1239">RM</span>
+              <div class="list__main">
+                <p class="list__title">Rafael Mendoza</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>rafaelmendoza@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">New</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#f7fee7;color:#3f6212">FD</span>
+              <div class="list__main">
+                <p class="list__title">Frances Dela Cruz</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>francesdelacruz@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--ok">Active</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#f0f9ff;color:#075985">GN</span>
+              <div class="list__main">
+                <p class="list__title">Gabriel Navarro</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>gabrielnavarro@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">New</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar">KU</span>
+              <div class="list__main">
+                <p class="list__title">Khing Jr Ulpato</p>
+                <p class="list__meta"><span>Hire talent</span><span aria-hidden="true">·</span><span>khing@skillmarket.com</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Unverified</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="segments" aria-labelledby="segments-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="segments-title">Growth by segment</h2>
+              <p class="panel__subtitle">Share of total members · trailing 12 months</p>
+            </div>
+          </header>
+
+          <div class="panel__body">
+            <div class="meter">
+              <div class="meter__row">
+                <span class="meter__label">Freelancers · 8,940</span>
+                <span class="meter__value">72%</span>
+              </div>
+              <div class="progress progress--lg"><span class="progress__bar" style="width: 72%"></span></div>
+            </div>
+
+            <div class="meter">
+              <div class="meter__row">
+                <span class="meter__label">Hire talent · 3,528</span>
+                <span class="meter__value">28%</span>
+              </div>
+              <div class="progress progress--lg"><span class="progress__bar" style="width: 28%"></span></div>
+            </div>
+
+            <div class="meter">
+              <div class="meter__row">
+                <span class="meter__label">Verified this month · 214 of 312</span>
+                <span class="meter__value">69%</span>
+              </div>
+              <div class="progress progress--lg"><span class="progress__bar" style="width: 69%"></span></div>
+            </div>
+          </div>
+
+          <div class="panel__foot">
+            <p class="panel__foot-note">Verified members close 3× more contracts, verification pays for itself.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="verify" aria-labelledby="verify-title">
+          <header class="panel__head">
+            <div>
+              <h2 class="panel__title" id="verify-title">Verification queue</h2>
+              <p class="panel__subtitle">48 waiting · SLA is 2 business days</p>
+            </div>
+            <a class="text-link" href="#" data-act="users-all">View all</a>
+          </header>
+
+          <ul class="panel__body panel__body--flush">
+            <li class="list__item">
+              <span class="avatar">KU</span>
+              <div class="list__main">
+                <p class="list__title">Khing Jr Ulpato</p>
+                <p class="list__meta"><span>Hire talent</span><span aria-hidden="true">·</span><span>Waiting 3 days</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--warn">Overdue</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#fff7ed;color:#b45309">AM</span>
+              <div class="list__main">
+                <p class="list__title">Aeron Christoper Martinez</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>Waiting 1 day</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">Review</span>
+              </div>
+            </li>
+
+            <li class="list__item">
+              <span class="avatar" style="background:#f0fdf4;color:#167e4d">RK</span>
+              <div class="list__main">
+                <p class="list__title">Rosa Kilanti</p>
+                <p class="list__meta"><span>Freelancer</span><span aria-hidden="true">·</span><span>Waiting 6 hours</span></p>
+              </div>
+              <div class="list__aside">
+                <span class="status status--info">Review</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="panel__foot">
+            <p class="panel__foot-note">Click a member to open their full verification detail.</p>
+          </div>
+        </section>
+
+      </div>
+
+      <p class="empty-state" data-empty="dash" hidden>No users match your search. Try a different keyword.</p>
+
+    </main>
+  </div>
+
+  <script src="js/data-bundle.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/pages/dashboard-actions.js" defer></script>
+</body>
+</html>
