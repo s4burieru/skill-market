@@ -1,16 +1,6 @@
 /**
- * Dashboard action layer, shared by freelancer-dashboard.html,
- * hire-talent-dashboard.html and super-admin-dashboard.html.
- *
- * Everything clickable that is not a plain section link lives here:
- * dialogs (settings, help, inbox, money forms, queues), the notification
- * and account menus, the toasts that confirm an action, and the row-level
- * "open this item" details. Content is picked from the signed-in role
- * (freelancer / hire-talent / super-admin), so one script powers all
- * three dashboards.
- *
- * Plain HTML, CSS and JavaScript: no frameworks, one shared overlay and a
- * toast stack appended to <body>.
+ * Dashboard action layer: dialogs, toasts, dropdowns and row details for
+ * the role dashboards and dedicated pages. Content is picked by role.
  */
 (() => {
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -41,7 +31,7 @@
   const number = (text) => Number(String(text || "").replace(/[^0-9.]/g, "")) || 0;
   const ref = () => String(Math.floor(10000 + Math.random() * 90000));
 
-  /* --- Toasts ---------------------------------------------------------- */
+  /* Toasts */
 
   function toast(text, title) {
     let host = $(".toasts");
@@ -69,7 +59,7 @@
     }, 4200);
   }
 
-  /* --- Modal ----------------------------------------------------------- */
+  /* Modal */
 
   let handlers = {};
   let lastFocus = null;
@@ -97,8 +87,7 @@
       </div>`;
     document.body.appendChild(root);
 
-    // One delegated listener: closers and any [data-mact] control inside
-    // the card route through the handlers of the currently open dialog.
+    // Delegated: [data-mact] controls route to the open dialog's handlers.
     root.addEventListener("click", (event) => {
       if (event.target.closest("[data-modal-close]")) {
         closeModal();
@@ -121,7 +110,7 @@
       }
       if (event.key !== "Tab") return;
 
-      // Keep focus inside the card while it is open.
+      // Keep Tab focus inside the card.
       const focusable = $$(
         'button:not([disabled]), a[href], input:not([type="hidden"]), select, textarea',
         root
@@ -155,7 +144,7 @@
   function openModal(options) {
     const root = overlay();
 
-    // Re-rendering an open dialog must not steal the trigger we return to.
+    // A re-render must not steal the trigger to return focus to.
     if (!root.contains(document.activeElement)) lastFocus = document.activeElement;
 
     handlers = options.handlers || {};
@@ -224,7 +213,7 @@
     error.hidden = !message;
   }
 
-  /* --- Small page helpers --------------------------------------------- */
+  /* Small page helpers */
 
   function scrollToSection(id) {
     const el = document.getElementById(id);
@@ -285,7 +274,7 @@
       <div class="list__aside"><span class="status status--${item.tone}">${esc(item.status)}</span></div>
     </li>`;
 
-  /* --- Per-role content ------------------------------------------------- */
+  /* Per-role content */
 
   const SETTINGS = {
     freelancer: [
@@ -464,7 +453,7 @@
     ]
   };
 
-  /* --- Switch lists (settings + security) ------------------------------- */
+  /* Switch lists (settings + security) */
 
   const storageKey = (name) => `skillmarket.${name}.${role()}`;
 
@@ -489,7 +478,7 @@
     try {
       window.localStorage.setItem(storageKey(name), JSON.stringify(data));
     } catch (error) {
-      /* storage unavailable, the switches still work for this visit */
+      // Storage unavailable; switches work for this visit.
     }
   }
 
@@ -557,12 +546,7 @@
     });
   }
 
-  /**
-   * The dedicated settings.html page renders the same per-role switch
-   * list as the settings dialog, inline and persisted to the same storage
-   * key (`skillmarket.settings.<role>`), so preferences stay in sync no
-   * matter which entry point toggles them.
-   */
+  // settings.html reuses the same list and storage key, so both stay in sync.
   function hydrateSettingsSwitches() {
     const block = $(`[data-setting-block="${role()}"]`);
     if (!block) return;
@@ -622,7 +606,7 @@
     });
   }
 
-  /* --- Notification + account dropdowns --------------------------------- */
+  /* Notification + account dropdowns */
 
   let openDrop = null;
 
@@ -714,10 +698,7 @@
           const notice = notices[Number(item.dataset.noticeIndex)];
           closeDrop();
           if (notice) {
-            // Notice targets live on the shared menu page; scroll when we
-            // are already there, otherwise navigate to the section.
-            // Notice targets are the dedicated pages (optionally with a
-            // same-page hash); scroll when the section is here, else navigate.
+            // Scroll if the section is here, else navigate to it.
             const hash = notice.href.indexOf("#");
             const id = hash === -1 ? null : notice.href.slice(hash + 1);
             if (!id || !scrollToSection(id)) window.location.href = notice.href;
@@ -746,7 +727,7 @@
         closeDrop();
 
         if (key === "profile") {
-          // Profile lives on the dedicated profile.html page now.
+          // Profile is on profile.html now.
           if (!scrollToSection("profile")) window.location.href = "profile.html";
         }
         if (key === "settings") {
@@ -774,7 +755,7 @@
     });
   }
 
-  /* --- List dialogs ----------------------------------------------------- */
+  /* List dialogs */
 
   function allProjects() {
     const extras = (EXTRA[role()] && EXTRA[role()].projects) || [];
@@ -912,7 +893,7 @@
     });
   }
 
-  /* --- Profile strength steps ------------------------------------------- */
+  /* Profile strength steps */
 
   function addSkills() {
     const added = [];
@@ -1082,7 +1063,7 @@
     });
   }
 
-  /* --- Inbox ------------------------------------------------------------ */
+  /* Inbox */
 
   function conversations() {
     return $$("#messages .list__item").map((row) => ({
@@ -1286,7 +1267,7 @@
     toast(`Your message to ${name} was sent.`, "Message sent");
   }
 
-  /* --- Form dialogs ----------------------------------------------------- */
+  /* Form dialogs */
 
   function formModal(options) {
     const controls = options.fields
@@ -1565,7 +1546,7 @@
     }
   }
 
-  /* --- Queue dialogs (moderation, reports, users) ----------------------- */
+  /* Queue dialogs (moderation, reports, users) */
 
   function queueModal(options) {
     const source = $$(options.panel + " .list__item");
@@ -1763,14 +1744,13 @@
     });
   }
 
-  /* --- Row details ------------------------------------------------------ */
+  /* Row details */
 
   function openRowDetail(row) {
     const panel = row.closest(".panel");
     const id = panel ? panel.id : "";
     const title = (($(".list__title", row) || {}).textContent || "").trim();
-    // Row metas are three <span>s with no source whitespace; restore the
-    // spaces the CSS gap provides so dialog copy reads naturally.
+    // Spans have no source whitespace; restore the spaces CSS gap provides.
     const meta = (($(".list__meta", row) || {}).textContent || "")
       .replace(/\s*·\s*/g, " · ")
       .trim();
@@ -1935,10 +1915,9 @@
     })
   };
 
-  /* --- Dedicated page actions ------------------------------------------- */
+  /* Dedicated page actions */
 
-  // Quick replies on the messages page: copies the canned text (best
-  // effort) and confirms, so the button is never a dead click.
+  // Quick replies: copy the canned text (best effort) and confirm.
   function quickReply(trigger) {
     const text = trigger.dataset.text || "Got it, thanks!";
     try {
@@ -1946,7 +1925,7 @@
         navigator.clipboard.writeText(text).catch(() => {});
       }
     } catch (error) {
-      /* clipboard unavailable (file:// or permissions), the toast still confirms */
+      // Clipboard unavailable; the toast still confirms.
     }
     toast(`“${text}”, paste it in the composer and adjust the details.`, "Quick reply");
   }
@@ -2025,7 +2004,7 @@
     });
   }
 
-  /* --- Action registry -------------------------------------------------- */
+  /* Action registry */
 
   const ACTIONS = {
     settings: () => openSettings(),
@@ -2095,7 +2074,7 @@
     return true;
   };
 
-  /* --- Wiring ----------------------------------------------------------- */
+  /* Wiring */
 
   function wireActions() {
     document.addEventListener("click", (event) => {
@@ -2161,7 +2140,7 @@
     });
   }
 
-  /** Sidebar links with no matching section (#settings, #help) open a dialog. */
+  // Section-less sidebar links (#settings, #help) open a dialog.
   function openHref(href) {
     if (href === "#settings") {
       run("settings");
@@ -2174,7 +2153,6 @@
     return false;
   }
 
-  /** Escape closes the dialog even when focus sits on the backdrop. */
   function wireModalEscape() {
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
@@ -2183,7 +2161,7 @@
     });
   }
 
-  /** Fallback for any control still carrying a legacy data-notice string. */
+  // Fallback for legacy data-notice controls.
   function notice(html) {
     const parts = String(html || "").split(/<br\s*\/?>/i);
     const strip = (value) => value.replace(/<[^>]*>/g, "").trim();

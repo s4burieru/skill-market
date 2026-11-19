@@ -1,21 +1,5 @@
-/* ============================================================
-   SkillMarket: Animated stat counters
-   Vanilla JS, no dependencies.
-
-   Any element with a `data-count-to` attribute animates from 0
-   to that value the first time it scrolls into view.
-
-   Supported modifiers:
-     data-count-to="1.03"        target number (required)
-     data-count-decimals="2"     fraction digits (default 0)
-     data-count-prefix="₱"       text before the number (default "")
-     data-count-suffix="k+"      text after the number (default "")
-
-   Notes:
-   - The final value stays in the HTML, so the numbers are fully
-     readable when JS (or this file) is missing.
-   - Respects `prefers-reduced-motion`: nothing is animated.
-   ============================================================ */
+/* Animated stat counters: elements with data-count-to animate 0 → value
+   on first scroll into view. Respects prefers-reduced-motion. */
 (() => {
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (prefersReduced.matches || !("IntersectionObserver" in window)) return;
@@ -67,8 +51,7 @@
   );
 
   for (const el of elements) {
-    // Start from zero so the count-up is visible, keep the static
-    // final value in the HTML as the no-JS fallback.
+    // Final value stays in the HTML as the no-JS fallback.
     render(el, 0);
     io.observe(el);
   }

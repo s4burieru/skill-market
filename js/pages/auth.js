@@ -238,8 +238,7 @@
     if (meter) meter.hidden = true;
   }
 
-  /* Preselect the account type from ?role=freelancer|hire-talent so links
-     like join.html?role=freelancer land on the right radio. */
+  // Preselect account type from ?role=freelancer|hire-talent.
   function wireAccountTypeFromUrl() {
     const role = new URLSearchParams(window.location.search).get("role");
     if (!role || !/^[a-z-]+$/.test(role)) return;

@@ -1,4 +1,4 @@
-/* Shared layout for the listing pages: explore, freelancers, jobs ---------- */
+/* Shared layout for the listing pages: explore, freelancers, jobs */
 
 .page-hero {
   padding: 54px 0 34px;
@@ -55,7 +55,7 @@
   margin-top: 0;
 }
 
-/* Trust toolbar: ranking sort + verified/premium filters -------------------- */
+/* Trust toolbar: ranking sort + verified/premium filters */
 
 .browse__tools {
   display: flex;

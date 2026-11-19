@@ -31,7 +31,7 @@
   --gutter: 32px;
   --navbar-h: 66px;
 
-  /* Type scale: the only font sizes used on the page */
+  /* Type scale */
   --fs-2xs: 11px; /* uppercase micro labels, badges */
   --fs-xs: 12px; /* metadata, footer copy, small chips */
   --fs-sm: 13px; /* secondary text: links, subtitles, nav */

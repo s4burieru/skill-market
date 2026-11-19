@@ -1,8 +1,5 @@
-/**
- * Premium & Verification page: plan pickers, application form validation and
- * the "application received" state. Fully static, nothing leaves the browser;
- * applications are appended to localStorage under `skillmarket.premium.applications`.
- */
+/* Premium & Verification: plan pickers and application form. Static;
+   applications go to localStorage. */
 (() => {
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -12,7 +9,7 @@
   const errorBox = $("#premium-error");
   const refTarget = $("#premium-ref");
 
-  /* --- Plan pre-selection (hero/plan buttons + ?plan= param) ------------- */
+  /* Plan pre-selection */
 
   function selectPlan(plan) {
     const input = form
@@ -28,7 +25,7 @@
       if (apply) apply.scrollIntoView({ behavior: "smooth", block: "start" });
       if (form) {
         form.classList.remove("pm-form--flash");
-        // Re-trigger the flash animation on every click.
+        // Force reflow so the flash animation restarts.
         void form.offsetWidth;
         form.classList.add("pm-form--flash");
       }
@@ -38,7 +35,7 @@
   const planParam = new URLSearchParams(location.search).get("plan");
   if (planParam === "premium" || planParam === "verified") selectPlan(planParam);
 
-  /* --- Form validation ---------------------------------------------------- */
+  /* Form validation */
 
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -104,13 +101,12 @@
       existing.push(application);
       localStorage.setItem(key, JSON.stringify(existing));
     } catch (error) {
-      // Storage can be unavailable (private mode); the UX still works.
+      // Storage may be unavailable (private mode); the UX still works.
       console.warn("Could not persist application", error);
     }
   }
 
   if (form) {
-    // Clear the invalid state as the person fixes each field.
     form.addEventListener("input", (event) => {
       const target = event.target;
       if (target.matches("input, select")) {

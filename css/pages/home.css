@@ -1,14 +1,6 @@
-/* ==========================================================================
-   Home page: new content sections
-   Trusted-by marquee · stats band · Why SkillMarket cards · testimonials ·
-   FAQ accordion. Loaded after styles.css.
+/* Home page: marquee, stats band, value cards, testimonials, FAQ. */
 
-   Design language borrows Socia's layout craft (tag pills, oversized
-   Bricolage headings with a highlighted word, counters, two
-   counter-scrolling logo rows) on SkillMarket's green identity.
-   ========================================================================== */
-
-/* ---------- Trusted-by marquee -------------------------------------------- */
+/* Trusted-by marquee */
 
 .marquee {
   padding: 24px 0 26px;
@@ -36,8 +28,7 @@
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 
-/* Without JS or under reduced motion the animation is off and the rows wrap
-   statically, so the animation is only applied once JS adds .has-loop. */
+/* Rows wrap statically until JS adds .has-loop. */
 .marquee__track {
   display: flex;
   align-items: center;
@@ -84,8 +75,7 @@
   transition: color var(--ease);
 }
 
-/* Wordmark icons sit in the square viewBox with generous padding, so at
-   28px they read smaller than the glyphs — scale them up to match. */
+/* Wordmark icons sit in a padded square viewBox; scale them up at 28px. */
 .marquee__item--wordmark svg {
   transform: scale(1.62);
 }
@@ -101,11 +91,7 @@
   color: var(--ink);
 }
 
-/* ---------- Signature section headings --------------------------------------
-   The same editorial voice as "Questions, answered." / "Don't take our word
-   for it." / "Great work happens when neither side has to gamble.":
-   oversized Bricolage, tight tracking, one swash-underlined word. Scoped to
-   the homepage so listing pages keep the compact shared .section__title. */
+/* Homepage-only oversized section headings. */
 
 .page-home .section__head {
   margin-bottom: 30px;
@@ -126,12 +112,11 @@
   line-height: 1.65;
 }
 
-/* The centered "How it works" head gets the full display size. */
 .page-home .section__head--center .section__title {
   font-size: clamp(2.1rem, 4.4vw, 3.1rem);
 }
 
-/* ---------- Stats band ----------------------------------------------------- */
+/* Stats band */
 
 .section-stats {
   padding: 46px 0 52px;
@@ -211,7 +196,7 @@
   }
 }
 
-/* ---------- Why SkillMarket (value cards) --------------------------------- */
+/* Why SkillMarket (value cards) */
 
 .why__head {
   display: grid;
@@ -281,7 +266,6 @@
   transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
 }
 
-/* Green sweep across the top edge on hover: small, confident motion. */
 .why-card::after {
   content: "";
   position: absolute;
@@ -305,20 +289,35 @@
   transform: scaleX(1);
 }
 
+.why-card:hover .why-card__icon {
+  opacity: 0.2;
+  transform: translateY(-50%) scale(1.06);
+}
+
 .why-card__icon {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 13px;
-  border: 1px solid #ddf2e7;
-  background: var(--green-50);
-  color: var(--green-600);
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  z-index: 0;
+  display: block;
+  color: var(--green-500);
+  opacity: 0.12;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .why-card__icon .icon {
-  width: 22px;
-  height: 22px;
+  width: 168px;
+  height: 168px;
+  stroke-width: 1.3;
+}
+
+.why-card__title,
+.why-card__desc,
+.why-card__foot {
+  position: relative;
+  z-index: 1;
 }
 
 .why-card__title {
@@ -378,9 +377,18 @@
   .why__grid {
     grid-template-columns: 1fr;
   }
+
+  .why-card__icon {
+    right: -22px;
+  }
+
+  .why-card__icon .icon {
+    width: 128px;
+    height: 128px;
+  }
 }
 
-/* ---------- Testimonials --------------------------------------------------- */
+/* Testimonials */
 
 .quotes__head {
   text-align: center;
@@ -566,7 +574,7 @@
   }
 }
 
-/* ---------- FAQ ------------------------------------------------------------- */
+/* FAQ */
 
 .faq__grid {
   display: grid;
@@ -704,7 +712,7 @@
   }
 }
 
-/* ---------- Small-screen furniture ------------------------------------------ */
+/* Small-screen furniture */
 
 @media (max-width: 760px) {
   .marquee__group {
@@ -733,7 +741,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Static, wrapped rows — nothing scrolls, everything stays reachable. */
+  /* Static, wrapped rows; everything stays reachable. */
   .marquee__track {
     animation: none !important;
     width: auto;

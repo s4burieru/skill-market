@@ -1,4 +1,4 @@
-/* Become a freelancer: hero, stats, steps, benefits, fees, quotes, FAQ ---- */
+/* Become a freelancer: hero, stats, steps, benefits, fees, quotes, FAQ */
 
 .fh-hero {
   padding: 58px 0 56px;
@@ -59,7 +59,7 @@
   color: var(--green-500);
 }
 
-/* Earnings card ------------------------------------------------------------ */
+/* Earnings card */
 
 .fh-hero__card {
   background: #fff;
@@ -132,7 +132,7 @@
   color: var(--green-600);
 }
 
-/* Stats -------------------------------------------------------------------- */
+/* Stats */
 
 .fh-stats {
   padding: 44px 0;
@@ -165,17 +165,19 @@
   color: var(--muted);
 }
 
-/* Steps & benefits --------------------------------------------------------- */
+/* Steps & benefits */
 
 .fh-steps {
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 
 .grid--benefits {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .benefit {
+  position: relative;
+  overflow: hidden;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -188,19 +190,36 @@
   border-color: var(--green-200);
 }
 
+.benefit:hover .benefit__icon {
+  opacity: 0.2;
+  transform: translateY(-50%) scale(1.06);
+}
+
 .benefit__icon {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--green-50);
-  color: var(--green-600);
-  font-size: var(--fs-xl);
+  position: absolute;
+  top: 50%;
+  right: -26px;
+  z-index: 0;
+  display: block;
+  color: var(--green-500);
+  opacity: 0.12;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.benefit__icon .icon {
+  width: 152px;
+  height: 152px;
+}
+
+.benefit__title,
+.benefit__desc {
+  position: relative;
+  z-index: 1;
 }
 
 .benefit__title {
-  margin-top: 16px;
   font-size: var(--fs-lg);
 }
 
@@ -211,7 +230,7 @@
   color: var(--muted);
 }
 
-/* Fees --------------------------------------------------------------------- */
+/* Fees */
 
 .grid--fees {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -291,10 +310,11 @@
   transform: rotate(-45deg);
 }
 
-/* Quotes ------------------------------------------------------------------- */
+/* Quotes */
 
 .grid--quotes {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 400px));
+  justify-content: center;
 }
 
 .quote {
@@ -339,7 +359,7 @@
   color: var(--muted);
 }
 
-/* FAQ ---------------------------------------------------------------------- */
+/* FAQ */
 
 .fh-faq .section__head {
   margin-bottom: 28px;
@@ -404,7 +424,7 @@
   color: var(--muted);
 }
 
-/* Responsive ---------------------------------------------------------------- */
+/* Responsive */
 
 @media (max-width: 900px) {
   .fh-hero__inner {
@@ -421,6 +441,15 @@
 @media (max-width: 560px) {
   .fh-hero {
     padding: 40px 0 38px;
+  }
+
+  .benefit__icon {
+    right: -20px;
+  }
+
+  .benefit__icon .icon {
+    width: 112px;
+    height: 112px;
   }
 
   .fh-stats__grid {

@@ -1,15 +1,5 @@
-/**
- * Edit profile page (profile.html).
- *
- * Fills the edit form with the signed-in user's details: the session supplies
- * the identity (name / email), HTML defaults supply realistic demo content and
- * `localStorage["skillmarket.profile.<role>"]` wins when it exists. Saving
- * writes back to that key and patches the session record (Session.update) so
- * the topbar chip and the dashboards agree on the new name without a reload.
- *
- * One form ships per role block; dashboard.js removes the blocks that don't
- * match the signed-in role before this runs, so at most one form exists.
- */
+/* Edit profile page: fills the form from the session (HTML defaults as demo
+   content; localStorage wins), saves back and patches the session record. */
 (() => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -22,7 +12,7 @@
       .replace(/"/g, "&quot;");
 
   const user = typeof Session !== "undefined" && Session.get();
-  if (!user) return; // the session guard in dashboard.js bounces anonymous visitors
+  if (!user) return; // anonymous visitors are bounced by dashboard.js
 
   const role = user.role || "freelancer";
   const form = $("[data-profile-form]");
@@ -48,7 +38,7 @@
 
   const saved = readSaved();
 
-  /* --- Hydrate every named field ------------------------------------------ */
+  /* Hydrate fields */
 
   $$("[name]", form).forEach((field) => {
     const key = field.name;
@@ -64,7 +54,7 @@
     field.value = value;
   });
 
-  /* --- Active toggle -------------------------------------------------------- */
+  /* Active toggle */
 
   const activeSwitch = $("[data-profile-active]", form);
 
@@ -86,7 +76,7 @@
     });
   }
 
-  /* --- Validation ----------------------------------------------------------- */
+  /* Validation */
 
   const showError = (key, message) => {
     const el = $(`[data-error-for="${key}"]`, form);
@@ -100,7 +90,7 @@
     if (event.target && event.target.name) showError(event.target.name, "");
   });
 
-  /* --- Submit --------------------------------------------------------------- */
+  /* Submit */
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -131,14 +121,14 @@
     try {
       window.localStorage.setItem(STORE_KEY, JSON.stringify(data));
     } catch (error) {
-      /* storage unavailable, the edit still applies to this page visit */
+      // Storage unavailable; the edit applies to this visit.
     }
 
     if (typeof Session.update === "function") {
       Session.update({ name: data.fullName, email: data.email });
     }
 
-    // Keep the topbar chip in sync without a reload.
+    // Sync the topbar chip without a reload.
     const chipName = $(".user-chip__name");
     if (chipName) chipName.textContent = data.fullName;
     const chipAvatar = $(".user-chip__avatar");
@@ -147,7 +137,7 @@
       chipAvatar.setAttribute("title", data.fullName);
     }
 
-    // Brief button feedback so the save is visible even before the toast.
+    // Button feedback so the save is visible before the toast.
     const submit = $('[type="submit"]', form);
     if (submit) {
       const label = submit.textContent;

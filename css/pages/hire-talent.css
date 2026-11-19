@@ -1,6 +1,4 @@
-/* Hire a talent: hero, stats and page shell -------------------------------- *
- * The step cards, benefits, fee cards, quotes and FAQ styles come from
- * css/pages/become-freelancer.css, which this page also links to. */
+/* Hire a talent: hero, stats and page shell. Shared sections live in become-freelancer.css. */
 
 .ht-hero {
   padding: 58px 0 56px;
@@ -61,7 +59,7 @@
   color: var(--green-500);
 }
 
-/* Shortlist card ------------------------------------------------------------ */
+/* Shortlist card */
 
 .ht-hero__card {
   background: #fff;
@@ -134,7 +132,7 @@
   color: var(--green-600);
 }
 
-/* Stats ---------------------------------------------------------------------- */
+/* Stats */
 
 .ht-stats {
   padding: 44px 0;
@@ -167,13 +165,13 @@
   color: var(--muted);
 }
 
-/* Steps ---------------------------------------------------------------------- */
+/* Steps */
 
 .ht-steps {
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 
-/* Responsive ----------------------------------------------------------------- */
+/* Responsive */
 
 @media (max-width: 900px) {
   .ht-hero__inner {
