@@ -1,9 +1,4 @@
-/* SkillMarket icon set.
-   Hand-drawn, solid glyphs on a 24px grid. No stock line icons: every icon
-   is a filled silhouette (optionally with knocked-out or lighter detail in
-   the same ink), paired with chunky geometry that matches the wordmark.
-   Use Icons.svg(name) for inline use; Icons.path(name) returns the raw
-   inner markup when a one-off svg wrapper is needed. */
+/* SkillMarket icon set: hand-drawn filled glyphs on a 24px grid. */
 const Icons = (() => {
   const paths = {
     star: '<path d="M12 2.6 14.7 8.4l6.2.7-4.6 4.2 1.2 6.1L12 17l-5.5 3.4 1.2-6.1-4.6-4.2 6.2-.7L12 2.6Z"/>',
@@ -54,22 +49,9 @@ const Icons = (() => {
   return { svg, path: (name) => paths[name] || "" };
 })();
 
-/**
- * Marketplace ranking, recomputed from the data on every render.
- * Scores are computed the same way, but freelancers are ranked within
- * their own category: every category crowns its own gold, silver and
- * bronze, so there is always a #1 per category.
- * Score (max 100) leans on quality, with volume as proof:
- *   rating * 14              (up to 70)
- * + reviews  (cap 150) * .12 (up to 18)
- * + completed (cap 150) * .08 (up to 12)
- * Each category group is sorted by score (rating, then review count break
- * ties) and every entry gets a 1-based `rank` within its category.
- * Ranks 1-3 win the gold/silver/bronze crown; Premium adds a badge and
- * boosted placement but never overrides the score, so rankings stay
- * honest. The returned list is ordered leaders-first (all category #1s,
- * then #2s, and so on, best score first).
- */
+/* Marketplace ranking, recomputed each render. Score (max 100):
+   rating*14 + min(reviews,150)*.12 + min(completed,150)*.08.
+   Ranked within category; Premium never overrides the score. */
 const Ranking = (() => {
   function score(person) {
     const rating = Number(person.rating) || 0;
@@ -112,7 +94,7 @@ const Ranking = (() => {
         });
     }
 
-    // Leaders board: every category #1 first, then #2s, then #3s, best score first.
+    // Leaders first: every category #1, then #2s, best score first.
     return scored.sort((a, b) => a.rank - b.rank || compare(a, b));
   }
 
@@ -176,8 +158,6 @@ const Components = (() => {
         </div>
       </article>`;
   }
-
-  /* Two-tone verified seal (solid octagon, knocked-out check) -------------- */
 
   function VerifiedSeal(className = "") {
     return `<svg class="verified-seal${className ? ` ${className}` : ""}" viewBox="0 0 24 24" role="img" aria-label="Identity verified by SkillMarket">
@@ -318,7 +298,7 @@ const Components = (() => {
     )}</button>`;
   }
 
-  /* Reviews & ratings (service / freelancer detail pages) -------------------- */
+  /* Reviews */
 
   function StarRow(rating) {
     const value = Number(rating) || 0;

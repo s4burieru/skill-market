@@ -11,10 +11,9 @@ const Navbar = (site) => {
       .map((part) => part.charAt(0).toUpperCase())
       .join("");
 
-  // The role's dashboard, used by the quick actions and the profile menu.
   const dashboard = user ? Session.dashboardFor(user.role) : null;
 
-  // Quick actions: jump straight to the inbox / activity panel of that dashboard.
+  // Quick actions: jump to the inbox / activity panel of the user's dashboard.
   const INBOX_SECTION = {
     freelancer: "messages",
     "hire-talent": "messages",
@@ -109,8 +108,7 @@ class SiteNavbar extends HTMLElement {
     this.#render();
     Session.onChange(() => this.#render());
 
-    // Close the profile menu on outside clicks / Escape. Registered once, so
-    // re-renders never stack duplicate document listeners.
+    // Registered once so re-renders don't stack document listeners.
     document.addEventListener("click", (event) => {
       const profile = this.querySelector("[data-profile]");
       if (!profile || !profile.classList.contains("is-open")) return;
@@ -164,7 +162,6 @@ class SiteNavbar extends HTMLElement {
       this.#setProfile(!menu || menu.hidden);
     });
 
-    // Navigating (or logging out) from the menu closes it right away.
     this.querySelectorAll(".navbar__menu-link").forEach((link) =>
       link.addEventListener("click", () => this.#setProfile(false))
     );

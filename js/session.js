@@ -1,13 +1,5 @@
-/**
- * Shared sign-in state for every page.
- *
- * The account lives in data/users.json; once login succeeds we keep a small
- * session record (email, name, role) in storage so the navbar, the auth pages
- * and the dashboards can all agree on who is signed in.
- *
- * - "Keep me signed in"      -> localStorage (survives the browser session)
- * - unchecked                -> sessionStorage (cleared when the tab closes)
- */
+/* Shared sign-in state: session record (email, name, role) kept in
+   localStorage with "keep me signed in", sessionStorage otherwise. */
 const Session = (() => {
   const KEY = "skillmarket.session";
   const EVENT = "auth:changed";
@@ -50,7 +42,7 @@ const Session = (() => {
     try {
       storage.setItem(KEY, JSON.stringify(user));
     } catch (error) {
-      /* storage unavailable (private mode), sign-in still works for this page */
+      // Storage may be unavailable; sign-in still works for this page.
     }
   };
 
@@ -94,11 +86,7 @@ const Session = (() => {
     return record;
   }
 
-  /**
-   * Patch the signed-in record in place (used by the edit-profile page).
-   * Writes back to whichever storage holds the session, so a name change
-   * shows up in the sidebar chip and dashboards without signing in again.
-   */
+  // Patch the signed-in record in place; writes to whichever storage holds it.
   function update(patch) {
     const current = get();
     if (!current) return null;

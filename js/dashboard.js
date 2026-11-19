@@ -1,24 +1,7 @@
-/**
- * Shared dashboard shell for the role dashboards and every dedicated
- * sidebar page (projects.html, applications.html, messages.html,
- * payments.html, revenue.html, users.html, moderation.html, reports.html,
- * activity.html, profile.html, settings.html).
- *
- * The <dashboard-sidebar> element renders the navigation from
- * data/site.json → dashboard on every page, so the chrome stays identical
- * and only the page content differs. A page can pass data-variant="…" to
- * pick a different nav for its role (e.g. the super admin's admin menu);
- * when no variant is declared the role of the signed-in user picks one
- * automatically (used by the shared pages). The variant falls back to the
- * shared nav for anything it does not override.
- *
- * Sidebar hrefs in site.json may contain the token "{dash}", which is
- * swapped for the signed-in role's dashboard file at render time (on the
- * dashboard itself it collapses to a same-page "#anchor").
- *
- * Pages that only serve some roles declare them on <body data-roles="…">;
- * the session guard bounces everyone else to their own dashboard.
- */
+/* Shared dashboard shell: renders <dashboard-sidebar> from data/site.json.
+   Sidebar hrefs may carry "{dash}", swapped for the role's dashboard file.
+   Pages serving some roles declare them on <body data-roles="…">; the
+   session guard bounces everyone else to their own dashboard. */
 (() => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -26,7 +9,6 @@
   const currentPageName = () =>
     (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
 
-  // Splits "page.html#id" / "#id" / "page.html" into its parts.
   const parseHref = (href) => {
     const hash = String(href || "").indexOf("#");
     if (hash === -1) return { page: String(href || ""), id: null };
@@ -62,11 +44,9 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
 
-  /* --- Sidebar ------------------------------------------------------------ */
+  /* Sidebar */
 
-  // Just the clickable row; the caller decides which list element wraps it so
-  // that every row lives inside a <ul> (the stylesheet resets list markers
-  // there, a bare <li> outside a list keeps its bullet).
+  // Callers wrap rows in a <ul> so list markers stay reset.
   const row = (item, extraClass = "", attrs = "") => `
       <a class="sidebar__link${extraClass ? ` ${extraClass}` : ""}" href="${esc(resolveHref(item.href))}"${attrs}>
         ${Icons.svg(item.icon)}
@@ -75,11 +55,7 @@
 
   const link = (item, extraClass = "", attrs = "") => `<li>${row(item, extraClass, attrs)}</li>`;
 
-  /**
-   * Bottom of the sidebar. The log-out is a button, never a link, and it never
-   * acts on the first click: it swaps the list for a confirmation panel so a
-   * stray click cannot sign the user out.
-   */
+  // Log-out swaps the list for a confirm panel, so one click can't sign out.
   function SidebarFoot(config, brand = "SkillMarket") {
     const base = config || {};
     const logout = base.logout || { label: "Log out", icon: "log-out" };
@@ -156,7 +132,7 @@
       </aside>`;
   }
 
-  /* --- Interactions ------------------------------------------------------- */
+  /* Interactions */
 
   function sidebarElement() {
     return $("dashboard-sidebar");
@@ -212,8 +188,7 @@
     });
   }
 
-  // On a dedicated page the sidebar links to other pages, so scroll-spy
-  // has nothing to watch. Mark the link that points at this page instead.
+  // Dedicated pages have no scroll sections; mark the link to this page.
   function markCurrentPageLink() {
     const page = currentPageName();
     const current = $$("a.sidebar__link").find((anchor) => {
@@ -232,15 +207,13 @@
         const section = id ? document.getElementById(id) : null;
 
         if (samePage && id && !section) {
-          // #settings / #help style links with no section on this page:
-          // they open a dialog instead.
+          // No matching section; open as a dialog.
           event.preventDefault();
           const actions = window.DashActions;
           if (actions && typeof actions.openHref === "function") actions.openHref(`#${id}`);
         } else if (samePage && section) {
           setActiveLink(anchor);
         }
-        // Links to another page (projects.html / …) navigate normally.
 
         if (sidebarElement().classList.contains("is-open")) setDrawer(false);
       });
@@ -251,10 +224,7 @@
     wireSpy();
   }
 
-  /**
-   * The footer's log-out opens a confirmation panel instead of signing the
-   * user out immediately. Escape and Cancel both back out of it.
-   */
+  // Log-out opens a confirm panel; Escape and Cancel back out.
   function wireFoot() {
     const host = sidebarElement();
     if (!host) return;
@@ -273,8 +243,6 @@
       (open ? cancel : trigger).focus();
     };
 
-    // Bound to every log-out affordance in the sidebar, link or button: the
-    // default navigation is always intercepted so one click can never log out.
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
       if (panel.hidden) setOpen(true);
@@ -311,9 +279,7 @@
       const line = 160;
       let best = null;
 
-      // Whichever section crosses the reading line last wins, so the active
-      // item stays correct even though the sidebar order and the panel order
-      // are not the same.
+      // Last section past the reading line wins.
       targets.forEach((entry) => {
         const top = entry.el.getBoundingClientRect().top;
         if (top - line <= 0 && (!best || top > best.top)) best = { entry, top };
@@ -335,8 +301,7 @@
     update();
   }
 
-  // Legacy [data-notice] controls fall back to a toast from the action layer
-  // (js/pages/dashboard-actions.js) instead of a dead click.
+  // Legacy [data-notice] falls back to a toast (js/pages/dashboard-actions.js).
   function wireActions() {
     document.addEventListener("click", (event) => {
       const trigger = event.target.closest("[data-notice]");
@@ -347,7 +312,7 @@
     });
   }
 
-  /* --- Topbar search: filters the list rows and panels -------------------- */
+  /* Topbar search: filters list rows and panels */
 
   function wireSearch() {
     const form = $("[data-dash-search]");
@@ -387,7 +352,7 @@
     });
   }
 
-  /* --- Boot --------------------------------------------------------------- */
+  /* Boot */
 
   function initials(name) {
     return String(name || "")
@@ -398,14 +363,7 @@
       .join("");
   }
 
-  /**
-   * The dashboard pages are only reachable with a session. Returns the
-   * signed-in user, or null when we are about to navigate away.
-   *
-   * Pages shared by several roles declare them on <body data-roles="…">;
-   * anyone else is bounced to their own dashboard. Pages with no
-   * data-roles (the role dashboards) keep the strict per-role routing.
-   */
+  // Bounce signed-out visitors; shared pages bounce roles not in data-roles.
   function guardSession() {
     const user = Session.get();
 
@@ -425,7 +383,6 @@
       return null;
     }
 
-    // Each role gets sent to its own dashboard (see Session.DASHBOARDS).
     if (home && home.toLowerCase() !== page) {
       window.location.replace(home);
       return null;
@@ -458,9 +415,7 @@
     }
   }
 
-  /* Stamps the topbar date ("Tue 18 Nov 2026").
-     Assembled by hand rather than toLocaleDateString so every browser
-     prints the same header. */
+  // Hand-rolled: toLocaleDateString renders differently across browsers.
   function paintIssueDate() {
     const el = $("[data-dash-date]");
     if (!el) return;
@@ -479,15 +434,9 @@
     el.textContent = `${day} ${date} ${month} ${now.getFullYear()}`;
   }
 
-  /* --- Role blocks on the dedicated pages -------------------------------- */
+  /* Role blocks */
 
-  /**
-   * The dedicated pages carry one copy of the content per role they serve,
-   * each wrapped in [data-role-block]. Only the block matching the
-   * signed-in role stays in the DOM, the rest are removed, so every id
-   * stays unique and the search filter only ever sees the role's own
-   * markup. (Pages that serve a single role don't use blocks at all.)
-   */
+  // One [data-role-block] per role; keep only the signed-in role's.
   function renderRoleBlocks(user) {
     const blocks = $$("[data-role-block]");
     if (!blocks.length) return;
@@ -499,8 +448,7 @@
     });
   }
 
-  // "Back to overview" links on the dedicated pages point at the role's
-  // dashboard, which site.json cannot know.
+  // "Back to overview" points at the role's dashboard; site.json can't know it.
   function resolveDashHomeLinks(user) {
     const dash = user && Session.dashboardFor(user.role);
     if (!dash) return;
@@ -521,9 +469,7 @@
     wireSearch();
   }
 
-  // Roles whose sidebar mirrors the super-admin Platform menu. Explicit
-  // data-variant on the element always wins (the role dashboards set it);
-  // the dedicated pages rely on this lookup instead.
+  // data-variant wins; dedicated pages rely on this lookup.
   const ROLE_VARIANTS = { "super-admin": "super-admin" };
 
   const roleVariant = () => {

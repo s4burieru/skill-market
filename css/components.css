@@ -317,7 +317,6 @@
   margin-left: auto;
 }
 
-/* Outlined so it reads as a button next to the primary "Join" CTA. */
 .navbar__login {
   display: inline-flex;
   align-items: center;
@@ -341,7 +340,7 @@
   color: var(--green-700);
 }
 
-/* Signed-in navbar: profile dropdown --------------------------------------- */
+/* Signed-in navbar: profile dropdown */
 
 .navbar__profile {
   position: relative;
@@ -433,8 +432,7 @@
   top: calc(100% + 12px);
   right: 0;
   z-index: 60;
-  /* Grows with its content (so names stay on one line) but never wider than
-     the space available next to the gutter. */
+  /* Fits content, capped at the viewport width. */
   width: max-content;
   min-width: min(280px, calc(100vw - 2 * var(--gutter)));
   max-width: calc(100vw - 2 * var(--gutter));
@@ -465,8 +463,6 @@
   font-size: var(--fs-md);
   font-weight: 600;
   color: var(--ink);
-  /* The menu is sized to its content, so this stays on one line; it only
-     wraps when the viewport itself is too narrow to fit it. */
   white-space: normal;
   overflow-wrap: anywhere;
 }
@@ -631,7 +627,7 @@
   color: var(--ink);
 }
 
-/* Freelancer card ------------------------------------------------------- */
+/* Freelancer card */
 
 .card--freelancer {
   position: relative;
@@ -717,8 +713,6 @@
     0 0 0 1px rgba(15, 23, 42, 0.1),
     0 8px 16px rgba(15, 23, 42, 0.16);
 }
-
-/* Crown sits on the avatar corner like a notification badge ------------- */
 
 .fl__crown {
   position: absolute;
@@ -878,7 +872,7 @@
   }
 }
 
-/* Skill chips -------------------------------------------------------------- */
+/* Skill chips */
 
 .fl__skills {
   display: flex;
@@ -906,7 +900,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Footer: rate + CTA -------------------------------------------------------- */
+/* Footer: rate + CTA */
 
 .fl__footer {
   display: flex;
@@ -979,7 +973,7 @@
   }
 }
 
-/* Verified seal ----------------------------------------------------------- */
+/* Verified seal */
 
 .verified-seal {
   flex: none;
@@ -988,7 +982,7 @@
   color: #2563eb;
 }
 
-/* Premium member: slim gold top bar + ink/gold gem chip ------------------ */
+/* Premium member */
 
 .fl__premium {
   display: inline-flex;
@@ -1031,7 +1025,7 @@
   border-color: #cfa14a;
 }
 
-/* Trust badges for detail headers and badge rows --------------------------- */
+/* Trust badges */
 
 .badge--verified,
 .badge--premium,
@@ -1171,15 +1165,14 @@
   gap: 7px;
 }
 
-/* Stepper (how it works) ---------------------------------------------------- */
+/* Stepper (how it works) */
 
 .steps {
   position: relative;
   z-index: 0;
 }
 
-/* Dashed connector behind the icon tiles. Hidden until the grid is wide
-   enough for a single row of cards. Cards are opaque and sit above it. */
+/* Dashed connector behind the tiles; single-row layouts only. */
 @media (min-width: 1280px) {
   .steps::before {
     content: "";
@@ -1259,7 +1252,7 @@
   color: var(--muted);
 }
 
-/* Audience toggle (segmented control) ---------------------------------------- */
+/* Audience toggle */
 
 .how-toggle {
   display: flex;
@@ -1319,18 +1312,15 @@
   overflow: hidden;
 }
 
-/* Decorative brand watermark: purely presentational, kept out of the
-   accessibility tree (alt="" / aria-hidden) and behind all content. */
+/* Brand watermark; decorative, behind content. */
 .footer__watermark {
   position: absolute;
   bottom: -130px;
-  /* Container-aligned left inset, nudged outward a little. */
   left: calc(max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter))) - 44px);
   width: min(1150px, 86vw);
   height: auto;
   opacity: 0.08;
-  /* logo-1's "Skill" half is near-black and disappears on the dark green
-     background, so flatten the lockup to a white silhouette instead. */
+  /* Logo reads near-black on dark green, so flatten to a white silhouette. */
   filter: brightness(0) invert(1);
   will-change: transform;
   pointer-events: none;
@@ -1448,10 +1438,7 @@
   margin-top: 28px;
 }
 
-/* Controls use opaque colours only, no glass/frosted buttons (translucent
-   fills or translucent borders). The hex values below are the flattened
-   equivalents of the old rgba(255, 255, 255, x) tints over --footer-bg
-   (#102a20), so the look stays the same without the see-through paint. */
+/* Opaque tints of the old rgba(255,255,255) equivalents over --footer-bg. */
 .footer__social {
   display: grid;
   place-items: center;
@@ -1535,9 +1522,7 @@
   color: #fff;
 }
 
-/* Floating back-to-top circle (site-wide, injected by js/footer.js).
-   Solid opaque colours only, per the no-glass controls rule. Shown only
-   once the page is scrolled; tabindex/aria-hidden managed in JS. */
+/* Floating back-to-top circle, injected by js/footer.js. */
 .back-to-top {
   position: fixed;
   right: 22px;
@@ -1575,9 +1560,7 @@
   background: var(--green-700);
 }
 
-/* ===== Scroll reveal (vanilla JS, js/reveal.js) =====
-   Hidden state is applied via JS only, so content is never
-   invisible when scripts are off or reduced motion is requested. */
+/* Scroll reveal; hidden state is JS-only. */
 .reveal {
   opacity: 0;
   transform: translateY(26px);

@@ -28,11 +28,12 @@
   <site-navbar></site-navbar>
 
   <main>
-    <!-- Hero ---------------------------------------------------------------- -->
+    <!-- Hero -->
     <section class="pm-hero">
       <div class="container pm-hero__inner">
-        <span class="badge badge--soft">New · Rankings &amp; verification</span>
-        <h1 class="pm-hero__title">Wear the crown. Get hired first.</h1>
+        <div class="pm-hero__copy">
+        <span class="badge badge--soft">New <svg class="icon pm-hero__badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1c.83 5.31 4.24 8.66 9.55 9.5-5.31.84-8.72 4.19-9.55 9.5-.83-5.31-4.24-8.66-9.55-9.5C7.76 9.66 11.17 6.31 12 1Z"/></svg> Rankings &amp; verification</span>
+        <h1 class="pm-hero__title">Wear the <em class="pm-hero__mark">crown</em>. Get hired first.</h1>
         <p class="pm-hero__desc">
           SkillMarket now ranks every freelancer within their own category by rating, review volume and completed work, recomputed every week. Verify your identity for free to enter the ranking, or go
           Premium for the gold badge, the gem flag and a boosted placement in search.
@@ -57,10 +58,76 @@
             Premium pays for itself in one project
           </li>
         </ul>
+        </div>
+
+        <div class="pm-hero__visual" aria-hidden="true">
+          <div class="pm-board">
+            <div class="pm-board__head">
+              <div class="pm-board__heading">
+                <span class="pm-board__eyebrow">Weekly board</span>
+                <span class="pm-board__title">Web Development</span>
+              </div>
+              <span class="pm-board__live"><span class="pm-board__live-dot"></span>Live</span>
+            </div>
+
+            <ol class="pm-board__list">
+              <li class="pm-row pm-row--gold">
+                <span class="pm-row__rank">1</span>
+                <span class="pm-row__avatar"><img src="img/avatar-aeron.png" alt="" width="46" height="46" loading="lazy" /></span>
+                <span class="pm-row__meta">
+                  <span class="pm-row__name">Aeron Lim
+                    <svg class="pm-gem" viewBox="0 0 24 24" fill="currentColor"><path d="M7.2 3h9.6l3.6 5.2L12 21 3.6 8.2 7.2 3Zm1.7 2 1.15 2.4h3.9L15.1 5h-6.2ZM6 9l6 9.6L18 9H6Z"/></svg>
+                  </span>
+                  <span class="pm-row__sub">4.9 rating · 132 reviews · 148 projects</span>
+                </span>
+                <span class="pm-row__score">96.4</span>
+                <span class="pm-row__crown pm-row__crown--gold">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 8.3 8 11.7 12 5l4 6.7 4.4-3.4-1.4 8.6a1.6 1.6 0 0 1-1.57 1.4H6.57A1.6 1.6 0 0 1 5 16.9L3.6 8.3Z"/></svg>
+                </span>
+              </li>
+              <li class="pm-row">
+                <span class="pm-row__rank">2</span>
+                <span class="pm-row__avatar"><img src="img/avatar-emer.png" alt="" width="46" height="46" loading="lazy" /></span>
+                <span class="pm-row__meta">
+                  <span class="pm-row__name">Emer Santos</span>
+                  <span class="pm-row__sub">4.8 rating · 118 reviews · 131 projects</span>
+                </span>
+                <span class="pm-row__score">93.1</span>
+                <span class="pm-row__crown pm-row__crown--silver">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 8.3 8 11.7 12 5l4 6.7 4.4-3.4-1.4 8.6a1.6 1.6 0 0 1-1.57 1.4H6.57A1.6 1.6 0 0 1 5 16.9L3.6 8.3Z"/></svg>
+                </span>
+              </li>
+              <li class="pm-row">
+                <span class="pm-row__rank">3</span>
+                <span class="pm-row__avatar"><img src="img/avatar-khing.png" alt="" width="46" height="46" loading="lazy" /></span>
+                <span class="pm-row__meta">
+                  <span class="pm-row__name">Khing Dela Cruz</span>
+                  <span class="pm-row__sub">4.8 rating · 104 reviews · 127 projects</span>
+                </span>
+                <span class="pm-row__score">90.8</span>
+                <span class="pm-row__crown pm-row__crown--bronze">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 8.3 8 11.7 12 5l4 6.7 4.4-3.4-1.4 8.6a1.6 1.6 0 0 1-1.57 1.4H6.57A1.6 1.6 0 0 1 5 16.9L3.6 8.3Z"/></svg>
+                </span>
+              </li>
+            </ol>
+
+          </div>
+
+          <div class="pm-hero__card">
+            <span class="pm-hero__card-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 8.3 8 11.7 12 5l4 6.7 4.4-3.4-1.4 8.6a1.6 1.6 0 0 1-1.57 1.4H6.57A1.6 1.6 0 0 1 5 16.9L3.6 8.3Z"/></svg>
+            </span>
+            <span class="pm-hero__card-text">
+              <strong>Premium</strong>
+              <span>Gold badge + boosted placement</span>
+            </span>
+            <span class="pm-hero__card-price">₱1,200<span>/mo</span></span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Plans ---------------------------------------------------------------- -->
+    <!-- Plans -->
     <section class="section" id="plans">
       <div class="container">
         <header class="section__head section__head--center">
@@ -71,7 +138,7 @@
         </header>
 
         <div class="pm-plans">
-          <!-- Verified ---------------------------------------------------- -->
+          <!-- Verified -->
           <article class="pm-plan">
             <div class="pm-plan__icon pm-plan__icon--verified" aria-hidden="true">
               <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.2 19 5.6a1.6 1.6 0 0 1 1 1.5v5.3c0 5.1-3.1 8.7-8 9.9-4.9-1.2-8-4.8-8-9.9V7.1a1.6 1.6 0 0 1 1-1.5L12 2.2Zm-1.15 12.75-2.9-2.9 1.7-1.7 1.2 1.2 4.05-4 1.7 1.7-5.75 5.7Z"/></svg>
@@ -113,7 +180,7 @@
             <p class="pm-plan__note">No credit card required.</p>
           </article>
 
-          <!-- Premium -------------------------------------------------------- -->
+          <!-- Premium -->
           <article class="pm-plan pm-plan--gold">
             <span class="pm-plan__ribbon">Most popular</span>
             <div class="pm-plan__icon pm-plan__icon--premium" aria-hidden="true">
@@ -159,7 +226,7 @@
       </div>
     </section>
 
-    <!-- How ranking works ------------------------------------------------------ -->
+    <!-- How ranking works -->
     <section class="section section--alt" id="ranking">
       <div class="container">
         <header class="section__head section__head--center">
@@ -247,7 +314,7 @@
       </div>
     </section>
 
-    <!-- Apply ------------------------------------------------------------------- -->
+    <!-- Apply -->
     <section class="section" id="apply">
       <div class="container pm-apply">
         <div class="pm-apply__copy">
@@ -363,7 +430,7 @@
       </div>
     </section>
 
-    <!-- FAQ ---------------------------------------------------------------------- -->
+    <!-- FAQ -->
     <section class="section section--alt" id="faq">
       <div class="container pm-faq">
         <header class="section__head section__head--center">

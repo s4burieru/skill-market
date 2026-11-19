@@ -3,7 +3,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  /* Fill the viewport below the sticky navbar; svh avoids mobile URL-bar jump. */
+  /* svh avoids the mobile URL-bar jump. */
   min-height: calc(100vh - var(--navbar-h));
   min-height: calc(100svh - var(--navbar-h));
   padding: 56px 0 64px;
@@ -44,7 +44,7 @@
   color: var(--ink);
 }
 
-/* Hand-drawn flat swash under a key phrase (SVG stroke, no gradient). */
+/* Hand-drawn swash under a key phrase. */
 .hero-mark {
   font-style: normal;
   white-space: nowrap;
@@ -52,7 +52,7 @@
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 24' preserveAspectRatio='none'%3E%3Cpath d='M4 16c36-9 72 4 112-3 40-7 96-3 120 2' fill='none' stroke='%23c0f2da' stroke-width='6.5' stroke-linecap='round'/%3E%3C/svg%3E") 0 100% / 100% 0.3em no-repeat;
 }
 
-/* Inline pill sitting inside the headline, echoing the mood board. */
+/* Inline pill inside the headline. */
 .hero-pill {
   display: inline-flex;
   align-items: center;
@@ -109,7 +109,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Decorative floating layer (hidden from assistive tech) */
+/* Decorative floating layer; hidden from assistive tech. */
 .hero__decor {
   position: absolute;
   inset: 0;
@@ -381,9 +381,7 @@
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
 }
 
-/* Featured jobs and steps stay at three across on wide screens. Services and
-   freelancers intentionally keep the shared auto-fill behaviour so the
-   homepage cards match the Find Freelancers / Explore listing sizes. */
+/* Jobs and steps stay three across on wide screens. */
 @media (min-width: 1660px) {
   .page-home [data-grid="jobs"],
   .page-home .grid--steps {
@@ -391,10 +389,7 @@
   }
 }
 
-/* Homepage services and freelancers fill every line completely. The flex
-   basis tracks the shared 300px auto-fill width, so full rows match the
-   listing pages card-for-card; a short final row simply stretches to fill
-   the width instead of leaving empty tracks. */
+/* Fill every line; a short final row stretches instead of leaving gaps. */
 .page-home [data-grid="services"],
 .page-home [data-grid="freelancers"] {
   display: flex;
@@ -498,7 +493,7 @@
   }
 
   .footer__top {
-    /* room for the absolutely positioned status message below the form */
+    /* Room for the status message below the form. */
     padding-bottom: 56px;
   }
 
@@ -570,7 +565,6 @@
     --gutter: 18px;
   }
 
-  /* Fit brand + Login + Join + hamburger on narrow phones. */
   .navbar__inner {
     gap: 12px;
   }

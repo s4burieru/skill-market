@@ -1,26 +1,8 @@
-/* ============================================================
-   SkillMarket: Home page interactions
-   Vanilla JS, no dependencies.
-
-   - Trusted-by marquee: clones the logo group once so the
-     -50% keyframe loops seamlessly. Skipped entirely when the
-     user prefers reduced motion (the row stays static).
-   - Testimonials: auto-advancing carousel with prev/next,
-     dots, swipe support, keyboard arrows and hover/focus pause.
-   - FAQ: exclusive accordion (grid-rows animation in CSS).
-
-   Every feature degrades gracefully: without this file the
-   marquee renders one static logo row, the first testimonial
-   stays visible, and the FAQ panels can be toggled via the
-   native <details>-free markup with [data-open] styling.
-   ============================================================ */
+/* Home page interactions: marquee, testimonials carousel, FAQ accordion. */
 (() => {
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  /* ---------- Trusted-by logo rows ----------
-     Each row's group is cloned until the track is at least twice the
-     viewport (even number of copies), so the -50% keyframe loops
-     seamlessly. Skipped under reduced motion: rows render statically. */
+  /* Trusted-by logo rows */
   if (!prefersReduced.matches) {
     document.querySelectorAll("[data-marquee-track]").forEach((track) => {
       const group = track.querySelector(".marquee__group");
@@ -43,7 +25,7 @@
     });
   }
 
-  /* ---------- Testimonials carousel ---------- */
+  /* Testimonials carousel */
   const viewport = document.querySelector("[data-quotes]");
   if (viewport) {
     const slides = Array.from(viewport.querySelectorAll(".quote"));
@@ -94,7 +76,6 @@
       autoplayId = window.setInterval(() => goTo(index + 1), AUTOPLAY_MS);
     };
 
-    // Build dots from the number of slides.
     if (dotsHost) {
       dotsHost.innerHTML = slides
         .map(
@@ -121,7 +102,6 @@
       startAutoplay();
     });
 
-    // Keyboard: left/right arrows move between testimonials.
     viewport.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") {
         event.preventDefault();
@@ -134,13 +114,11 @@
       }
     });
 
-    // Pause autoplay while the user is reading or interacting.
     viewport.addEventListener("pointerenter", stopAutoplay);
     viewport.addEventListener("pointerleave", startAutoplay);
     viewport.addEventListener("focusin", stopAutoplay);
     viewport.addEventListener("focusout", startAutoplay);
 
-    // Basic swipe support for touch devices.
     let touchStartX = null;
     viewport.addEventListener(
       "touchstart",
@@ -167,7 +145,7 @@
     startAutoplay();
   }
 
-  /* ---------- FAQ accordion ---------- */
+  /* FAQ accordion */
   const faqList = document.querySelector("[data-faq]");
   if (faqList) {
     const items = Array.from(faqList.querySelectorAll(".faq__item"));

@@ -1,15 +1,5 @@
-/**
- * Shared script for the browse/listing pages: explore.html, freelancers.html
- * and jobs.html. The page picks its data source with <body data-browse="…">.
- *
- * Markup contract (all optional except the grid):
- *   [data-browse-form]    search form (submit scrolls to the results)
- *   [data-browse-input]   search input (live filtering)
- *   [data-browse-pills]   category chips
- *   [data-browse-grid]    results grid
- *   [data-browse-empty]   empty state, toggled by the script
- *   [data-browse-count]   "12 of 24 services" counter
- */
+/* Listing pages (explore, freelancers, jobs). Page picks its data source
+   via <body data-browse="…">; [data-browse-grid] holds the results. */
 (() => {
   const esc = (value) => Components.esc(value);
 
@@ -189,7 +179,7 @@
       });
     }
 
-    // Freelancer trust toolbar: sort select + verified/premium toggles.
+    // Freelancer-only trust toolbar.
     const sortSelect = document.querySelector("[data-browse-sort]");
     if (sortSelect) {
       sortSelect.addEventListener("change", () => {

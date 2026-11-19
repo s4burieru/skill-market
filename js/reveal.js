@@ -1,19 +1,6 @@
-/* ============================================================
-   SkillMarket: Scroll Reveal
-   Vanilla JS, no dependencies.
-
-   Elements matching the selector list below get a gentle
-   fade-and-rise animation the first time they scroll into view.
-   Because page data (cards, grids) is injected asynchronously by
-   js/data.js and friends, a MutationObserver picks up nodes that
-   appear after the initial scan.
-
-   Notes:
-   - The `.reveal` hidden state is only ever applied via JS, so
-     content stays fully visible when JS (or this file) is missing.
-   - Respects `prefers-reduced-motion`: no classes are added at all.
-   - Any element can opt in manually with the `data-reveal` attribute.
-   ============================================================ */
+/* Scroll reveal: fade-and-rise on first view. Content injected after the
+   initial scan is picked up via MutationObserver. Hidden state is JS-only;
+   respects prefers-reduced-motion. */
 (() => {
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (prefersReduced.matches || !("IntersectionObserver" in window)) return;

@@ -34,62 +34,6 @@
       "email": "kleinwesley@skillmarket.com",
       "password": "klein123",
       "role": "super-admin"
-    },
-    {
-      "id": "usr-006",
-      "name": "Jasmine Reyes",
-      "email": "jasminereyes@skillmarket.com",
-      "password": "jasmine123",
-      "role": "freelancer"
-    },
-    {
-      "id": "usr-007",
-      "name": "Paolo Villanueva",
-      "email": "paolovillanueva@skillmarket.com",
-      "password": "paolo123",
-      "role": "freelancer"
-    },
-    {
-      "id": "usr-008",
-      "name": "Miguel Santos",
-      "email": "miguelsantos@skillmarket.com",
-      "password": "miguel123",
-      "role": "hire-talent"
-    },
-    {
-      "id": "usr-009",
-      "name": "Bea Navarro",
-      "email": "bearnavarro@skillmarket.com",
-      "password": "bea123",
-      "role": "hire-talent"
-    },
-    {
-      "id": "usr-010",
-      "name": "Camille Soriano",
-      "email": "camillesoriano@skillmarket.com",
-      "password": "camille123",
-      "role": "freelancer"
-    },
-    {
-      "id": "usr-011",
-      "name": "Rafael Mendoza",
-      "email": "rafaelmendoza@skillmarket.com",
-      "password": "rafael123",
-      "role": "freelancer"
-    },
-    {
-      "id": "usr-012",
-      "name": "Frances Dela Cruz",
-      "email": "francesdelacruz@skillmarket.com",
-      "password": "frances123",
-      "role": "freelancer"
-    },
-    {
-      "id": "usr-013",
-      "name": "Gabriel Navarro",
-      "email": "gabrielnavarro@skillmarket.com",
-      "password": "gabriel123",
-      "role": "freelancer"
     }
   ]
 }

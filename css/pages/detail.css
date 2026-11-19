@@ -1,4 +1,4 @@
-/* Shared layout for the detail pages: service, freelancer and job ---------- */
+/* Shared layout for the detail pages: service, freelancer and job */
 
 .breadcrumb {
   padding-top: 22px;
@@ -67,7 +67,7 @@
   margin-top: 20px;
 }
 
-/* Header ------------------------------------------------------------------ */
+/* Header */
 
 .detail__head {
   display: flex;
@@ -91,7 +91,7 @@
   color: var(--muted);
 }
 
-/* svg icons render as blocks, so meta items that carry one become flex rows */
+/* Meta items with icons become flex rows. */
 .detail__meta > span,
 .detail__meta > a {
   display: inline-flex;
@@ -122,7 +122,7 @@
   background: var(--bg-alt);
 }
 
-/* Body blocks ------------------------------------------------------------- */
+/* Body blocks */
 
 .detail__block {
   margin-top: 26px;
@@ -208,7 +208,7 @@
   margin-top: 14px;
 }
 
-/* Side cards -------------------------------------------------------------- */
+/* Side cards */
 
 .price-card,
 .side-card {
@@ -324,7 +324,7 @@
   color: var(--muted);
 }
 
-/* Reviews ----------------------------------------------------------------- */
+/* Reviews */
 
 .rating-summary {
   display: flex;
@@ -450,7 +450,7 @@
   color: var(--muted);
 }
 
-/* Freelancer profile ------------------------------------------------------ */
+/* Freelancer profile */
 
 .profile-head {
   display: flex;
@@ -546,7 +546,7 @@
   color: var(--muted);
 }
 
-/* Job detail -------------------------------------------------------------- */
+/* Job detail */
 
 .job-head {
   display: flex;
@@ -609,13 +609,13 @@
   gap: 10px;
 }
 
-/* Related ----------------------------------------------------------------- */
+/* Related */
 
 .related {
   padding-top: 52px;
 }
 
-/* Not found --------------------------------------------------------------- */
+/* Not found */
 
 .detail-notfound {
   padding: 70px 0 90px;
@@ -680,7 +680,7 @@
   }
 }
 
-/* Badge rows & trust card (ranking + verification) ------------------------- */
+/* Badge rows & trust card (ranking + verification) */
 
 .badge-row {
   display: flex;

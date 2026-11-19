@@ -103,9 +103,7 @@ class SiteFooter extends HTMLElement {
       });
   }
 
-  /* Subtle scroll drift for the decorative watermark: it slides a little
-     diagonally as the footer passes through the viewport. Skipped when
-     the user prefers reduced motion. */
+  // Watermark slides diagonally on scroll; skipped under reduced motion.
   driftWatermark() {
     const watermark = this.querySelector(".footer__watermark");
     const footer = this.querySelector(".footer");
@@ -157,9 +155,7 @@ class SiteFooter extends HTMLElement {
     }
   }
 
-  /* Floating circular back-to-top button, appended to the body so it
-     lives independently of the footer. Appears once the page is scrolled,
-     hidden at the top. */
+  // Floating back-to-top button, appended to the body.
   renderBackToTop() {
     if (document.querySelector(".back-to-top")) return;
 
@@ -172,8 +168,7 @@ class SiteFooter extends HTMLElement {
 
     const toggle = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      // Hide near the bottom of the page: there the fixed footer is
-      // fully revealed and the button would sit on top of its legal links.
+      // Hide near the bottom so it doesn't cover the footer's legal links.
       const show = window.scrollY > 320 && window.scrollY < max - 60;
       button.classList.toggle("is-visible", show);
       button.tabIndex = show ? 0 : -1;

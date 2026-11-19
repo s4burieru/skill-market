@@ -69,8 +69,7 @@
     renderServices();
     renderPills();
 
-    // Two lines of cards only (matches the 10 popular services above);
-    // the "View all freelancers" link carries the rest.
+    // Two rows only; the "View all freelancers" link carries the rest.
     $('[data-grid="freelancers"]').innerHTML = Components.rankedList(freelancers.items)
       .slice(0, 10)
       .map(Components.FreelancerCard)
